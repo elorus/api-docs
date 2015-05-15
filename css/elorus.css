@@ -1,0 +1,31 @@
+.navbar-brand {
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+
+.elorus-logo-inverse {
+  background: url("/img/elorus-globe-docs.png");
+  background-size: 32px 32px;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.footer {
+	border-top: 1px solid #eee;
+	padding: 10px;
+}
+
+@media (max-width: 991px) {
+	.footer .first, .footer .second {
+		text-align: center;
+	}
+}
+
+@media (min-width: 992px) {
+	.footer .second {
+		text-align: right;
+	}
+}

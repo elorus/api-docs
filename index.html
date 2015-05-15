@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Elorus REST API documentation">
         
-        
-        
+        <link rel="canonical" href="http://developer.elorus.com/">
         <link rel="shortcut icon" href="img/elorus-docs.ico">
         
 
@@ -16,6 +16,8 @@
         <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
         <link rel="stylesheet" href="./css/highlight.css">
         <link href="./css/base.css" rel="stylesheet">
+        <link href="./css/elorus.css" rel="stylesheet">
+        <link href="./css/swagger.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -42,7 +44,9 @@
             </button>
 
             <!-- Main title -->
-            <a class="navbar-brand" href=".">Elorus Developer</a>
+            <a class="navbar-brand" href=".">
+            	<i class="elorus-logo-inverse"></i> Elorus Developer
+            </a>
         </div>
 
         <!-- Expanded navigation -->
@@ -52,7 +56,20 @@
             
             
                 <li class="active">
-                    <a href=".">Home</a>
+                    <a href=".">Getting started</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="swagger-1.0/">v1.0 documentation</a>
+                        </li>
+                    
+                    </ul>
                 </li>
             
             
@@ -60,14 +77,13 @@
 
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
-                
                 <li class="disabled">
                     <a rel="next" >
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
-                <li class="disabled">
-                    <a rel="prev" >
+                <li >
+                    <a rel="prev" href="swagger-1.0/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -100,6 +116,8 @@
         
             <li><a href="#response">Response</a></li>
         
+            <li><a href="#related-topics">Related topics</a></li>
+        
     
     </ul>
 </div></div>
@@ -113,12 +131,18 @@ For information on the API release date please contact the Elorus team.</p>
 </div>
 
 <h1 id="elorus-rest-api">Elorus REST API</h1>
-<p>The Elorus developer API enables external applications access the <a href="https://www.elorus.com/">Elorus platform</a> and update organization data via HTTP. This portal provides full documentation as well as an <strong>interactive console</strong> to query the API.</p>
+<p>The Elorus developer API enables external applications access the <a href="https://www.elorus.com/">Elorus platform</a> and update organization data programmatically. For example, you may use the API to:</p>
+<ul>
+<li>Update your data without interacting with the Elorus user interface</li>
+<li>Connect your e-shop / website, automate the invoicing process and synchronize data</li>
+<li>Use Elorus as your billing system</li>
+</ul>
+<p>This portal provides documentation for developers, as well as an <strong>interactive console</strong> to query the API.</p>
 <h2 id="accessing-the-api">Accessing the API</h2>
 <p>You may access the API through <code>https://api.elorus.com/v{VERSION}/</code>, where <code>{version}</code> corresponds to the API version number. The current version is <code>1.0</code>, meaning the API is available at <code>https://api.elorus.com/v1.0/</code>.</p>
 <p>The API specification may well change as the application grows. We will maintain separate API versions to ensure your applications will keep working even after major upgrades.   </p>
 <h2 id="authentication">Authentication</h2>
-<p>To connect to the API one must be registered with Elorus and own an <strong>API key</strong>. To obtain your key you must <a href="https://app.elorus.com/">login to Elorus</a>, visit the <em>settings</em> page and follow the instructions on the <em>API</em> section. [screenshot] </p>
+<p>To connect to the API one must be registered with Elorus and own an <strong>API key</strong>. To obtain your key you should <a href="https://app.elorus.com/">login to Elorus</a>, visit the <em>settings</em> page and follow the instructions on the <em>API</em> section. [screenshot] </p>
 <p>The <em>API key</em> must be sent on every request through the standard <code>Authentication</code> HTTP header:</p>
 <pre><code>Authentication: Token CaBd3257h8jhgf
 </code></pre>
@@ -134,14 +158,48 @@ For information on the API release date please contact the Elorus team.</p>
 <hr />
 <h2 id="response">Response</h2>
 <p>Upon successful call you will receive a <code>HTTP 200</code> or <code>HTTP 204</code> response, depending on whether additional information is attached to the body.</p>
-<p>The response content type is <code>application/json</code> for most operations, unless otherwise is explicitly stated.</p></div>
+<p>The response content type is <code>application/json</code> for most operations, unless otherwise is explicitly stated.</p>
+<h2 id="related-topics">Related topics</h2>
+<p><a href="swagger-1.0/">API v1.0 documentation</a></p>
+            </div>
         </div>
-
-        
-
-        <script src="./js/jquery-1.10.2.min.js"></script>
+		<div class="container footer">
+			<div class="row">
+				<div class="col-md-6 first">
+					<ul class="list-inline">
+						<li>
+							<a target="_blank" href="https://www.elorus.com/">Elorus website</a>
+						</li>
+						<li>
+							<a target="_blank" href="https://www.elorus.com/en/terms-of-use/">Terms of use</a>
+						</li>
+						<li>
+							<a target="_blank" href="https://elorus.uservoice.com/">Support center</a>
+						</li>
+						<li>
+							<a target="_blank" class="support-contact-link" href="#">Contact</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-6 second">
+					2014 - 2015. Elorus Online Invoicing & Billing Software
+				</div>
+			</div>
+		</div>
+        <script src="./js/jquery-1.8.0.min.js"></script>
         <script src="./js/bootstrap-3.0.3.min.js"></script>
         <script src="./js/highlight.pack.js"></script>
         <script src="./js/base.js"></script>
+        <script src="././js/support.js"></script>
+        <script src="././js/shred.bundle.js"></script>
+        <script src="././js/jquery.slideto.min.js"></script>
+        <script src="././js/jquery.ba-bbq.min.js"></script>
+        <script src="././js/jquery.cookie.js"></script>
+        <script src="././js/handlebars-1.0.0.js"></script>
+        <script src="././js/underscore-min.js"></script>
+        <script src="././js/backbone-min.js"></script>
+        <script src="././js/swagger.js"></script>
+        <script src="././js/swagger-ui.min.js"></script>
+        <script src="././js/swagger-init.js"></script>
     </body>
 </html>
