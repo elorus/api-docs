@@ -27,7 +27,7 @@ $(function () {
 			log("orgID: " + key);
 			if(key && key.trim() != "") {
 				console.log("added org " + key);
-				window.authorizations.add("key", new ApiKeyAuthorization("X-Elorus-Organization", key, "header"));
+				window.authorizations.add("org", new ApiKeyAuthorization("X-Elorus-Organization", key, "header"));
 			}
 		});
 		window.swaggerUi.load();
