@@ -114,7 +114,9 @@
         
             <li><a href="#authorization">Authorization</a></li>
         
-            <li><a href="#response">Response</a></li>
+            <li><a href="#localization">Localization</a></li>
+        
+            <li><a href="#responses">Responses</a></li>
         
             <li><a href="#related-topics">Related topics</a></li>
         
@@ -156,8 +158,24 @@ For information on the API release date please contact the Elorus team.</p>
 <hr />
 <p>Throughout this documentation we assume the <code>X-Elorus-Organization</code> is <strong>always sent on every request</strong>. In the event of a non-organization specific action, we explicitly state that you may skip this header.    </p>
 <hr />
-<h2 id="response">Response</h2>
+<h2 id="localization">Localization</h2>
+<h3 id="language">Language</h3>
+<p>The English language is used throughout the Elorus API, regardless of the authenticated user's language preference. The English locale conventions are also used for decimal numbers and dates:</p>
+<ul>
+<li>The character <code>.</code> is used as a floating point for decimal numbers.</li>
+<li>Dates are expected &amp; returned in the form of <code>YYYY-mm-dd</code>.</li>
+</ul>
+<h3 id="timezone">Timezone</h3>
+<p>The <code>UTC</code> timezone is used throughout the Elorus API. Datetime values are formatted in the standard ISO format. </p>
+<h2 id="responses">Responses</h2>
 <p>Upon successful call you will receive a <code>HTTP 200</code> or <code>HTTP 204</code> response, depending on whether additional information is attached to the body.</p>
+<p>Upon unsuccessful call you may receive a few different status codes, depending on the nature of the error:</p>
+<ul>
+<li><code>HTTP 400</code>: Bad request. In most cases you will also receive more details about the specific error within the response body.</li>
+<li><code>HTTP 401</code>: The authentication header is missing or the user token is invalid.</li>
+<li><code>HTTP 403</code>: Permission is denied. This might happen if you try to access resources that the user does not have permission to access. A common case is not sending the <code>X-Elorus-Organization</code> header.</li>
+<li><code>HTTP 404</code>: This end-point does not exist.</li>
+</ul>
 <p>The response content type is <code>application/json</code> for most operations, unless otherwise is explicitly stated.</p>
 <h2 id="related-topics">Related topics</h2>
 <p><a href="swagger-1.0/">API v1.0 documentation</a></p>
