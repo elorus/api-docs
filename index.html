@@ -114,6 +114,8 @@
         
             <li><a href="#authorization">Authorization</a></li>
         
+            <li><a href="#call-rate-limits">Call rate limits</a></li>
+        
             <li><a href="#localization">Localization</a></li>
         
             <li><a href="#responses">Responses</a></li>
@@ -158,6 +160,8 @@ For information on the API release date please contact the Elorus team.</p>
 <hr />
 <p>Throughout this documentation we assume the <code>X-Elorus-Organization</code> is <strong>always sent on every request</strong>. In the event of a non-organization specific action, we explicitly state that you may skip this header.    </p>
 <hr />
+<h2 id="call-rate-limits">Call rate limits</h2>
+<p>Each user has a hard limit of 1000 API calls per day. At the same time, a user may not perform more than 60 requests per minute. If an API call e these limits, you will receive an <code>HTTP 429</code> response. The accompanying error message will look like <code>"Request was throttled. Expected available in 60.0 seconds"</code>.</p>
 <h2 id="localization">Localization</h2>
 <h3 id="language">Language</h3>
 <p>The English language is used throughout the Elorus API, regardless of the authenticated user's language preference. The English locale conventions are also used for decimal numbers and dates:</p>
