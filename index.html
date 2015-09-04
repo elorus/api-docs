@@ -120,6 +120,8 @@
         
             <li><a href="#responses">Responses</a></li>
         
+            <li><a href="#paging-filtering">Paging  Filtering</a></li>
+        
             <li><a href="#related-topics">Related topics</a></li>
         
     
@@ -181,6 +183,11 @@ For information on the API release date please contact the Elorus team.</p>
 <li><code>HTTP 404</code>: This end-point does not exist.</li>
 </ul>
 <p>The response content type is <code>application/json</code> for most operations, unless otherwise is explicitly stated.</p>
+<h2 id="paging-filtering">Paging &amp; Filtering</h2>
+<p>In some cases (mainly the list end-points) you may use filters to restrict the results. These are query parameters (part of the URL) and are documented in the respective sections.
+List end-points return the results paginated in sets of 100s. You may use use the <code>page</code> query parameter to control the page. For example, to get the second page of the clients you may use the following URL:</p>
+<pre><code>https://api.elorus.com/v{VERSION}/contacts/?page=2&amp;type=client
+</code></pre>
 <h2 id="related-topics">Related topics</h2>
 <p><a href="swagger-1.0/">API v1.0 documentation</a></p>
             </div>
