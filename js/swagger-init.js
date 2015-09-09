@@ -30,6 +30,7 @@ $(function () {
 				window.authorizations.add("org", new ApiKeyAuthorization("X-Elorus-Organization", key, "header"));
 			}
 		});
+		window.authorizations.add("demo", new ApiKeyAuthorization("X-Elorus-Demo", true, "header"));
 		window.swaggerUi.load();
 	}
 });

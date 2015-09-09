@@ -114,13 +114,17 @@
         
             <li><a href="#authorization">Authorization</a></li>
         
+            <li><a href="#development-guides">Development guides</a></li>
+        
+            <li><a href="#demo-organizations">Demo organizations</a></li>
+        
             <li><a href="#call-rate-limits">Call rate limits</a></li>
         
             <li><a href="#localization">Localization</a></li>
         
             <li><a href="#responses">Responses</a></li>
         
-            <li><a href="#paging-filtering">Paging  Filtering</a></li>
+            <li><a href="#paging-filtering">Paging - Filtering</a></li>
         
             <li><a href="#related-topics">Related topics</a></li>
         
@@ -128,13 +132,6 @@
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
-
-<div class="alert alert-warning">
-<strong>THIS IS A PREVIEW DOCUMENT.</strong><p>
-The Elorus API is not yet officially released, neither is it usable or publicly available. None of this documentation applies to the Elorus production environment, it is only a preview of what the API will look like. Any content found on this website is subject to change without further notice.
-</p><p>
-For information on the API release date please contact the Elorus team.</p>
-</div>
 
 <h1 id="elorus-rest-api">Elorus REST API</h1>
 <p>The Elorus developer API enables external applications access the <a href="https://www.elorus.com/">Elorus platform</a> and update organization data programmatically. For example, you may use the API to:</p>
@@ -148,7 +145,7 @@ For information on the API release date please contact the Elorus team.</p>
 <p>You may access the API through <code>https://api.elorus.com/v{VERSION}/</code>, where <code>{version}</code> corresponds to the API version number. The current version is <code>1.0</code>, meaning the API is available at <code>https://api.elorus.com/v1.0/</code>.</p>
 <p>The API specification may well change as the application grows. We will maintain separate API versions to ensure your applications will keep working even after major upgrades.   </p>
 <h2 id="authentication">Authentication</h2>
-<p>To connect to the API one must be registered with Elorus and own an <strong>API key</strong>. To obtain your key you should <a href="https://app.elorus.com/">login to Elorus</a>, visit the <em>settings</em> page and follow the instructions on the <em>API</em> section. [screenshot] </p>
+<p>To connect to the API one must be registered with Elorus and own an <strong>API key</strong>. To obtain your key you must <a target="_blank" class="support-contact-link" href="#">contact the Elorus support team</a> and generate it for you. Afterwards you can always visit your <em>account settings</em> page and get your <em>API key</em>.  </p>
 <p>The <em>API key</em> must be sent on every request through the standard <code>Authentication</code> HTTP header:</p>
 <pre><code>Authentication: Token CaBd3257h8jhgf
 </code></pre>
@@ -161,6 +158,20 @@ For information on the API release date please contact the Elorus team.</p>
 <p>In the event of an unauthorized request, the Elorus API returns a <code>HTTP 403</code> response. Additional details about the error may be provided within the response body.  </p>
 <hr />
 <p>Throughout this documentation we assume the <code>X-Elorus-Organization</code> is <strong>always sent on every request</strong>. In the event of a non-organization specific action, we explicitly state that you may skip this header.    </p>
+<hr />
+<h2 id="development-guides">Development guides</h2>
+<p>To start developing with the Elorus API you need to <a target="_blank" href="https://app.elorus.com/register/">sign up for a free account</a>. The best way to try out Elorus and test your code is through the <a href="#demo-organizations">demo organizations</a> at zero cost. As long as your are developing your application, it is recommended to restrict all API requests only to demo organizations, by providing the <code>X-Elorus-Demo</code> HTTP header:</p>
+<pre><code>X-Elorus-Demo: true
+</code></pre>
+<h2 id="demo-organizations">Demo organizations</h2>
+<ul>
+<li>Allow unlimited number of documents to be created.</li>
+<li>Can only be used from a single user.</li>
+<li>User management &amp; plan subscriptions are disabled.</li>
+<li>Data will be automatically reset at the 1st of every month.</li>
+</ul>
+<hr />
+<p>Please <a target="_blank" class="support-contact-link" href="#">contact the Elorus support team</a> to request a new demo organization.</p>
 <hr />
 <h2 id="call-rate-limits">Call rate limits</h2>
 <p>Each user has a hard limit of 1000 API calls per day. At the same time, a user may not perform more than 60 requests per minute. If an API call e these limits, you will receive an <code>HTTP 429</code> response. The accompanying error message will look like <code>"Request was throttled. Expected available in 60.0 seconds"</code>.</p>
@@ -183,13 +194,13 @@ For information on the API release date please contact the Elorus team.</p>
 <li><code>HTTP 404</code>: This end-point does not exist.</li>
 </ul>
 <p>The response content type is <code>application/json</code> for most operations, unless otherwise is explicitly stated.</p>
-<h2 id="paging-filtering">Paging &amp; Filtering</h2>
+<h2 id="paging-filtering">Paging - Filtering</h2>
 <p>In some cases (mainly the list end-points) you may use filters to restrict the results. These are query parameters (part of the URL) and are documented in the respective sections.
 List end-points return the results paginated in sets of 100s. You may use use the <code>page</code> query parameter to control the page. For example, to get the second page of the clients you may use the following URL:</p>
 <pre><code>https://api.elorus.com/v{VERSION}/contacts/?page=2&amp;type=client
 </code></pre>
 <h2 id="related-topics">Related topics</h2>
-<p><a href="swagger-1.0/">API v1.0 documentation</a></p>
+<p><a href="swagger-1.0/">API v1.0 (BETA) documentation</a></p>
             </div>
         </div>
 		<div class="container footer">
