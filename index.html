@@ -144,8 +144,8 @@
 <p>The API specification may well change as the application grows. We will maintain separate API versions to ensure your applications will keep working even after major upgrades.   </p>
 <h2 id="authentication">Authentication</h2>
 <p>To connect to the API one must be registered with Elorus and own an <strong>API key</strong>. To obtain your key you must <a target="_blank" class="support-contact-link" href="#">contact the Elorus support team</a> and generate it for you. Afterwards you can always visit your <em>account settings</em> page and get your <em>API key</em>.  </p>
-<p>The <em>API key</em> must be sent on every request through the standard <code>Authentication</code> HTTP header:</p>
-<pre><code>Authentication: Token CaBd3257h8jhgf
+<p>The <em>API key</em> must be sent on every request through the standard <code>Authorization</code> HTTP header:</p>
+<pre><code>Authorization: Token CaBd3257h8jhgf
 </code></pre>
 <p>In the event of an unauthenticated request, the Elorus API returns a <code>HTTP 401</code> response.</p>
 <h2 id="authorization">Authorization</h2>
