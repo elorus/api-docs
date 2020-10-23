@@ -17,11 +17,15 @@
     </head>
     <body>
         <div style="position: fixed; z-index: 1; top: 0; padding: 20px; width: 100%; background-color: #263238;">
-            <a class="version-btn active" href="./index.html">API v1.1</a>&#xa0;&#xa0;
-            <a class="version-btn" href="./v1_0.html">API v1.0</a>
+            <a class="version-btn" href="./index.html">API v1.1</a>&#xa0;&#xa0;
+            <a class="version-btn active" href="./v1_0.html">API v1.0</a>
         </div>
-        <div style="margin-top: 58px;">
-            <redoc spec-url="./openapi/elorus_api_v1.1.json?v=1" hide-download-button="true" native-scrollbars="true" scroll-y-offset="58"></redoc>
+        <div style="position: fixed; z-index: 1; top: 58px; padding: 10px; text-align: center; width: 100%; font-family: Roboto, sans-serif; color: #fff; background-color: #17847e;">
+The Elorus API v1.0 is no longer supported and <b>will be shutdown on May 01, 2021</b>.
+Please use the <a href="./index.html" style="color: #eee; text-decoration: underline;"> latest version</a> instead.
+        </div>
+        <div style="margin-top: 98px;">
+            <redoc spec-url="./openapi/elorus_api_v1.0.json?v=2" hide-download-button="true" native-scrollbars="true" scroll-y-offset="98"></redoc>
         </div>
         <script src="https://rebilly.github.io/ReDoc/releases/v1.22.3/redoc.min.js"></script>
         <script src="./js/support.js"></script>
