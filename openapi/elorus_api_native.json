@@ -4539,7 +4539,7 @@
                     "type": "string",
                     "format": "date-time",
                     "readOnly": true,
-                    "default": "2020-10-23T13:14:52.378513Z",
+                    "default": "2020-10-26T10:13:20.671158Z",
                     "description": "Timezone information is included."
                 },
                 "end_datetime": {
@@ -4643,7 +4643,7 @@
                     "type": "string",
                     "format": "date-time",
                     "readOnly": true,
-                    "default": "2020-10-23T13:14:52.384030Z",
+                    "default": "2020-10-26T10:13:20.676226Z",
                     "description": "Timezone information is included."
                 },
                 "end_datetime": {
