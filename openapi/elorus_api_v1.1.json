@@ -970,6 +970,13 @@
                         }
                     },
                     {
+                        "name": "skip_mydata",
+                        "in": "query",
+                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "X-Elorus-Organization",
                         "in": "header",
                         "description": "The ID of the organization you want to operate on.",
@@ -1052,6 +1059,13 @@
                         "schema": {
                             "$ref": "#/definitions/V11CashReceiptUpdate"
                         }
+                    },
+                    {
+                        "name": "skip_mydata",
+                        "in": "query",
+                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "X-Elorus-Organization",
@@ -1629,6 +1643,13 @@
                         }
                     },
                     {
+                        "name": "skip_mydata",
+                        "in": "query",
+                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "X-Elorus-Organization",
                         "in": "header",
                         "description": "The ID of the organization you want to operate on.",
@@ -1711,6 +1732,13 @@
                         "schema": {
                             "$ref": "#/definitions/V11CreditNoteUpdate"
                         }
+                    },
+                    {
+                        "name": "skip_mydata",
+                        "in": "query",
+                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "X-Elorus-Organization",
@@ -3894,6 +3922,13 @@
                         }
                     },
                     {
+                        "name": "skip_mydata",
+                        "in": "query",
+                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "X-Elorus-Organization",
                         "in": "header",
                         "description": "The ID of the organization you want to operate on.",
@@ -3976,6 +4011,13 @@
                         "schema": {
                             "$ref": "#/definitions/V11InvoiceUpdate"
                         }
+                    },
+                    {
+                        "name": "skip_mydata",
+                        "in": "query",
+                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "X-Elorus-Organization",
@@ -8437,6 +8479,30 @@
                     },
                     "example": []
                 },
+                "mydata_document_type": {
+                    "title": "Mydata document type",
+                    "type": "string",
+                    "example": "1.1",
+                    "description": "One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>"
+                },
+                "mydata_uid": {
+                    "title": "UID",
+                    "type": "string",
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "MARK",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": -9223372036854775808,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "payment_gateway": {
                     "title": "Payment Gateway",
                     "description": "ID of the payment gateway that was used to process the payment. Applies only to actual client payments made via Elorus.",
@@ -8666,6 +8732,34 @@
                     "type": "string",
                     "example": ""
                 },
+                "mydata_document_type": {
+                    "title": "Mydata document type",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "1.1",
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>"
+                },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Unique identifier from myDATA.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "invoice_payments": {
                     "description": "A list of the invoices paid via this transaction. Applies to \"Client payment\" transactions.",
                     "type": "array",
@@ -8861,6 +8955,35 @@
                     "type": "string",
                     "example": ""
                 },
+                "mydata_document_type": {
+                    "title": "Mydata document type",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "1.1",
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>"
+                },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Unique identifier from myDATA.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "invoice_payments": {
                     "description": "A list of the invoices paid via this transaction. Applies to \"Client payment\" transactions.",
                     "type": "array",
@@ -9040,12 +9163,6 @@
                 "contact_address": {
                     "$ref": "#/definitions/BillingAddress"
                 },
-                "mydata_document_type": {
-                    "title": "Mydata document type",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. This field is generated automatically, based on the record's income type. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>",
-                    "type": "string",
-                    "example": "1.1"
-                },
                 "sequence": {
                     "title": "Sequence",
                     "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
@@ -9101,18 +9218,6 @@
                     "x-nullable": true,
                     "example": "null"
                 },
-                "mydata_classification_category": {
-                    "title": "Income category",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The field is effective only when the myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>category1_1</code></td><td>Commodity Sale Income</td></tr><tr><td><code>category1_2</code></td><td>Product Sale Income</td></tr><tr><td><code>category1_3</code></td><td>Provision of Services Income</td></tr><tr><td><code>category1_4</code></td><td>Sale of Fixed Assets Income</td></tr><tr><td><code>category1_5</code></td><td>Other Income / Profits</td></tr><tr><td><code>category1_6</code></td><td>Self-Deliveries / Self-Supplies</td></tr><tr><td><code>category1_7</code></td><td>Income on behalf of Third Parties</td></tr><tr><td><code>category1_8</code></td><td>Past fiscal years income</td></tr><tr><td><code>category1_9</code></td><td>Future fiscal years income</td></tr><tr><td><code>category1_10</code></td><td>Other Income Adjustment / Regularisation Entries</td></tr><tr><td><code>category1_95</code></td><td>Other Income-related Information</td></tr></tbody></table></details>",
-                    "type": "string",
-                    "example": ""
-                },
-                "mydata_classification_type": {
-                    "title": "Income type",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The field is effective only when the myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>E3_106</code></td><td>E3_106: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Commodities</td></tr><tr><td><code>E3_205</code></td><td>E3_205: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Raw and other materials</td></tr><tr><td><code>E3_210</code></td><td>E3_210: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Products and production in progress</td></tr><tr><td><code>E3_305</code></td><td>E3_305: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Raw and other materials</td></tr><tr><td><code>E3_310</code></td><td>E3_310: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Products and production in progress</td></tr><tr><td><code>E3_318</code></td><td>E3_318: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Production expenses</td></tr><tr><td><code>E3_561_001</code></td><td>E3_561_001: Wholesale Sales of Goods and Services - for Traders</td></tr><tr><td><code>E3_561_002</code></td><td>E3_561_002: Wholesale Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)</td></tr><tr><td><code>E3_561_003</code></td><td>E3_561_003: Retail Sales of Goods and Services - Private Clientele</td></tr><tr><td><code>E3_561_004</code></td><td>E3_561_004: Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)</td></tr><tr><td><code>E3_561_005</code></td><td>E3_561_005: Intra-Community Foreign Sales of Goods and Services</td></tr><tr><td><code>E3_561_006</code></td><td>E3_561_006: Third Country Foreign Sales of Goods and Services</td></tr><tr><td><code>E3_561_007</code></td><td>E3_561_007: Other Sales of Goods and Services</td></tr><tr><td><code>E3_562</code></td><td>E3_562: Other Ordinary Income</td></tr><tr><td><code>E3_563</code></td><td>E3_563: Credit Interest and Related Income</td></tr><tr><td><code>E3_564</code></td><td>E3_564: Credit Exchange Differences</td></tr><tr><td><code>E3_565</code></td><td>E3_565: Income from Participation</td></tr><tr><td><code>E3_566</code></td><td>E3_566: Profits from Disposing Non-Current Assets</td></tr><tr><td><code>E3_567</code></td><td>E3_567: Profits from the Reversal of Provisions and Impairments</td></tr><tr><td><code>E3_568</code></td><td>E3_568: Profits from Measurement at Fair Value</td></tr><tr><td><code>E3_570</code></td><td>E3_570: Extraordinary income and profits</td></tr><tr><td><code>E3_595</code></td><td>E3_595: Self-Production Expenses</td></tr><tr><td><code>E3_596</code></td><td>E3_596: Subsidies - Grants</td></tr><tr><td><code>E3_597</code></td><td>E3_597: Subsidies - Grants for Investment Purposes - Expense Coverage</td></tr><tr><td><code>E3_880_001</code></td><td>E3_880_001: Wholesale Sales of Fixed Assets</td></tr><tr><td><code>E3_880_002</code></td><td>E3_880_002: Retail Sales of Fixed Assets</td></tr><tr><td><code>E3_880_003</code></td><td>E3_880_003: Intra-Community Foreign Sales of Fixed Assets</td></tr><tr><td><code>E3_880_004</code></td><td>E3_880_004: Third Country Foreign Sales of Fixed Assets</td></tr><tr><td><code>E3_881_001</code></td><td>E3_881_001: Wholesale Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_002</code></td><td>E3_881_002: Retail Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_003</code></td><td>E3_881_003: Intra-Community Foreign Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_004</code></td><td>E3_881_004: Third Country Foreign Sales on behalf of Third Parties</td></tr><tr><td><code>E3_NULL</code></td><td>Without E3 type</td></tr></tbody></table></details>",
-                    "type": "string",
-                    "example": ""
-                },
                 "invoice_payments": {
                     "description": "A list of the invoices paid via this transaction. Applies to \"Client payment\" transactions.",
                     "type": "array",
@@ -9133,6 +9238,46 @@
                         "$ref": "#/definitions/PurchaseCreditNoteCashReceiptNested"
                     },
                     "example": []
+                },
+                "mydata_classification_category": {
+                    "title": "Income category",
+                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The field is effective only when the myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>category1_1</code></td><td>Commodity Sale Income</td></tr><tr><td><code>category1_2</code></td><td>Product Sale Income</td></tr><tr><td><code>category1_3</code></td><td>Provision of Services Income</td></tr><tr><td><code>category1_4</code></td><td>Sale of Fixed Assets Income</td></tr><tr><td><code>category1_5</code></td><td>Other Income / Profits</td></tr><tr><td><code>category1_6</code></td><td>Self-Deliveries / Self-Supplies</td></tr><tr><td><code>category1_7</code></td><td>Income on behalf of Third Parties</td></tr><tr><td><code>category1_8</code></td><td>Past fiscal years income</td></tr><tr><td><code>category1_9</code></td><td>Future fiscal years income</td></tr><tr><td><code>category1_10</code></td><td>Other Income Adjustment / Regularisation Entries</td></tr><tr><td><code>category1_95</code></td><td>Other Income-related Information</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": ""
+                },
+                "mydata_classification_type": {
+                    "title": "Income type",
+                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The field is effective only when the myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>E3_106</code></td><td>E3_106: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Commodities</td></tr><tr><td><code>E3_205</code></td><td>E3_205: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Raw and other materials</td></tr><tr><td><code>E3_210</code></td><td>E3_210: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Products and production in progress</td></tr><tr><td><code>E3_305</code></td><td>E3_305: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Raw and other materials</td></tr><tr><td><code>E3_310</code></td><td>E3_310: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Products and production in progress</td></tr><tr><td><code>E3_318</code></td><td>E3_318: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Production expenses</td></tr><tr><td><code>E3_561_001</code></td><td>E3_561_001: Wholesale Sales of Goods and Services - for Traders</td></tr><tr><td><code>E3_561_002</code></td><td>E3_561_002: Wholesale Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)</td></tr><tr><td><code>E3_561_003</code></td><td>E3_561_003: Retail Sales of Goods and Services - Private Clientele</td></tr><tr><td><code>E3_561_004</code></td><td>E3_561_004: Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)</td></tr><tr><td><code>E3_561_005</code></td><td>E3_561_005: Intra-Community Foreign Sales of Goods and Services</td></tr><tr><td><code>E3_561_006</code></td><td>E3_561_006: Third Country Foreign Sales of Goods and Services</td></tr><tr><td><code>E3_561_007</code></td><td>E3_561_007: Other Sales of Goods and Services</td></tr><tr><td><code>E3_562</code></td><td>E3_562: Other Ordinary Income</td></tr><tr><td><code>E3_563</code></td><td>E3_563: Credit Interest and Related Income</td></tr><tr><td><code>E3_564</code></td><td>E3_564: Credit Exchange Differences</td></tr><tr><td><code>E3_565</code></td><td>E3_565: Income from Participation</td></tr><tr><td><code>E3_566</code></td><td>E3_566: Profits from Disposing Non-Current Assets</td></tr><tr><td><code>E3_567</code></td><td>E3_567: Profits from the Reversal of Provisions and Impairments</td></tr><tr><td><code>E3_568</code></td><td>E3_568: Profits from Measurement at Fair Value</td></tr><tr><td><code>E3_570</code></td><td>E3_570: Extraordinary income and profits</td></tr><tr><td><code>E3_595</code></td><td>E3_595: Self-Production Expenses</td></tr><tr><td><code>E3_596</code></td><td>E3_596: Subsidies - Grants</td></tr><tr><td><code>E3_597</code></td><td>E3_597: Subsidies - Grants for Investment Purposes - Expense Coverage</td></tr><tr><td><code>E3_880_001</code></td><td>E3_880_001: Wholesale Sales of Fixed Assets</td></tr><tr><td><code>E3_880_002</code></td><td>E3_880_002: Retail Sales of Fixed Assets</td></tr><tr><td><code>E3_880_003</code></td><td>E3_880_003: Intra-Community Foreign Sales of Fixed Assets</td></tr><tr><td><code>E3_880_004</code></td><td>E3_880_004: Third Country Foreign Sales of Fixed Assets</td></tr><tr><td><code>E3_881_001</code></td><td>E3_881_001: Wholesale Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_002</code></td><td>E3_881_002: Retail Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_003</code></td><td>E3_881_003: Intra-Community Foreign Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_004</code></td><td>E3_881_004: Third Country Foreign Sales on behalf of Third Parties</td></tr><tr><td><code>E3_NULL</code></td><td>Without E3 type</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": ""
+                },
+                "mydata_document_type": {
+                    "title": "Mydata document type",
+                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. This field is generated automatically, based on the record's income type. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": "1.1"
+                },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Unique identifier from myDATA.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
                 },
                 "payment_gateway": {
                     "title": "Payment Gateway",
@@ -9314,6 +9459,34 @@
                     "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The field is effective only when the myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>E3_106</code></td><td>E3_106: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Commodities</td></tr><tr><td><code>E3_205</code></td><td>E3_205: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Raw and other materials</td></tr><tr><td><code>E3_210</code></td><td>E3_210: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Products and production in progress</td></tr><tr><td><code>E3_305</code></td><td>E3_305: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Raw and other materials</td></tr><tr><td><code>E3_310</code></td><td>E3_310: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Products and production in progress</td></tr><tr><td><code>E3_318</code></td><td>E3_318: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Production expenses</td></tr><tr><td><code>E3_561_001</code></td><td>E3_561_001: Wholesale Sales of Goods and Services - for Traders</td></tr><tr><td><code>E3_561_002</code></td><td>E3_561_002: Wholesale Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)</td></tr><tr><td><code>E3_561_003</code></td><td>E3_561_003: Retail Sales of Goods and Services - Private Clientele</td></tr><tr><td><code>E3_561_004</code></td><td>E3_561_004: Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)</td></tr><tr><td><code>E3_561_005</code></td><td>E3_561_005: Intra-Community Foreign Sales of Goods and Services</td></tr><tr><td><code>E3_561_006</code></td><td>E3_561_006: Third Country Foreign Sales of Goods and Services</td></tr><tr><td><code>E3_561_007</code></td><td>E3_561_007: Other Sales of Goods and Services</td></tr><tr><td><code>E3_562</code></td><td>E3_562: Other Ordinary Income</td></tr><tr><td><code>E3_563</code></td><td>E3_563: Credit Interest and Related Income</td></tr><tr><td><code>E3_564</code></td><td>E3_564: Credit Exchange Differences</td></tr><tr><td><code>E3_565</code></td><td>E3_565: Income from Participation</td></tr><tr><td><code>E3_566</code></td><td>E3_566: Profits from Disposing Non-Current Assets</td></tr><tr><td><code>E3_567</code></td><td>E3_567: Profits from the Reversal of Provisions and Impairments</td></tr><tr><td><code>E3_568</code></td><td>E3_568: Profits from Measurement at Fair Value</td></tr><tr><td><code>E3_570</code></td><td>E3_570: Extraordinary income and profits</td></tr><tr><td><code>E3_595</code></td><td>E3_595: Self-Production Expenses</td></tr><tr><td><code>E3_596</code></td><td>E3_596: Subsidies - Grants</td></tr><tr><td><code>E3_597</code></td><td>E3_597: Subsidies - Grants for Investment Purposes - Expense Coverage</td></tr><tr><td><code>E3_880_001</code></td><td>E3_880_001: Wholesale Sales of Fixed Assets</td></tr><tr><td><code>E3_880_002</code></td><td>E3_880_002: Retail Sales of Fixed Assets</td></tr><tr><td><code>E3_880_003</code></td><td>E3_880_003: Intra-Community Foreign Sales of Fixed Assets</td></tr><tr><td><code>E3_880_004</code></td><td>E3_880_004: Third Country Foreign Sales of Fixed Assets</td></tr><tr><td><code>E3_881_001</code></td><td>E3_881_001: Wholesale Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_002</code></td><td>E3_881_002: Retail Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_003</code></td><td>E3_881_003: Intra-Community Foreign Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_004</code></td><td>E3_881_004: Third Country Foreign Sales on behalf of Third Parties</td></tr><tr><td><code>E3_NULL</code></td><td>Without E3 type</td></tr></tbody></table></details>",
                     "type": "string",
                     "example": ""
+                },
+                "mydata_document_type": {
+                    "title": "Mydata document type",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "1.1",
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>"
+                },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Unique identifier from myDATA.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
                 },
                 "invoice_payments": {
                     "description": "A list of the invoices paid via this transaction. Applies to \"Client payment\" transactions.",
@@ -9509,6 +9682,35 @@
                     "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The field is effective only when the myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>E3_106</code></td><td>E3_106: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Commodities</td></tr><tr><td><code>E3_205</code></td><td>E3_205: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Raw and other materials</td></tr><tr><td><code>E3_210</code></td><td>E3_210: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Products and production in progress</td></tr><tr><td><code>E3_305</code></td><td>E3_305: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Raw and other materials</td></tr><tr><td><code>E3_310</code></td><td>E3_310: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Products and production in progress</td></tr><tr><td><code>E3_318</code></td><td>E3_318: Self-Production of Fixed Assets - Self-Deliveries - Destroying inventory/Production expenses</td></tr><tr><td><code>E3_561_001</code></td><td>E3_561_001: Wholesale Sales of Goods and Services - for Traders</td></tr><tr><td><code>E3_561_002</code></td><td>E3_561_002: Wholesale Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)</td></tr><tr><td><code>E3_561_003</code></td><td>E3_561_003: Retail Sales of Goods and Services - Private Clientele</td></tr><tr><td><code>E3_561_004</code></td><td>E3_561_004: Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)</td></tr><tr><td><code>E3_561_005</code></td><td>E3_561_005: Intra-Community Foreign Sales of Goods and Services</td></tr><tr><td><code>E3_561_006</code></td><td>E3_561_006: Third Country Foreign Sales of Goods and Services</td></tr><tr><td><code>E3_561_007</code></td><td>E3_561_007: Other Sales of Goods and Services</td></tr><tr><td><code>E3_562</code></td><td>E3_562: Other Ordinary Income</td></tr><tr><td><code>E3_563</code></td><td>E3_563: Credit Interest and Related Income</td></tr><tr><td><code>E3_564</code></td><td>E3_564: Credit Exchange Differences</td></tr><tr><td><code>E3_565</code></td><td>E3_565: Income from Participation</td></tr><tr><td><code>E3_566</code></td><td>E3_566: Profits from Disposing Non-Current Assets</td></tr><tr><td><code>E3_567</code></td><td>E3_567: Profits from the Reversal of Provisions and Impairments</td></tr><tr><td><code>E3_568</code></td><td>E3_568: Profits from Measurement at Fair Value</td></tr><tr><td><code>E3_570</code></td><td>E3_570: Extraordinary income and profits</td></tr><tr><td><code>E3_595</code></td><td>E3_595: Self-Production Expenses</td></tr><tr><td><code>E3_596</code></td><td>E3_596: Subsidies - Grants</td></tr><tr><td><code>E3_597</code></td><td>E3_597: Subsidies - Grants for Investment Purposes - Expense Coverage</td></tr><tr><td><code>E3_880_001</code></td><td>E3_880_001: Wholesale Sales of Fixed Assets</td></tr><tr><td><code>E3_880_002</code></td><td>E3_880_002: Retail Sales of Fixed Assets</td></tr><tr><td><code>E3_880_003</code></td><td>E3_880_003: Intra-Community Foreign Sales of Fixed Assets</td></tr><tr><td><code>E3_880_004</code></td><td>E3_880_004: Third Country Foreign Sales of Fixed Assets</td></tr><tr><td><code>E3_881_001</code></td><td>E3_881_001: Wholesale Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_002</code></td><td>E3_881_002: Retail Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_003</code></td><td>E3_881_003: Intra-Community Foreign Sales on behalf of Third Parties</td></tr><tr><td><code>E3_881_004</code></td><td>E3_881_004: Third Country Foreign Sales on behalf of Third Parties</td></tr><tr><td><code>E3_NULL</code></td><td>Without E3 type</td></tr></tbody></table></details>",
                     "type": "string",
                     "example": ""
+                },
+                "mydata_document_type": {
+                    "title": "Mydata document type",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "1.1",
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>"
+                },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Unique identifier from myDATA.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
                 },
                 "invoice_payments": {
                     "description": "A list of the invoices paid via this transaction. Applies to \"Client payment\" transactions.",
@@ -10367,6 +10569,34 @@
                     "readOnly": true,
                     "example": "100.00"
                 },
+                "mydata_document_type": {
+                    "title": "Mydata document type",
+                    "description": "Only applicable to organizations based in Greece. Available only when myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>11.4</code></td><td>Retail Sales Credit Note</td></tr><tr><td><code>5.1</code></td><td>Credit Invoice / Associated</td></tr><tr><td><code>5.2</code></td><td>Credit Invoice / Non-Associated</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": "1.1"
+                },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Available only when myDATA integration is enabled.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "permalink": {
                     "title": "Permalink",
                     "description": "Public URL for clients.",
@@ -10733,6 +10963,27 @@
                     "type": "string",
                     "example": "1.1"
                 },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Available only when myDATA integration is enabled.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "related_documents": {
                     "description": "A list of invoice IDs linked to this credit note. This information is solely for display purposes, it will appear on the PDF",
                     "type": "array",
@@ -11008,6 +11259,28 @@
                     "description": "Only applicable to organizations based in Greece. Available only when myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>11.4</code></td><td>Retail Sales Credit Note</td></tr><tr><td><code>5.1</code></td><td>Credit Invoice / Associated</td></tr><tr><td><code>5.2</code></td><td>Credit Invoice / Non-Associated</td></tr></tbody></table></details>",
                     "type": "string",
                     "example": "1.1"
+                },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Available only when myDATA integration is enabled.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
                 },
                 "related_documents": {
                     "description": "A list of invoice IDs linked to this credit note. This information is solely for display purposes, it will appear on the PDF",
@@ -11404,6 +11677,20 @@
                     "maxLength": 40,
                     "example": "C1A444C9D56B46B2"
                 },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "related_documents": {
                     "description": "A list of invoice IDs linked to this credit note. This information is solely for display purposes, it will appear on the PDF",
                     "type": "array",
@@ -11692,6 +11979,19 @@
                     "maxLength": 40,
                     "example": "C1A444C9D56B46B2"
                 },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "related_documents": {
                     "description": "A list of invoice IDs linked to this credit note. This information is solely for display purposes, it will appear on the PDF",
                     "type": "array",
@@ -11975,6 +12275,20 @@
                     "readOnly": true,
                     "maxLength": 40,
                     "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
                 },
                 "related_documents": {
                     "description": "A list of invoice IDs linked to this credit note. This information is solely for display purposes, it will appear on the PDF",
@@ -15204,6 +15518,34 @@
                     "readOnly": true,
                     "example": "100.00"
                 },
+                "mydata_document_type": {
+                    "title": "Mydata document type",
+                    "description": "Only applicable to organizations based in Greece. Available only when myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>1.2</code></td><td>Sales Invoice / Intra-community Supplies</td></tr><tr><td><code>1.1</code></td><td>Sales Invoice</td></tr><tr><td><code>11.1</code></td><td>Retail Sales Receipt</td></tr><tr><td><code>2.3</code></td><td>Third Country Service Rendered Invoice</td></tr><tr><td><code>2.1</code></td><td>Service Rendered Invoice</td></tr><tr><td><code>11.2</code></td><td>Service Rendered Receipt</td></tr><tr><td><code>2.2</code></td><td>Intra-community Service Rendered Invoice</td></tr><tr><td><code>1.3</code></td><td>Sales Invoice / Third Country Supplies</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": "1.1"
+                },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Available only when myDATA integration is enabled.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "permalink": {
                     "title": "Permalink",
                     "description": "Public URL for clients.",
@@ -15581,6 +15923,27 @@
                     "type": "string",
                     "example": "1.1"
                 },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Available only when myDATA integration is enabled.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "payment_gateways": {
                     "description": "A list of payment gateway IDs that can be used to pay the invoice.",
                     "type": "array",
@@ -15868,6 +16231,28 @@
                     "description": "Only applicable to organizations based in Greece. Available only when myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>1.2</code></td><td>Sales Invoice / Intra-community Supplies</td></tr><tr><td><code>1.1</code></td><td>Sales Invoice</td></tr><tr><td><code>11.1</code></td><td>Retail Sales Receipt</td></tr><tr><td><code>2.3</code></td><td>Third Country Service Rendered Invoice</td></tr><tr><td><code>2.1</code></td><td>Service Rendered Invoice</td></tr><tr><td><code>11.2</code></td><td>Service Rendered Receipt</td></tr><tr><td><code>2.2</code></td><td>Intra-community Service Rendered Invoice</td></tr><tr><td><code>1.3</code></td><td>Sales Invoice / Third Country Supplies</td></tr></tbody></table></details>",
                     "type": "string",
                     "example": "1.1"
+                },
+                "mydata_uid": {
+                    "title": "UID",
+                    "description": "Only applicable to organizations based in Greece. Available only when myDATA integration is enabled.",
+                    "type": "string",
+                    "readOnly": true,
+                    "maxLength": 40,
+                    "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
                 },
                 "payment_gateways": {
                     "description": "A list of payment gateway IDs that can be used to pay the invoice.",
@@ -16276,6 +16661,20 @@
                     "maxLength": 40,
                     "example": "C1A444C9D56B46B2"
                 },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "payment_gateways": {
                     "description": "A list of payment gateway IDs that can be used to pay the invoice.",
                     "type": "array",
@@ -16575,6 +16974,19 @@
                     "maxLength": 40,
                     "example": "C1A444C9D56B46B2"
                 },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
+                },
                 "payment_gateways": {
                     "description": "A list of payment gateway IDs that can be used to pay the invoice.",
                     "type": "array",
@@ -16869,6 +17281,20 @@
                     "readOnly": true,
                     "maxLength": 40,
                     "example": "C1A444C9D56B46B2"
+                },
+                "mydata_latest_mark": {
+                    "title": "Mydata latest mark",
+                    "description": "Only applicable to organizations based in Greece. Unique string from myDATA that indicates this document has been submitted.",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "mydata_submission_status": {
+                    "title": "Mydata submission status",
+                    "description": "Only applicable to organizations based in Greece. Document status in relation to myDATA. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>sent</code></td><td>sent</td></tr><tr><td><code>not_applicable</code></td><td>not_applicable</td></tr><tr><td><code>wont_send</code></td><td>wont_send</td></tr><tr><td><code>not_sent</code></td><td>not_sent</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true
                 },
                 "payment_gateways": {
                     "description": "A list of payment gateway IDs that can be used to pay the invoice.",
