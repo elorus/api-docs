@@ -1,29 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Elorus API Documentation</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Complete reference documentation for the Elorus REST API. Includes guidelines and examples to help you interact with the API." />
-        <link rel="canonical" href="http://developer.elorus.com/">
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <style>
-            body { margin: 0; padding: 0; }
-            .version-btn { padding: 5px 10px; font-family: Roboto, sans-serif; color: #fff; border-radius: 4px; text-decoration: none; }
-            .version-btn.active { background: #ac3964; }
-            .version-btn:hover { color: rgba(255, 255, 255, 0.9); }
-            .version-btn.active:hover { color: #fff; }
-        </style>
-    </head>
-    <body>
-        <div style="position: fixed; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">
-            <a class="version-btn active" href="./index.html">API v1.1</a>&#xa0;&#xa0;
-            <a class="version-btn" href="./v1_0.html">API v1.0</a>
+<head>
+    <title>Elorus API Documentation</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Complete reference documentation for the Elorus REST API. Includes guidelines and examples to help you interact with the API."/>
+    <link rel="canonical" href="http://developer.elorus.com/">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .version-btn {
+            padding: 5px 10px;
+            font-family: Roboto, sans-serif;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .version-btn.active {
+            background: #ac3964;
+        }
+
+        .version-btn:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .version-btn.active:hover {
+            color: #fff;
+        }
+
+        .container {
+            margin-top: 25px;
+        }
+
+        .flag-icon-background {
+            background-size: contain;
+            background-position: 50%;
+            background-repeat: no-repeat
+        }
+
+        .flag-icon {
+            position: relative;
+            display: inline-block;
+            width: 1.33333333em;
+            line-height: 1em
+        }
+
+        .flag-icon:before {
+            content: "\00a0"
+        }
+
+        .flag-icon.flag-icon-squared {
+            width: 1em
+        }
+    </style>
+</head>
+<body>
+
+<div class="container"
+     style="position: fixed; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">
+
+    <div class="btn-group">
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle active" data-toggle="dropdown">GR
+                <img class="flag-icon" src="flags/gr.svg"/>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="./index.html">API v1.1</a></li>
+            </ul>
         </div>
-        <div style="padding-top: 58px;">
-            <redoc spec-url="/openapi/elorus_api_v1.1.json?v=4" hide-download-button="true" native-scrollbars="true" scroll-y-offset="58"></redoc>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">INT
+                <img class="flag-icon" src="flags/us.svg"/>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="int.html">API v1.1</a></li>
+            </ul>
         </div>
-        <script src="/js/redoc.standalone.js"></script>
-        <script src="/js/support.js"></script>
-    </body>
+
+    </div>
+
+</div>
+
+<!--<div style="position: fixed; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">-->
+<!--    <a class="version-btn active" href="./index.html">GREEK</a>&#xa0;&#xa0;-->
+<!--    <a class="version-btn" href="int.html">INTERNATIONAL</a>-->
+<!--</div>-->
+<div style="padding-top: 58px;">
+    <redoc spec-url="/openapi/elorus_api_v1.1.json?v=4" hide-download-button="true" native-scrollbars="true"
+           scroll-y-offset="58"></redoc>
+</div>
+
+<script src="/js/redoc.standalone.js"></script>
+<script src="/js/support.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+</body>
 </html>
