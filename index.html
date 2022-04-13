@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Elorus API Documentation</title>
+    <title>Elorus Greek API Documentation</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -38,16 +38,6 @@
             color: #fff;
         }
 
-        .container {
-            margin-top: 25px;
-        }
-
-        .flag-icon-background {
-            background-size: contain;
-            background-position: 50%;
-            background-repeat: no-repeat
-        }
-
         .flag-icon {
             position: relative;
             display: inline-block;
@@ -58,57 +48,35 @@
         .flag-icon:before {
             content: "\00a0"
         }
-
-        .flag-icon.flag-icon-squared {
-            width: 1em
-        }
     </style>
 </head>
 <body>
 
-<div class="container"
-     style="position: fixed; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">
+<div style="position: fixed; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">
 
     <div class="btn-group">
 
         <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle active" data-toggle="dropdown">GR
-                <img class="flag-icon" src="flags/gr.svg"/>
+            <button type="button" class="version-btn dropdown-toggle active" data-toggle="dropdown">INT
+                <img class="flag-icon" src="img/us.svg"/>
                 <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="./index.html">API v1.1</a></li>
+            <ul class="dropdown-menu" style="min-width:10px !important;" role="menu">
+                <li><a href="./el/">GR <img class="flag-icon" src="img/gr.svg"/></a></li>
             </ul>
         </div>
-
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">INT
-                <img class="flag-icon" src="flags/us.svg"/>
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="int.html">API v1.1</a></li>
-            </ul>
-        </div>
-
     </div>
 
 </div>
-    <!--<div style="position: fixed; z-index: 2; top: 0; padding: 15px 20px; width: 100%; background-color: #263238;">
-        <a class="region">Select region</a>
-        <select class="version-btn" name="forma" onchange="location = this.value;">
-            <option selected>International</option>
-            <option value="./el/">Greece</option>
-        </select>
-    </div> --->
-    <div style="padding-top: 58px;">
-        <redoc spec-url="./openapi/elorus_api_US_v1.1.json?v=1" hide-download-button="true" native-scrollbars="true"
-               scroll-y-offset="58"></redoc>
-    </div>
-    <script src="./js/redoc.standalone.js"></script>
-    <script src="./js/support.js"></script>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<div style="padding-top: 58px;">
+    <redoc spec-url="./openapi/elorus_api_US_v1.1.json?v=2" hide-download-button="true" native-scrollbars="true"
+           scroll-y-offset="58"></redoc>
+</div>
+
+<script src="/js/redoc.standalone.js"></script>
+<script src="/js/support.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 </body>
 </html>
