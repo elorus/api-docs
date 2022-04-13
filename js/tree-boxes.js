@@ -35,15 +35,21 @@ function treeBoxes(urlService, jsonData)
 		purple = '#9467bd';
 
 	var margin = {
-					top : 200,
-					right : 0,
-					bottom : 0,
-					left : 0
-				 },
+					top : 250,
+					right : 10,
+					bottom : 10,
+					left : 10
+				 }
+				 // {
+					// top : screen.availHeight*20/100,
+					// right : screen.availWidth*5/100,
+					// bottom : screen.availHeight*20/100,
+					// left : screen.availWidth*5/100
+				 // }
 		// Height and width are redefined later in function of the size of the tree
 		// (after that the data are loaded)
-		width = 800 - margin.right - margin.left,
-		height = 400 - margin.top - margin.bottom;
+	var width = screen.availWidth - margin.right - margin.left;
+	var height = screen.availHeight - margin.top - margin.bottom;
 
 	var rectNode = { width : 120, height : 45, textMargin : 5 },
 		tooltip = { width : 150, height : 40, textMargin : 5 };
@@ -108,16 +114,16 @@ function treeBoxes(urlService, jsonData)
 					node.color = purple;
 				});
 			});
-		height = maxTreeWidth * (rectNode.height + 20) + tooltip.height + 20 - margin.right - margin.left;
-		width = maxDepth * (rectNode.width * 1.5) + tooltip.width / 2 - margin.top - margin.bottom;
+		// height = maxTreeWidth * (rectNode.height + 20) + tooltip.height + 20 - margin.right - margin.left;
+		// width = maxDepth * (rectNode.width * 1.5) + tooltip.width / 2 - margin.top - margin.bottom;
 
 		tree = d3.layout.tree().size([ height, width ]);
 		root.x0 = height / 2;
 		root.y0 = 0;
 
 		baseSvg = d3.select('#tree-container').append('svg')
-	    .attr('width', width + margin.right + margin.left)
-		.attr('height', height+ margin.top + margin.bottom)
+	    .attr('width', width)
+		.attr('height', height)
 		.attr('class', 'svgContainer')
 		.call(d3.behavior.zoom()
 		      //.scaleExtent([0.5, 1.5]) // Limit the zoom scale
@@ -131,7 +137,8 @@ function treeBoxes(urlService, jsonData)
 		svgGroup = baseSvg.append('g')
 		.attr('class','drawarea')
 		.append('g')
-		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+		// .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+		.attr('transform', 'translate(' + 0 + ',' + 0 + ')');
 
 		// SVG elements under nodeGroupTooltip could be associated with nodeGroup,
 		// same for linkGroupToolTip and linkGroup,
