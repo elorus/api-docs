@@ -26,6 +26,11 @@
             background: #ac3964;
         }
 
+        .version-btn.menuitem {
+            background: rgb(23 132 126);
+            margin-left: 10px;
+        }
+
         .version-btn:hover {
             color: rgba(255, 255, 255, 0.9);
         }
@@ -44,6 +49,11 @@
         .flag-icon:before {
             content: "\00a0"
         }
+
+        .goto, .goto:hover{
+            color: #FFFFFF;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -53,14 +63,15 @@
     <div class="btn-group">
 
         <div class="btn-group">
-            <button type="button" class="version-btn dropdown-toggle active" data-toggle="dropdown">INT
-                <img class="flag-icon" src="img/us.svg"/>
+            <button type="button" class="version-btn dropdown-toggle active" data-toggle="dropdown">GR
+                <img class="flag-icon" src="/img/gr.svg"/>
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" style="min-width:10px !important;" role="menu">
-                <li><a href="./el/">GR <img class="flag-icon" src="img/gr.svg"/></a></li>
+                <li><a href="../">INT <img class="flag-icon" src="/img/us.svg"/></a></li>
             </ul>
         </div>
+        <button type="button" class="version-btn menuitem"><a href="./mydata.html" class="goto hover">MyData classification categories</a></button>
     </div>
 
 </div>
