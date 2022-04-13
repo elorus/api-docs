@@ -48,8 +48,8 @@ function treeBoxes(urlService, jsonData)
 				 // }
 		// Height and width are redefined later in function of the size of the tree
 		// (after that the data are loaded)
-	var width = screen.availWidth - margin.right - margin.left;
-	var height = screen.availHeight - margin.top - margin.bottom;
+	var width = window.innerWidth - margin.right - margin.left;
+	var height = window.innerHeight - margin.top - margin.bottom;
 
 	var rectNode = { width : 120, height : 45, textMargin : 5 },
 		tooltip = { width : 150, height : 40, textMargin : 5 };
