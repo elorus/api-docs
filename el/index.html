@@ -7,7 +7,7 @@
     <meta name="description"
           content="Complete reference documentation for the Elorus REST API. Includes guidelines and examples to help you interact with the API."/>
     <link rel="canonical" href="http://developer.elorus.com/">
-    <link rel="shortcut icon" href="./img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <style>
         body {
             margin: 0;
@@ -38,17 +38,16 @@
     <div style="position: fixed; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">
         <a class="region">Region Select: </a>
         <select class="version-btn region" name="forma" onchange="location = this.value;">
-            <option class="region" style="background: #17847e" value="./el/">GR</option>
-            <option selected disabled hidden>INT</option>
+            <option class="region" style="background: #17847e" value="../">INT</option>
+            <option selected disabled hidden>GR</option>
         </select>
     </div>
-<div style="padding-top: 58px;">
-    <redoc spec-url="./openapi/elorus_api_v1.1.json?v=1" hide-download-button="true" native-scrollbars="true"
-           scroll-y-offset="58"></redoc>
-</div>
-<script src="./js/redoc.standalone.js"></script>
-<script src="./js/support.js"></script>
 
-
+    <div style="padding-top: 58px;">
+        <redoc spec-url="/openapi/elorus_api_v1.1.json?v=1" hide-download-button="true" native-scrollbars="true"
+               scroll-y-offset="58"></redoc>
+    </div>
+    <script src="/js/redoc.standalone.js"></script>
+    <script src="/js/support.js"></script>
 </body>
 </html>
