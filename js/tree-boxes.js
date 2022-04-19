@@ -40,7 +40,7 @@ var blue = '#337ab7',
 var margin = {
     top: 74,
     right: 0,
-    bottom: 15,
+    bottom: 0,
     left: 0
 }
 
@@ -676,7 +676,7 @@ window.onresize = function (){
 function recreation(){
     // d3.select('#tree-container').select('svg').remove();
     var element = document.getElementById('tree-div');
-    element.innerHTML = '<div id="tree-container"></div>';
+    element.innerHTML = '<div id="tree-container" style="background: #FFFFFF"></div>';
     width = window.innerWidth*66/100 - margin.right - margin.left;
     height = window.innerHeight - margin.top - margin.bottom;
     tree = '';

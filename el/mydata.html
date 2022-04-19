@@ -18,6 +18,9 @@
         body {
             margin: 0;
             padding: 0;
+            height: 100%;
+            width: 100%;
+            background: #263238;
         }
 
         .version-btn {
@@ -61,31 +64,6 @@
             text-decoration: none;
         }
 
-        .columnA {
-            /*float: left;*/
-            width: 66.66%;
-            display: table-cell;
-        }
-
-        .columnB {
-            background: #263238;
-            color: #FFFFFF;
-            width: 33.33%;
-            height: 100%;
-            padding-left: 10px;
-            display: table-cell;
-            vertical-align: top;
-        }
-
-        .customRow {
-            overflow: auto;
-        }
-
-        .customRow:after {
-            content: "";
-            display: table-row;
-            clear: both;
-        }
     </style>
 </head>
 <body>
@@ -108,23 +86,28 @@
 
 </div>
 
-<div class="customRow" id="myData">
-    <div class="columnA" id="tree-div">
-            <div id="tree-container" style="background: #FFFFFF"></div>
+<div class="container" style="width: 100%">
+  <div class="row" style="background: #263238; ">
+    <div class="col-md-8" style="padding: 0; background: #FFFFFF">
+        <div id="tree-div">
+            <div id="tree-container" ></div>
             <script>
                 d3.json("/tree-boxes-jsons/classification-categories.json", function (error, json) {
                     treeBoxes('', json.tree);
                 });
             </script>
     </div>
-    <div class="columnB">
+    </div>
+    <div class="col-md-4" style="background: #263238; color: #FFFFFF; height: 100%;">
         <h2>MyData Classification Categories </h2>
         OSDFDSFDSPIJF APOSIDHFGPIASDH GPIAS HGPIASHDG PIHASDG <br>
         pojfpasdj fasjdfjapsdjfp asjdfpijsadpfjasp djfsadfjasfjsadfas
         asdfasdfasd fasdfasdfasdfsa <br>
         sdjfsaoidjfojs fsofoasdjfosdf
     </div>
+  </div>
 </div>
+
 
 <script src="/js/redoc.standalone.js"></script>
 <script src="/js/support.js"></script>
