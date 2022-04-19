@@ -22,14 +22,17 @@
  * Styles of the components of the tree
  */
 #tree-container {
-	position: absolute;
+	position: relative;
 	left: 0px;
 	width: 100%;
+	margin: 0;
+	overflow: auto;
 }
 
 .svgContainer {
-	display: block;
+	display: inline-block;
     margin: auto;
+	width: 100%;
 }
 
 .node {

@@ -31,21 +31,23 @@ var blue = '#337ab7',
     blueText = '#4ab1eb',
     purple = '#9467bd';
 
-var margin = {
-    top: 250,
-    right: 10,
-    bottom: 10,
-    left: 10
-}
-// {
-// top : screen.availHeight*20/100,
-// right : screen.availWidth*5/100,
-// bottom : screen.availHeight*20/100,
-// left : screen.availWidth*5/100
+// var margin = {
+//     top: 250,
+//     right: 10,
+//     bottom: 10,
+//     left: 10
 // }
+var margin = {
+    top: 74,
+    right: 0,
+    bottom: 15,
+    left: 0
+}
+
 // Height and width are redefined later in function of the size of the tree
 // (after that the data are loaded)
-var width = window.innerWidth - margin.right - margin.left;
+
+var width  = window.innerWidth*66/100 - margin.right - margin.left;
 var height = window.innerHeight - margin.top - margin.bottom;
 
 var rectNode = {width: 120, height: 45, textMargin: 5},
@@ -73,8 +75,6 @@ function treeBoxes(urlService, jsonData) {
 }
 
 function init(urlService, jsonData) {
-    d3.select('#tree-container').select('svg').remove();
-    // d3.layout.tree()
     urlService_ = urlService;
     if (urlService && urlService.length > 0) {
         if (urlService.charAt(urlService.length - 1) != '/')
@@ -118,9 +118,9 @@ function drawTree(jsonData) {
     root.x0 = height / 2;
     root.y0 = 0;
 
-    // if (d3.select("#tree-container")){
-    //     d3.select("#tree-container").empty();
-    // }
+    if (d3.select("#tree-container")){
+        d3.select("#tree-container").empty();
+    }
 
 
     baseSvg = d3.select('#tree-container').append('svg')
@@ -664,10 +664,21 @@ function initArrowDef() {
         .append('path')
         .attr('d', 'M10,-5L0,0L10,5');
 }
+
+var doit;
 window.onresize = function (){
-    width = window.innerWidth - margin.right - margin.left;
+    clearTimeout(doit);
+    doit = setTimeout(function() {
+        recreation();
+    }, 100);
+};
+
+function recreation(){
+    // d3.select('#tree-container').select('svg').remove();
+    var element = document.getElementById('tree-div');
+    element.innerHTML = '<div id="tree-container"></div>';
+    width = window.innerWidth*66/100 - margin.right - margin.left;
     height = window.innerHeight - margin.top - margin.bottom;
     tree = '';
     init('', root);
-    //update(root)
-};
+}
