@@ -30,7 +30,7 @@
 }
 
 .svgContainer {
-	display: inline-block;
+	display: block;
     margin: auto;
 	width: 100%;
 }
