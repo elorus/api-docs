@@ -47,7 +47,7 @@ var margin = {
 // Height and width are redefined later in function of the size of the tree
 // (after that the data are loaded)
 
-var width  = window.innerWidth*66/100 - margin.right - margin.left;
+var width = window.innerWidth * 66 / 100 - margin.right - margin.left;
 var height = window.innerHeight - margin.top - margin.bottom;
 
 var rectNode = {width: 120, height: 45, textMargin: 5},
@@ -60,7 +60,6 @@ var mousedown; // Use to save temporarily 'mousedown.zoom' value
 var mouseWheel,
     mouseWheelName,
     isKeydownZoom = false;
-
 var tree;
 var baseSvg,
     svgGroup,
@@ -114,27 +113,30 @@ function drawTree(jsonData) {
     // height = maxTreeWidth * (rectNode.height + 20) + tooltip.height + 20 - margin.right - margin.left;
     // width = maxDepth * (rectNode.width * 1.5) + tooltip.width / 2 - margin.top - margin.bottom;
 
-    tree = d3.layout.tree().size([height, width]);
+    // tree = d3.layout.tree().size([height, width]);
     root.x0 = height / 2;
     root.y0 = 0;
 
-    if (d3.select("#tree-container")){
+    if (d3.select("#tree-container")) {
         d3.select("#tree-container").empty();
     }
 
 
-    baseSvg = d3.select('#tree-container').append('svg')
+    baseSvg = d3.select('#tree-container').append('svg:svg')
+        .attr('class', 'svgContainer')
         .attr('width', width)
         .attr('height', height)
-        .attr('class', 'svgContainer')
-        .call(d3.behavior.zoom()
-            //.scaleExtent([0.5, 1.5]) // Limit the zoom scale
-            .on('zoom', zoomAndDrag));
+        .style("overflow", "scroll")
+        .style("background-color", "#EEEEEE")
+        .append("svg:g")
+        .attr("class", "drawarea")
+        .append("svg:g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // Mouse wheel is desactivated, else after a first drag of the tree, wheel event drags the tree (instead of scrolling the window)
-    getMouseWheelEvent();
-    d3.select('#tree-container').select('svg').on(mouseWheelName, null);
-    d3.select('#tree-container').select('svg').on('dblclick.zoom', null);
+    // getMouseWheelEvent();
+    // d3.select('#tree-container').select('svg').on(mouseWheelName, null);
+    // d3.select('#tree-container').select('svg').on('dblclick.zoom', null);
 
     svgGroup = baseSvg.append('g')
         .attr('class', 'drawarea')
@@ -462,25 +464,28 @@ function update(source) {
         d.x0 = d.x;
         d.y0 = d.y;
     });
+
+    d3.select("svg")
+    .call(d3.behavior.zoom()
+      .scaleExtent([0.5, 5])
+      .on("zoom", zoom));
 }
 
-// Zoom functionnality is desactivated (user can use browser Ctrl + mouse wheel shortcut)
-function zoomAndDrag() {
-    //var scale = d3.event.scale,
-    var scale = 1,
+function zoom() {
+    var scale = d3.event.scale,
         translation = d3.event.translate,
-        tbound = -height * scale,
-        bbound = height * scale,
-        lbound = (-width + margin.right) * scale,
-        rbound = (width - margin.left) * scale;
+        tbound = -height * scale * 5,
+        bbound = height * scale * 5,
+        lbound = -width * scale * 5,
+        rbound = width * scale * 5;
     // limit translation to thresholds
     translation = [
         Math.max(Math.min(translation[0], rbound), lbound),
         Math.max(Math.min(translation[1], bbound), tbound)
     ];
-    d3.select('.drawarea')
-        .attr('transform', 'translate(' + translation + ')' +
-            ' scale(' + scale + ')');
+    d3.select(".drawarea")
+        .attr("transform", "translate(" + translation + ")" +
+            " scale(" + scale + ")");
 }
 
 // Toggle children on click.
@@ -666,18 +671,18 @@ function initArrowDef() {
 }
 
 var doit;
-window.onresize = function (){
+window.onresize = function () {
     clearTimeout(doit);
-    doit = setTimeout(function() {
+    doit = setTimeout(function () {
         recreation();
     }, 100);
 };
 
-function recreation(){
+function recreation() {
     // d3.select('#tree-container').select('svg').remove();
     var element = document.getElementById('tree-div');
     element.innerHTML = '<div id="tree-container" style="background: #FFFFFF"></div>';
-    width = window.innerWidth*66/100 - margin.right - margin.left;
+    width = window.innerWidth * 66 / 100 - margin.right - margin.left;
     height = window.innerHeight - margin.top - margin.bottom;
     tree = '';
     init('', root);
