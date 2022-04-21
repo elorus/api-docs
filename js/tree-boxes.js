@@ -29,7 +29,8 @@ var blue = '#337ab7',
     green = '#5cb85c',
     yellow = '#f0ad4e',
     blueText = '#4ab1eb',
-    purple = '#9467bd';
+    purple = '#9467bd',
+    red = '#f13155';
 
 // var margin = {
 //     top: 250,
@@ -50,7 +51,7 @@ var margin = {
 var width = window.innerWidth * 66 / 100 - margin.right - margin.left;
 var height = window.innerHeight - margin.top - margin.bottom;
 
-var rectNode = {width: 120, height: 45, textMargin: 5},
+var rectNode = {width: 120, height: 17, textMargin: 5},
     tooltip = {width: 150, height: 40, textMargin: 5};
 var i = 0,
     duration = 750,
@@ -107,6 +108,8 @@ function drawTree(jsonData) {
             if (node.type == 'type3')
                 node.color = yellow;
             if (node.type == 'type4')
+                node.color = purple;
+            if (node.type == 'type5')
                 node.color = purple;
         });
     });
@@ -225,12 +228,16 @@ function update(source) {
                 : (rectNode.height - rectNode.textMargin * 2)
         })
         .append('xhtml').html(function (d) {
-        return '<div style="width: '
-            + (rectNode.width - rectNode.textMargin * 2) + 'px; height: '
-            + (rectNode.height - rectNode.textMargin * 2) + 'px;" class="node-text wordwrap">'
-            + '<b>' + d.nodeName + '</b><br><br>'
-            + '<b>Code: </b>' + d.code + '<br>'
-            + '<b>Version: </b>' + d.version + '<br>'
+        // return '<div style="width: '
+        //     + (rectNode.width - rectNode.textMargin * 2) + 'px; height: '
+        //     + (rectNode.height - rectNode.textMargin * 2) + 'px;" class="node-text wordwrap">'
+        //     + '<b>' + d.nodeName + '</b><br><br>'
+        //     + '<b>Code: </b>' + d.code + '<br>'
+        //     + '<b>Version: </b>' + d.version + '<br>'
+        //     + '</div>';
+
+        return '<div style="width: auto; height:auto; vertical-align: center " class="node-text wordwrap">'
+            + '<b>' + d.nodeName + '</b>'
             + '</div>';
     })
         .on('mouseover', function (d) {
