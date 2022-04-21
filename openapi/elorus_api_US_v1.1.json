@@ -972,7 +972,7 @@
                     {
                         "name": "skip_mydata",
                         "in": "query",
-                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "description": "Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
                         "required": false,
                         "type": "string"
                     },
@@ -1063,7 +1063,7 @@
                     {
                         "name": "skip_mydata",
                         "in": "query",
-                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "description": "Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
                         "required": false,
                         "type": "string"
                     },
@@ -1645,7 +1645,7 @@
                     {
                         "name": "skip_mydata",
                         "in": "query",
-                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "description": "Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
                         "required": false,
                         "type": "string"
                     },
@@ -1736,7 +1736,7 @@
                     {
                         "name": "skip_mydata",
                         "in": "query",
-                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "description": "Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
                         "required": false,
                         "type": "string"
                     },
@@ -3924,7 +3924,7 @@
                     {
                         "name": "skip_mydata",
                         "in": "query",
-                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "description": "Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
                         "required": false,
                         "type": "string"
                     },
@@ -4015,7 +4015,7 @@
                     {
                         "name": "skip_mydata",
                         "in": "query",
-                        "description": "Only applicable to organizations based in Greece.Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
+                        "description": "Available only when myDATA integration is enabled. Denotes if the document should be *submitted to myDATA upon save*. Use `1` to skip the submission (the user should then manually submit the document when convenient). Using `0`, or omitting the parameter, will result in Elorus attempting to upload the document to myDATA, in real time.",
                         "required": false,
                         "type": "string"
                     },
@@ -8537,7 +8537,7 @@
         },
         "IncomeBillingAddress": {
             "title": "Contact address",
-            "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart address, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+            "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart address, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
             "required": [
                 "address_line",
                 "city",
@@ -8628,14 +8628,14 @@
                 },
                 "sequence": {
                     "title": "Sequence",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
+                    "description": "\"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
                     "type": "string",
                     "maxLength": 10,
                     "example": ""
                 },
                 "number": {
                     "title": "Number",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. Elorus will manage numbering automatically, unless you want to explicitly assign numbers yourself.",
+                    "description": "\"Income\" transactions must have a sequential numbering. Elorus will manage numbering automatically, unless you want to explicitly assign numbers yourself.",
                     "type": "string",
                     "maxLength": 100,
                     "example": ""
@@ -8648,14 +8648,14 @@
                 },
                 "contact_name": {
                     "title": "Contact name",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart name, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+                    "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart name, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
                     "type": "string",
                     "maxLength": 203,
                     "example": ""
                 },
                 "contact_vat_number": {
                     "title": "Contact tax ID",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart tax ID, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+                    "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart tax ID, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
                     "type": "string",
                     "maxLength": 20,
                     "example": ""
@@ -8798,14 +8798,14 @@
                 },
                 "sequence": {
                     "title": "Sequence",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
+                    "description": "\"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
                     "type": "string",
                     "maxLength": 10,
                     "example": ""
                 },
                 "number": {
                     "title": "Number",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. Elorus will manage numbering automatically, unless you want to explicitly assign numbers yourself.",
+                    "description": "\"Income\" transactions must have a sequential numbering. Elorus will manage numbering automatically, unless you want to explicitly assign numbers yourself.",
                     "type": "string",
                     "maxLength": 100,
                     "example": ""
@@ -8818,14 +8818,14 @@
                 },
                 "contact_name": {
                     "title": "Contact name",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart name, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+                    "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart name, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
                     "type": "string",
                     "maxLength": 203,
                     "example": ""
                 },
                 "contact_vat_number": {
                     "title": "Contact tax ID",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart tax ID, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+                    "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart tax ID, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
                     "type": "string",
                     "maxLength": 20,
                     "example": ""
@@ -8932,7 +8932,7 @@
         },
         "BillingAddress": {
             "title": "Contact address",
-            "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart address, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+            "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart address, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
             "required": [
                 "address_line",
                 "city",
@@ -9041,14 +9041,14 @@
                 },
                 "contact_name": {
                     "title": "Contact name",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart name, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+                    "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart name, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
                     "type": "string",
                     "maxLength": 203,
                     "example": ""
                 },
                 "contact_vat_number": {
                     "title": "Contact tax ID",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart tax ID, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+                    "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart tax ID, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
                     "type": "string",
                     "maxLength": 20,
                     "example": ""
@@ -9058,14 +9058,14 @@
                 },
                 "sequence": {
                     "title": "Sequence",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
+                    "description": "\"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
                     "type": "string",
                     "maxLength": 10,
                     "example": ""
                 },
                 "number": {
                     "title": "Number",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. Elorus will manage numbering automatically, unless you want to explicitly assign numbers yourself.",
+                    "description": "\"Income\" transactions must have a sequential numbering. Elorus will manage numbering automatically, unless you want to explicitly assign numbers yourself.",
                     "type": "string",
                     "maxLength": 100,
                     "example": ""
@@ -9202,14 +9202,14 @@
                 },
                 "sequence": {
                     "title": "Sequence",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
+                    "description": "\"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
                     "type": "string",
                     "maxLength": 10,
                     "example": ""
                 },
                 "number": {
                     "title": "Number",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. Elorus will manage numbering automatically, unless you want to explicitly assign numbers yourself.",
+                    "description": "\"Income\" transactions must have a sequential numbering. Elorus will manage numbering automatically, unless you want to explicitly assign numbers yourself.",
                     "type": "string",
                     "maxLength": 100,
                     "example": ""
@@ -9222,14 +9222,14 @@
                 },
                 "contact_name": {
                     "title": "Contact name",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart name, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+                    "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart name, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
                     "type": "string",
                     "maxLength": 203,
                     "example": ""
                 },
                 "contact_vat_number": {
                     "title": "Contact tax ID",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart tax ID, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+                    "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart tax ID, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
                     "type": "string",
                     "maxLength": 20,
                     "example": ""
@@ -9372,14 +9372,14 @@
                 },
                 "sequence": {
                     "title": "Sequence",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
+                    "description": "\"Income\" transactions must have a sequential numbering. The available sequences can be managed via the [numbering sequence](#operation/numberingsequence_contract-income_list) endpoints.",
                     "type": "string",
                     "maxLength": 10,
                     "example": ""
                 },
                 "number": {
                     "title": "Number",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must have a sequential numbering. Elorus will manage numbering automatically, unless you want to explicitly assign numbers yourself.",
+                    "description": "\"Income\" transactions must have a sequential numbering. Elorus will manage numbering automatically, unless you want to explicitly assign numbers yourself.",
                     "type": "string",
                     "maxLength": 100,
                     "example": ""
@@ -9392,14 +9392,14 @@
                 },
                 "contact_name": {
                     "title": "Contact name",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart name, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+                    "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart name, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
                     "type": "string",
                     "maxLength": 203,
                     "example": ""
                 },
                 "contact_vat_number": {
                     "title": "Contact tax ID",
-                    "description": "Applies only to organizations based in Greece, where \"Income\" transactions must by uploaded to the myDATA platform. The counterpart tax ID, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
+                    "description": "\"Income\" transactions must by uploaded to the myDATA platform. The counterpart tax ID, as it will be sent to myDATA.The field is effective only when the myDATA integration is enabled.",
                     "type": "string",
                     "maxLength": 20,
                     "example": ""
@@ -21212,7 +21212,7 @@
         },
         {
             "name": "incomesequences",
-            "description": "\nIncome sequences are prefixes that define a new, unique numbering for\nincome transactions - i.e. \"Payments received\" records, the transaction \ntype of which is set to \"Income\"-. \n\nThe following endpoints are only available to organizations based in Greece,\nto comply with the local legislation. There are two kinds of income sequences:\n- \"Rental income\" sequences, that apply exclusively to rental income\n- \"Contract income\" sequences, that apply to any other income record\n",
+            "description": "\nIncome sequences are prefixes that define a new, unique numbering for\nincome transactions - i.e. \"Payments received\" records, the transaction \ntype of which is set to \"Income\"-. \n\nThere are two kinds of income sequences:\n- \"Rental income\" sequences, that apply exclusively to rental income\n- \"Contract income\" sequences, that apply to any other income record\n",
             "x-displayName": "Income sequences",
             "x-traitTag": false
         }
