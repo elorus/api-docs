@@ -1,10 +1,10 @@
 {
 	"tree" : {
-		"nodeName" : "NODE NAME 1",
-		"name" : "NODE NAME 1",
+		"nodeName" : "E3_561_004: Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)",
+		"name" : "E3_561_004: Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)",
 		"type" : "type3",
 		"code" : "N1",
-		"label" : "Node name 1",
+		"label" : "E3_561_004: Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)",
 		"version" : "v1.0",
 		"link" : {
 				"name" : "Link NODE NAME 1",
