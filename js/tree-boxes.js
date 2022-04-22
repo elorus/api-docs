@@ -136,6 +136,10 @@ function drawTree(jsonData) {
         .append("svg:g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    d3.select("svg")
+    .call(d3.behavior.zoom()
+      .scaleExtent([0.5, 5])
+      .on("zoom", zoom));
     // Mouse wheel is desactivated, else after a first drag of the tree, wheel event drags the tree (instead of scrolling the window)
     // getMouseWheelEvent();
     // d3.select('#tree-container').select('svg').on(mouseWheelName, null);
@@ -472,10 +476,7 @@ function update(source) {
         d.y0 = d.y;
     });
 
-    d3.select("svg")
-    .call(d3.behavior.zoom()
-      .scaleExtent([0.5, 5])
-      .on("zoom", zoom));
+
 }
 
 function zoom() {
