@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
           content="Complete reference documentation for the Elorus REST API. Includes guidelines and examples to help you interact with the API."/>
-    <link rel="canonical" href="http://developer.elorus.com/">
+    <link rel="canonical" href="https://developer.elorus.com/">
     <link rel="shortcut icon" href="./img/favicon.ico">
     <style>
         body {
@@ -17,38 +17,29 @@
         .version-btn {
             padding: 5px 10px;
             font-family: Roboto, sans-serif;
-            color: #fff;
-            border-radius: 4px;
-            text-decoration: none;
-            background: #ac3964;
-        }
-
-       .version-btn:hover {
-            color: rgba(255, 255, 255, 0.87);
         }
 
         .region {
             font-family: Roboto, sans-serif;
             color: #fff;
-            font-size: 1em;
+            font-size: .9em;
+            padding-right: 10px;
         }
     </style>
 </head>
 <body>
-    <div style="position: fixed; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">
-        <a class="region">Region Select: </a>
-        <select class="version-btn region" name="forma" onchange="location = this.value;">
-            <option class="region" style="background: #17847e" value="./el/">GR</option>
-            <option selected disabled hidden>INT</option>
+    <div style="position: fixed; z-index: 2; top: 0; padding: 15px 20px; width: 100%; background-color: #263238;">
+        <a class="region">Select region</a>
+        <select class="version-btn" name="forma" onchange="location = this.value;">
+            <option selected>International</option>
+            <option value="./el/">Greece</option>
         </select>
     </div>
-<div style="padding-top: 58px;">
-    <redoc spec-url="./openapi/elorus_api_US_v1.1.json?v=1" hide-download-button="true" native-scrollbars="true"
-           scroll-y-offset="58"></redoc>
-</div>
-<script src="./js/redoc.standalone.js"></script>
-<script src="./js/support.js"></script>
-
-
+    <div style="padding-top: 58px;">
+        <redoc spec-url="./openapi/elorus_api_US_v1.1.json?v=1" hide-download-button="true" native-scrollbars="true"
+               scroll-y-offset="58"></redoc>
+    </div>
+    <script src="./js/redoc.standalone.js"></script>
+    <script src="./js/support.js"></script>
 </body>
 </html>
