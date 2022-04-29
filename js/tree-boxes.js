@@ -130,9 +130,9 @@ function drawTree(jsonData) {
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     d3.select("svg")
-    .call(d3.behavior.zoom()
-      .scaleExtent([0.5, 5])
-      .on("zoom", zoom));
+        .call(d3.behavior.zoom()
+            .scaleExtent([0.5, 5])
+            .on("zoom", zoom));
 
     svgGroup = baseSvg.append('g')
         .attr('class', 'drawarea')
@@ -160,19 +160,54 @@ function drawTree(jsonData) {
     update(root);
 }
 
-function stringToPx (node, textType){
-        var ruler = document.getElementById('ruler');
-        ruler.style.display = 'initial';
-        if (textType == 'name'){
-            ruler.innerHTML = node.name;
-        }
-        else{
-            ruler.innerHTML = node.label;
-        }
-        let stringLength = ruler.offsetWidth + rectNode.textMargin * 4;
-        ruler.style.display = 'none';
-        return stringLength;
+function stringToPx(node, textType) {
+    var ruler = document.getElementById('ruler');
+    ruler.style.display = 'initial';
+    if (textType == 'name') {
+        ruler.innerHTML = node.name;
+    } else {
+        ruler.innerHTML = node.label;
     }
+    let stringLength = ruler.offsetWidth + rectNode.textMargin * 4;
+    ruler.style.display = 'none';
+    return stringLength;
+}
+
+function depthOf(object) {
+    var level = 0;
+    for (var key in object) {
+        if (key == 'parent') {
+            stringToPx(object.parent, 'name');
+            var depth = depthOf(object[key]) + 1;
+            level = Math.max(depth, level);
+        }
+    }
+    return level;
+}
+
+function parentsWidth (object, level){
+    var width = 0;
+    var dummyObj = 'object';
+    for (var i=1; i <= level; i++){
+        dummyObj +='.parent';
+        width += stringToPx(eval(dummyObj), 'name');
+    }
+    return width;
+}
+
+// const parentsWidth = {width: 0};
+//
+// function depthOf(object) {
+//     for (var key in object) {
+//         if (key == 'parent') {
+//             // depthOf(object);
+//             parentsWidth.width += stringToPx(object.parent, 'name');
+//         }
+//     }
+//     return parentsWidth.width;
+// }
+
+
 
 function update(source) {
     // Compute the new tree layout
@@ -183,7 +218,17 @@ function update(source) {
     breadthFirstTraversal(tree.nodes(root), collision);
     // Normalize for fixed-depth
     nodes.forEach(function (d) {
-        d.y = d.depth * (stringToPx(nodes[nodes.length - 1], 'name') * 1.5);
+        //d.y = d.depth * (stringToPx(nodes[nodes.length - 1], 'name') * 1.5);
+        var parentLvl = depthOf(d);
+        if (parentLvl > 0){
+            d.y = parentsWidth(d, parentLvl) + 100 * parentLvl;
+        }
+        else{
+            d.y = 0;
+        }
+        // console.log(d);
+        // console.log('parentLvl ' + parentLvl);
+        // console.log(d.y);
     });
 
     // 1) ******************* Update the nodes *******************
