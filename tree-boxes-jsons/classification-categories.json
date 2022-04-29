@@ -66,7 +66,7 @@
 				"children" : []
 			}, {
 				"nodeName" : "NODE NAME 2.3",
-				"name" : "NODE NAME asdasdada 2.3",
+				"name" : "NODE NAME asdasdada 2.3 AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAAAAAAAAAa AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAAAAAAAAAa AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAAAAAAAAAa",
 				"type" : "type1",
 				"code" : "N2.3",
 				"label" : "Node name 2.3",
@@ -117,7 +117,7 @@
 							},
 						"children" : [{
 								"nodeName" : "NODE NAME 4.2",
-								"name" : "NODE NAME 4.2 AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAAAAAAAAAa AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAAAAAAAAAa AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAAAAAAAAAa",
+								"name" : "NODE NAME 4.2 ",
 								"type" : "type4",
 								"code" : "N4.2",
 								"label" : "Node name 4.2",
