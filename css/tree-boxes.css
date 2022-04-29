@@ -85,6 +85,8 @@
 .node-text {
 	font: 7px sans-serif;
 	color: white;
+	width: fit-content;
+	text-align: center;
 }
 
 .tooltip-text-container {
@@ -98,12 +100,14 @@
 	color: white;
 	display: block;
  	padding: 5px;
+	width: inherit;
 }
 
 .tooltip-box {
+	/*height: fit-content;*/
 	background: rgba(0, 0, 0, 0.7);
 	visibility: hidden;
-	position: absolute;
+	position: relative;
 	border-style: solid;
     border-width: 1px;
     border-color: black;
