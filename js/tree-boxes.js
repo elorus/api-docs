@@ -28,16 +28,9 @@ var urlService_ = '';
 var blue = '#337ab7',
     green = '#5cb85c',
     yellow = '#f0ad4e',
-    blueText = '#4ab1eb',
     purple = '#9467bd',
     red = '#f13155';
 
-// var margin = {
-//     top: 250,
-//     right: 10,
-//     bottom: 10,
-//     left: 10
-// }
 var margin = {
     top: 74,
     right: 0,
@@ -110,7 +103,7 @@ function drawTree(jsonData) {
             if (node.type == 'type4')
                 node.color = purple;
             if (node.type == 'type5')
-                node.color = purple;
+                node.color = red;
         });
     });
     // height = maxTreeWidth * (rectNode.height + 20) + tooltip.height + 20 - margin.right - margin.left;
@@ -140,10 +133,6 @@ function drawTree(jsonData) {
     .call(d3.behavior.zoom()
       .scaleExtent([0.5, 5])
       .on("zoom", zoom));
-    // Mouse wheel is desactivated, else after a first drag of the tree, wheel event drags the tree (instead of scrolling the window)
-    // getMouseWheelEvent();
-    // d3.select('#tree-container').select('svg').on(mouseWheelName, null);
-    // d3.select('#tree-container').select('svg').on('dblclick.zoom', null);
 
     svgGroup = baseSvg.append('g')
         .attr('class', 'drawarea')
@@ -171,6 +160,20 @@ function drawTree(jsonData) {
     update(root);
 }
 
+function stringToPx (node, textType){
+        var ruler = document.getElementById('ruler');
+        ruler.style.display = 'initial';
+        if (textType == 'name'){
+            ruler.innerHTML = node.name;
+        }
+        else{
+            ruler.innerHTML = node.label;
+        }
+        let stringLength = ruler.offsetWidth + rectNode.textMargin * 4;
+        ruler.style.display = 'none';
+        return stringLength;
+    }
+
 function update(source) {
     // Compute the new tree layout
     var nodes = tree.nodes(root).reverse(),
@@ -180,7 +183,7 @@ function update(source) {
     breadthFirstTraversal(tree.nodes(root), collision);
     // Normalize for fixed-depth
     nodes.forEach(function (d) {
-        d.y = d.depth * (rectNode.width * 1.5);
+        d.y = d.depth * (stringToPx(nodes[nodes.length - 1], 'name') * 1.5);
     });
 
     // 1) ******************* Update the nodes *******************
@@ -212,7 +215,9 @@ function update(source) {
     nodeEnter.append('g').append('rect')
         .attr('rx', 6)
         .attr('ry', 6)
-        .attr('width', rectNode.width)
+        .attr('width', function (d) {
+            return stringToPx(d, 'name')
+        })
         .attr('height', rectNode.height)
         .attr('class', 'node-rect')
         .attr('fill', function (d) {
@@ -223,9 +228,9 @@ function update(source) {
     nodeEnter.append('foreignObject')
         .attr('x', rectNode.textMargin)
         .attr('y', rectNode.textMargin)
-        .attr('width', function () {
-            return (rectNode.width - rectNode.textMargin * 2) < 0 ? 0
-                : (rectNode.width - rectNode.textMargin * 2)
+        .attr('width', function (d) {
+            return (stringToPx(d, 'name') - rectNode.textMargin * 2) < 0 ? 0
+                : (stringToPx(d, 'name') - rectNode.textMargin * 2)
         })
         .attr('height', function () {
             return (rectNode.height - rectNode.textMargin * 2) < 0 ? 0
@@ -241,7 +246,7 @@ function update(source) {
         //     + '</div>';
 
         return '<div style="width: auto; height:auto; vertical-align: center " class="node-text wordwrap">'
-            + '<b>' + d.nodeName + '</b>'
+            + '<b>' + d.name + '</b>'
             + '</div>';
     })
         .on('mouseover', function (d) {
@@ -284,10 +289,10 @@ function update(source) {
         .attr('height', tooltip.height)
         .attr('class', 'tooltip-text')
         .style('fill', 'white')
-        .append("tspan")
-        .text(function (d) {
-            return 'Name: ' + d.name;
-        })
+        // .append("tspan")
+        // .text(function (d) {
+        //     return 'Name: ' + d.name;
+        // })
         .append("tspan")
         .attr('x', rectNode.width / 2 + tooltip.textMargin)
         .attr('dy', '1.5em')
@@ -562,26 +567,10 @@ function reactivateMouseEvents() {
     d3.select('#tree-container').select('svg').on('mousedown.zoom', mousedown);
 }
 
-// Name of the event depends of the browser
-function getMouseWheelEvent() {
-    if (d3.select('#tree-container').select('svg').on('wheel.zoom')) {
-        mouseWheelName = 'wheel.zoom';
-        return d3.select('#tree-container').select('svg').on('wheel.zoom');
-    }
-    if (d3.select('#tree-container').select('svg').on('mousewheel.zoom') != null) {
-        mouseWheelName = 'mousewheel.zoom';
-        return d3.select('#tree-container').select('svg').on('mousewheel.zoom');
-    }
-    if (d3.select('#tree-container').select('svg').on('DOMMouseScroll.zoom')) {
-        mouseWheelName = 'DOMMouseScroll.zoom';
-        return d3.select('#tree-container').select('svg').on('DOMMouseScroll.zoom');
-    }
-}
-
 function diagonal(d) {
     var p0 = {
         x: d.source.x + rectNode.height / 2,
-        y: (d.source.y + rectNode.width)
+        y: (d.source.y + stringToPx(d.source, 'name'))
     }, p3 = {
         x: d.target.x + rectNode.height / 2,
         y: d.target.y - 12 // -12, so the end arrows are just before the rect node

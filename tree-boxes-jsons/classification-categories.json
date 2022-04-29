@@ -1,10 +1,10 @@
 {
 	"tree" : {
-		"nodeName" : "E3_561_004: Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)",
-		"name" : "E3_561_004: Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)",
+		"nodeName" : "E3_561_004",
+		"name" : "E3_561_004 E3_561_004 E3_561_004 E3_561_004",
 		"type" : "type3",
 		"code" : "N1",
-		"label" : "E3_561_004: Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)",
+		"label" : "Retail Sales of Goods and Services pursuant to article 39a paragraph 5 of the VAT Code (Law 2859/2000)",
 		"version" : "v1.0",
 		"link" : {
 				"name" : "Link NODE NAME 1",
@@ -13,7 +13,7 @@
 			},
 		"children" : [{
 				"nodeName" : "NODE NAME 2.1",
-				"name" : "NODE NAME 2.1",
+				"name" : "NODE NAME 2.1asdfasdfsd",
 				"type" : "type1",
 				"code" : "N2.1",
 				"label" : "Node name 2.1",
@@ -25,7 +25,7 @@
 					},
 				"children" : [{
 						"nodeName" : "NODE NAME 3.1",
-						"name" : "NODE NAME 3.1",
+						"name" : "NODE NAME sa3.1",
 						"type" : "type2",
 						"code" : "N3.1",
 						"label" : "Node name 3.1",
@@ -38,7 +38,7 @@
 						"children" : []
 					}, {
 						"nodeName" : "NODE NAME 3.2",
-						"name" : "NODE NAME 3.2",
+						"name" : "NODE NAME asdasda3.2",
 						"type" : "type2",
 						"code" : "N3.2",
 						"label" : "Node name 3.2",
@@ -53,7 +53,7 @@
 				]
 			}, {
 				"nodeName" : "NODE NAME 2.2",
-				"name" : "NODE NAME 2.2",
+				"name" : "NODE NAMsadadaE 2.2",
 				"type" : "type1",
 				"code" : "N2.2",
 				"label" : "Node name 2.2",
@@ -66,7 +66,7 @@
 				"children" : []
 			}, {
 				"nodeName" : "NODE NAME 2.3",
-				"name" : "NODE NAME 2.3",
+				"name" : "NODE NAME asdasdada 2.3",
 				"type" : "type1",
 				"code" : "N2.3",
 				"label" : "Node name 2.3",
@@ -78,7 +78,7 @@
 					},
 				"children" : [{
 						"nodeName" : "NODE NAME 3.3",
-						"name" : "NODE NAME 3.3",
+						"name" : "NODE NAME 3.3 AAAAAAAAAAA",
 						"type" : "type1",
 						"code" : "N3.3",
 						"label" : "Node name 3.3",
@@ -90,7 +90,7 @@
 							},
 						"children" : [{
 								"nodeName" : "NODE NAME 4.1",
-								"name" : "NODE NAME 4.1",
+								"name" : "NODE NAMEasdadsasdafas 4.1",
 								"type" : "type4",
 								"code" : "N4.1",
 								"label" : "Node name 4.1",
@@ -105,7 +105,7 @@
 						]
 					}, {
 						"nodeName" : "NODE NAME 3.4",
-						"name" : "NODE NAME 3.4",
+						"name" : "NODE NAME 3.asdasdasdas asdasd asdasd asd asda sd 4",
 						"type" : "type1",
 						"code" : "N3.4",
 						"label" : "Node name 3.4",
@@ -117,7 +117,7 @@
 							},
 						"children" : [{
 								"nodeName" : "NODE NAME 4.2",
-								"name" : "NODE NAME 4.2",
+								"name" : "NODE NAME 4.2 AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAAAAAAAAAa AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAAAAAAAAAa AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAAAAAAAAAa",
 								"type" : "type4",
 								"code" : "N4.2",
 								"label" : "Node name 4.2",
