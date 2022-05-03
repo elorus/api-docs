@@ -29,7 +29,8 @@ var blue = '#337ab7',
     green = '#5cb85c',
     yellow = '#f0ad4e',
     purple = '#9467bd',
-    red = '#f13155';
+    red = '#f13155',
+    grey = '#5e5e5e';
 
 var margin = {
     top: 74,
@@ -78,7 +79,7 @@ function init(urlService, jsonData) {
         drawTree(jsonData);
     else {
         console.error(jsonData);
-        alert('Invalides data.');
+        alert('Invalid data.');
     }
 }
 
@@ -104,6 +105,8 @@ function drawTree(jsonData) {
                 node.color = purple;
             if (node.type == 'type5')
                 node.color = red;
+            if (node.type == 'type6')
+                node.color = grey;
         });
     });
     // height = maxTreeWidth * (rectNode.height + 20) + tooltip.height + 20 - margin.right - margin.left;
