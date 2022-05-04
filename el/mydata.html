@@ -69,6 +69,25 @@
             font-weight: 700;
             display: none;
         }
+
+        .controls {
+            width: 40px;
+            height: 40px;
+            color: black;
+            font-size: 20px;
+        }
+
+        .controls.top {
+            bottom: 50px;
+            right: 5px;
+            position: absolute;
+        }
+
+        .controls.bottom {
+            bottom: 5px;
+            right: 5px;
+            position: absolute;
+        }
     </style>
 </head>
 <body>
@@ -93,25 +112,29 @@
 </div>
 
 <div class="container" style="width: 100%">
-  <div class="row" style="background: #263238; ">
-    <div class="col-md-8" style="padding: 0; background: #FFFFFF">
-        <div id="tree-div">
-            <div id="tree-container" ></div>
-            <script>
-                d3.json("/tree-boxes-jsons/classification-categories.json", function (error, json) {
-                    treeBoxes('', json.tree);
-                });
-            </script>
+    <div class="row" style="background: #263238; ">
+        <div class="col-md-8" style="padding: 0; background: #FFFFFF">
+            <div id="tree-div">
+                <div id="tree-container"></div>
+                <script>
+                    d3.json("/tree-boxes-jsons/classification-categories.json", function (error, json) {
+                        treeBoxes('', json.tree);
+                    });
+                </script>
+                <button id="zoom-in" class="controls top" onclick="zoomButtons('in')">+</button>
+                <button id="zoom-out" class="controls bottom" onclick="zoomButtons('out')">-</button>
+            </div>
+
+        </div>
+        <div class="col-md-4" style="background: #263238; color: #FFFFFF; height: 100%;">
+            <h2>MyData Classification Categories </h2>
+            OSDFDSFDSPIJF APOSIDHFGPIASDH GPIAS HGPIASHDG PIHASDG <br>
+            pojfpasdj fasjdfjapsdjfp asjdfpijsadpfjasp djfsadfjasfjsadfas
+            asdfasdfasd fasdfasdfasdfsa <br>
+            sdjfsaoidjfojs fsofoasdjfosdf
+
+        </div>
     </div>
-    </div>
-    <div class="col-md-4" style="background: #263238; color: #FFFFFF; height: 100%;">
-        <h2>MyData Classification Categories </h2>
-        OSDFDSFDSPIJF APOSIDHFGPIASDH GPIAS HGPIASHDG PIHASDG <br>
-        pojfpasdj fasjdfjapsdjfp asjdfpijsadpfjasp djfsadfjasfjsadfas
-        asdfasdfasd fasdfasdfasdfsa <br>
-        sdjfsaoidjfojs fsofoasdjfosdf
-    </div>
-  </div>
 </div>
 
 
