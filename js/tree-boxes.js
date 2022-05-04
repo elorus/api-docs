@@ -64,6 +64,59 @@ var baseSvg,
     linkGroupToolTip,
     defs;
 
+function zoomButtons(type) {
+    var evt = document.createEvent('MouseEvents');
+    evt.initEvent('wheel', true, true);
+    if (type == 'in' && scale.val < 5 && scale.val >= 0.25) {
+        // zoomValues.y += -120;
+        // evt.deltaY = zoomValues.y;
+        evt.deltaY = -120;
+        let svgCont = document.getElementById('svgCont');
+        svgCont.dispatchEvent(evt);
+    } else if (type == 'out' && scale.val <= 5 && scale.val > 0.25) {
+
+        evt.deltaY = 120;
+        let svgCont = document.getElementById('svgCont');
+        svgCont.dispatchEvent(evt);
+    }
+}
+
+
+function stringToPx(node, textType) {
+    var ruler = document.getElementById('ruler');
+    ruler.style.display = 'initial';
+    if (textType == 'name') {
+        ruler.innerHTML = node.name;
+    } else {
+        ruler.innerHTML = node.label;
+    }
+    let stringLength = ruler.offsetWidth + rectNode.textMargin * 4;
+    ruler.style.display = 'none';
+    return stringLength;
+}
+
+function depthOf(object) {
+    var level = 0;
+    for (var key in object) {
+        if (key == 'parent') {
+            stringToPx(object.parent, 'name');
+            var depth = depthOf(object[key]) + 1;
+            level = Math.max(depth, level);
+        }
+    }
+    return level;
+}
+
+function parentsWidth(object, level) {
+    var width = 0;
+    var dummyObj = 'object';
+    for (var i = 1; i <= level; i++) {
+        dummyObj += '.parent';
+        width += stringToPx(eval(dummyObj), 'name');
+    }
+    return width;
+}
+
 function treeBoxes(urlService, jsonData) {
     init(urlService, jsonData);
 }
@@ -123,6 +176,7 @@ function drawTree(jsonData) {
 
     baseSvg = d3.select('#tree-container').append('svg:svg')
         .attr('class', 'svgContainer')
+        .attr('id', 'svgCont')
         .attr('width', width)
         .attr('height', height)
         .style("overflow", "scroll")
@@ -134,7 +188,8 @@ function drawTree(jsonData) {
 
     d3.select("svg")
         .call(d3.behavior.zoom()
-            .scaleExtent([0.5, 5])
+            .scaleExtent([0.25, 5])
+            .center([height / 2, width / 2])
             .on("zoom", zoom));
 
     svgGroup = baseSvg.append('g')
@@ -161,50 +216,11 @@ function drawTree(jsonData) {
     initDropShadow();
 
     update(root);
-    // let nodes = tree.nodes(root).reverse();
-    // for (let i=0; i< nodes.length; i++){
-    //     if (nodes[i].type == "type5" || nodes[i].type == "type6"){
-    //         click(nodes[i]);
-    //     }
-    // }
 }
 
-function stringToPx(node, textType) {
-    var ruler = document.getElementById('ruler');
-    ruler.style.display = 'initial';
-    if (textType == 'name') {
-        ruler.innerHTML = node.name;
-    } else {
-        ruler.innerHTML = node.label;
-    }
-    let stringLength = ruler.offsetWidth + rectNode.textMargin * 4;
-    ruler.style.display = 'none';
-    return stringLength;
-}
-
-function depthOf(object) {
-    var level = 0;
-    for (var key in object) {
-        if (key == 'parent') {
-            stringToPx(object.parent, 'name');
-            var depth = depthOf(object[key]) + 1;
-            level = Math.max(depth, level);
-        }
-    }
-    return level;
-}
-
-function parentsWidth(object, level) {
-    var width = 0;
-    var dummyObj = 'object';
-    for (var i = 1; i <= level; i++) {
-        dummyObj += '.parent';
-        width += stringToPx(eval(dummyObj), 'name');
-    }
-    return width;
-}
 
 const firstRun = {value: 1};
+
 function update(source) {
     // Compute the new tree layout
     var notReversedNodes = tree.nodes(root);
@@ -237,9 +253,6 @@ function update(source) {
         } else {
             d.y = 0;
         }
-        // console.log(d);
-        // console.log('parentLvl ' + parentLvl);
-        // console.log(d.y);
     });
 
     // 1) ******************* Update the nodes *******************
@@ -540,13 +553,15 @@ function update(source) {
 
 }
 
+const scale = {val: 1, ts: new Date()};
+
 function zoom() {
-    var scale = d3.event.scale,
-        translation = d3.event.translate,
-        tbound = -height * scale * 5,
-        bbound = height * scale * 5,
-        lbound = -width * scale * 5,
-        rbound = width * scale * 5;
+    scale.val = d3.event.scale;
+    var translation = d3.event.translate,
+        tbound = -height * scale.val * 5,
+        bbound = height * scale.val * 5,
+        lbound = -width * scale.val * 5,
+        rbound = width * scale.val * 5;
     // limit translation to thresholds
     translation = [
         Math.max(Math.min(translation[0], rbound), lbound),
@@ -554,7 +569,7 @@ function zoom() {
     ];
     d3.select(".drawarea")
         .attr("transform", "translate(" + translation + ")" +
-            " scale(" + scale + ")");
+            " scale(" + scale.val + ")");
 }
 
 // Toggle children on click.
@@ -610,17 +625,6 @@ function collision(siblings) {
                 siblings[i + 1].x = siblings[i].x + rectNode.height + minPadding;
         }
     }
-}
-
-function removeMouseEvents() {
-    // Drag and zoom behaviors are temporarily disabled, so tooltip text can be selected
-    mousedown = d3.select('#tree-container').select('svg').on('mousedown.zoom');
-    d3.select('#tree-container').select('svg').on("mousedown.zoom", null);
-}
-
-function reactivateMouseEvents() {
-    // Reactivate the drag and zoom behaviors
-    d3.select('#tree-container').select('svg').on('mousedown.zoom', mousedown);
 }
 
 function diagonal(d) {
@@ -740,3 +744,14 @@ function recreation() {
     tree = '';
     init('', root);
 }
+
+// function removeMouseEvents() {
+//     // Drag and zoom behaviors are temporarily disabled, so tooltip text can be selected
+//     mousedown = d3.select('#tree-container').select('svg').on('mousedown.zoom');
+//     d3.select('#tree-container').select('svg').on("mousedown.zoom", null);
+// }
+//
+// function reactivateMouseEvents() {
+//     // Reactivate the drag and zoom behaviors
+//     d3.select('#tree-container').select('svg').on('mousedown.zoom', mousedown);
+// }
