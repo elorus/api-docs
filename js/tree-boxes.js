@@ -161,6 +161,12 @@ function drawTree(jsonData) {
     initDropShadow();
 
     update(root);
+    // let nodes = tree.nodes(root).reverse();
+    // for (let i=0; i< nodes.length; i++){
+    //     if (nodes[i].type == "type5" || nodes[i].type == "type6"){
+    //         click(nodes[i]);
+    //     }
+    // }
 }
 
 function stringToPx(node, textType) {
@@ -188,33 +194,36 @@ function depthOf(object) {
     return level;
 }
 
-function parentsWidth (object, level){
+function parentsWidth(object, level) {
     var width = 0;
     var dummyObj = 'object';
-    for (var i=1; i <= level; i++){
-        dummyObj +='.parent';
+    for (var i = 1; i <= level; i++) {
+        dummyObj += '.parent';
         width += stringToPx(eval(dummyObj), 'name');
     }
     return width;
 }
 
-// const parentsWidth = {width: 0};
-//
-// function depthOf(object) {
-//     for (var key in object) {
-//         if (key == 'parent') {
-//             // depthOf(object);
-//             parentsWidth.width += stringToPx(object.parent, 'name');
-//         }
-//     }
-//     return parentsWidth.width;
-// }
-
-
-
+const firstRun = {value: 1};
 function update(source) {
     // Compute the new tree layout
-    var nodes = tree.nodes(root).reverse(),
+    var notReversedNodes = tree.nodes(root);
+    if (firstRun.value == 1) {
+        firstRun.value = 0;
+        notReversedNodes.forEach(function (d) {
+            var parentLvl = depthOf(d);
+            if (parentLvl > 0) {
+                if ((parentLvl == 3 || parentLvl == 4) && d.children) {
+                    d._children = d.children;
+                    d.children = null;
+                    // update(d);
+                }
+            }
+        })
+        return update(notReversedNodes[0])
+    }
+
+    var nodes = notReversedNodes.reverse(),
         links = tree.links(nodes);
 
     // Check if two nodes are in collision on the ordinates axe and move them
@@ -223,10 +232,9 @@ function update(source) {
     nodes.forEach(function (d) {
         //d.y = d.depth * (stringToPx(nodes[nodes.length - 1], 'name') * 1.5);
         var parentLvl = depthOf(d);
-        if (parentLvl > 0){
+        if (parentLvl > 0) {
             d.y = parentsWidth(d, parentLvl) + 100 * parentLvl;
-        }
-        else{
+        } else {
             d.y = 0;
         }
         // console.log(d);
