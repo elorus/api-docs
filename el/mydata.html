@@ -75,25 +75,27 @@
             height: 40px;
             color: black;
             font-size: 20px;
+            right: 5px;
+            position: absolute;
         }
 
         .controls.top {
-            bottom: 50px;
-            right: 5px;
-            position: absolute;
+            top: 5px;
+        }
+
+        .controls.mid {
+            top: 50px;
         }
 
         .controls.bottom {
-            bottom: 5px;
-            right: 5px;
-            position: absolute;
+            top: 95px;
         }
     </style>
 </head>
 <body>
 <span id="ruler"></span>
 
-<div style="position: relative; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">
+<div style="position: relative;  top: 0; padding: 20px; width: 100%; background-color: #263238;">
 
     <div class="btn-group">
 
@@ -113,7 +115,7 @@
 
 <div class="container" style="width: 100%">
     <div class="row" style="background: #263238; ">
-        <div class="col-md-8" style="padding: 0; background: #FFFFFF">
+        <div class="col-md-8" id="canvas" style="padding: 0; background: #FFFFFF">
             <div id="tree-div">
                 <div id="tree-container"></div>
                 <script>
@@ -121,10 +123,11 @@
                         treeBoxes('', json.tree);
                     });
                 </script>
-                <button id="zoom-in" class="controls top" onclick="zoomButtons('in')">+</button>
-                <button id="zoom-out" class="controls bottom" onclick="zoomButtons('out')">-</button>
-            </div>
 
+            </div>
+            <button id="full-screen" class="controls top" onclick="goFullScreen()">[ ]</button>
+            <button id="zoom-in" class="controls mid" onclick="zoomButtons('in')">+</button>
+            <button id="zoom-out" class="controls bottom" onclick="zoomButtons('out')">-</button>
         </div>
         <div class="col-md-4" style="background: #263238; color: #FFFFFF; height: 100%;">
             <h2>MyData Classification Categories </h2>

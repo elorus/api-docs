@@ -64,6 +64,23 @@ var baseSvg,
     linkGroupToolTip,
     defs;
 
+const toFullScreen = {bool: false}
+function goFullScreen() {
+
+    var elem = document.getElementById('canvas');
+
+    if (!document.fullscreenElement) {
+        toFullScreen.bool = true;
+        elem.requestFullscreen({ navigationUI: "show" }).then(() => {}).catch(err => {
+            alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+        });
+    } else {
+        document.exitFullscreen();
+        toFullScreen.bool = false;
+    }
+    console.log(toFullScreen.bool);
+}
+
 function zoomButtons(type) {
     var evt = document.createEvent('MouseEvents');
     evt.initEvent('wheel', true, true);
@@ -137,6 +154,11 @@ function init(urlService, jsonData) {
 }
 
 function drawTree(jsonData) {
+    if (toFullScreen.bool){
+        height = window.innerHeight;
+    }else{
+        height = window.innerHeight - margin.top - margin.bottom;
+    }
     tree = d3.layout.tree().size([height, width]);
     root = jsonData;
     root.fixed = true;
