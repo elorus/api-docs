@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>MyData Classification Categories</title>
+    <title>myDATA Classifications Categories</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -26,26 +26,19 @@
         .version-btn {
             padding: 5px 10px;
             font-family: Roboto, sans-serif;
-            color: #fff;
             border-radius: 4px;
             text-decoration: none;
+            background-color: #FFFFFF;
         }
 
-        .version-btn.active {
-            background: #ac3964;
-        }
 
         .version-btn.menuitem {
-            background: rgb(23 132 126);
             margin-left: 10px;
         }
 
         .version-btn:hover {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .version-btn.active:hover {
-            color: #fff;
+            background-color: #E7DFDFFF;
+            /*color: #FFFFFF;*/
         }
 
         .flag-icon {
@@ -59,8 +52,8 @@
             content: "\00a0"
         }
 
-        .goto, .goto:hover {
-            color: #FFFFFF;
+        .cleanURL, .cleanURL:hover {
+            color: black;
             text-decoration: none;
         }
 
@@ -100,7 +93,7 @@
     <div class="btn-group">
 
         <div class="btn-group">
-            <button type="button" class="version-btn dropdown-toggle active" data-toggle="dropdown">GR
+            <button type="button" class="version-btn dropdown-toggle hover" data-toggle="dropdown">GR
                 <img class="flag-icon" src="/img/gr.svg"/>
                 <span class="caret"></span>
             </button>
@@ -108,7 +101,11 @@
                 <li><a href="../">INT <img class="flag-icon" src="/img/us.svg"/></a></li>
             </ul>
         </div>
-        <button type="button" class="version-btn menuitem"><a href="../el/" class="goto hover">Back</a></button>
+
+        <a href="../el/" class="cleanURL">
+            <button type="button" class="version-btn menuitem">Back</button>
+        </a>
+
     </div>
 
 </div>
@@ -125,16 +122,42 @@
                 </script>
 
             </div>
-            <button id="full-screen" class="controls top" onclick="goFullScreen()">[ ]</button>
-            <button id="zoom-in" class="controls mid" onclick="zoomButtons('in')">+</button>
-            <button id="zoom-out" class="controls bottom" onclick="zoomButtons('out')">-</button>
+            <button id="full-screen" class="controls top" onclick="goFullScreen()">
+                <img src="/img/fullscreen.svg"/>
+            </button>
+            <button id="zoom-in" class="controls mid" onclick="zoomButtons('in')">
+                <img src="/img/zoom-in.svg"/>
+            </button>
+            <button id="zoom-out" class="controls bottom" onclick="zoomButtons('out')">
+                <img src="/img/zoom-out.svg"/>
+            </button>
         </div>
-        <div class="col-md-4" style="background: #263238; color: #FFFFFF; height: 100%;">
-            <h2>MyData Classification Categories </h2>
-            OSDFDSFDSPIJF APOSIDHFGPIASDH GPIAS HGPIASHDG PIHASDG <br>
-            pojfpasdj fasjdfjapsdjfp asjdfpijsadpfjasp djfsadfjasfjsadfas
-            asdfasdfasd fasdfasdfasdfsa <br>
-            sdjfsaoidjfojs fsofoasdjfosdf
+        <div class="col-md-4"
+             style="background: #263238;
+             color: #FFFFFF;
+             height: 100%;
+             font-family: Roboto, sans-serif;
+             font-weight: 400; line-height: 1.5em;">
+            <h2>myDATA Classifications Mapping </h2>
+            <br>
+            By using Elorus' myDATA Classifications Mapping "Tree", you can navigate with ease between:<br>
+            <ul>
+                <li>Document Types</li>
+                <li>AADE Types</li>
+                <li>myDATA Classifications Categories</li>
+                <li>myDATA Classifications Types</li>
+            </ul>
+
+            <hr>
+            <div style="background-color: #f9f2f4; padding: 10px">
+                <code>TIPS<br>
+                    ~ Click on boxes to expand or retract the Tree!<br>
+                    ~ Boxes with black outline have other boxes in them.<br>
+                    ~ Zoom in or out using the mouse or the + - buttons<br>
+                    ~ Drag the screen to move the around the tree branches<br>
+                </code>
+            </div>
+
 
         </div>
     </div>
