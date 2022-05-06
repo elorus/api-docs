@@ -12,26 +12,27 @@
         body {
             margin: 0;
             padding: 0;
+            height: 100%;
+            width: 100%;
+            background: #263238;
         }
 
         .version-btn {
             padding: 5px 10px;
             font-family: Roboto, sans-serif;
-            color: #fff;
             border-radius: 4px;
             text-decoration: none;
+            background-color: #FFFFFF;
         }
 
-        .version-btn.active {
-            background: #ac3964;
+
+        .version-btn.menuitem {
+            margin-left: 10px;
         }
 
         .version-btn:hover {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .version-btn.active:hover {
-            color: #fff;
+            background-color: #E7DFDFFF;
+            /*color: #FFFFFF;*/
         }
 
         .flag-icon {
@@ -53,7 +54,7 @@
     <div class="btn-group">
 
         <div class="btn-group">
-            <button type="button" class="version-btn dropdown-toggle active" data-toggle="dropdown">INT
+            <button type="button" class="version-btn dropdown-toggle" data-toggle="dropdown">INT
                 <img class="flag-icon" src="img/us.svg"/>
                 <span class="caret"></span>
             </button>

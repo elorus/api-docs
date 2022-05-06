@@ -78,7 +78,7 @@ function goFullScreen() {
         document.exitFullscreen();
         toFullScreen.bool = false;
     }
-    console.log(toFullScreen.bool);
+    // console.log(toFullScreen.bool);
 }
 
 function zoomButtons(type) {
@@ -472,7 +472,7 @@ function update(source) {
             d3.select(this).moveToFront();
 
             d3.select(this).attr('marker-end', 'url(#end-arrow-selected)');
-            d3.select(this).attr('marker-start', linkMarkerStart(d.target.link.direction, true));
+            // d3.select(this).attr('marker-start', linkMarkerStart(d.target.link.direction, true));
             d3.select(this).attr('class', 'linkselected');
 
             $('#tooltipLinkID' + d.target.id).attr('x', (d.target.y + rectNode.width - d.source.y) / 2 + d.source.y);
@@ -482,7 +482,7 @@ function update(source) {
         })
         .on('mouseout', function (d) {
             d3.select(this).attr('marker-end', 'url(#end-arrow)');
-            d3.select(this).attr('marker-start', linkMarkerStart(d.target.link.direction, false));
+            // d3.select(this).attr('marker-start', linkMarkerStart(d.target.link.direction, false));
             d3.select(this).attr('class', 'link');
             $('#tooltipLinkID' + d.target.id).css('visibility', 'hidden');
             $('#tooltipLinkTextID' + d.target.id).css('visibility', 'hidden');
