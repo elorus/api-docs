@@ -431,12 +431,12 @@ function update(source) {
     //     return d.target.id;
     // });
 
-    function linkMarkerStart(direction, isSelected) {
-        if (direction == 'SYNC') {
-            return isSelected ? 'url(#start-arrow-selected)' : 'url(#start-arrow)';
-        }
-        return '';
-    }
+    // function linkMarkerStart(direction, isSelected) {
+    //     if (direction == 'SYNC') {
+    //         return isSelected ? 'url(#start-arrow-selected)' : 'url(#start-arrow)';
+    //     }
+    //     return '';
+    // }
 
     function linkType(link) {
         if (link.direction == 'SYNC')
@@ -465,9 +465,9 @@ function update(source) {
             return diagonal(d);
         })
         .attr('marker-end', 'url(#end-arrow)')
-        .attr('marker-start', function (d) {
-            return linkMarkerStart(d.target.link.direction, false);
-        })
+        // .attr('marker-start', function (d) {
+        //     return linkMarkerStart(d.target.link.direction, false);
+        // })
         .on('mouseover', function (d) {
             d3.select(this).moveToFront();
 
