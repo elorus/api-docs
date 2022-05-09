@@ -8,6 +8,7 @@
           content="Complete reference documentation for the Elorus REST API. Includes guidelines and examples to help you interact with the API."/>
     <link rel="canonical" href="http://developer.elorus.com/">
     <link rel="shortcut icon" href="/img/favicon.ico">
+
     <style>
         body {
             margin: 0;
@@ -23,7 +24,6 @@
             border-radius: 4px;
             text-decoration: none;
             background-color: #FFFFFF;
-
         }
 
         .version-btn:hover {
@@ -46,18 +46,28 @@
             color: black;
             text-decoration: none;
         }
+
+        .right-column {
+            background: #263238;
+            color: #FFFFFF;
+            height: 100%;
+            font-family: Roboto, sans-serif;
+            font-weight: 400;
+            line-height: 1.5em;
+        }
     </style>
 </head>
 <body>
+<span id="ruler"></span>
 
-<div style="position: fixed; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">
+<div style="position: relative;  top: 0; padding: 20px; width: 100%; background-color: #263238;">
     <div class="btn-group">
-        <button type="button" class="version-btn dropdown-toggle" data-toggle="dropdown">GR
-            <img class="flag-icon" src="/img/gr.svg"/>
+        <button type="button" class="version-btn dropdown-toggle hover" data-toggle="dropdown">GR
+            <img class="flag-icon" src="/img/el.svg"/>
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" style="min-width:10px !important;" role="menu">
-            <li><a href="../..">INT <img class="flag-icon" src="/img/us.svg"/></a></li>
+            <li><a href="../..">INT <img class="flag-icon" src="/img/int.svg"/></a></li>
         </ul>
         <a href=".." class="cleanURL">
             <button type="button" class="version-btn">Back</button>
@@ -68,10 +78,39 @@
     </div>
 </div>
 
-<div style="padding-top: 58px;">
-    <redoc spec-url="/openapi/elorus_api_GR_v1.1.json?v=4" hide-download-button="true" native-scrollbars="true"
-           scroll-y-offset="58"></redoc>
+<div class="container" style="width: 100%;">
+    <div class="row" style="height: calc(100vh - 74px)">
+        <div class="col-md-8" style="background: #FFFFFF">
+            asdadasda
+        </div>
+
+        <div class="col-md-4 right-column">
+            <h2>myDATA Classifications Mapping </h2>
+            <br>
+            By using Elorus' myDATA Classifications Mapping "Tree", you can navigate with ease between:<br>
+            <ul>
+                <li>Document Types</li>
+                <li>AADE Types</li>
+                <li>myDATA Classifications Categories</li>
+                <li>myDATA Classifications Types</li>
+            </ul>
+
+            <hr>
+            <div style="background-color: #f9f2f4; padding: 10px">
+                <code>TIPS<br>
+                    ~ Click on boxes to expand or retract the Tree!<br>
+                    ~ Boxes with black outline have other boxes in them.<br>
+                    ~ Zoom in or out using the mouse or the + - buttons<br>
+                    ~ Drag the screen to move the around the tree branches<br>
+                </code>
+            </div>
+
+
+        </div>
+    </div>
 </div>
+
+
 <script type="text/javascript" src="/js/redoc.standalone.js"></script>
 <script type="text/javascript" src="/js/support.js"></script>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
