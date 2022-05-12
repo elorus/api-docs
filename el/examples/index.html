@@ -7,7 +7,7 @@
     <meta name="description"
           content="Complete reference documentation for the Elorus REST API. Includes guidelines and examples to help you interact with the API."/>
     <link rel="canonical" href="http://developer.elorus.com/">
-    <link rel="shortcut icon" href="/img/menus/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
     <style>
         body {
@@ -28,7 +28,6 @@
 
         .version-btn:hover {
             background-color: #E7DFDFFF;
-            /*color: #FFFFFF;*/
         }
 
         .flag-icon {
@@ -65,63 +64,13 @@
             background-color: #263238;
         }
 
-        /*ul.vertical {*/
-        /*    list-style-type: none;*/
-        /*    margin: 0;*/
-        /*    padding: 0;*/
-        /*    width: 200px;*/
-        /*    background-color: #f1f1f1;*/
-        /*}*/
-
-        /*ul.ex {*/
-        /*    width: 100%;*/
-        /*}*/
-
-        /*ul.vertical a:hover {*/
-        /*    background-color: #263238;*/
-        /*    color: white;*/
-        /*}*/
-
-        /*ul.vertical:hover{*/
-        /*    background-color: #263238;*/
-        /*    color: white;*/
-        /*}*/
-
-        /*ul.vertical li a {*/
-        /*    display: block;*/
-        /*    color: #000;*/
-        /*    padding: 8px 16px 8px 16px;*/
-        /*    text-decoration: none;*/
-        /*    -webkit-touch-callout: none;*/
-        /*    -webkit-user-select: none;*/
-        /*    -khtml-user-select: none;*/
-        /*    -moz-user-select: none;*/
-        /*    -ms-user-select: none;*/
-        /*    user-select: none;*/
-        /*}*/
-
-        /*ul li ul li a {*/
-        /*    padding-left: 32px !important;*/
-        /*    !*display: none;*!*/
-        /*}*/
         .main-list {
             padding-inline-start: 0px;
-            /*display: block;*/
-        }
-
-        .main-list:hover {
-            /*text-decoration: none;*/
         }
 
         .main-list li {
             background: #f1f1f1;
             display: block;
-            /*padding: 8px 16px 8px 16px;*/
-        }
-
-        .main-list li:hover {
-            /*color: white;*/
-            /*background: #263238;*/
         }
 
         .main-list li a {
@@ -144,22 +93,6 @@
 
         .main-list li ul {
             padding-inline-start: 15px;
-            /*text-decoration: none;*/
-        }
-
-        .main-list li ul:hover {
-            /*text-decoration: none;*/
-        }
-
-        .main-list li ul li {
-            /*display: block;*/
-            /*color: black;*/
-        }
-
-        .main-list li ul li:hover {
-            /*display: block;*/
-            /*text-decoration: none;*/
-            /*background: #263238;*/
         }
 
         .main-list li ul li a {
@@ -185,6 +118,29 @@
             height: auto;
             width: auto;
         }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            z-index: 99;
+            font-size: 18px;
+            outline: none;
+            background-color: #f9f2f4;
+            width: 60px;
+            height: 60px;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border: 3px solid rgb(170 60 100);;
+            border-radius: 50%;
+        }
+
+        #myBtn:hover {
+            background-color: rgb(192 111 140);
+        }
+
     </style>
 </head>
 <body>
@@ -235,8 +191,63 @@
                         <li><a href="#retail-receipt-4">4</a></li>
                     </ul>
                 </li>
-                <li id="retail-receipt-001" onclick="toggleList('Something else1')"><a>Something else1</a>
+                <li id="retail-receipt-001" onclick="toggleList('Something else1')"><a>Something else 1</a>
                     <ul class="menu-item" id="Something else1">
+                        <li><a href="#retail-receipt-1.1">1.1</a></li>
+                        <li><a href="#retail-receipt-1.2">1.2</a></li>
+                        <li><a href="#retail-receipt-2.1">2.1</a></li>
+                        <li><a href="#retail-receipt-2.2">2.2</a></li>
+                        <li><a href="#retail-receipt-3.1">3.1</a></li>
+                        <li><a href="#retail-receipt-3.2">3.2</a></li>
+                        <li><a href="#retail-receipt-4">4</a></li>
+                    </ul>
+                </li>
+                <li id="retail-receipt-002" onclick="toggleList('Something else2')"><a>Something else 2</a>
+                    <ul class="menu-item" id="Something else2">
+                        <li><a href="#retail-receipt-1.1">1.1</a></li>
+                        <li><a href="#retail-receipt-1.2">1.2</a></li>
+                        <li><a href="#retail-receipt-2.1">2.1</a></li>
+                        <li><a href="#retail-receipt-2.2">2.2</a></li>
+                        <li><a href="#retail-receipt-3.1">3.1</a></li>
+                        <li><a href="#retail-receipt-3.2">3.2</a></li>
+                        <li><a href="#retail-receipt-4">4</a></li>
+                    </ul>
+                </li>
+                <li id="retail-receipt-003" onclick="toggleList('Something else3')"><a>Something else 3</a>
+                    <ul class="menu-item" id="Something else3">
+                        <li><a href="#retail-receipt-1.1">1.1</a></li>
+                        <li><a href="#retail-receipt-1.2">1.2</a></li>
+                        <li><a href="#retail-receipt-2.1">2.1</a></li>
+                        <li><a href="#retail-receipt-2.2">2.2</a></li>
+                        <li><a href="#retail-receipt-3.1">3.1</a></li>
+                        <li><a href="#retail-receipt-3.2">3.2</a></li>
+                        <li><a href="#retail-receipt-4">4</a></li>
+                    </ul>
+                </li>
+                <li id="retail-receipt-004" onclick="toggleList('Something else4')"><a>Something else 4</a>
+                    <ul class="menu-item" id="Something else4">
+                        <li><a href="#retail-receipt-1.1">1.1</a></li>
+                        <li><a href="#retail-receipt-1.2">1.2</a></li>
+                        <li><a href="#retail-receipt-2.1">2.1</a></li>
+                        <li><a href="#retail-receipt-2.2">2.2</a></li>
+                        <li><a href="#retail-receipt-3.1">3.1</a></li>
+                        <li><a href="#retail-receipt-3.2">3.2</a></li>
+                        <li><a href="#retail-receipt-4">4</a></li>
+                    </ul>
+                </li>
+                <li id="retail-receipt-005" onclick="toggleList('Something else5')"><a>Something else 5</a>
+                    <ul class="menu-item" id="Something else5">
+                        <li><a href="#retail-receipt-1.1">1.1</a></li>
+                        <li><a href="#retail-receipt-1.2">1.2</a></li>
+                        <li><a href="#retail-receipt-2.1">2.1</a></li>
+                        <li><a href="#retail-receipt-2.2">2.2</a></li>
+                        <li><a href="#retail-receipt-3.1">3.1</a></li>
+                        <li><a href="#retail-receipt-3.2">3.2</a></li>
+                        <li><a href="#retail-receipt-4">4</a></li>
+                    </ul>
+                </li>
+                <li id="retail-receipt-006" onclick="toggleList('Something else6')"><a>Something else 6</a>
+                    <ul class="menu-item" id="Something else6">
                         <li><a href="#retail-receipt-1.1">1.1</a></li>
                         <li><a href="#retail-receipt-1.2">1.2</a></li>
                         <li><a href="#retail-receipt-2.1">2.1</a></li>
@@ -513,6 +524,29 @@
     <br>
     <div class="row dark-page-break"></div>
 </div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="/img/menus/up-arrow.svg"></button>
+<script>
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
 
 <script type="text/javascript" src="/js/redoc.standalone.js"></script>
 <script type="text/javascript" src="/js/support.js"></script>
