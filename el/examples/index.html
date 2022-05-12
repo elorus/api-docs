@@ -7,7 +7,7 @@
     <meta name="description"
           content="Complete reference documentation for the Elorus REST API. Includes guidelines and examples to help you interact with the API."/>
     <link rel="canonical" href="http://developer.elorus.com/">
-    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="shortcut icon" href="/img/menus/favicon.ico">
 
     <style>
         body {
@@ -48,12 +48,142 @@
         }
 
         .right-column {
-            background: #263238;
-            color: #FFFFFF;
-            height: 100%;
+            background: #ffffff;
+            color: #263238;
             font-family: Roboto, sans-serif;
             font-weight: 400;
             line-height: 1.5em;
+        }
+
+        .curl-block {
+            background-color: #f9f2f4;
+            padding: 10px
+        }
+
+        .dark-page-break {
+            height: 1.5em;
+            background-color: #263238;
+        }
+
+        /*ul.vertical {*/
+        /*    list-style-type: none;*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*    width: 200px;*/
+        /*    background-color: #f1f1f1;*/
+        /*}*/
+
+        /*ul.ex {*/
+        /*    width: 100%;*/
+        /*}*/
+
+        /*ul.vertical a:hover {*/
+        /*    background-color: #263238;*/
+        /*    color: white;*/
+        /*}*/
+
+        /*ul.vertical:hover{*/
+        /*    background-color: #263238;*/
+        /*    color: white;*/
+        /*}*/
+
+        /*ul.vertical li a {*/
+        /*    display: block;*/
+        /*    color: #000;*/
+        /*    padding: 8px 16px 8px 16px;*/
+        /*    text-decoration: none;*/
+        /*    -webkit-touch-callout: none;*/
+        /*    -webkit-user-select: none;*/
+        /*    -khtml-user-select: none;*/
+        /*    -moz-user-select: none;*/
+        /*    -ms-user-select: none;*/
+        /*    user-select: none;*/
+        /*}*/
+
+        /*ul li ul li a {*/
+        /*    padding-left: 32px !important;*/
+        /*    !*display: none;*!*/
+        /*}*/
+        .main-list {
+            padding-inline-start: 0px;
+            /*display: block;*/
+        }
+
+        .main-list:hover {
+            /*text-decoration: none;*/
+        }
+
+        .main-list li {
+            background: #f1f1f1;
+            display: block;
+            /*padding: 8px 16px 8px 16px;*/
+        }
+
+        .main-list li:hover {
+            /*color: white;*/
+            /*background: #263238;*/
+        }
+
+        .main-list li a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            padding: 4px 8px 4px 8px;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .main-list li a:hover {
+            color: white !important;
+            background: #263238 !important;
+        }
+
+        .main-list li ul {
+            padding-inline-start: 15px;
+            /*text-decoration: none;*/
+        }
+
+        .main-list li ul:hover {
+            /*text-decoration: none;*/
+        }
+
+        .main-list li ul li {
+            /*display: block;*/
+            /*color: black;*/
+        }
+
+        .main-list li ul li:hover {
+            /*display: block;*/
+            /*text-decoration: none;*/
+            /*background: #263238;*/
+        }
+
+        .main-list li ul li a {
+            display: block;
+            text-decoration: none;
+            padding: 4px 8px 4px 8px;
+            color: black;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .main-list li ul li a:hover {
+            color: white;
+            background: #263238;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            width: auto;
         }
     </style>
 </head>
@@ -63,11 +193,11 @@
 <div style="position: relative;  top: 0; padding: 20px; width: 100%; background-color: #263238;">
     <div class="btn-group">
         <button type="button" class="version-btn dropdown-toggle hover" data-toggle="dropdown">GR
-            <img class="flag-icon" src="/img/el.svg"/>
+            <img class="flag-icon" src="/img/menus/el.svg"/>
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" style="min-width:10px !important;" role="menu">
-            <li><a href="../..">INT <img class="flag-icon" src="/img/int.svg"/></a></li>
+            <li><a href="../..">INT <img class="flag-icon" src="/img/menus/int.svg"/></a></li>
         </ul>
         <a href=".." class="cleanURL">
             <button type="button" class="version-btn">Back</button>
@@ -77,44 +207,318 @@
         </a>
     </div>
 </div>
-
-<div class="container" style="width: 100%;">
-    <div class="row" style="height: calc(100vh - 74px)">
-        <div class="col-md-8" style="background: #FFFFFF">
-            asdadasda
-        </div>
-
-        <div class="col-md-4 right-column">
-            <h2>myDATA Classifications Mapping </h2>
-            <br>
-            By using Elorus' myDATA Classifications Mapping "Tree", you can navigate with ease between:<br>
-            <ul>
-                <li>Document Types</li>
-                <li>AADE Types</li>
-                <li>myDATA Classifications Categories</li>
-                <li>myDATA Classifications Types</li>
+<br>
+<!---->
+<div class="container" style="width: 100%">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="main-list">
+                <li id="retail-receipt-0" onclick="toggleList('Retail Sales Receipt')"><a>Retail Sales Receipt</a>
+                    <ul class="menu-item" id="Retail Sales Receipt">
+                        <li><a href="#retail-receipt-1.1">1.1 Create a new contact</a></li>
+                        <li><a href="#retail-receipt-1.2">1.2 Get contact ID</a></li>
+                        <li><a href="#retail-receipt-2.1">2.1 Create a "Retail Sales Receipt" document type</a></li>
+                        <li><a href="#retail-receipt-2.2">2.2 Get document type ID</a></li>
+                        <li><a href="#retail-receipt-3.1">3.1 About taxes</a></li>
+                        <li><a href="#retail-receipt-3.2">3.2 Get taxes ID</a></li>
+                        <li><a href="#retail-receipt-4">4 Create Retail Sales Receipt</a></li>
+                    </ul>
+                </li>
+                <li id="retail-receipt-00" onclick="toggleList('Something else')"><a>Something else</a>
+                    <ul class="menu-item" id="Something else">
+                        <li><a href="#retail-receipt-1.1">1.1</a></li>
+                        <li><a href="#retail-receipt-1.2">1.2</a></li>
+                        <li><a href="#retail-receipt-2.1">2.1</a></li>
+                        <li><a href="#retail-receipt-2.2">2.2</a></li>
+                        <li><a href="#retail-receipt-3.1">3.1</a></li>
+                        <li><a href="#retail-receipt-3.2">3.2</a></li>
+                        <li><a href="#retail-receipt-4">4</a></li>
+                    </ul>
+                </li>
+                <li id="retail-receipt-001" onclick="toggleList('Something else1')"><a>Something else1</a>
+                    <ul class="menu-item" id="Something else1">
+                        <li><a href="#retail-receipt-1.1">1.1</a></li>
+                        <li><a href="#retail-receipt-1.2">1.2</a></li>
+                        <li><a href="#retail-receipt-2.1">2.1</a></li>
+                        <li><a href="#retail-receipt-2.2">2.2</a></li>
+                        <li><a href="#retail-receipt-3.1">3.1</a></li>
+                        <li><a href="#retail-receipt-3.2">3.2</a></li>
+                        <li><a href="#retail-receipt-4">4</a></li>
+                    </ul>
+                </li>
             </ul>
-
-            <hr>
-            <div style="background-color: #f9f2f4; padding: 10px">
-                <code>TIPS<br>
-                    ~ Click on boxes to expand or retract the Tree!<br>
-                    ~ Boxes with black outline have other boxes in them.<br>
-                    ~ Zoom in or out using the mouse or the + - buttons<br>
-                    ~ Drag the screen to move the around the tree branches<br>
-                </code>
+        </div>
+        <div class="col-md-6" style="margin-right: 15px; margin-left: 15px">
+            <div class="row">
+                <div class="container" style="width: 100%;">
+                    <div class="row">
+                        <u><b>Make sure myDATA and Softone integrations are activated in your Elorus account
+                            before using the
+                            guides
+                            bellow.</b></u><br>
+                        The guides think you are a new Elorus user, so some of the steps can be omitted eg
+                        "Create Contact" etc.<br>
+                        <h2>Authorization variables:</h2>
+                        <ul>
+                            <li><b>Token:</b> API key. Find it in Elorus UI "User Profile". One API key per
+                                Elorus account
+                            </li>
+                            <li><img src="/img/examples/profile.png"></li>
+                            <li><b>X-Elorus-Organization:</b> Organization ID. Find it in Elorus UI "Settings ->
+                                Organization ->
+                                Organization ID". One Organization ID per Organization.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row" id="retail-receipt-1">
+                        <h2>Create a "Retail Sales Receipt"</h2>
+                        <div id="retail-receipt-1.1">
+                            <h3>1.1 Create a new contact</h3>
+                            First lets create a contact so there is someone to bill. Since the case is a
+                            "Retail Sales
+                            Receipt" no VAT
+                            number is needed and only minimal contact information will be used.<br>
+                        </div>
+                        <div class="right-column"><br>
+                            Request
+                            <div class="curl-block">
+                                <code>
+                                    $ curl -X POST -H "Content-Type: application/json" -H "Authorization:
+                                    Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
+                                    https://api.elorus.com/v1.1/contacts/ -d '{"client_type": "4",
+                                    "company": "Πελάτης
+                                    Λιανικής",
+                                    "is_client": true}'
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <br>
+                    <div class="row">
+                        <div id="retail-receipt-1.2">
+                            <h3>1.2 Get contact ID</h3>
+                            Search e.g. by "company", to get the contact ID.
+                            Retrieved contact ID in this case is "2476845216061982422".
+                        </div>
+                        <div class="right-column"><br>
+                            Request
+                            <div class="curl-block">
+                                <code>
+                                    $ curl -X GET -H "Content-Type: application/json" -H "Authorization:
+                                    Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
+                                    https://api.elorus.com/v1.1/contacts/?company="Πελάτης Λιανικής"
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <br>
+                    <div class="row">
+                        <div id="retail-receipt-2.1">
+                            <h3>2.1 Create a "Retail Sales Receipt" document type</h3>
+                            In this case, a "Retail Sales Receipt" document type will be needed. There is no
+                            "Retail Sales
+                            Receipt"
+                            document type pre-created and API does not support document type creation. So in
+                            order to create
+                            it, use of
+                            Elorus' UI is mandatory.
+                            <ol>
+                                <li>Login to your Elorus account</li>
+                                <li>Go to: "Settings -> Document Types"</li>
+                                <li>Click "+Add" on top right corner</li>
+                                <li><img src="/img/examples/add.png"></li>
+                                <li>And set it up as the picture bellow. Title used is for example purposes,
+                                    the field can
+                                    take any
+                                    name.
+                                </li>
+                                <li><img src="/img/examples/retail-sales-receipt.png"></li>
+                                <li>Click "Save"</li>
+                                <li><img src="/img/examples/save.png"></li>
+                            </ol>
+                        </div>
+                        <div class="right-column"><br>
+                        </div>
+                    </div>
+                    <!---->
+                    <br>
+                    <div class="row">
+                        <div id="retail-receipt-2.2">
+                            <h3>2.2 Get document type ID</h3>
+                            Search by "title", to get the document type ID.
+                            Retrieved document type ID in this case is "2476894925484984004".
+                        </div>
+                        <div class="right-column"><br>
+                            Request
+                            <div class="curl-block">
+                                <code>
+                                    $ curl -X GET -H "Content-Type: application/json" -H "Authorization:
+                                    Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
+                                    https://api.elorus.com/v1.1/documenttypes/?title="ΑΠΟΔΕΙΞΗ ΛΙΑΝΙΚΗΣ
+                                    ΠΩΛΗΣΗΣ"
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <br>
+                    <div class="row">
+                        <div id="retail-receipt-3.1">
+                            <h3>3.1 About taxes</h3>
+                            By default there are some taxes preset in Elorus. Usually 24% tax is used for
+                            Greece "Retail
+                            Sale Receipts"
+                            so the preset tax will be retrieved and used. In case there is a need for a new
+                            tax to be
+                            created, use of
+                            Elorus' UI is mandatory. <br>
+                            Optional steps to create new tax:
+                            <ol>
+                                <li>Login to your Elorus account</li>
+                                <li>Go to: "Settings -> Taxes"</li>
+                                <li>Click "+Add" on top right corner</li>
+                                <li><img src="/img/examples/add.png"></li>
+                                <li>And set it up as the picture bellow. AADE category and title used are
+                                    for example
+                                    purposes.
+                                </li>
+                                <li><img src="/img/examples/tax.png"></li>
+                                <li>Click "Save"</li>
+                                <li><img src="/img/examples/save.png"></li>
+                            </ol>
+                        </div>
+                        <div class="right-column"><br>
+                        </div>
+                    </div>
+                    <!---->
+                    <br>
+                    <div class="row">
+                        <div id="retail-receipt-3.2">
+                            <h3>3.2 Get taxes ID</h3>
+                            Search by "title", to get the document type ID. Retrieved document type ID in
+                            this case is
+                            "2476911428611605999".
+                        </div>
+                        <div class="right-column"><br>
+                            Request
+                            <div class="curl-block">
+                                <code>
+                                    $ curl -X GET -H "Content-Type: application/json" -H "Authorization:
+                                    Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
+                                    https://api.elorus.com/v1.1/taxes/?title="ΦΠΑ ΛΙΑΝΙΚΗΣ"
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <br>
+                    <div class="row">
+                        <div id="retail-receipt-4">
+                            <h3>4 Create Retail Sales Receipt</h3>
+                            <ol>
+                                <li>X-Elorus-Organization: your organization ID</li>
+                                <li>calculator_mode: sets your values as "initial" or "total", meaning
+                                    before or after
+                                    taxes.
+                                    <ol>
+                                        <li>When "total" is used, then it is mandatory to use "unit_total"
+                                            in items.
+                                        </li>
+                                        <li>When "initial" is used, then it is mandatory to use "unit_value"
+                                            in items.
+                                        </li>
+                                        <li>Depending on the situation, Elorus will calculate the taxes
+                                            accordingly.
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>client: Client id - In this case we created a "ΠΕΛΑΤΗΣ ΛΙΑΝΙΚΗΣ"
+                                    contact.
+                                </li>
+                                <li>draft: true or false depending on the need to issue immediately an
+                                    invoice or not. If
+                                    true, the
+                                    invoice will not reach MyData/Softone, until issued.
+                                </li>
+                                <li>documenttype: Document Type ID - In this case we created a "ΑΠΟΔΕΙΞΗ
+                                    ΛΙΑΝΙΚΗΣ ΠΩΛΗΣΗΣ"
+                                    document
+                                    type, associated with the corresponding "aade type".
+                                </li>
+                                <li>My data specific fields:
+                                    mydata_document_type - mydata_classification_category - mydata_classification_type -
+                                    paid_on_receipt - payment_method
+                                    <ol>
+                                        <li>mydata_document_type: aade type</li>
+                                        <li>mydata_classification_category: income type aade</li>
+                                        <li>mydata_classification_type: classifications of Ε3 aade</li>
+                                        <li>paid_on_receipt: Invoice amount that was paid when invoice was
+                                            issued. If "0"
+                                            then you don't
+                                            need to send payment_method since Elorus will automatically
+                                            apply payment_method
+                                            as on
+                                            credit.
+                                        </li>
+                                        <li>payment_method:
+                                            <ol>
+                                                <li>“1”: Domestic Payments Account</li>
+                                                <li>“2”: Foreign Payments Account</li>
+                                                <li>“3”: Cash</li>
+                                                <li>“4”: Cheque</li>
+                                                <li>“6”: Web Banking</li>
+                                                <li>“7”: POS / e-POS</li>
+                                            </ol>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="right-column"><br>
+                            Request
+                            <div class="curl-block">
+                                <code>
+                                    $ curl -X POST -H "Content-Type: application/json" -H "Authorization:
+                                    Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
+                                    https://api.elorus.com/v1.1/invoices/ -d '{"calculator_mode": "total",
+                                    "currency_code":
+                                    "EUR",
+                                    "exchange_rate": "1.000000", "client": "2476845216061982422", "date":
+                                    "2022-5-11",
+                                    "draft": true,
+                                    "documenttype": "2476894925484984004", "mydata_document_type": "11.1",
+                                    "items":
+                                    [{"title":
+                                    "Διάφορα", "unit_total": "12.4", "quantity": "1", "taxes":
+                                    ["2476911428611605999"],
+                                    "mydata_classification_category": "category1_2",
+                                    "mydata_classification_type":
+                                    "E3_561_003"}],
+                                    "paid_on_receipt": "12.4", "payment_method": "3"}'
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
         </div>
     </div>
+    <br>
+    <div class="row dark-page-break"></div>
 </div>
-
 
 <script type="text/javascript" src="/js/redoc.standalone.js"></script>
 <script type="text/javascript" src="/js/support.js"></script>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/examples.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 </body>
 </html>
