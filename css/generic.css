@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: #263238;
+}
+
+.version-btn {
+    padding: 5px 10px;
+    font-family: Roboto, sans-serif;
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: #FFFFFF;
+}
+
+.version-btn:hover {
+    background-color: #E7DFDFFF;
+}
+
+.flag-icon {
+    position: relative;
+    display: inline-block;
+    width: 1.33333333em;
+    line-height: 1em
+}
+
+.flag-icon:before {
+    content: "\00a0"
+}
+
+.cleanURL, .cleanURL:hover {
+    color: black;
+    text-decoration: none;
+}
