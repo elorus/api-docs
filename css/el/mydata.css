@@ -24,3 +24,41 @@
 .controls.bottom {
     top: 95px;
 }
+
+.legend-div {
+    background: #ffffff;
+    padding: 15px;
+    color: black
+}
+
+.legend-box {
+    display: inline-block;
+    vertical-align:middle;
+    /*margin: 5px;*/
+    width: 40px;
+    height: 20px;
+}
+
+.legend-box.blue {
+    background: #337ab7;
+}
+
+.legend-box.green {
+    background: #5cb85c;
+}
+
+.legend-box.yellow {
+    background: #f0ad4e;
+}
+
+.legend-box.purple {
+    background: #9467bd;
+}
+
+.legend-box.red {
+    background: #f13155;
+}
+
+.legend-box.grey {
+    background: #5e5e5e;
+}
