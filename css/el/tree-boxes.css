@@ -87,6 +87,8 @@
 	color: white;
 	width: fit-content;
 	text-align: center;
+	height:auto;
+	vertical-align: center
 }
 
 .tooltip-text-container {

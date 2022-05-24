@@ -336,7 +336,7 @@ function update(source) {
         //     + '<b>Version: </b>' + d.version + '<br>'
         //     + '</div>';
 
-        return '<div style="width: auto; height:auto; vertical-align: center " class="node-text wordwrap">'
+        return '<div class="node-text wordwrap">'
             + '<b>' + d.name + '</b>'
             + '</div>';
     })
