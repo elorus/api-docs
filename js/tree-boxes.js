@@ -45,7 +45,7 @@ var margin = {
 var width = window.innerWidth * 66 / 100 - margin.right - margin.left;
 var height = window.innerHeight - margin.top - margin.bottom;
 
-var rectNode = {width: 120, height: 17, textMargin: 5},
+var rectNode = {width: 120, height: 20, textMargin: 5},
     tooltip = {width: 150, height: 40, textMargin: 5};
 var i = 0,
     duration = 750,
