@@ -67,7 +67,7 @@ var baseSvg,
 const toFullScreen = {bool: false}
 function goFullScreen() {
 
-    var elem = document.getElementById('canvas');
+    var elem = document.getElementById('tree-canvas');
 
     if (!document.fullscreenElement) {
         toFullScreen.bool = true;
@@ -202,7 +202,7 @@ function drawTree(jsonData) {
         .attr('width', width)
         .attr('height', height)
         .style("overflow", "scroll")
-        .style("background-color", "#EEEEEE")
+        .style("background-color", "#f4f5f7")
         .append("svg:g")
         .attr("class", "drawarea")
         .append("svg:g")
@@ -758,9 +758,6 @@ window.onresize = function () {
 };
 
 function recreation() {
-    // d3.select('#tree-container').select('svg').remove();
-    var element = document.getElementById('tree-div');
-    element.innerHTML = '<div id="tree-container" style="background: #FFFFFF"></div>';
     width = window.innerWidth * 66 / 100 - margin.right - margin.left;
     height = window.innerHeight - margin.top - margin.bottom;
     tree = '';

@@ -10,28 +10,19 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="/css/generic.css">
 </head>
-
 <body>
-<div id="banner" style="position: fixed; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">
-        <div class="btn-group">
-            <button type="button" class="version-btn dropdown-toggle" data-toggle="dropdown">INT
-                <img class="flag-icon" src="img/menus/int.svg"/>
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" style="min-width:10px !important;" role="menu">
-                <li><a href="./el/">GR <img class="flag-icon" src="img/menus/el.svg"/></a></li>
-            </ul>
-        </div>
-</div>
-<div style="padding-top: 58px;">
-    <redoc spec-url="./openapi/elorus_api_US_v1.1.json?v=2" hide-download-button="true" native-scrollbars="true"
-           scroll-y-offset="58"></redoc>
-</div>
-
-<script type="text/javascript" src="/js/redoc.standalone.js"></script>
-<script type="text/javascript" src="/js/support.js"></script>
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/css/bootstrap.min.css">
+    <div id="top-menu">
+        <span class="region">Select region</span>
+        <select class="version-btn" name="forma" onchange="location = this.value;">
+            <option selected>International</option>
+            <option value="/el/">Greece</option>
+        </select>
+    </div>
+    <div id="contents"></div>
+    <script type="text/javascript" src="/js/redoc.standalone.js"></script>
+    <script type="text/javascript" src="/js/support.js"></script>
+    <script>
+        Redoc.init('/openapi/elorus_api_US_v1.1.json?v=2', {hideDownloadButton: true, nativeScrollbars: true, scrollYOffset: '60', theme: {sidebar: {backgroundColor: '#f4f5f7'}}}, document.getElementById('contents'));
+    </script>
 </body>
 </html>

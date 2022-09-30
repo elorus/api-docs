@@ -5,75 +5,26 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-          content="Complete reference documentation for the Elorus REST API. Includes guidelines and examples to help you interact with the API."/>
+          content="Complete reference documentation for the Elorus REST API (greek version). Includes guidelines and examples to help you interact with the API."/>
     <link rel="canonical" href="https://developer.elorus.com/">
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            background: #263238;
-        }
-
-        .version-btn {
-            padding: 5px 10px;
-            font-family: Roboto, sans-serif;
-            border-radius: 4px;
-            text-decoration: none;
-            background-color: #FFFFFF;
-        }
-
-        .version-btn:hover {
-            background-color: #E7DFDFFF;
-            /*color: #FFFFFF;*/
-        }
-
-        .flag-icon {
-            position: relative;
-            display: inline-block;
-            width: 1.33333333em;
-            line-height: 1em
-        }
-
-        .flag-icon:before {
-            content: "\00a0"
-        }
-
-        .cleanURL, .cleanURL:hover {
-            color: black;
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/generic.css">
 </head>
 <body>
-<div style="position: fixed; z-index: 2; top: 0; padding: 20px; width: 100%; background-color: #263238;">
-        <div class="btn-group" >
-            <button type="button" class="version-btn dropdown-toggle" data-toggle="dropdown">GR
-                <img class="flag-icon" src="/img/menus/el.svg"/>
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" style="min-width:10px !important;" role="menu">
-                <li><a href="../">INT <img class="flag-icon" src="/img/menus/int.svg"/></a></li>
-            </ul>
-            <a href="examples/" class="cleanURL">
-                <button type="button" class="version-btn">API Call Examples</button>
-            </a>
-            <a href="mydata/" class="cleanURL">
-                <button type="button" class="version-btn">myDATA Classifications Mapping</button>
-            </a>
-        </div>
-</div>
-
-    <div style="padding-top: 58px;">
-        <redoc spec-url="/openapi/elorus_api_GR_v1.1.json?v=1" hide-download-button="true" native-scrollbars="true"
-               scroll-y-offset="58"></redoc>
+    <div id="top-menu">
+        <span class="region">Select region</span>
+        <select class="version-btn" name="forma" onchange="location = this.value;">
+            <option value="/">International</option>
+            <option selected>Greece</option>
+        </select>
+        <a class="active" href="/el/">API v1.1</a>
+        <a href="/el/mydata/">myDATA classifications</a>
     </div>
-    <script src="/js/redoc.standalone.js"></script>
-    <script src="/js/support.js"></script>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <div id="contents"></div>
+    <script type="text/javascript" src="/js/redoc.standalone.js"></script>
+    <script type="text/javascript" src="/js/support.js"></script>
+    <script>
+        Redoc.init('/openapi/elorus_api_GR_v1.1.json?v=2', {hideDownloadButton: true, nativeScrollbars: true, scrollYOffset: '60', theme: {sidebar: {backgroundColor: '#f4f5f7'}}}, document.getElementById('contents'));
+    </script>
 </body>
 </html>
