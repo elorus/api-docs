@@ -4,7 +4,6 @@
         "title": "Elorus Native API",
         "version": "1.0",
         "x-logo": {
-            "backgroundColor": "#FFFFFF",
             "url": "https://developer.elorus.com/img/elorus-logo-api.svg"
         }
     },
