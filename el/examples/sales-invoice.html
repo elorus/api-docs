@@ -46,9 +46,7 @@
                         <li><a href="#sales-invoice-2.1">2.1 Get document type ID</a></li>
                         <li><a href="#sales-invoice-3.1">3.1 About taxes</a></li>
                         <li><a href="#sales-invoice-3.2">3.2 Get taxes ID</a></li>
-                        <li><a href="#sales-invoice-4.1">4.1 Create a numbering sequence</a></li>
-                        <li><a href="#sales-invoice-4.2">4.2 Get numbering sequence ID</a></li>
-                        <li><a href="#sales-invoice-5.1">5.1 Create Sales Invoice</a></li>
+                        <li><a href="#sales-invoice-4.1">4.1 Create Sales Invoice</a></li>
                     </ul>
                 </li>
                 <li id="invoice-of-rendered-services-0">
@@ -211,48 +209,7 @@
                     <br>
                     <div class="row">
                         <div id="sales-invoice-4.1">
-                            <h3>4.1 Create a numbering sequence</h3>
-                            Create a numbering sequence so that the "Τιμολόγιο" document type has its own numbering.
-                        </div>
-                        <div class="right-column">
-                            Request
-                            <div class="curl-block">
-                                <code>
-                                    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: Token
-                                    ~Your-API-key~" -H "X-Elorus-Organization:
-                                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/numberingsequence/ -d '{"name":
-                                    "Τιμ-Πώλ", "description": "Sequence for -Τιμολόγιο- document type", "documenttype":
-                                    "2480655983945188366"}'
-                                </code>
-                            </div>
-                        </div>
-                    </div>
-                    <!---->
-                    <br>
-                    <div class="row">
-                        <div id="sales-invoice-4.2">
-                            <h3>4.2 Get numbering sequence ID</h3>
-                            Search by "name", to get the numbering sequence ID. Retrieved numbering sequence ID
-                            in
-                            this case is "2482003990896706681".
-                        </div>
-                        <div class="right-column">
-                            Request
-                            <div class="curl-block">
-                                <code>
-                                    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: Token
-                                    ~Your-API-key~" -H "X-Elorus-Organization:
-                                    ~Your-Organization-ID~"
-                                    https://api.elorus.com/v1.1/numberingsequence/?search="Τιμ-Πώλ"&search_fields=name
-                                </code>
-                            </div>
-                        </div>
-                    </div>
-                    <!---->
-                    <br>
-                    <div class="row">
-                        <div id="sales-invoice-5.1">
-                            <h3>5.1 Create Sales Invoice</h3>
+                            <h3>4.1 Create Sales Invoice</h3>
                             <ol>
                                 <li>X-Elorus-Organization: your organization ID</li>
                                 <li>calculator_mode: sets your values as "initial" or "total", meaning
@@ -281,7 +238,6 @@
                                 <li>documenttype: Document Type ID - In this case we used "Τιμολόγιο"
                                     document type, associated with the corresponding "aade type".
                                 </li>
-                                <li>sequence: Numbering sequence ID</li>
                                 <li>My data specific fields:
                                     mydata_document_type - mydata_classification_category - mydata_classification_type -
                                     paid_on_receipt - payment_method
@@ -324,8 +280,7 @@
                                     "2480655983945188366", "mydata_document_type": "1.1", "items": [{"title": "Διάφορες
                                     υπηρεσίες", "unit_total": "12.4", "quantity": "1", "taxes": ["2476911428611605999"],
                                     "mydata_classification_category": "category1_2", "mydata_classification_type":
-                                    "E3_561_001"}], "paid_on_receipt": "12.4", "payment_method": "3",
-                                    "sequence":"2482003990896706681"}'
+                                    "E3_561_001"}], "paid_on_receipt": "12.4", "payment_method": "3"}'
                                 </code>
                             </div>
                         </div>
