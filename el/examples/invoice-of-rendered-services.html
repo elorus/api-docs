@@ -15,44 +15,46 @@
 <div id="top-menu">
     <span class="region">Select region</span>
     <select class="version-btn" name="forma" onchange="location = this.value;">
-        <option value="/">International</option>
+        <option value="../..">International</option>
         <option selected>Greece</option>
     </select>
-    <a href="/el/">API v1.1</a>
-    <a href="/el/mydata/" >myDATA classifications</a>
-    <a href="/el/examples/" class="active">Examples</a>
+    <a href="../">API v1.1</a>
+    <a href="../mydata" >myDATA classifications</a>
+    <a href="./" class="active">Examples</a>
 </div>
 <br>
 <div class="container top">
     <div class="row">
         <div class="col-md-3">
             <ul class="main-list">
-                <li id="retail-sales-receipt-0">
-                    <a href="./" class="selected-example">
+                    <li id="retail-sales-receipt-0" >
+                    <a href="./">
                         <b>Retail Sales Receipt</b></a>
-                    <ul class="menu-item" id="Retail Sales Receipt">
-                        <li><a href="#retail-sales-receipt-1.1">1.1 Create a new contact</a></li>
-                        <li><a href="#retail-sales-receipt-1.2">1.2 Get contact ID</a></li>
-                        <li><a href="#retail-sales-receipt-2.1">2.1 Create a "Retail Sales Receipt" document type</a>
-                        </li>
-                        <li><a href="#retail-sales-receipt-2.2">2.2 Get document type ID</a></li>
-                        <li><a href="#retail-sales-receipt-3.1">3.1 About taxes</a></li>
-                        <li><a href="#retail-sales-receipt-3.2">3.2 Get taxes ID</a></li>
-                        <li><a href="#retail-sales-receipt-4.1">4.1 Create Retail Sales Receipt</a></li>
-                    </ul>
+                    <ul class="menu-item" id="Retail Sales Receipt"></ul>
                 </li>
                 <li id="service-rendered-receipt-0">
                     <a href="service-rendered-receipt.html">
                         <b>Service Rendered Receipt</b></a>
                     <ul class="menu-item" id="Service Rendered Receipt"></ul>
                 </li>
-                <li id="sales-invoice-0"><a href="sales-invoice.html"><b>Sales Invoice</b></a>
+                <li id="sales-invoice-0">
+                    <a href="sales-invoice.html">
+                        <b>Sales Invoice</b></a>
                     <ul class="menu-item" id="Sales Invoice"></ul>
                 </li>
                 <li id="invoice-of-rendered-services-0">
-                    <a href="invoice-of-rendered-services.html">
+                    <a href="invoice-of-rendered-services.html" class="selected-example">
                         <b>Invoice of rendered services</b></a>
-                    <ul class="menu-item" id="Invoice of rendered services"></ul>
+                    <ul class="menu-item" id="Invoice of rendered services">
+                        <li><a href="#invoice-of-rendered-services-1.1">1.1 Create a new contact</a></li>
+                        <li><a href="#invoice-of-rendered-services-1.2">1.2 Get contact ID</a></li>
+                        <li><a href="#invoice-of-rendered-services-2.1">2.1 Get document type ID</a></li>
+                        <li><a href="#invoice-of-rendered-services-3.1">3.1 About taxes</a></li>
+                        <li><a href="#invoice-of-rendered-services-3.2">3.2 Get taxes ID</a></li>
+                        <li><a href="#invoice-of-rendered-services-4.1">4.1 Create a numbering sequence</a></li>
+                        <li><a href="#invoice-of-rendered-services-4.2">4.2 Get numbering sequence ID</a></li>
+                        <li><a href="#invoice-of-rendered-services-5.1">5.1 Create Invoice of rendered services</a></li>
+                    </ul>
                 </li>
                 <li id="simple-invoice-0">
                     <a href="simple-invoice.html">
@@ -74,7 +76,6 @@
         <div class="col-md-6 central-col">
             <div class="row">
                 <div class="container" style="width: 100%;">
-                    <!---->
                     <div class="row">
                         <u><b>Make sure myDATA and Softone integrations are activated in your Elorus account
                             before using the guide bellow.</b></u>
@@ -98,24 +99,23 @@
                     <!---->
                     <br>
                     <!--         INSERT ARTICLE BELLOW THIS LINE           -->
-                    <div class="row" id="retail-sales-receipt-1">
-                        <h2>Create a "Retail Sales Receipt"</h2>
-                        <div id="retail-sales-receipt-1.1">
+                    <div class="row" id="invoice-of-rendered-services-1">
+                        <h2>Create an "Invoice of rendered services"</h2>
+                        <div id="invoice-of-rendered-services-1.1">
                             <h3>1.1 Create a new contact</h3>
-                            First lets create a contact so there is someone to bill. Since the case is a
-                            "Retail Sales
-                            Receipt" no VAT
-                            number is needed and only minimal contact information will be used.<br>
+                            First lets create a contact so there is someone to bill.<br>
                         </div>
                         <div class="right-column"><br>
                             Request
                             <div class="curl-block">
                                 <code>
-                                    $ curl -X POST -H "Content-Type: application/json" -H "Authorization:
-                                    Token
-                                    ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
-                                    https://api.elorus.com/v1.1/contacts/ -d '{"client_type": "4", "first_name":
-                                    "Πελάτης", "last_name":"Λιανικής", "is_client": true, "is_supplier":false}'
+                                    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization:
+                                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/ -d '{"client_type":
+                                    "1",
+                                    "company":"Elorus BC", "vat_number":"9876543210",
+                                    "addresses":[{"address":"Theofilopoulou 13", "city":"Athens", "zip":"11743",
+                                    "country": "GR", "ad_type": "bill"}], "is_client": true, "is_supplier":false}'
                                 </code>
                             </div>
                         </div>
@@ -123,20 +123,18 @@
                     <!---->
                     <br>
                     <div class="row">
-                        <div id="retail-sales-receipt-1.2">
+                        <div id="invoice-of-rendered-services-1.2">
                             <h3>1.2 Get contact ID</h3>
-                            Search e.g. by "first_name" & "last_name", to get the contact ID. Retrieved contact ID in
-                            this case is "2476845216061982422".
+                            Filter e.g. by "company", to get the contact ID.
+                            Retrieved contact ID in this case is "2482013152640763215".
                         </div>
                         <div class="right-column"><br>
                             Request
                             <div class="curl-block">
                                 <code>
-                                    $ curl -X GET -H "Content-Type: application/json" -H "Authorization:
-                                    Token
-                                    ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
-                                    https://api.elorus.com/v1.1/contacts/?search="Πελάτης
-                                    Λιανικής"&search_fields=first_name,last_name
+                                    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization:
+                                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/?company="Elorus BC"
                                 </code>
                             </div>
                         </div>
@@ -144,50 +142,24 @@
                     <!---->
                     <br>
                     <div class="row">
-                        <div id="retail-sales-receipt-2.1">
-                            <h3>2.1 Create a "Retail Sales Receipt" document type</h3>
-                            In this case, a "Retail Sales Receipt" document type will be needed. There is no
-                            "Retail Sales
-                            Receipt"
-                            document type pre-created and API does not support document type creation. So in
-                            order to create
-                            it, use of
-                            Elorus' UI is mandatory.
-                            <ol>
-                                <li>Login to your Elorus account</li>
-                                <li>Go to: "Settings -> Document Types"</li>
-                                <li>Click "+Add" on top right corner</li>
-                                <li><img src="/img/examples/common/add.png"></li>
-                                <li>And set it up as the picture bellow. Title used is for example purposes,
-                                    the field can
-                                    take any
-                                    name.
-                                </li>
-                                <li><img src="/img/examples/retail-sales-receipt.png"></li>
-                                <li>Click "Save"</li>
-                                <li><img src="/img/examples/common/save.png"></li>
-                            </ol>
-                        </div>
-                        <div class="right-column"><br>
-                        </div>
-                    </div>
-                    <!---->
-                    <br>
-                    <div class="row">
-                        <div id="retail-sales-receipt-2.2">
-                            <h3>2.2 Get document type ID</h3>
-                            Search by "title", to get the document type ID.
-                            Retrieved document type ID in this case is "2476894925484984004".
+                        <div id="invoice-of-rendered-services-2.1">
+                            <h3>2.1 Get document type ID</h3>
+                            In this case, an "Invoice of rendered services" document type will be needed. There is an
+                            "Invoice of rendered services"
+                            document type pre-created. <br>Default title is "Τιμολόγιο παροχής υπηρεσιών". Search by
+                            "title", to get the
+                            document type ID. Retrieved document type ID in
+                            this case is "2482015687594214605".<br>In case the title is changed or the document type is
+                            missing, use the Elorus UI to create a new one.
                         </div>
                         <div class="right-column"><br>
                             Request
                             <div class="curl-block">
                                 <code>
-                                    $ curl -X GET -H "Content-Type: application/json" -H "Authorization:
-                                    Token
-                                    ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
-                                    https://api.elorus.com/v1.1/documenttypes/?search="ΑΠΟΔΕΙΞΗ ΛΙΑΝΙΚΗΣ
-                                    ΠΩΛΗΣΗΣ"&search_fields=title
+                                    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization:
+                                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/documenttypes/?search="Τιμολόγιο
+                                    παροχής υπηρεσιών"&search_fields=title
                                 </code>
                             </div>
                         </div>
@@ -195,16 +167,12 @@
                     <!---->
                     <br>
                     <div class="row">
-                        <div id="retail-sales-receipt-3.1">
+                        <div id="invoice-of-rendered-services-3.1">
                             <h3>3.1 About taxes</h3>
                             By default there are some taxes preset in Elorus. Usually 24% tax is used for
-                            Greece "Retail
-                            Sales Receipt"
-                            so the preset tax will be retrieved and used. In case there is a need for a new
-                            tax to be
-                            created, use of
-                            Elorus' UI is mandatory. <br>
-                            Optional steps to create new tax:
+                            Greece "Invoice of rendered services" so the preset tax will be retrieved and used. In case
+                            there is a need for a new tax to be created, use of Elorus' UI is mandatory. <br>Optional
+                            steps to create new tax:
                             <ol>
                                 <li>Login to your Elorus account</li>
                                 <li>Go to: "Settings -> Taxes"</li>
@@ -225,7 +193,7 @@
                     <!---->
                     <br>
                     <div class="row">
-                        <div id="retail-sales-receipt-3.2">
+                        <div id="invoice-of-rendered-services-3.2">
                             <h3>3.2 Get taxes ID</h3>
                             Search by "percentage", to get the tax ID. Retrieved tax ID in
                             this case is "2476911428611605999". Make sure that "aade_type":1 is in the response packet.
@@ -245,8 +213,50 @@
                     <!---->
                     <br>
                     <div class="row">
-                        <div id="retail-sales-receipt-4.1">
-                            <h3>4.1 Create Retail Sales Receipt</h3>
+                        <div id="invoice-of-rendered-services-4.1">
+                            <h3>4.1 Create a numbering sequence</h3>
+                            Create a numbering sequence so that the "Τιμολόγιο παροχής υπηρεσιών" document type has its
+                            own numbering.
+                        </div>
+                        <div class="right-column"><br>
+                            Request
+                            <div class="curl-block">
+                                <code>
+                                    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization:
+                                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/numberingsequence/ -d '{"name":
+                                    "Τιμ-Παρ-Υπ", "description": "Sequence for -Τιμολόγιο παροχής υπηρεσιών- document
+                                    type", "documenttype": "2482015687594214605"}'
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <br>
+                    <div class="row">
+                        <div id="invoice-of-rendered-services-4.2">
+                            <h3>4.2 Get numbering sequence ID</h3>
+                            Search by "name", to get the numbering sequence ID. Retrieved numbering sequence ID
+                            in
+                            this case is "2482017341844489338".
+                        </div>
+                        <div class="right-column"><br>
+                            Request
+                            <div class="curl-block">
+                                <code>
+                                    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization:
+                                    ~Your-Organization-ID~"
+                                    https://api.elorus.com/v1.1/numberingsequence/?search="Τιμ-Παρ-Υπ"&search_fields=name
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <br>
+                    <div class="row">
+                        <div id="invoice-of-rendered-services-5.1">
+                            <h3>5.1 Create Invoice of rendered services</h3>
                             <ol>
                                 <li>X-Elorus-Organization: your organization ID</li>
                                 <li>calculator_mode: sets your values as "initial" or "total", meaning
@@ -264,7 +274,7 @@
                                         </li>
                                     </ol>
                                 </li>
-                                <li>client: Client id - In this case we created a "ΠΕΛΑΤΗΣ ΛΙΑΝΙΚΗΣ"
+                                <li>client: Client id - In this case we created "Elorus BC"
                                     contact.
                                 </li>
                                 <li>draft: true or false depending on the need to issue immediately an
@@ -272,11 +282,10 @@
                                     true, the
                                     invoice will not reach MyData/Softone, until issued.
                                 </li>
-                                <li>documenttype: Document Type ID - In this case we created a "ΑΠΟΔΕΙΞΗ
-                                    ΛΙΑΝΙΚΗΣ ΠΩΛΗΣΗΣ"
-                                    document
-                                    type, associated with the corresponding "aade type".
+                                <li>documenttype: Document Type ID - In this case we used "Τιμολόγιο παροχής υπηρεσιών"
+                                    document type, associated with the corresponding "aade type".
                                 </li>
+                                <li>sequence: Numbering sequence ID</li>
                                 <li>My data specific fields:
                                     mydata_document_type - mydata_classification_category - mydata_classification_type -
                                     paid_on_receipt - payment_method
@@ -310,29 +319,23 @@
                             Request
                             <div class="curl-block">
                                 <code>
-                                    $ curl -X POST -H "Content-Type: application/json" -H "Authorization:
-                                    Token
-                                    ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
-                                    https://api.elorus.com/v1.1/invoices/ -d '{"calculator_mode": "total",
-                                    "currency_code":
-                                    "EUR",
-                                    "exchange_rate": "1.000000", "client": "2476845216061982422", "date":
-                                    "2022-5-11",
-                                    "draft": true,
-                                    "documenttype": "2476894925484984004", "mydata_document_type": "11.1",
-                                    "items":
-                                    [{"title":
-                                    "Διάφορα", "unit_total": "12.4", "quantity": "1", "taxes":
-                                    ["2476911428611605999"],
-                                    "mydata_classification_category": "category1_2",
-                                    "mydata_classification_type":
-                                    "E3_561_003"}],
-                                    "paid_on_receipt": "12.4", "payment_method": "3"}'
+                                    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: Token
+                                    ~Your-API-key~" -H "X-Elorus-Organization:
+                                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/invoices/ -d
+                                    '{"calculator_mode":
+                                    "total", "currency_code": "EUR", "exchange_rate": "1.000000", "client":
+                                    "2482013152640763215", "date": "2022-5-18", "draft": true, "documenttype":
+                                    "2482015687594214605", "mydata_document_type": "2.1", "items": [{"title": "Διάφορες
+                                    υπηρεσίες", "unit_total": "12.4", "quantity": "1", "taxes": ["2476911428611605999"],
+                                    "mydata_classification_category": "category1_3", "mydata_classification_type":
+                                    "E3_561_001"}], "paid_on_receipt": "12.4", "payment_method": "3",
+                                    "sequence":"2482017341844489338"}'
                                 </code>
                             </div>
                         </div>
                     </div>
                     <!--         INSERT ARTICLE ABOVE THIS LINE           -->
+
                 </div>
             </div>
         </div>
