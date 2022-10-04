@@ -92,3 +92,19 @@ img {
 #myBtn:hover {
     background-color: rgb(192 111 140);
 }
+
+.selected-example {
+    color: #FFFFFF !important;
+    background-color: #263238;
+}
+
+.central-col {
+    margin-right: 15px;
+    margin-left: 15px;
+    padding-top: 10px
+}
+
+.top {
+    width: 100% !important;
+    padding-top: 60px
+}
