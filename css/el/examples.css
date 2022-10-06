@@ -14,6 +14,8 @@
 .dark-page-break {
     height: 1em;
     background-color: #263238;
+    width: 100%;
+    margin: 0 !important;
 }
 
 .main-list {
@@ -109,7 +111,7 @@ img {
 }
 
 .col-md-6 {
-    margin-left: 4rem;
+    margin-left: 2rem;
 }
 
 .col-md-3 {
