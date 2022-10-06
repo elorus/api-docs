@@ -45,40 +45,36 @@ var margin = {
 var width = window.innerWidth * 66 / 100 - margin.right - margin.left;
 var height = window.innerHeight - margin.top - margin.bottom;
 
-var rectNode = {width: 120, height: 20, textMargin: 5},
-    tooltip = {width: 150, height: 40, textMargin: 5};
+var rectNode = {width: 120, height: 20, textMargin: 5}
 var i = 0,
     duration = 750,
     root;
 
 var mousedown; // Use to save temporarily 'mousedown.zoom' value
-var mouseWheel,
-    mouseWheelName,
-    isKeydownZoom = false;
+
 var tree;
 var baseSvg,
     svgGroup,
     nodeGroup, // If nodes are not grouped together, after a click the svg node will be set after his corresponding tooltip and will hide it
-    nodeGroupTooltip,
     linkGroup,
-    linkGroupToolTip,
     defs;
 
 const toFullScreen = {bool: false}
+
 function goFullScreen() {
 
     var elem = document.getElementById('tree-canvas');
 
     if (!document.fullscreenElement) {
         toFullScreen.bool = true;
-        elem.requestFullscreen({ navigationUI: "show" }).then(() => {}).catch(err => {
+        elem.requestFullscreen({navigationUI: "show"}).then(() => {
+        }).catch(err => {
             alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
         });
     } else {
         document.exitFullscreen();
         toFullScreen.bool = false;
     }
-    // console.log(toFullScreen.bool);
 }
 
 function zoomButtons(type) {
@@ -154,9 +150,9 @@ function init(urlService, jsonData) {
 }
 
 function drawTree(jsonData) {
-    if (toFullScreen.bool){
+    if (toFullScreen.bool) {
         height = window.innerHeight;
-    }else{
+    } else {
         height = window.innerHeight - margin.top - margin.bottom;
     }
     tree = d3.layout.tree().size([height, width]);
@@ -184,10 +180,7 @@ function drawTree(jsonData) {
                 node.color = grey;
         });
     });
-    // height = maxTreeWidth * (rectNode.height + 20) + tooltip.height + 20 - margin.right - margin.left;
-    // width = maxDepth * (rectNode.width * 1.5) + tooltip.width / 2 - margin.top - margin.bottom;
 
-    // tree = d3.layout.tree().size([height, width]);
     root.x0 = height / 2;
     root.y0 = 0;
 
@@ -228,10 +221,6 @@ function drawTree(jsonData) {
         .attr('id', 'nodes');
     linkGroup = svgGroup.append('g')
         .attr('id', 'links');
-    // linkGroupToolTip = svgGroup.append('g')
-    //     .attr('id', 'linksTooltips');
-    // nodeGroupTooltip = svgGroup.append('g')
-    //     .attr('id', 'nodesTooltips');
 
     defs = baseSvg.append('defs');
     initArrowDef();
@@ -281,9 +270,6 @@ function update(source) {
     var node = nodeGroup.selectAll('g.node').data(nodes, function (d) {
         return d.id || (d.id = ++i);
     });
-    // var nodesTooltip = nodeGroupTooltip.selectAll('g').data(nodes, function (d) {
-    //     return d.id || (d.id = ++i);
-    // });
 
     // Enter any new nodes at the parent's previous position
     // We use "insert" rather than "append", so when a new child node is added (after a click)
@@ -298,10 +284,6 @@ function update(source) {
         .on('click', function (d) {
             click(d);
         });
-    // var nodeEnterTooltip = nodesTooltip.enter().append('g')
-    //     .attr('transform', function (d) {
-    //         return 'translate(' + source.y0 + ',' + source.x0 + ')';
-    //     });
 
     nodeEnter.append('g').append('rect')
         .attr('rx', 6)
@@ -328,14 +310,6 @@ function update(source) {
                 : (rectNode.height - rectNode.textMargin * 2)
         })
         .append('xhtml').html(function (d) {
-        // return '<div style="width: '
-        //     + (rectNode.width - rectNode.textMargin * 2) + 'px; height: '
-        //     + (rectNode.height - rectNode.textMargin * 2) + 'px;" class="node-text wordwrap">'
-        //     + '<b>' + d.nodeName + '</b><br><br>'
-        //     + '<b>Code: </b>' + d.code + '<br>'
-        //     + '<b>Version: </b>' + d.version + '<br>'
-        //     + '</div>';
-
         return '<div class="node-text wordwrap">'
             + '<b>' + d.name + '</b>'
             + '</div>';
@@ -349,57 +323,11 @@ function update(source) {
             $('#nodeInfoTextID' + d.id).css('visibility', 'hidden');
         });
 
-    // nodeEnterTooltip.append("rect")
-    //     .attr('id', function (d) {
-    //         return 'nodeInfoID' + d.id;
-    //     })
-    //     .attr('x', rectNode.width / 2)
-    //     .attr('y', rectNode.height / 2)
-    //     .attr('width', tooltip.width)
-    //     .attr('height', tooltip.height)
-    //     .attr('class', 'tooltip-box')
-    //     .style('fill-opacity', 0.8)
-    //     .on('mouseover', function (d) {
-    //         $('#nodeInfoID' + d.id).css('visibility', 'visible');
-    //         $('#nodeInfoTextID' + d.id).css('visibility', 'visible');
-    //         removeMouseEvents();
-    //     })
-    //     .on('mouseout', function (d) {
-    //         $('#nodeInfoID' + d.id).css('visibility', 'hidden');
-    //         $('#nodeInfoTextID' + d.id).css('visibility', 'hidden');
-    //         reactivateMouseEvents();
-    //     });
-    //
-    // nodeEnterTooltip.append("text")
-    //     .attr('id', function (d) {
-    //         return 'nodeInfoTextID' + d.id;
-    //     })
-    //     .attr('x', rectNode.width / 2 + tooltip.textMargin)
-    //     .attr('y', rectNode.height / 2 + tooltip.textMargin * 2)
-    //     .attr('width', tooltip.width)
-    //     .attr('height', tooltip.height)
-    //     .attr('class', 'tooltip-text')
-    //     .style('fill', 'white')
-    //     // .append("tspan")
-    //     // .text(function (d) {
-    //     //     return 'Name: ' + d.name;
-    //     // })
-    //     .append("tspan")
-    //     .attr('x', rectNode.width / 2 + tooltip.textMargin)
-    //     .attr('dy', '1.5em')
-    //     .text(function (d) {
-    //         return 'Info: ' + d.label;
-    //     });
-
     // Transition nodes to their new position.
     var nodeUpdate = node.transition().duration(duration)
         .attr('transform', function (d) {
             return 'translate(' + d.y + ',' + d.x + ')';
         });
-    // nodesTooltip.transition().duration(duration)
-    //     .attr('transform', function (d) {
-    //         return 'translate(' + d.y + ',' + d.x + ')';
-    //     });
 
     nodeUpdate.select('rect')
         .attr('class', function (d) {
@@ -414,29 +342,13 @@ function update(source) {
             return 'translate(' + source.y + ',' + source.x + ')';
         })
         .remove();
-    // nodesTooltip.exit().transition().duration(duration)
-    //     .attr('transform', function (d) {
-    //         return 'translate(' + source.y + ',' + source.x + ')';
-    //     })
-    //     .remove();
 
     nodeExit.select('text').style('fill-opacity', 1e-6);
-
 
     // 2) ******************* Update the links *******************
     var link = linkGroup.selectAll('path').data(links, function (d) {
         return d.target.id;
     });
-    // var linkTooltip = linkGroupToolTip.selectAll('g').data(links, function (d) {
-    //     return d.target.id;
-    // });
-
-    // function linkMarkerStart(direction, isSelected) {
-    //     if (direction == 'SYNC') {
-    //         return isSelected ? 'url(#start-arrow-selected)' : 'url(#start-arrow)';
-    //     }
-    //     return '';
-    // }
 
     function linkType(link) {
         if (link.direction == 'SYNC')
@@ -454,7 +366,6 @@ function update(source) {
         });
     };
 
-    // Enter any new links at the parent's previous position.
     // Enter any new links at the parent's previous position.
     var linkenter = link.enter().insert('path', 'g')
         .attr('class', 'link')
@@ -488,83 +399,15 @@ function update(source) {
             $('#tooltipLinkTextID' + d.target.id).css('visibility', 'hidden');
         });
 
-    // linkTooltip.enter().append('rect')
-    //     .attr('id', function (d) {
-    //         return 'tooltipLinkID' + d.target.id;
-    //     })
-    //     .attr('class', 'tooltip-box')
-    //     .style('fill-opacity', 0.8)
-    //     .attr('x', function (d) {
-    //         return (d.target.y + rectNode.width - d.source.y) / 2 + d.source.y;
-    //     })
-    //     .attr('y', function (d) {
-    //         return (d.target.x - d.source.x) / 2 + d.source.x;
-    //     })
-    //     .attr('width', tooltip.width)
-    //     .attr('height', tooltip.height)
-    //     .on('mouseover', function (d) {
-    //         $('#tooltipLinkID' + d.target.id).css('visibility', 'visible');
-    //         $('#tooltipLinkTextID' + d.target.id).css('visibility', 'visible');
-    //         // After selected a link, the cursor can be hover the tooltip, that's why we still need to highlight the link and the arrow
-    //         $('#linkID' + d.target.id).attr('class', 'linkselected');
-    //         $('#linkID' + d.target.id).attr('marker-end', 'url(#end-arrow-selected)');
-    //         $('#linkID' + d.target.id).attr('marker-start', linkMarkerStart(d.target.link.direction, true));
-    //
-    //         removeMouseEvents();
-    //     })
-    //     .on('mouseout', function (d) {
-    //         $('#tooltipLinkID' + d.target.id).css('visibility', 'hidden');
-    //         $('#tooltipLinkTextID' + d.target.id).css('visibility', 'hidden');
-    //         $('#linkID' + d.target.id).attr('class', 'link');
-    //         $('#linkID' + d.target.id).attr('marker-end', 'url(#end-arrow)');
-    //         $('#linkID' + d.target.id).attr('marker-start', linkMarkerStart(d.target.link.direction, false));
-    //
-    //         reactivateMouseEvents();
-    //     });
-    //
-    // linkTooltip.enter().append('text')
-    //     .attr('id', function (d) {
-    //         return 'tooltipLinkTextID' + d.target.id;
-    //     })
-    //     .attr('class', 'tooltip-text')
-    //     .attr('x', function (d) {
-    //         return (d.target.y + rectNode.width - d.source.y) / 2 + d.source.y + tooltip.textMargin;
-    //     })
-    //     .attr('y', function (d) {
-    //         return (d.target.x - d.source.x) / 2 + d.source.x + tooltip.textMargin * 2;
-    //     })
-    //     .attr('width', tooltip.width)
-    //     .attr('height', tooltip.height)
-    //     .style('fill', 'white')
-    //     .append("tspan")
-    //     .text(function (d) {
-    //         return linkType(d.target.link);
-    //     })
-    //     .append("tspan")
-    //     .attr('x', function (d) {
-    //         return (d.target.y + rectNode.width - d.source.y) / 2 + d.source.y + tooltip.textMargin;
-    //     })
-    //     .attr('dy', '1.5em')
-    //     .text(function (d) {
-    //         return d.target.link.name;
-    //     });
-
     // Transition links to their new position.
     var linkUpdate = link.transition().duration(duration)
         .attr('d', function (d) {
             return diagonal(d);
         });
-    // linkTooltip.transition().duration(duration)
-    //     .attr('d', function (d) {
-    //         return diagonal(d);
-    //     });
 
     // Transition exiting nodes to the parent's new position.
     link.exit().transition()
         .remove();
-
-    // linkTooltip.exit().transition()
-    //     .remove();
 
     // Stash the old positions for transition.
     nodes.forEach(function (d) {
@@ -758,19 +601,12 @@ window.onresize = function () {
 };
 
 function recreation() {
-    width = window.innerWidth * 66 / 100 - margin.right - margin.left;
+    if (window.innerWidth >= 1200){
+        width = window.innerWidth * 66 / 100 - margin.right - margin.left;
+    } else {
+        width = window.innerWidth - margin.right - margin.left;
+    }
     height = window.innerHeight - margin.top - margin.bottom;
-    tree = '';
+    $("#tree-container").empty();
     init('', root);
 }
-
-// function removeMouseEvents() {
-//     // Drag and zoom behaviors are temporarily disabled, so tooltip text can be selected
-//     mousedown = d3.select('#tree-container').select('svg').on('mousedown.zoom');
-//     d3.select('#tree-container').select('svg').on("mousedown.zoom", null);
-// }
-//
-// function reactivateMouseEvents() {
-//     // Reactivate the drag and zoom behaviors
-//     d3.select('#tree-container').select('svg').on('mousedown.zoom', mousedown);
-// }
