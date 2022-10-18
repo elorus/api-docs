@@ -25,52 +25,7 @@
 <br>
 <div class="container top">
     <div class="row">
-        <div class="col-md-3">
-            <ul class="main-list">
-                <li>
-                    <a href="./">
-                        <b>Retail Sales Receipt</b></a>
-                    <ul class="menu-item" id="Retail Sales Receipt"></ul>
-                </li>
-                <li>
-                    <a href="service-rendered-receipt.html">
-                        <b>Service Rendered Receipt</b></a>
-                    <ul class="menu-item" id="Service Rendered Receipt"></ul>
-                </li>
-                <li>
-                    <a href="sales-invoice.html">
-                        <b>Sales Invoice</b></a>
-                    <ul class="menu-item" id="Sales Invoice"></ul>
-                </li>
-                <li>
-                    <a href="invoice-of-rendered-services.html" class="selected-example">
-                        <b>Invoice of rendered services</b></a>
-                    <ul class="menu-item" id="Invoice of rendered services">
-                        <li><a href="#invoice-of-rendered-services-1.1">1.1 Create a new contact</a></li>
-                        <li><a href="#invoice-of-rendered-services-1.2">1.2 Get contact ID</a></li>
-                        <li><a href="#invoice-of-rendered-services-2.1">2.1 Get document type ID</a></li>
-                        <li><a href="#invoice-of-rendered-services-3.1">3.1 About taxes</a></li>
-                        <li><a href="#invoice-of-rendered-services-3.2">3.2 Get taxes ID</a></li>
-                        <li><a href="#invoice-of-rendered-services-4.1">4.1 Create Invoice of rendered services</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="simple-invoice.html">
-                        <b>Simple invoice - Without myDATA</b></a>
-                    <ul class="menu-item" id="Simple invoice"></ul>
-                </li>
-                <li>
-                    <a href="credit-invoice.html">
-                        <b>Credit Invoice</b></a>
-                    <ul class="menu-item" id="Credit Invoice"></ul>
-                </li>
-                <li>
-                    <a href="retail-sales-credit-note.html">
-                        <b>Retail Sales Credit Note</b></a>
-                    <ul class="menu-item" id="Retail Sales Credit Note"></ul>
-                </li>
-            </ul>
-        </div>
+        <div class="col-md-3" id="my-menu"></div>
         <div class="col-md-6 central-col">
             <div class="container" style="width: 100%;">
                 <u><b>Make sure myDATA and Softone integrations are activated in your Elorus account
@@ -282,11 +237,17 @@
 </div>
 
 <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="/img/menus/up-arrow.svg"></button>
+<script>
+    window.onload = function () {
+        addMenuHTML("invoice_of_rendered_services");
+    };
+</script>
 
 <script type="text/javascript" src="/js/redoc.standalone.js"></script>
 <script type="text/javascript" src="/js/support.js"></script>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/examples.js"></script>
+<script type="text/javascript" src="/js/examples-menu.js"></script>
 
 </body>
 </html>

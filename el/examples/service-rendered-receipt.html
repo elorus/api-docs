@@ -25,53 +25,7 @@
 <br>
 <div class="container top">
     <div class="row">
-        <div class="col-md-3">
-            <!--            -->
-            <a style="margin-left: 8px">Invoices</a><hr>
-            <ul class="main-list">
-                <li id="sales-invoice-0">
-                    <a href="sales-invoice.html">
-                        <b>Sales Invoice</b></a>
-                </li>
-                <li id="invoice-of-rendered-services-0">
-                    <a href="invoice-of-rendered-services.html">
-                        <b>Invoice of rendered services</b></a>
-                </li>
-                <li id="simple-invoice-0">
-                    <a href="simple-invoice.html">
-                        <b>Simple invoice - Without myDATA</b></a>
-                </li>
-                <li id="credit-invoice-0">
-                    <a href="credit-invoice.html">
-                        <b>Credit Invoice</b></a>
-                </li>
-                <li id="retail-sales-credit-note-0">
-                    <a href="retail-sales-credit-note.html">
-                        <b>Retail Sales Credit Note</b></a>
-                </li>
-            </ul>
-            <!--            -->
-            <a style="margin-left: 8px">Receipts</a><hr>
-            <ul class="main-list">
-                <li id="retail-sales-receipt-0">
-                    <a href="./">
-                        <b>Retail Sales Receipt</b></a>
-                </li>
-                <li id="service-rendered-receipt-0">
-                    <a href="service-rendered-receipt.html"  class="selected-example">
-                        <b>Service Rendered Receipt</b></a>
-                    <ul class="menu-item" id="Service Rendered Receipt">
-                        <li><a href="#service-rendered-receipt-1.1">1.1 Create a new contact</a></li>
-                        <li><a href="#service-rendered-receipt-1.2">1.2 Get contact ID</a></li>
-                        <li><a href="#service-rendered-receipt-2.1">2.1 Get document type ID</a></li>
-                        <li><a href="#service-rendered-receipt-3.1">3.1 About taxes</a></li>
-                        <li><a href="#service-rendered-receipt-3.2">3.2 Get taxes ID</a></li>
-                        <li><a href="#service-rendered-receipt-4.1">4.1 Create Service Rendered Receipt</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!--            -->
-        </div>
+        <div class="col-md-3" id="my-menu"></div>
         <div class="col-md-6 central-col">
             <div class="container" style="width: 100%;">
                 <u><b>Make sure myDATA and Softone integrations are activated in your Elorus account
@@ -284,11 +238,17 @@
 </div>
 <div class="row dark-page-break"></div>
 <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="/img/menus/up-arrow.svg"></button>
+<script>
+    window.onload = function () {
+        addMenuHTML("service_rendered_receipt");
+    };
+</script>
 
 <script type="text/javascript" src="/js/redoc.standalone.js"></script>
 <script type="text/javascript" src="/js/support.js"></script>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/examples.js"></script>
+<script type="text/javascript" src="/js/examples-menu.js"></script>
 
 </body>
 </html>
