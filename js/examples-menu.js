@@ -18,7 +18,7 @@ var myHTMLmenu = '<a class="menu-header">Invoices</a>'+
 '    </li>'+
 '    <li id="simple-invoice-0">'+
 '        <a href="simple-invoice.html">'+
-'            Simple invoice - Without myDATA</a>'+
+'            Simple invoice</a>'+
 '    </li>'+
 '</ul>'+
 '<!--            -->'+
@@ -36,8 +36,10 @@ var myHTMLmenu = '<a class="menu-header">Invoices</a>'+
 
 var sales_invoice =
     '<a href="./" class="selected-example">'+
-    '    Sales Invoice</a>'+
-    '<ul class="menu-item" id="Sales Invoice">'+
+    '    Sales Invoice</a>';
+var sales_invoice_anchors =
+    '<a class="menu-header">Steps</a>'+
+    '<ul class="main-list" id="Sales Invoice">'+
     '    <li><a href="#sales-invoice-1.1">1.1 Create a new contact</a></li>'+
     '    <li><a href="#sales-invoice-1.2">1.2 Get contact ID</a></li>'+
     '    <li><a href="#sales-invoice-2.1">2.1 Get document type ID</a></li>'+
@@ -48,8 +50,10 @@ var sales_invoice =
 
 var invoice_of_rendered_services =
     '<a href="invoice-of-rendered-services.html" class="selected-example">'+
-    '    Invoice of rendered services</a>'+
-    '<ul class="menu-item" id="Invoice of rendered services">'+
+    '    Invoice of rendered services</a>';
+var invoice_of_rendered_services_anchors =
+    '<a class="menu-header">Steps</a>'+
+    '<ul class="main-list" id="Invoice of rendered services">'+
     '    <li><a href="#invoice-of-rendered-services-1.1">1.1 Create a new contact</a></li>'+
     '    <li><a href="#invoice-of-rendered-services-1.2">1.2 Get contact ID</a></li>'+
     '    <li><a href="#invoice-of-rendered-services-2.1">2.1 Get document type ID</a></li>'+
@@ -60,8 +64,10 @@ var invoice_of_rendered_services =
 
 var credit_invoice =
     '<a href="credit-invoice.html" class="selected-example">'+
-    '    Credit Invoice</a>'+
-    '<ul class="menu-item" id="Credit Invoice">'+
+    '    Credit Invoice</a>';
+var credit_invoice_anchors =
+    '<a class="menu-header">Steps</a>'+
+    '<ul class="main-list" id="Credit Invoice">'+
     '    <li><a href="#credit-invoice-1.1">1.1 Create a new contact</a></li>'+
     '    <li><a href="#credit-invoice-1.2">1.2 Get contact ID</a></li>'+
     '    <li><a href="#credit-invoice-2.1">2.1 Get document type ID</a></li>'+
@@ -72,8 +78,10 @@ var credit_invoice =
 
 var retail_sales_credit_note =
     '<a href="retail-sales-credit-note.html" class="selected-example">'+
-    '    Retail Sales Credit Note</a>'+
-    '<ul class="menu-item" id="Retail Sales Credit Note">'+
+    '    Retail Sales Credit Note</a>';
+var retail_sales_credit_note_anchors =
+    '<a class="menu-header">Steps</a>'+
+    '<ul class="main-list" id="Retail Sales Credit Note">'+
     '    <li><a href="#retail-sales-credit-note-1.1">1.1 Create a new contact</a></li>'+
     '    <li><a href="#retail-sales-credit-note-1.2">1.2 Get contact ID</a></li>'+
     '    <li><a href="#retail-sales-credit-note-2.1">2.1 Get document type ID</a></li>'+
@@ -84,8 +92,10 @@ var retail_sales_credit_note =
 
 var simple_invoice =
     '<a href="simple-invoice.html" class="selected-example">'+
-    '    Simple invoice - Without myDATA</a>'+
-    '<ul class="menu-item" id="Simple invoice">'+
+    '    Simple invoice</a>';
+var simple_invoice_anchors =
+    '<a class="menu-header">Steps</a>'+
+    '<ul class="main-list" id="Simple invoice">'+
     '    <li><a href="#simple-invoice-1.1">1.1 Create a new contact</a></li>'+
     '    <li><a href="#simple-invoice-1.2">1.2 Get contact ID</a></li>'+
     '    <li><a href="#simple-invoice-2.1">2.1 Create an "Invoice" document type</a></li>'+
@@ -97,8 +107,10 @@ var simple_invoice =
 
 var retail_sales_receipt =
     '<a href="retail-sales-receipt.html" class="selected-example">'+
-    '    Retail Sales Receipt</a>'+
-    '<ul class="menu-item" id="Retail Sales Receipt">'+
+    '    Retail Sales Receipt</a>';
+var retail_sales_receipt_anchors =
+    '<a class="menu-header">Steps</a>'+
+    '<ul class="main-list" id="Retail Sales Receipt">'+
     '    <li><a href="#retail-sales-receipt-1.1">1.1 Create a new contact</a></li>'+
     '    <li><a href="#retail-sales-receipt-1.2">1.2 Get contact ID</a></li>'+
     '    <li><a href="#retail-sales-receipt-2.1">2.1 Create a "Retail Sales Receipt" document type</a>'+
@@ -111,8 +123,10 @@ var retail_sales_receipt =
 
 var service_rendered_receipt =
     '<a href="service-rendered-receipt.html"  class="selected-example">'+
-    '    Service Rendered Receipt</a>'+
-    '<ul class="menu-item" id="Service Rendered Receipt">'+
+    '    Service Rendered Receipt</a>';
+var service_rendered_receipt_anchors =
+    '<a class="menu-header">Steps</a>'+
+    '<ul class="main-list" id="Service Rendered Receipt">'+
     '    <li><a href="#service-rendered-receipt-1.1">1.1 Create a new contact</a></li>'+
     '    <li><a href="#service-rendered-receipt-1.2">1.2 Get contact ID</a></li>'+
     '    <li><a href="#service-rendered-receipt-2.1">2.1 Get document type ID</a></li>'+
