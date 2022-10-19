@@ -48,34 +48,33 @@
         <!---->
         <br>
         <!--         INSERT ARTICLE BELLOW THIS LINE           -->
-        <div id="credit-invoice-1">
-            <h2>Create a "Credit Invoice" - Associated</h2>
-            <div id="credit-invoice-1.1">
-                <h3>1.1 Create a new contact</h3>
-                First lets create a contact so there is someone to bill.
-            </div>
-            <div class="curl-title">
-                Request
-                <div class="curl-block">
-                    <code>
-                        $ curl -X POST -H "Content-Type: application/json" -H "Authorization: Token
-                        ~Your-API-key~" -H "X-Elorus-Organization:
-                        ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/ -d '{"client_type":
-                        "1",
-                        "company":"Elorus SA", "vat_number":"9876543210",
-                        "addresses":[{"address":"Theofilopoulou 13", "city":"Athens", "zip":"11743",
-                        "country": "GR", "ad_type": "bill"}], "is_client": true, "is_supplier":false}
-                    </code>
-                </div>
+        <h2>Create a "Credit Invoice" - Associated</h2>
+        <h3 id="credit-invoice-1.1">1.1 Create a new contact</h3>
+        First lets create a contact so there is someone to bill. In a business context, contacts are individuals
+        or businesses whom you transact with; typically your clients, leads, suppliers and partners. Since
+        Elorus will let you manage your sales as well as your expenses, a contact may represent either a client
+        or a supplier (or even both).
+        <br>
+        <div class="curl-title">
+            Request
+            <div class="curl-block">
+                <code>
+                    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: Token
+                    ~Your-API-key~" -H "X-Elorus-Organization:
+                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/ -d '{"client_type":
+                    "1",
+                    "company":"Elorus SA", "vat_number":"9876543210",
+                    "addresses":[{"address":"Theofilopoulou 13", "city":"Athens", "zip":"11743",
+                    "country": "GR", "ad_type": "bill"}], "is_client": true, "is_supplier":false}
+                </code>
             </div>
         </div>
         <!---->
         <br>
-        <div id="credit-invoice-1.2">
-            <h3>1.2 Get contact ID</h3>
-            Filter e.g. by "company", to get the contact ID.
-            Retrieved contact ID in this case is "2482665622824027155".
-        </div>
+        <h3 id="credit-invoice-1.2">1.2 Get contact ID</h3>
+        Filter e.g. by "company", to get the contact ID.
+        Retrieved contact ID in this case is "2482665622824027155".
+        <br>
         <div class="curl-title">
             Request
             <div class="curl-block">
@@ -88,15 +87,14 @@
         </div>
         <!---->
         <br>
-        <div id="credit-invoice-2.1">
-            <h3>2.1 Get document type ID</h3>
-            In this case, a "Credit Invoice" document type will be needed. There is a "Credit Invoice"
-            document type pre-created.
-            Default title is "Πιστωτικό Τιμολόγιο". <br>Search by "title", to get the document
-            type ID. Retrieved document type ID in this case is "2483498441813001641".
-            In case the title is changed or the document type is missing, use the Elorus UI to create a
-            new one.
-        </div>
+        <h3 id="credit-invoice-2.1">2.1 Get document type ID</h3>
+        In this case, a "Credit Invoice" document type will be needed. There is a "Credit Invoice"
+        document type pre-created.
+        Default title is "Πιστωτικό Τιμολόγιο". <br>Search by "title", to get the document
+        type ID. Retrieved document type ID in this case is "2483498441813001641".
+        In case the title is changed or the document type is missing, use the Elorus UI to create a
+        new one.
+        <br>
         <div class="curl-title">
             Request
             <div class="curl-block">
@@ -110,31 +108,28 @@
         </div>
         <!---->
         <br>
-        <div id="credit-invoice-3.1">
-            <h3>3.1 About taxes</h3>
-            By default there are some taxes preset in Elorus. Usually 24% tax is used for
-            Greece "Credit Invoice" so the preset tax will be retrieved and used. In case
-            there is a need for a new tax to be created, use of Elorus' UI is mandatory. <br>Optional
-            steps to create new tax:
-            <ol>
-                <li>Login to your Elorus account</li>
-                <li>Go to: "Settings -> Taxes"</li>
-                <li>Click "+Add" on top right corner</li>
-                <li><img src="/img/examples/common/add.png"></li>
-                <li>And set it up as the picture bellow.
-                </li>
-                <li><img src="/img/examples/common/tax.png"></li>
-                <li>Click "Save"</li>
-                <li><img src="/img/examples/common/save.png"></li>
-            </ol>
-        </div>
+        <h3 id="credit-invoice-3.1">3.1 About taxes</h3>
+        By default there are some taxes preset in Elorus. Usually 24% tax is used for
+        Greece "Credit Invoice" so the preset tax will be retrieved and used. In case
+        there is a need for a new tax to be created, use of Elorus' UI is mandatory. <br>Optional
+        steps to create new tax:
+        <ol>
+            <li>Login to your Elorus account</li>
+            <li>Go to: "Settings -> Taxes"</li>
+            <li>Click "+Add" on top right corner</li>
+            <li><img src="/img/examples/common/add.png"></li>
+            <li>And set it up as the picture bellow.
+            </li>
+            <li><img src="/img/examples/common/tax.png"></li>
+            <li>Click "Save"</li>
+            <li><img src="/img/examples/common/save.png"></li>
+        </ol>
         <!---->
         <br>
-        <div id="credit-invoice-3.2">
-            <h3>3.2 Get taxes ID</h3>
-            Search by "percentage", to get the tax ID. Retrieved tax ID in
-            this case is "2476911428611605999". Make sure that "aade_type":1 is in the response packet.
-        </div>
+        <h3 id="credit-invoice-3.2">3.2 Get taxes ID</h3>
+        Search by "percentage", to get the tax ID. Retrieved tax ID in
+        this case is "2476911428611605999". Make sure that "aade_type":1 is in the response packet.
+        <br>
         <div class="curl-title">
             Request
             <div class="curl-block">
@@ -148,69 +143,68 @@
         </div>
         <!---->
         <br>
-        <div id="credit-invoice-4.1">
-            <h3>4.1 Create a Credit Invoice</h3>
-            <ol>
-                <li>X-Elorus-Organization: your organization ID</li>
-                <li>calculator_mode: sets your values as "initial" or "total", meaning
-                    before or after
-                    taxes.
-                    <ol>
-                        <li>When "total" is used, then it is mandatory to use "unit_total"
-                            in items.
-                        </li>
-                        <li>When "initial" is used, then it is mandatory to use "unit_value"
-                            in items.
-                        </li>
-                        <li>Depending on the situation, Elorus will calculate the taxes
-                            accordingly.
-                        </li>
-                    </ol>
-                </li>
-                <li>client: Client id - In this case we created "Elorus SA"
-                    contact.
-                </li>
-                <li>draft: true or false depending on the need to issue immediately an
-                    invoice or not. If
-                    true, the
-                    credit invoice will not reach MyData/Softone, until issued.
-                </li>
-                <li>documenttype: Document Type ID - In this case we used "Πιστωτικό Τιμολόγιο"
-                    document type, associated with the corresponding "aade type".
-                </li>
-                <li>related_documents: Associated invoice ID(s) list - Invoice(s) must be issued! If
-                    omitted then mydata_document_type: "5.2" Credit Invoice / Non-Associated should be
-                    used.
-                </li>
-                <li>My data specific fields:
-                    mydata_document_type - mydata_classification_category - mydata_classification_type -
-                    paid_on_receipt - payment_method
-                    <ol>
-                        <li>mydata_document_type: aade type</li>
-                        <li>mydata_classification_category: income type aade</li>
-                        <li>mydata_classification_type: classifications of Ε3 aade</li>
-                        <li>paid_on_receipt: Invoice amount that was paid when invoice was
-                            issued. If "0"
-                            then you don't
-                            need to send payment_method since Elorus will automatically
-                            apply payment_method
-                            as on
-                            credit.
-                        </li>
-                        <li>payment_method:
-                            <ol>
-                                <li>“1”: Domestic Payments Account</li>
-                                <li>“2”: Foreign Payments Account</li>
-                                <li>“3”: Cash</li>
-                                <li>“4”: Cheque</li>
-                                <li>“6”: Web Banking</li>
-                                <li>“7”: POS / e-POS</li>
-                            </ol>
-                        </li>
-                    </ol>
-                </li>
-            </ol>
-        </div>
+        <h3 id="credit-invoice-4.1">4.1 Create a Credit Invoice</h3>
+        <ol>
+            <li>X-Elorus-Organization: your organization ID</li>
+            <li>calculator_mode: sets your values as "initial" or "total", meaning
+                before or after
+                taxes.
+                <ol>
+                    <li>When "total" is used, then it is mandatory to use "unit_total"
+                        in items.
+                    </li>
+                    <li>When "initial" is used, then it is mandatory to use "unit_value"
+                        in items.
+                    </li>
+                    <li>Depending on the situation, Elorus will calculate the taxes
+                        accordingly.
+                    </li>
+                </ol>
+            </li>
+            <li>client: Client id - In this case we created "Elorus SA"
+                contact.
+            </li>
+            <li>draft: true or false depending on the need to issue immediately an
+                invoice or not. If
+                true, the
+                credit invoice will not reach MyData/Softone, until issued.
+            </li>
+            <li>documenttype: Document Type ID - In this case we used "Πιστωτικό Τιμολόγιο"
+                document type, associated with the corresponding "aade type".
+            </li>
+            <li>related_documents: Associated invoice ID(s) list - Invoice(s) must be issued! If
+                omitted then mydata_document_type: "5.2" Credit Invoice / Non-Associated should be
+                used.
+            </li>
+            <li>My data specific fields:
+                mydata_document_type - mydata_classification_category - mydata_classification_type -
+                paid_on_receipt - payment_method
+                <ol>
+                    <li>mydata_document_type: aade type</li>
+                    <li>mydata_classification_category: income type aade</li>
+                    <li>mydata_classification_type: classifications of Ε3 aade</li>
+                    <li>paid_on_receipt: Invoice amount that was paid when invoice was
+                        issued. If "0"
+                        then you don't
+                        need to send payment_method since Elorus will automatically
+                        apply payment_method
+                        as on
+                        credit.
+                    </li>
+                    <li>payment_method:
+                        <ol>
+                            <li>“1”: Domestic Payments Account</li>
+                            <li>“2”: Foreign Payments Account</li>
+                            <li>“3”: Cash</li>
+                            <li>“4”: Cheque</li>
+                            <li>“6”: Web Banking</li>
+                            <li>“7”: POS / e-POS</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+        <br>
         <div class="curl-title">
             Request
             <div class="curl-block">
