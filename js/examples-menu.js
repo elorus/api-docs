@@ -37,7 +37,7 @@ var myHTMLmenu = '<a class="menu-header">Invoices</a>'+
 var sales_invoice =
     '<a href="./" class="selected-example">'+
     '    Sales Invoice</a>';
-var sales_invoice_anchors =
+var sales_invoice_steps =
     '<a class="menu-header">Steps</a>'+
     '<ul class="main-list" id="Sales Invoice">'+
     '    <li><a href="#sales-invoice-1.1">1.1 Create a new contact</a></li>'+
@@ -51,7 +51,7 @@ var sales_invoice_anchors =
 var invoice_of_rendered_services =
     '<a href="invoice-of-rendered-services.html" class="selected-example">'+
     '    Invoice of rendered services</a>';
-var invoice_of_rendered_services_anchors =
+var invoice_of_rendered_services_steps =
     '<a class="menu-header">Steps</a>'+
     '<ul class="main-list" id="Invoice of rendered services">'+
     '    <li><a href="#invoice-of-rendered-services-1.1">1.1 Create a new contact</a></li>'+
@@ -65,7 +65,7 @@ var invoice_of_rendered_services_anchors =
 var credit_invoice =
     '<a href="credit-invoice.html" class="selected-example">'+
     '    Credit Invoice</a>';
-var credit_invoice_anchors =
+var credit_invoice_steps =
     '<a class="menu-header">Steps</a>'+
     '<ul class="main-list" id="Credit Invoice">'+
     '    <li><a href="#credit-invoice-1.1">1.1 Create a new contact</a></li>'+
@@ -79,7 +79,7 @@ var credit_invoice_anchors =
 var retail_sales_credit_note =
     '<a href="retail-sales-credit-note.html" class="selected-example">'+
     '    Retail Sales Credit Note</a>';
-var retail_sales_credit_note_anchors =
+var retail_sales_credit_note_steps =
     '<a class="menu-header">Steps</a>'+
     '<ul class="main-list" id="Retail Sales Credit Note">'+
     '    <li><a href="#retail-sales-credit-note-1.1">1.1 Create a new contact</a></li>'+
@@ -93,7 +93,7 @@ var retail_sales_credit_note_anchors =
 var simple_invoice =
     '<a href="simple-invoice.html" class="selected-example">'+
     '    Simple invoice</a>';
-var simple_invoice_anchors =
+var simple_invoice_steps =
     '<a class="menu-header">Steps</a>'+
     '<ul class="main-list" id="Simple invoice">'+
     '    <li><a href="#simple-invoice-1.1">1.1 Create a new contact</a></li>'+
@@ -108,7 +108,7 @@ var simple_invoice_anchors =
 var retail_sales_receipt =
     '<a href="retail-sales-receipt.html" class="selected-example">'+
     '    Retail Sales Receipt</a>';
-var retail_sales_receipt_anchors =
+var retail_sales_receipt_steps =
     '<a class="menu-header">Steps</a>'+
     '<ul class="main-list" id="Retail Sales Receipt">'+
     '    <li><a href="#retail-sales-receipt-1.1">1.1 Create a new contact</a></li>'+
@@ -124,7 +124,7 @@ var retail_sales_receipt_anchors =
 var service_rendered_receipt =
     '<a href="service-rendered-receipt.html"  class="selected-example">'+
     '    Service Rendered Receipt</a>';
-var service_rendered_receipt_anchors =
+var service_rendered_receipt_steps =
     '<a class="menu-header">Steps</a>'+
     '<ul class="main-list" id="Service Rendered Receipt">'+
     '    <li><a href="#service-rendered-receipt-1.1">1.1 Create a new contact</a></li>'+

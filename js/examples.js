@@ -23,35 +23,35 @@ function topFunction() {
 }
 
 function addMenuHTML(page) {
-    document.getElementById("my-menu").innerHTML = myHTMLmenu;
+    document.getElementById("list").innerHTML = myHTMLmenu;
     switch (page) {
         case "sales_invoice":
             document.getElementById("sales-invoice-0").innerHTML = sales_invoice;
-            document.getElementById("anchors").innerHTML = sales_invoice_anchors;
+            document.getElementById("steps").innerHTML = sales_invoice_steps;
             break;
         case "invoice_of_rendered_services":
             document.getElementById("invoice-of-rendered-services-0").innerHTML = invoice_of_rendered_services;
-            document.getElementById("anchors").innerHTML = invoice_of_rendered_services_anchors;
+            document.getElementById("steps").innerHTML = invoice_of_rendered_services_steps;
             break;
         case "credit_invoice":
             document.getElementById("credit-invoice-0").innerHTML = credit_invoice;
-            document.getElementById("anchors").innerHTML = credit_invoice_anchors;
+            document.getElementById("steps").innerHTML = credit_invoice_steps;
             break;
         case "retail_sales_credit_note":
             document.getElementById("retail-sales-credit-note-0").innerHTML = retail_sales_credit_note;
-            document.getElementById("anchors").innerHTML = retail_sales_credit_note_anchors;
+            document.getElementById("steps").innerHTML = retail_sales_credit_note_steps;
             break;
         case "simple_invoice":
             document.getElementById("simple-invoice-0").innerHTML = simple_invoice;
-            document.getElementById("anchors").innerHTML = simple_invoice_anchors;
+            document.getElementById("steps").innerHTML = simple_invoice_steps;
             break;
         case "retail_sales_receipt":
             document.getElementById("retail-sales-receipt-0").innerHTML = retail_sales_receipt;
-            document.getElementById("anchors").innerHTML = retail_sales_receipt_anchors;
+            document.getElementById("steps").innerHTML = retail_sales_receipt_steps;
             break;
         case "service_rendered_receipt":
             document.getElementById("service-rendered-receipt-0").innerHTML = service_rendered_receipt;
-            document.getElementById("anchors").innerHTML = service_rendered_receipt_anchors;
+            document.getElementById("steps").innerHTML = service_rendered_receipt_steps;
             break;
         default:
             break;

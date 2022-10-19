@@ -1,22 +1,20 @@
-.curl-title {
-    background: #1c9f98;
-    color: #fff;
-    font-family: Roboto, sans-serif;
-    font-weight: 400;
-    line-height: 1.5em;
-    padding: 10px;
+html {
+    background: white !important;
+    scroll-padding-top: 86px;
 }
 
-.curl-block {
-    background-color: #f9f2f4;
-    padding: 10px;
-    color: #263238;
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
 }
 
-.dark-page-break {
-    height: 1em;
-    background-color: #263238;
-    margin: 0 !important;
+.menu-header {
+    margin-left: 18px;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(17, 23, 26);
+    font-size: 1rem;
+    display: inline-block;
 }
 
 .main-list {
@@ -24,12 +22,7 @@
     padding-inline-end: 10px;
 }
 
-.main-list li {
-    background: white;
-    display: block;
-}
-
-.main-list li a {
+ li a {
     display: block;
     text-decoration: none;
     color: black;
@@ -37,14 +30,38 @@
 }
 
 .main-list li a:hover {
-    color: white !important;
-    background: #1e4682 !important;
+    color: white;
+    background: #1e4682;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    width: auto;
+.main-list .selected-example {
+    color: #FFFFFF;
+    background-color: #1e4682;
+}
+
+.selected-example:hover {
+    background-color: rgb(104, 104, 207) !important;
+}
+
+.selected-example::before {
+    content: "> ";
+}
+
+.curl-title {
+    background: #21b7af;
+    color: #fff;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 1.5em;
+    padding: 2px 10px 10px 10px;
+}
+
+.curl-block {
+    background-color: #f9f2f4;
+    padding: 5px 5px 1px 5px;
+    color: #263238;
+    overflow: scroll;
+    max-height: 150px;
 }
 
 #myBtn {
@@ -69,40 +86,42 @@ img {
     background-color: rgb(192 111 140);
 }
 
-.selected-example {
-    color: #FFFFFF !important;
-    background-color: #1e4682;
+@media (min-width: 992px) {
+    .main-page {
+        margin: 0 !important;
+        padding-top: 76px !important;
+        overflow: visible;
+    }
+
+    #list {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        width: 25%;
+    }
+
+    #steps {
+        position: fixed;
+        top: 76px;
+        right: 0;
+        width: 25%;
+    }
 }
 
-.selected-example::before {
-    content: "> ";
-}
+@media (max-width: 991px) {
+    .main-page {
+        margin: 0 !important;
+        padding: 15px;
+        overflow: visible;
+        width: 100%;
+    }
 
-html {
-    background: white !important;
-    scroll-padding-top: 60px;
-}
+    #list {
+        padding-top: 96px;
+    }
 
-.menu-header {
-    margin-left: 8px;
-    font-weight: bold;
-    border-bottom: 2px solid rgb(17, 23, 26);
-    font-size: 1rem;
-    display: inline-block;
-}
+    #example {
+        max-width: 100%;
 
-.body {
-    max-width: 100%;
-}
-
-.main-page {
-    margin: 0 !important;
-    padding-top: 76px !important;
-}
-#my-menu {
-    padding: 0;
-}
-
-#anchors {
-    padding: 0;
+    }
 }
