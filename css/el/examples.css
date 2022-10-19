@@ -20,9 +20,10 @@ img {
 .main-list {
     padding-inline-start: 10px;
     padding-inline-end: 10px;
+    list-style-type: none;
 }
 
- li a {
+li a {
     display: block;
     text-decoration: none;
     color: black;
@@ -122,6 +123,5 @@ img {
 
     #example {
         max-width: 100%;
-
     }
 }
