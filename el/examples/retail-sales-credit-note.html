@@ -27,9 +27,8 @@
 <div class="row main-page">
     <div class="col-md-3"></div>
     <div class="col-md-6" id="example">
-        <u><b>Make sure myDATA integration is activated in your Elorus account
+        <u><b>Make sure myDATA or SoftOne integration is activated in your Elorus account
             before using the guide bellow.</b></u>
-        <br>
         This guide thinks you are a new Elorus user, so some steps can be omitted eg
         "Create Contact" etc.
         <br>
@@ -54,7 +53,7 @@
         or businesses whom you transact with; typically your clients, leads, suppliers and partners. Since
         Elorus will let you manage your sales as well as your expenses, a contact may represent either a client
         or a supplier (or even both).
-        <br>
+        <br><br>
         <div class="curl-title">
             Request
             <div class="curl-block">
@@ -74,7 +73,7 @@
         <h3 id="retail-sales-credit-note-1.2">1.2 Get contact ID</h3>
         Filter e.g. by "company", to get the contact ID.
         Retrieved contact ID in this case is "2482665622824027155".
-        <br>
+        <br><br>
         <div class="curl-title">
             Request
             <div class="curl-block">
@@ -95,7 +94,7 @@
         type ID. Retrieved document type ID in this case is "2485602059089348112".
         In case the title is changed or the document type is missing, use the Elorus UI to create a
         new one.
-        <br>
+        <br><br>
         <div class="curl-title">
             Request
             <div class="curl-block">
@@ -130,7 +129,7 @@
         <h3 id="retail-sales-credit-note-3.2">3.2 Get taxes ID</h3>
         Search by "percentage", to get the tax ID. Retrieved tax ID in
         this case is "2476911428611605999". Make sure that "aade_type":1 is in the response packet.
-        <br>
+        <br><br>
         <div class="curl-title">
             Request
             <div class="curl-block">
@@ -145,6 +144,7 @@
         <!---->
         <br>
         <h3 id="retail-sales-credit-note-4.1">4.1 Create a Retail Sales Credit Note</h3>
+        The final step, is to create the credit note itself. The list bellow describes all the needed fields.
         <ol>
             <li>X-Elorus-Organization: your organization ID</li>
             <li>calculator_mode: sets your values as "initial" or "total", meaning
@@ -200,7 +200,6 @@
                 </ol>
             </li>
         </ol>
-        <br>
         <div class="curl-title">
             Request
             <div class="curl-block">
