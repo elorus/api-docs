@@ -25,36 +25,61 @@ function topFunction() {
 function addMenuHTML(page) {
     document.getElementById("list").innerHTML = myHTMLmenu;
     switch (page) {
+        //INVOICES
         case "sales_invoice":
-            document.getElementById("sales-invoice-0").innerHTML = sales_invoice;
+            document.getElementById("sales-invoice").innerHTML = sales_invoice;
             document.getElementById("steps").innerHTML = sales_invoice_steps;
             break;
+        case "sales_invoice_intra_community_supplies":
+            document.getElementById("sales-invoice-intra-community-supplies").innerHTML = sales_invoice_intra_community_supplies;
+            document.getElementById("steps").innerHTML = sales_invoice_intra_community_supplies_steps;
+            break;
+        case "sales_invoice_third_country_supplies":
+            document.getElementById("sales-invoice-third-country-supplies").innerHTML = sales_invoice_third_country_supplies;
+            document.getElementById("steps").innerHTML = sales_invoice_third_country_supplies_steps;
+            break;
+
         case "invoice_of_rendered_services":
-            document.getElementById("invoice-of-rendered-services-0").innerHTML = invoice_of_rendered_services;
+            document.getElementById("invoice-of-rendered-services").innerHTML = invoice_of_rendered_services;
             document.getElementById("steps").innerHTML = invoice_of_rendered_services_steps;
             break;
-        case "credit_invoice":
-            document.getElementById("credit-invoice-0").innerHTML = credit_invoice;
-            document.getElementById("steps").innerHTML = credit_invoice_steps;
+        case "invoice_of_rendered_services_intra_community_supplies":
+            document.getElementById("invoice-of-rendered-services-intra-community-supplies").innerHTML = invoice_of_rendered_services_intra_community_supplies;
+            document.getElementById("steps").innerHTML = invoice_of_rendered_services_intra_community_supplies_steps;
             break;
-        case "retail_sales_credit_note":
-            document.getElementById("retail-sales-credit-note-0").innerHTML = retail_sales_credit_note;
-            document.getElementById("steps").innerHTML = retail_sales_credit_note_steps;
+        case "invoice_of_rendered_services_third_country_supplies":
+            document.getElementById("invoice-of-rendered-services-third-country-supplies").innerHTML = invoice_of_rendered_services_third_country_supplies;
+            document.getElementById("steps").innerHTML = invoice_of_rendered_services_third_country_supplies_steps;
             break;
-        case "simple_invoice":
-            document.getElementById("simple-invoice-0").innerHTML = simple_invoice;
-            document.getElementById("steps").innerHTML = simple_invoice_steps;
+
+        case "other_invoice":
+            document.getElementById("other-invoice").innerHTML = other_invoice;
+            document.getElementById("steps").innerHTML = other_invoice_steps;
             break;
+
+        //RECEIPTS
         case "retail_sales_receipt":
-            document.getElementById("retail-sales-receipt-0").innerHTML = retail_sales_receipt;
+            document.getElementById("retail-sales-receipt").innerHTML = retail_sales_receipt;
             document.getElementById("steps").innerHTML = retail_sales_receipt_steps;
             break;
         case "service_rendered_receipt":
-            document.getElementById("service-rendered-receipt-0").innerHTML = service_rendered_receipt;
+            document.getElementById("service-rendered-receipt").innerHTML = service_rendered_receipt;
             document.getElementById("steps").innerHTML = service_rendered_receipt_steps;
+            break;
+        //CREDIT NOTES
+        case "credit_invoice":
+            document.getElementById("credit-invoice").innerHTML = credit_invoice;
+            document.getElementById("steps").innerHTML = credit_invoice_steps;
+            break;
+        case "retail_sales_credit_note":
+            document.getElementById("retail-sales-credit-note").innerHTML = retail_sales_credit_note;
+            document.getElementById("steps").innerHTML = retail_sales_credit_note_steps;
+            break;
+        case "other_credit_note":
+            document.getElementById("other-credit-note").innerHTML = other_credit_note;
+            document.getElementById("steps").innerHTML = other_credit_note_steps;
             break;
         default:
             break;
     }
-
 }
