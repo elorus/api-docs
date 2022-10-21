@@ -157,7 +157,7 @@
         <!---->
         <br>
         <h3 id="other-invoice-4.1">4.1 Create an "Other / Internal use" Invoice</h3>
-        The final step, is to create the invoice itself. The list bellow describes all the needed fields.
+        The final step, is to create the Invoice itself. The list bellow describes all the needed fields.
         <ol>
             <li>X-Elorus-Organization: your organization ID</li>
             <li>calculator_mode: sets your values as "initial" or "total", meaning
@@ -183,6 +183,17 @@
             <li>documenttype: Document Type ID - In this case we used "Απλό Τιμολόγιο"
                 document type.
             </li>
+            <li>My data specific fields:
+                mydata_classification_category - mydata_classification_type
+                <ol>
+                    <li>mydata_classification_category: income type aade - Since the Invoice is not intended to
+                        reach myDATA, send the field empty
+                    </li>
+                    <li>mydata_classification_type: classifications of Ε3 aade - Since the Invoice is not intended
+                        to reach myDATA, send the field empty
+                    </li>
+                </ol>
+            </li>
         </ol>
         <div class="curl-title">
             Request
@@ -195,7 +206,8 @@
                     "total", "currency_code": "EUR", "exchange_rate": "1.000000", "client":
                     "2482665622824027155", "date": "2022-5-19", "draft": true, "documenttype":
                     "2482671444392150335", "items": [{"title": "Διάφορες υπηρεσίες", "unit_total":
-                    "12.4", "quantity": "1", "taxes": ["2482704215621765055"]}]}'
+                    "12.4", "quantity": "1", "taxes": ["2482704215621765055"], "mydata_classification_category":"",
+                    "mydata_classification_type":""}]}'
                 </code>
             </div>
         </div>
