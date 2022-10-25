@@ -97,17 +97,19 @@ li a {
     }
 
     #list {
-        position: fixed;
+        position: absolute;
         top: 76px;
         left: 0;
         width: 25%;
+        overflow: auto;
     }
 
     #steps {
-        position: fixed;
+        position: absolute;
         top: 76px;
         right: 0;
         width: 25%;
+        overflow: auto;
     }
 }
 
