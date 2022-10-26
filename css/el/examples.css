@@ -11,7 +11,7 @@ img {
 }
 
 .menu-header {
-    margin-left: 18px;
+    margin-left: 1.5rem;
     font-weight: bold;
     border-bottom: 2px solid rgb(17, 23, 26);
     font-size: 1rem;
@@ -19,8 +19,8 @@ img {
 }
 
 .main-list {
-    padding-inline-start: 10px;
-    padding-inline-end: 10px;
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
     list-style-type: none;
 }
 
@@ -28,25 +28,16 @@ li a {
     display: block;
     text-decoration: none;
     color: black;
-    padding: 4px 8px 4px 8px;
+    padding: 6px 0.5rem 6px 0.5rem;
 }
 
 .main-list li a:hover {
-    color: white;
-    background: #1e4682;
+    text-decoration: underline;
 }
 
 .main-list .selected-example {
     color: #FFFFFF;
-    background-color: #1e4682;
-}
-
-.selected-example:hover {
-    background-color: rgb(104, 104, 207) !important;
-}
-
-.selected-example::before {
-    content: "> ";
+    background-color: rgb(104, 104, 207);
 }
 
 .curl-title {
@@ -89,45 +80,46 @@ li a {
     background-color: rgb(236, 205, 215);
 }
 
-@media (min-width: 992px) {
+#list {
+    padding-top: 96px;
+    max-width: inherit;
+}
+
+.row.main-page {
+    margin: 0;
+    padding-top: 15px;
+}
+
+#steps {
+    display: none;
+}
+
+@media (min-width: 48em) {
     .main-page {
-        margin: 0 !important;
         padding-top: 76px !important;
-        overflow: visible;
     }
 
     #list {
+        padding-top: 0;
         position: fixed;
         top: 76px;
         bottom: 0;
+        left: 0;
         border-right: 1px solid #dedede;
         max-height: 100%;
         overflow: scroll;
     }
+}
 
+
+@media (min-width: 62em) {
     #steps {
+        display: block;
         position: absolute;
         top: 76px;
         right: 0;
         width: 25%;
         overflow: auto;
         border-left: 1px solid #dedede;
-    }
-}
-
-@media (max-width: 991px) {
-    .main-page {
-        margin: 0 !important;
-        padding: 15px;
-        overflow: visible;
-        width: 100%;
-    }
-
-    #list {
-        padding-top: 96px;
-    }
-
-    #example {
-        max-width: 100%;
     }
 }
