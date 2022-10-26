@@ -5,8 +5,7 @@
         "description": "\nThe Elorus developer API enables external applications access the [Elorus \nplatform](https://www.elorus.com) and update organization data \nprogrammatically. For example, you may use the API to:\n\n- Update your data without interacting with the Elorus user interface\n- Connect your e-shop / website, automate the invoicing process and \nsynchronize data\n- Use Elorus as your billing system\n\nThis portal provides documentation for developers to access and \nuse the Elorus API. \n",
         "version": "1.1",
         "x-logo": {
-            "url": "https://developer.elorus.com/img/elorus-logo-api.svg",
-            "backgroundColor": "#FFFFFF"
+            "url": "https://developer.elorus.com/img/elorus-logo-api.svg"
         }
     },
     "host": "api.elorus.com",
