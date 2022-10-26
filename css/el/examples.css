@@ -68,7 +68,6 @@ li a {
 }
 
 #myBtn {
-    display: none;
     position: fixed;
     bottom: 100px;
     right: 20px;
@@ -83,10 +82,11 @@ li a {
     padding: 15px;
     border: 3px solid rgb(170 60 100);;
     border-radius: 50%;
+    box-shadow: 0 0 20px rgb(0 10 60 / 20%);
 }
 
 #myBtn:hover {
-    background-color: rgb(192 111 140);
+    background-color: rgb(236, 205, 215);
 }
 
 @media (min-width: 992px) {
@@ -102,6 +102,7 @@ li a {
         left: 0;
         width: 25%;
         overflow: auto;
+        border-right: 1px solid #dedede;
     }
 
     #steps {
@@ -110,6 +111,7 @@ li a {
         right: 0;
         width: 25%;
         overflow: auto;
+        border-left: 1px solid #dedede;
     }
 }
 
