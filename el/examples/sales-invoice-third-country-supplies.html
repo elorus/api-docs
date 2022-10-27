@@ -37,18 +37,20 @@
         <br>
         <h2>Authorization variables</h2>
         <ul>
-            <li><b>Token:</b> API key. Find it in Elorus UI "User Profile". One API key per
-                Elorus account
+            <li><b>Token:</b> API key.<br/>
+                To find your API key open the Elorus web application and navigate to the "User Profile".
+                The API key is personal and there's only one key per user.
+                <img src="/img/examples/common/profile.png">
             </li>
-            <li><img src="/img/examples/common/profile.png"></li>
-            <li><b>X-Elorus-Organization:</b> Organization ID. Find it in Elorus UI "Settings ->
-                Organization ->
-                Organization ID". One Organization ID per Organization.
+            <li><b>X-Elorus-Organization:</b> Organization ID.<br/>
+                The organization whose data you wish to access. To find the <i>Organization ID</i>
+                visit the Elorus web application and navigate to "Settings > Organization > Organization ID".
+                Each organization has an ID of its own.
             </li>
         </ul>
         <!---->
         <br>
-        <!--         INSERT ARTICLE BELLOW THIS LINE           -->
+        <!--         INSERT ARTICLE BELOW THIS LINE           -->
         <h2>Create a "Sales Invoice / Third Country Supplies"</h2>
         <u>The "Sales Invoice / Third Country Supplies", is targeted at Third Country clients.</u> Meaning clients
         outside of Greece or EU (Intra Community clients).
@@ -121,7 +123,7 @@
             <li>Go to: "Settings -> Taxes"</li>
             <li>Click "+Add" on top right corner</li>
             <li><img src="/img/examples/common/add.png"></li>
-            <li>And set it up as the picture bellow. AADE category and title used are
+            <li>And set it up as the picture below. AADE category and title used are
                 for example
                 purposes.
             </li>
@@ -149,7 +151,7 @@
         <!---->
         <br>
         <h3 id="sales-invoice-third-country-supplies-4.1">4.1 Create Sales Invoice / Third Country Supplies</h3>
-        The final step, is to create the Invoice itself. The list bellow describes all the needed fields.
+        The final step, is to create the Invoice itself. The list below describes all the needed fields.
         <ol>
             <li>X-Elorus-Organization: your organization ID</li>
             <li>calculator_mode: sets your values as "initial" or "total", meaning
