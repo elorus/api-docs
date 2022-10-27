@@ -3,6 +3,15 @@ html {
     scroll-padding-top: 86px;
 }
 
+a {
+    color: rgb(104, 104, 207);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -80,6 +89,10 @@ li a {
 
 #myBtn:hover {
     background-color: rgb(236, 205, 215);
+}
+
+#myBtn img {
+    margin: 0;
 }
 
 #list {
