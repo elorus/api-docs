@@ -1,5 +1,5 @@
 var myHTMLmenu =
-    '<a class="menu-header">Invoices</a>' +
+    '<div class="menu-header">Invoices</div>' +
     '<ul class="main-list">' +
 
     '    <li id="sales-invoice">' +
@@ -33,7 +33,7 @@ var myHTMLmenu =
     '    </li>' +
     '</ul>' +
     '<!--            -->' +
-    '<a class="menu-header">Receipts</a>' +
+    '<div class="menu-header">Receipts</div>' +
     '<ul class="main-list">' +
     '    <li id="retail-sales-receipt">' +
     '        <a href="retail-sales-receipt.html">' +
@@ -45,7 +45,7 @@ var myHTMLmenu =
     '    </li>' +
     '</ul>' +
     '<!--            -->' +
-    '<a class="menu-header">Credit Notes</a>' +
+    '<div class="menu-header">Credit Notes</div>' +
     '<ul class="main-list">' +
     '    <li id="credit-invoice">' +
     '        <a href="credit-invoice.html">' +
@@ -65,7 +65,7 @@ var sales_invoice =
     '<a href="./" class="selected-example">' +
     '    Sales Invoice</a>';
 var sales_invoice_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#sales-invoice-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#sales-invoice-1.2">1.2 Get contact ID</a></li>' +
@@ -79,7 +79,7 @@ var sales_invoice_intra_community_supplies =
     '<a href="sales-invoice-intra-community-supplies.html" class="selected-example">' +
     '    Sales Invoice / Intra Community Supplies</a>';
 var sales_invoice_intra_community_supplies_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#sales-invoice-intra-community-supplies-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#sales-invoice-intra-community-supplies-1.2">1.2 Get contact ID</a></li>' +
@@ -93,7 +93,7 @@ var sales_invoice_third_country_supplies =
     '<a href="sales-invoice-third-country-supplies.html" class="selected-example">' +
     '    Sales Invoice / Third Country Supplies</a>';
 var sales_invoice_third_country_supplies_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#sales-invoice-third-country-supplies-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#sales-invoice-third-country-supplies-1.2">1.2 Get contact ID</a></li>' +
@@ -107,7 +107,7 @@ var invoice_of_rendered_services =
     '<a href="invoice-of-rendered-services.html" class="selected-example">' +
     '    Invoice of Rendered Services</a>';
 var invoice_of_rendered_services_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#invoice-of-rendered-services-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#invoice-of-rendered-services-1.2">1.2 Get contact ID</a></li>' +
@@ -121,7 +121,7 @@ var invoice_of_rendered_services_intra_community_supplies =
     '<a href="invoice-of-rendered-services-intra-community-supplies.html" class="selected-example">' +
     '    Invoice of Rendered Services / Intra Community Supplies</a>';
 var invoice_of_rendered_services_intra_community_supplies_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#invoice-of-rendered-services-intra-community-supplies-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#invoice-of-rendered-services-intra-community-supplies-1.2">1.2 Get contact ID</a></li>' +
@@ -135,7 +135,7 @@ var invoice_of_rendered_services_third_country_supplies =
     '<a href="invoice-of-rendered-services-third-country-supplies.html" class="selected-example">' +
     '    Invoice of Rendered Services / Third Country Supplies</a>';
 var invoice_of_rendered_services_third_country_supplies_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#invoice-of-rendered-services-third-country-supplies-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#invoice-of-rendered-services-third-country-supplies-1.2">1.2 Get contact ID</a></li>' +
@@ -149,7 +149,7 @@ var other_invoice =
     '<a href="other-invoice.html" class="selected-example">' +
     '    Other / Internal use</a>';
 var other_invoice_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#other-invoice-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#other-invoice-1.2">1.2 Get contact ID</a></li>' +
@@ -164,7 +164,7 @@ var retail_sales_receipt =
     '<a href="retail-sales-receipt.html" class="selected-example">' +
     '    Retail Sales Receipt</a>';
 var retail_sales_receipt_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#retail-sales-receipt-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#retail-sales-receipt-1.2">1.2 Get contact ID</a></li>' +
@@ -180,7 +180,7 @@ var service_rendered_receipt =
     '<a href="service-rendered-receipt.html"  class="selected-example">' +
     '    Service Rendered Receipt</a>';
 var service_rendered_receipt_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#service-rendered-receipt-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#service-rendered-receipt-1.2">1.2 Get contact ID</a></li>' +
@@ -194,7 +194,7 @@ var credit_invoice =
     '<a href="credit-invoice.html" class="selected-example">' +
     '    Credit Invoice</a>';
 var credit_invoice_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#credit-invoice-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#credit-invoice-1.2">1.2 Get contact ID</a></li>' +
@@ -208,7 +208,7 @@ var retail_sales_credit_note =
     '<a href="retail-sales-credit-note.html" class="selected-example">' +
     '    Retail Sales Credit Note</a>';
 var retail_sales_credit_note_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#retail-sales-credit-note-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#retail-sales-credit-note-1.2">1.2 Get contact ID</a></li>' +
@@ -222,7 +222,7 @@ var other_credit_note =
     '<a href="other-credit-note.html" class="selected-example">' +
     '    Other / Internal use</a>';
 var other_credit_note_steps =
-    '<a class="menu-header">Steps</a>' +
+    '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
     '    <li><a href="#other-credit-note-1.1">1.1 Create a new contact</a></li>' +
     '    <li><a href="#other-credit-note-1.2">1.2 Get contact ID</a></li>' +
