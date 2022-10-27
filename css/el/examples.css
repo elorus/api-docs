@@ -123,3 +123,14 @@ li a {
         border-left: 1px solid #dedede;
     }
 }
+
+
+.warningBox {
+  background-color: #fef9e8;
+  color: #494842;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding: .75rem 1.25rem;
+  position: relative;
+  font-weight: bold;
+}
