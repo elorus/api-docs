@@ -27,10 +27,6 @@ var myHTMLmenu =
     '        <a href="invoice-of-rendered-services-third-country-supplies.html">' +
     '            Invoice of Rendered Services / Third Country Supplies</a>' +
     '    </li>' +
-    '    <li id="other-invoice">' +
-    '        <a href="other-invoice.html">' +
-    '            Other / Internal use</a>' +
-    '    </li>' +
     '</ul>' +
     '<!--            -->' +
     '<div class="menu-header">Receipts</div>' +
@@ -54,10 +50,6 @@ var myHTMLmenu =
     '    <li id="retail-sales-credit-note">' +
     '        <a href="retail-sales-credit-note.html">' +
     '            Retail Sales Credit Note</a>' +
-    '    </li>' +
-    '    <li id="other-credit-note">' +
-    '        <a href="other-credit-note.html">' +
-    '            Other / Internal use</a>' +
     '    </li>' +
     '</ul>';
 
@@ -145,21 +137,6 @@ var invoice_of_rendered_services_third_country_supplies_steps =
     '    <li><a href="#invoice-of-rendered-services-third-country-supplies-4.1">4.1 Create an "Invoice of rendered services / Third Country Supplies"</a></li>' +
     '</ul>';
 
-var other_invoice =
-    '<a href="other-invoice.html" class="selected-example">' +
-    '    Other / Internal use</a>';
-var other_invoice_steps =
-    '<div class="menu-header">Steps</div>' +
-    '<ul class="main-list">' +
-    '    <li><a href="#other-invoice-1.1">1.1 Create a new contact</a></li>' +
-    '    <li><a href="#other-invoice-1.2">1.2 Get contact ID</a></li>' +
-    '    <li><a href="#other-invoice-2.1">2.1 Create an "Invoice" document type</a></li>' +
-    '    <li><a href="#other-invoice-2.2">2.2 Get document type ID</a></li>' +
-    '    <li><a href="#other-invoice-3.1">3.1 About taxes</a></li>' +
-    '    <li><a href="#other-invoice-3.2">3.2 Get taxes ID</a></li>' +
-    '    <li><a href="#other-invoice-4.1">4.1 Create "Other / Internal use" invoice</a></li>' +
-    '</ul>';
-
 var retail_sales_receipt =
     '<a href="retail-sales-receipt.html" class="selected-example">' +
     '    Retail Sales Receipt</a>';
@@ -216,18 +193,4 @@ var retail_sales_credit_note_steps =
     '    <li><a href="#retail-sales-credit-note-3.1">3.1 About taxes</a></li>' +
     '    <li><a href="#retail-sales-credit-note-3.2">3.2 Get taxes ID</a></li>' +
     '    <li><a href="#retail-sales-credit-note-4.1">4.1 Create a "Retail Sales Credit Note"</a></li>' +
-    '</ul>';
-
-var other_credit_note =
-    '<a href="other-credit-note.html" class="selected-example">' +
-    '    Other / Internal use</a>';
-var other_credit_note_steps =
-    '<div class="menu-header">Steps</div>' +
-    '<ul class="main-list">' +
-    '    <li><a href="#other-credit-note-1.1">1.1 Create a new contact</a></li>' +
-    '    <li><a href="#other-credit-note-1.2">1.2 Get contact ID</a></li>' +
-    '    <li><a href="#other-credit-note-2.1">2.1 Get document type ID</a></li>' +
-    '    <li><a href="#other-credit-note-3.1">3.1 About taxes</a></li>' +
-    '    <li><a href="#other-credit-note-3.2">3.2 Get taxes ID</a></li>' +
-    '    <li><a href="#other-credit-note-4.1">4.1 Create an "Other / Internal use" Credit Note</a></li>' +
     '</ul>';
