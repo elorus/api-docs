@@ -52,11 +52,6 @@ function addMenuHTML(page) {
             document.getElementById("steps").innerHTML = invoice_of_rendered_services_third_country_supplies_steps;
             break;
 
-        case "other_invoice":
-            document.getElementById("other-invoice").innerHTML = other_invoice;
-            document.getElementById("steps").innerHTML = other_invoice_steps;
-            break;
-
         //RECEIPTS
         case "retail_sales_receipt":
             document.getElementById("retail-sales-receipt").innerHTML = retail_sales_receipt;
@@ -75,10 +70,7 @@ function addMenuHTML(page) {
             document.getElementById("retail-sales-credit-note").innerHTML = retail_sales_credit_note;
             document.getElementById("steps").innerHTML = retail_sales_credit_note_steps;
             break;
-        case "other_credit_note":
-            document.getElementById("other-credit-note").innerHTML = other_credit_note;
-            document.getElementById("steps").innerHTML = other_credit_note_steps;
-            break;
+
         default:
             break;
     }

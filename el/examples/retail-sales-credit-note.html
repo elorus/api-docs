@@ -28,12 +28,17 @@
         <div id="list"></div>
     </div>
     <div class="col-xs-12 col-sm-8 col-md-6" id="example">
+        <h1>Create a "Retail Sales Credit Note"</h1>
+        <p>
+            Credit notes are typically used to denote a client refund or a discount (credit) on future purchases.
+            To cancel a sales receipt or a service receipt you must create a <strong>"Retail Sales Credit Note"</strong>
+            (myDATA document type <strong>11.4</strong>),
+            whereas a <a href="/el/examples/credit-invoice.html">"Credit invoice"</a> must be created to refund an invoice.
+        </p>
         <div class="warningBox">
             Make sure the integration with myDATA or SoftOne is activated in your Elorus account
             before using the guide below.
         </div>
-        This guide assumes you're working on a new Elorus organization,
-        so some steps can be omitted (e.g. "Create Contact" etc.)
         <br>
         <h2>Authorization variables</h2>
         <ul>
@@ -51,14 +56,10 @@
         <!---->
         <br>
         <!--         INSERT ARTICLE BELOW THIS LINE           -->
-        <h2>Create a "Retail Sales Credit Note"</h2>
-        <p>
-            Credit notes are typically used to denote a client refund or a discount (credit) on future purchases.
-            To cancel a sales receipt or a service receipt you must create a <strong>"Retail Sales Credit Note"</strong>
-            (myDATA document type <strong>11.4</strong>),
-            whereas a <a href="/el/examples/credit-invoice.html">"Credit invoice"</a> must be created to refund an invoice.
-        </p>
+        <h2>Client</h2>
         <h3 id="retail-sales-credit-note-1.1">1.1 Create a new contact</h3>
+        <i> - The guide assumes you're working on a new Elorus organization,
+            so this step can be omitted.</i><br><br>
         First lets create a contact so there is someone to bill. In a business context, contacts are individuals
         or businesses whom you transact with; typically your clients, leads, suppliers and partners. Since
         Elorus will let you manage your sales as well as your expenses, a contact may represent either a client
@@ -96,6 +97,7 @@
         </div>
         <!---->
         <br>
+        <h2>Document type</h2>
         <h3 id="retail-sales-credit-note-2.1">2.1 Get document type ID</h3>
         In this case, a "Retail Sales Credit Note" document type will be needed. There is a
         "Retail Sales Credit Note"
@@ -118,6 +120,7 @@
         </div>
         <!---->
         <br>
+        <h2>Taxes</h2>
         <h3 id="retail-sales-credit-note-3.1">3.1 About taxes</h3>
         By default there are some taxes preset in Elorus. Usually 24% tax is used for
         Greece "Retail Sales Credit Note" so the preset tax will be retrieved and used. In case
@@ -127,12 +130,10 @@
             <li>Login to your Elorus account</li>
             <li>Go to: "Settings -> Taxes"</li>
             <li>Click "+Add" on top right corner</li>
-            <li><img src="/img/examples/common/add.png"></li>
             <li>And set it up as the picture below.
             </li>
             <li><img src="/img/examples/common/tax.png"></li>
             <li>Click "Save"</li>
-            <li><img src="/img/examples/common/save.png"></li>
         </ol>
         <!---->
         <br>
@@ -153,6 +154,7 @@
         </div>
         <!---->
         <br>
+        <h2>Tralala</h2>
         <h3 id="retail-sales-credit-note-4.1">4.1 Create a Retail Sales Credit Note</h3>
         The final step, is to create the Credit Note itself. The list below describes all the needed fields.
         <ol>
