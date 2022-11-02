@@ -105,9 +105,6 @@ li a {
     padding-top: 15px;
 }
 
-#steps {
-    display: none;
-}
 
 @media (min-width: 48em) {
     .main-page {
@@ -129,25 +126,37 @@ li a {
 
 @media (min-width: 62em) {
     #steps {
-        display: block;
-        position: absolute;
+        padding-top: 0;
+        position: fixed;
         top: 76px;
-        right: 0;
-        width: 25%;
-        overflow: auto;
+        bottom: 0;
+        /*right: 0;*/
         border-left: 1px solid #dedede;
+        max-height: 100%;
+        overflow: scroll;
+        width: 25%;
+    }
+
+    #list {
+        width: 25%;
+    }
+}
+
+@media (max-width: 61.999em) {
+    #steps {
+        display: none;
     }
 }
 
 
 .warningBox {
-  background-color: #fef9e8;
-  color: #494842;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  padding: .75rem 1.25rem;
-  position: relative;
-  font-weight: bold;
+    background-color: #fef9e8;
+    color: #494842;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding: .75rem 1.25rem;
+    position: relative;
+    font-weight: bold;
 }
 
 .mydata-type {
