@@ -149,3 +149,12 @@ li a {
   position: relative;
   font-weight: bold;
 }
+
+.mydata-type {
+    color: black;
+    font-size: 0.8rem;
+    text-align: right;
+    box-shadow: 0 0 5px rgba(0, 3, 20, 0.2);
+    background-color: #fef9e8;
+    padding: 0.2rem;
+}
