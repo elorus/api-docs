@@ -4,28 +4,28 @@ var myHTMLmenu =
 
     '    <li id="sales-invoice">' +
     '        <a href="./">' +
-    '            Sales Invoice</a>' +
-    '    </li>' +
+    '            Sales Invoice <span class="mydata-type"> myDATA type: 1.1 </span></a>' +
+    '    </li> ' +
     '    <li id="sales-invoice-intra-community-supplies">' +
     '        <a href="sales-invoice-intra-community-supplies.html">' +
-    '            Sales Invoice / Intra Community Supplies</a>' +
+    '            Sales Invoice / Intra Community Supplies <span class="mydata-type"> myDATA type: 1.2 </span></a>' +
     '    </li>' +
     '    <li id="sales-invoice-third-country-supplies">' +
     '        <a href="sales-invoice-third-country-supplies.html">' +
-    '            Sales Invoice / Third Country Supplies</a>' +
+    '            Sales Invoice / Third Country Supplies <span class="mydata-type"> myDATA type: 1.3 </span></a>' +
     '    </li>' +
 
     '    <li id="invoice-of-rendered-services">' +
     '        <a href="invoice-of-rendered-services.html">' +
-    '            Invoice of Rendered Services</a>' +
+    '            Invoice of Rendered Services <span class="mydata-type"> myDATA type: 2.1 </span></a>' +
     '    </li>' +
     '    <li id="invoice-of-rendered-services-intra-community-supplies">' +
     '        <a href="invoice-of-rendered-services-intra-community-supplies.html">' +
-    '            Invoice of Rendered Services / Intra Community Supplies</a>' +
+    '            Invoice of Rendered Services / Intra Community Supplies <span class="mydata-type"> myDATA type: 2.2 </span></a>' +
     '    </li>' +
     '    <li id="invoice-of-rendered-services-third-country-supplies">' +
     '        <a href="invoice-of-rendered-services-third-country-supplies.html">' +
-    '            Invoice of Rendered Services / Third Country Supplies</a>' +
+    '            Invoice of Rendered Services / Third Country Supplies <span class="mydata-type"> myDATA type: 2.3 </span></a>' +
     '    </li>' +
     '</ul>' +
     '<!--            -->' +
@@ -33,11 +33,11 @@ var myHTMLmenu =
     '<ul class="main-list">' +
     '    <li id="retail-sales-receipt">' +
     '        <a href="retail-sales-receipt.html">' +
-    '            Retail Sales Receipt</a>' +
+    '            Retail Sales Receipt <span class="mydata-type"> myDATA type: 11.1 </span></a>' +
     '    </li>' +
     '    <li id="service-rendered-receipt">' +
     '        <a href="service-rendered-receipt.html">' +
-    '            Service Rendered Receipt</a>' +
+    '            Service Rendered Receipt <span class="mydata-type"> myDATA type: 11.2 </span></a>' +
     '    </li>' +
     '</ul>' +
     '<!--            -->' +
@@ -45,17 +45,17 @@ var myHTMLmenu =
     '<ul class="main-list">' +
     '    <li id="credit-invoice">' +
     '        <a href="credit-invoice.html">' +
-    '            Credit Invoice</a>' +
+    '            Credit Invoice <span class="mydata-type"> myDATA type: 5.1/5.2 </span></a>' +
     '    </li>' +
     '    <li id="retail-sales-credit-note">' +
     '        <a href="retail-sales-credit-note.html">' +
-    '            Retail Sales Credit Note</a>' +
+    '            Retail Sales Credit Note <span class="mydata-type"> myDATA type: 11.4 </span></a>' +
     '    </li>' +
     '</ul>';
 
 var sales_invoice =
     '<a href="./" class="selected-example">' +
-    '    Sales Invoice</a>';
+    '    Sales Invoice <span class="mydata-type"> myDATA type: 1.1 </span></a>';
 var sales_invoice_steps =
     '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
@@ -69,7 +69,7 @@ var sales_invoice_steps =
 
 var sales_invoice_intra_community_supplies =
     '<a href="sales-invoice-intra-community-supplies.html" class="selected-example">' +
-    '    Sales Invoice / Intra Community Supplies</a>';
+    '    Sales Invoice / Intra Community Supplies <span class="mydata-type"> myDATA type: 1.2 </span></a>';
 var sales_invoice_intra_community_supplies_steps =
     '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
@@ -83,7 +83,7 @@ var sales_invoice_intra_community_supplies_steps =
 
 var sales_invoice_third_country_supplies =
     '<a href="sales-invoice-third-country-supplies.html" class="selected-example">' +
-    '    Sales Invoice / Third Country Supplies</a>';
+    '    Sales Invoice / Third Country Supplies <span class="mydata-type"> myDATA type: 1.3 </span></a>';
 var sales_invoice_third_country_supplies_steps =
     '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
@@ -97,7 +97,7 @@ var sales_invoice_third_country_supplies_steps =
 
 var invoice_of_rendered_services =
     '<a href="invoice-of-rendered-services.html" class="selected-example">' +
-    '    Invoice of Rendered Services</a>';
+    '    Invoice of Rendered Services <span class="mydata-type"> myDATA type: 2.1 </span></a>';
 var invoice_of_rendered_services_steps =
     '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
@@ -111,7 +111,7 @@ var invoice_of_rendered_services_steps =
 
 var invoice_of_rendered_services_intra_community_supplies =
     '<a href="invoice-of-rendered-services-intra-community-supplies.html" class="selected-example">' +
-    '    Invoice of Rendered Services / Intra Community Supplies</a>';
+    '    Invoice of Rendered Services / Intra Community Supplies <span class="mydata-type"> myDATA type: 2.2 </span></a>';
 var invoice_of_rendered_services_intra_community_supplies_steps =
     '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
@@ -125,7 +125,7 @@ var invoice_of_rendered_services_intra_community_supplies_steps =
 
 var invoice_of_rendered_services_third_country_supplies =
     '<a href="invoice-of-rendered-services-third-country-supplies.html" class="selected-example">' +
-    '    Invoice of Rendered Services / Third Country Supplies</a>';
+    '    Invoice of Rendered Services / Third Country Supplies <span class="mydata-type"> myDATA type: 2.3 </span></a>';
 var invoice_of_rendered_services_third_country_supplies_steps =
     '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
@@ -139,7 +139,7 @@ var invoice_of_rendered_services_third_country_supplies_steps =
 
 var retail_sales_receipt =
     '<a href="retail-sales-receipt.html" class="selected-example">' +
-    '    Retail Sales Receipt</a>';
+    '    Retail Sales Receipt <span class="mydata-type"> myDATA type: 11.1 </span></a>';
 var retail_sales_receipt_steps =
     '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
@@ -155,7 +155,7 @@ var retail_sales_receipt_steps =
 
 var service_rendered_receipt =
     '<a href="service-rendered-receipt.html"  class="selected-example">' +
-    '    Service Rendered Receipt</a>';
+    '    Service Rendered Receipt <span class="mydata-type"> myDATA type: 11.2 </span></a>';
 var service_rendered_receipt_steps =
     '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
@@ -169,7 +169,7 @@ var service_rendered_receipt_steps =
 
 var credit_invoice =
     '<a href="credit-invoice.html" class="selected-example">' +
-    '    Credit Invoice</a>';
+    '    Credit Invoice <span class="mydata-type"> myDATA type: 5.1/5.2 </span></a>';
 var credit_invoice_steps =
     '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
@@ -183,7 +183,7 @@ var credit_invoice_steps =
 
 var retail_sales_credit_note =
     '<a href="retail-sales-credit-note.html" class="selected-example">' +
-    '    Retail Sales Credit Note</a>';
+    '    Retail Sales Credit Note <span class="mydata-type"> myDATA type: 11.4 </span></a>';
 var retail_sales_credit_note_steps =
     '<div class="menu-header">Steps</div>' +
     '<ul class="main-list">' +
