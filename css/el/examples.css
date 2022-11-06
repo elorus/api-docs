@@ -141,7 +141,7 @@ li a {
         position: fixed;
         top: 76px;
         bottom: 0;
-        /*right: 0;*/
+        right: 0;
         border-left: 1px solid #dedede;
         max-height: 100%;
         overflow: scroll;
@@ -176,5 +176,33 @@ li a {
     text-align: right;
     box-shadow: 0 0 5px rgba(0, 3, 20, 0.2);
     background-color: #fef9e8;
+    padding: 0.2rem;
+    display: inline-block;
+}
+
+#example {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+
+h3 {
+    font-size: 1.25rem;
+}
+
+
+ol > li {
     padding: 0.2rem;
 }
