@@ -27,14 +27,14 @@
         <div id="list"></div>
     </div>
     <div class="col-xs-12 col-sm-8 col-md-6" id="example">
-        <h1>Create a "Sales Invoice"</h1>
-        <p>When <strong>selling goods to a business</strong> you are typically required to create a "Sales invoice".
+        <h1>Create an "Invoice of rendered services / Intra Community Supplies"</h1>
+        <p>When <strong>selling services to a business</strong> you are typically required to create an "Invoice of Rendered Services".
         According to the <a href="https://www.aade.gr/myData/prodiagrafes" target="_blank">myDATA specifications</a>,
-        sales invoices are further divided into three invoice types, depending on the country that the client
+        service invoices are further divided into three invoice types, depending on the country that the client
         operates in.</p>
         <p><u>
-            This guide demonstrates how to create invoices for <strong>clients located in Greece</strong>
-            (myDATA document type <strong>"1.1 Sales Invoice"</strong>)
+            This guide demonstrates how to create service invoices for <strong>clients located in the European Union,
+            excluding Greece</strong> (myDATA document type <strong>"2.2 Invoice of rendered services / Intra Community Supplies"</strong>)
         </u></p>
         <div class="warningBox">
             Make sure the integration with myDATA or SoftOne is activated in your Elorus account
@@ -59,7 +59,7 @@
         <br>
         <!--         INSERT ARTICLE BELOW THIS LINE           -->
         <h2>Client</h2>
-        <h3 id="sales-invoice-1.1">1.1 Create a new contact</h3>
+        <h3 id="invoice-of-rendered-services-intra-community-supplies-1.1">1.1 Create a new contact</h3>
         <i> - The guide assumes you're working on a new Elorus organization,
             so this step can be omitted.</i><br><br>
         First lets create a contact so there is someone to bill. In a business context, contacts are individuals
@@ -75,7 +75,7 @@
                     ~Your-API-key~" -H "X-Elorus-Organization:
                     ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/ -d '{"client_type":
                     "1",
-                    "company":"Elorus FC", "vat_number":"0123456789",
+                    "company":"Elorus BC", "vat_number":"9876543210",
                     "addresses":[{"address":"Theofilopoulou 13", "city":"Athens", "zip":"11743",
                     "country": "GR", "ad_type": "bill"}], "is_client": true, "is_supplier":false}'
                 </code>
@@ -83,9 +83,9 @@
         </div>
         <!---->
         <br>
-        <h3 id="sales-invoice-1.2">1.2 Get contact ID</h3>
+        <h3 id="invoice-of-rendered-services-intra-community-supplies-1.2">1.2 Get contact ID</h3>
         Filter e.g. by "company", to get the contact ID.
-        Retrieved contact ID in this case is "2480647926494267071".
+        Retrieved contact ID in this case is "2482013152640763215".
         <br><br>
         <div class="curl-title">
             Request
@@ -93,18 +93,20 @@
                 <code>
                     curl -X GET -H "Content-Type: application/json" -H "Authorization: Token
                     ~Your-API-key~" -H "X-Elorus-Organization:
-                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/?company="Elorus FC"
+                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/?company="Elorus BC"
                 </code>
             </div>
         </div>
         <!---->
         <br>
         <h2>Document type</h2>
-        <h3 id="sales-invoice-2.1">2.1 Get document type ID</h3>
-        In this case, a "Sales Invoice" document type will be needed. There is a "Sales Invoice"
-        document type pre-created. <br>Default title is "Τιμολόγιο". Search by "title", to get the
+        <h3 id="invoice-of-rendered-services-intra-community-supplies-2.1">2.1 Get document type ID</h3>
+        In this case, an "Invoice of rendered services" document type will be needed. There is an
+        "Invoice of rendered services"
+        document type pre-created. <br>Default title is "Τιμολόγιο παροχής υπηρεσιών". Search by
+        "title", to get the
         document type ID. Retrieved document type ID in
-        this case is "2480655983945188366".<br>In case the title is changed or the document type is
+        this case is "2482015687594214605".<br>In case the title is changed or the document type is
         missing, use the Elorus UI to create a new one.
         <br><br>
         <div class="curl-title">
@@ -113,17 +115,17 @@
                 <code>
                     curl -X GET -H "Content-Type: application/json" -H "Authorization: Token
                     ~Your-API-key~" -H "X-Elorus-Organization:
-                    ~Your-Organization-ID~"
-                    https://api.elorus.com/v1.1/documenttypes/?search="Τιμολόγιο"&search_fields=title
+                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/documenttypes/?search="Τιμολόγιο
+                    παροχής υπηρεσιών"&search_fields=title
                 </code>
             </div>
         </div>
         <!---->
         <br>
         <h2>Taxes</h2>
-        <h3 id="sales-invoice-3.1">3.1 About taxes</h3>
+        <h3 id="invoice-of-rendered-services-intra-community-supplies-3.1">3.1 About taxes</h3>
         By default there are some taxes preset in Elorus. Usually 24% tax is used for
-        Greece "Sales Invoice" so the preset tax will be retrieved and used. In case
+        Greece "Invoice of rendered services" so the preset tax will be retrieved and used. In case
         there is a need for a new tax to be created, use of Elorus' UI is mandatory. <br>Optional
         steps to create new tax:
         <ol>
@@ -131,13 +133,14 @@
             <li>Go to: "Settings -> Taxes"</li>
             <li>Click "+Add" on top right corner</li>
             <li>And set it up as the picture below. AADE category and title used are
-                for example purposes.
+                for example
+                purposes.
                 <img src="/img/examples/common/tax.png"></li>
             <li>Click "Save"</li>
         </ol>
         <!---->
         <br>
-        <h3 id="sales-invoice-3.2">3.2 Get taxes ID</h3>
+        <h3 id="invoice-of-rendered-services-intra-community-supplies-3.2">3.2 Get taxes ID</h3>
         Search by "percentage", to get the tax ID. Retrieved tax ID in
         this case is "2476911428611605999". Make sure that "aade_type":1 is in the response packet.
         <br><br>
@@ -155,8 +158,9 @@
         <!---->
         <br>
         <h2>Invoice creation</h2>
-        <h3 id="sales-invoice-4.1">4.1 Create Sales Invoice</h3>
-        The final step, is to create the invoice itself. The list below describes all the needed fields.
+        <h3 id="invoice-of-rendered-services-intra-community-supplies-4.1">4.1 Create Invoice of rendered services /
+            Intra Community Supplies</h3>
+        The final step, is to create the Invoice itself. The list below describes all the needed fields.
         <ol>
             <li>X-Elorus-Organization: your organization ID</li>
             <li>calculator_mode: sets your values as "initial" or "total", meaning
@@ -174,7 +178,7 @@
                     </li>
                 </ol>
             </li>
-            <li>client: Client id - In this case we created "Elorus FC"
+            <li>client: Client id - In this case we created "Elorus BC"
                 contact.
             </li>
             <li>draft: true or false depending on the need to issue immediately an
@@ -182,7 +186,7 @@
                 true, the
                 invoice will not reach MyData/Softone, until issued.
             </li>
-            <li>documenttype: Document Type ID - In this case we used "Τιμολόγιο"
+            <li>documenttype: Document Type ID - In this case we used "Τιμολόγιο παροχής υπηρεσιών"
                 document type, associated with the corresponding "aade type".
             </li>
             <li>My data specific fields:
@@ -222,11 +226,11 @@
                     ~Your-Organization-ID~" https://api.elorus.com/v1.1/invoices/ -d
                     '{"calculator_mode":
                     "total", "currency_code": "EUR", "exchange_rate": "1.000000", "client":
-                    "2480647926494267071", "date": "2022-5-18", "draft": true, "documenttype":
-                    "2480655983945188366", "mydata_document_type": "1.1", "items": [{"title": "Γάντια
-                    Εργασίας", "unit_total": "12.4", "quantity": "1", "taxes": ["2476911428611605999"],
-                    "mydata_classification_category": "category1_2", "mydata_classification_type":
-                    "E3_561_001"}], "paid_on_receipt": "12.4", "payment_method": "3"}'
+                    "2482013152640763215", "date": "2022-5-18", "draft": true, "documenttype":
+                    "2482015687594214605", "mydata_document_type": "2.2", "items": [{"title": "Αναβάθμιση
+                    λογισμικού", "unit_total": "12.4", "quantity": "1", "taxes": ["2476911428611605999"],
+                    "mydata_classification_category": "category1_3", "mydata_classification_type":
+                    "E3_561_005"}], "paid_on_receipt": "12.4", "payment_method": "3"}'
                 </code>
             </div>
         </div>
@@ -240,7 +244,7 @@
 <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="/img/menus/up-arrow.svg" style="box-shadow:none"></button>
 <script>
     window.onload = function () {
-        addMenuHTML("sales_invoice");
+        addMenuHTML("invoice_of_rendered_services_intra_community_supplies");
     };
 </script>
 <script type="text/javascript" src="/js/redoc.standalone.js"></script>
