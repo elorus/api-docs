@@ -70,7 +70,11 @@ function addMenuHTML(page) {
             document.getElementById("retail-sales-credit-note").innerHTML = retail_sales_credit_note;
             document.getElementById("steps").innerHTML = retail_sales_credit_note_steps;
             break;
-
+        //BILLS
+        case "proof_of_expenditure":
+            document.getElementById("proof-of-expenditure").innerHTML = proof_of_expenditure;
+            document.getElementById("steps").innerHTML = proof_of_expenditure_steps;
+            break;
         default:
             break;
     }

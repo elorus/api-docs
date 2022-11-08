@@ -51,6 +51,14 @@ var myHTMLmenu =
     '        <a href="retail-sales-credit-note.html">' +
     '            Retail Sales Credit Note <span class="mydata-type"> myDATA type: 11.4 </span></a>' +
     '    </li>' +
+    '</ul>' +
+    '<!--            -->' +
+    '<div class="menu-header">Bills</div>' +
+    '<ul class="main-list">' +
+    '    <li id="proof-of-expenditure">' +
+    '        <a href="proof-of-expenditure.html">' +
+    '            Proof of Expenditure <span class="mydata-type"> myDATA type: 3.1 </span></a>' +
+    '    </li>' +
     '</ul>';
 
 var sales_invoice =
@@ -193,4 +201,20 @@ var retail_sales_credit_note_steps =
     '    <li><a href="#retail-sales-credit-note-3.1">3.1 About taxes</a></li>' +
     '    <li><a href="#retail-sales-credit-note-3.2">3.2 Get taxes ID</a></li>' +
     '    <li><a href="#retail-sales-credit-note-4.1">4.1 Create a "Retail Sales Credit Note"</a></li>' +
+    '</ul>';
+
+var proof_of_expenditure =
+    '<a href="proof-of-expenditure.html" class="selected-example">' +
+    '    Proof of Expenditure <span class="mydata-type"> myDATA type: 3.1 </span></a>';
+var proof_of_expenditure_steps =
+    '<div class="menu-header">Steps</div>' +
+    '<ul class="main-list">' +
+    '    <li><a href="#proof-of-expenditure-1.1">1.1 Create a new contact</a></li>' +
+    '    <li><a href="#proof-of-expenditure-1.2">1.2 Get contact ID</a></li>' +
+    '    <li><a href="#proof-of-expenditure-2.1">2.1 Create a "Proof of Expenditure" document type</a>' +
+    '    </li>' +
+    '    <li><a href="#proof-of-expenditure-2.2">2.2 Get document type ID</a></li>' +
+    '    <li><a href="#proof-of-expenditure-3.1">3.1 About taxes</a></li>' +
+    '    <li><a href="#proof-of-expenditure-3.2">3.2 Get taxes ID</a></li>' +
+    '    <li><a href="#proof-of-expenditure-4.1">4.1 Create a "Proof of Expenditure"</a></li>' +
     '</ul>';
