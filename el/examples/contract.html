@@ -155,8 +155,12 @@
             <li>taxes: Taxes id</li>
             <li>amount: Amount paid</li>
             <li>calculator_mode: sets your values as "initial" or "total", meaning the "amount" paid is
-                before or after taxes.</li>
+                before or after taxes.
+            </li>
             <li>contact: Contact id - In this case we created "Elorus SA" contact.</li>
+            <li>draft: true or false depending on the need to issue immediately an
+                invoice or not. If true, the bill will not reach MyData/Softone, until issued.
+            </li>
             <li>myDATA specific fields:
                 mydata_document_type - mydata_classification_category - mydata_classification_type - payment_method
                 <ul>
@@ -175,23 +179,23 @@
                     </li>
                 </ul>
             </li>
-        </ol>
-        <div class="curl-title">
-            Request
-            <div class="curl-block">
-                <code>
-                    curl -X POST -H "Content-Type: application/json" -H "Authorization:
-                    Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
-                    https://api.elorus.com/v1.1/cashreceipts/ -d '{ "transaction_type": "icm", "title": "Έσοδα από
-                    πρόγραμμα συνεργατών", "date": "2022-11-10", "income_type": "contract", "contact":
-                    "2492988168228308605", "amount": "100", "payment_method": "3", "taxes": ["2476911428611605999"],
-                    "mydata_classification_category": "category1_9", "mydata_classification_type":
-                    "E3_561_001","mydata_document_type": "7.1", "calculator_mode": "total", "currency_code": "EUR",
-                    "exchange_rate": "1.000000"}'
-                </code>
+            </ol>
+            <div class="curl-title">
+                Request
+                <div class="curl-block">
+                    <code>
+                        curl -X POST -H "Content-Type: application/json" -H "Authorization:
+                        Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
+                        https://api.elorus.com/v1.1/cashreceipts/ -d '{ "draft": true, "transaction_type": "icm",
+                        "title": "Έσοδα από πρόγραμμα συνεργατών", "date": "2022-11-10", "income_type": "contract",
+                        "contact": "2492988168228308605", "amount": "100", "payment_method": "3", "taxes":
+                        ["2476911428611605999"], "mydata_classification_category": "category1_9",
+                        "mydata_classification_type": "E3_561_001","mydata_document_type": "7.1", "calculator_mode":
+                        "total", "currency_code": "EUR", "exchange_rate": "1.000000"}'
+                    </code>
+                </div>
             </div>
-        </div>
-        <!--         INSERT ARTICLE ABOVE THIS LINE           -->
+            <!--         INSERT ARTICLE ABOVE THIS LINE           -->
     </div>
     <div class="col-md-3">
         <div id="steps"></div>
