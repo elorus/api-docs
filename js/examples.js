@@ -70,6 +70,14 @@ function addMenuHTML(page) {
             document.getElementById("retail-sales-credit-note").innerHTML = retail_sales_credit_note;
             document.getElementById("steps").innerHTML = retail_sales_credit_note_steps;
             break;
+        case "rental":
+            document.getElementById("rental").innerHTML = rental;
+            document.getElementById("steps").innerHTML = rental_steps;
+            break;
+        case "contract":
+            document.getElementById("contract").innerHTML = contract;
+            document.getElementById("steps").innerHTML = contract_steps;
+            break;
 
         default:
             break;

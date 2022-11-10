@@ -51,6 +51,18 @@ var myHTMLmenu =
     '        <a href="retail-sales-credit-note.html">' +
     '            Retail Sales Credit Note <span class="mydata-type"> myDATA type: 11.4 </span></a>' +
     '    </li>' +
+    '</ul>' +
+    '<!--            -->' +
+    '<div class="menu-header">Income</div>' +
+    '<ul class="main-list">' +
+    '    <li id="rental">' +
+    '        <a href="rental.html">' +
+    '            Rental <span class="mydata-type"> myDATA type: 8.1 </span></a>' +
+    '    </li>' +
+    '    <li id="contract">' +
+    '        <a href="contract.html">' +
+    '            Contract <span class="mydata-type"> myDATA type: 7.1 </span></a>' +
+    '    </li>' +
     '</ul>';
 
 var sales_invoice =
@@ -193,4 +205,28 @@ var retail_sales_credit_note_steps =
     '    <li><a href="#retail-sales-credit-note-3.1">3.1 About taxes</a></li>' +
     '    <li><a href="#retail-sales-credit-note-3.2">3.2 Get taxes ID</a></li>' +
     '    <li><a href="#retail-sales-credit-note-4.1">4.1 Create a "Retail Sales Credit Note"</a></li>' +
+    '</ul>';
+
+var rental =
+    '<a href="rental.html" class="selected-example">' +
+    '    Rental <span class="mydata-type"> myDATA type: 8.1 </span></a>';
+var rental_steps =
+    '<div class="menu-header">Steps</div>' +
+    '<ul class="main-list">' +
+    '    <li><a href="#rental-1.1">1.1 Create a new contact</a></li>' +
+    '    <li><a href="#rental-1.2">1.2 Get contact ID</a></li>' +
+    '    <li><a href="#rental-2.1">2.1 Create "Rental Income"</a></li>' +
+    '</ul>';
+
+var contract =
+    '<a href="contract.html" class="selected-example">' +
+    '    Contract <span class="mydata-type"> myDATA type: 7.1 </span></a>';
+var contract_steps =
+    '<div class="menu-header">Steps</div>' +
+    '<ul class="main-list">' +
+    '    <li><a href="#contract-1.1">1.1 Create a new contact</a></li>' +
+    '    <li><a href="#contract-1.2">1.2 Get contact ID</a></li>' +
+    '    <li><a href="#contract-2.1">2.1 About taxes</a></li>' +
+    '    <li><a href="#contract-2.2">2.2 Get taxes ID</a></li>' +
+    '    <li><a href="#contract-3.1">3.1 Create "Contract Income"</a></li>' +
     '</ul>';

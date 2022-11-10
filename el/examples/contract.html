@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Elorus API Documentation</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Practical examples and cases, using Elorus' API"/>
+    <link rel="canonical" href="https://developer.elorus.com/">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/el/examples.css">
+    <link rel="stylesheet" href="/css/generic.css">
+</head>
+<body>
+<div id="top-menu">
+    <span class="region">Select region</span>
+    <select class="version-btn" name="forma" onchange="location = this.value;">
+        <option value="/">International</option>
+        <option selected>Greece</option>
+    </select>
+    <a href="/el/">API v1.1</a>
+    <a href="/el/mydata/">myDATA classifications</a>
+    <a href="/el/examples/" class="active">myDATA examples</a>
+</div>
+<div class="row main-page">
+    <div class="col-xs-12 col-sm-4 col-md-3">
+        <div id="list"></div>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-6" id="example">
+        <h1>Create a "Contract Income" received payment</h1>
+        <p>When a contract is paid by other companies, you are typically
+            required to issue a "Rental Income" received payment.</p>
+        <p><u>This guide demonstrates how to create a "Contract Income" received payment, for companies located in
+            Greece </strong> (myDATA document type <strong>"7.1 Contract - Income"</strong>)</u>
+        </p>
+        <div class="warningBox">
+            Make sure the integration with myDATA or SoftOne is activated in your Elorus account
+            before using the guide below. If not, feel free to contact the <a href="mailto:support@elorus.com">Elorus
+            support team</a> for more information regarding the activation of the integration.
+        </div>
+        <br>
+        <h2>Authorization variables</h2>
+        <ul>
+            <li><b>Token:</b> API key.<br/>
+                To find your API key open the Elorus web application and navigate to the "User Profile".
+                The API key is personal and there's only one key per user.
+                <img src="/img/examples/common/profile.png">
+            </li>
+            <li><b>X-Elorus-Organization:</b> Organization ID.<br/>
+                The organization whose data you wish to access. To find the Organization ID
+                visit the Elorus web application and navigate to "Settings > Organization > Organization ID".
+                Each organization has an ID of its own.
+            </li>
+        </ul>
+        <!---->
+        <br>
+        <!--         INSERT ARTICLE BELOW THIS LINE           -->
+        <h2>Client</h2>
+        <h3 id="contract-1.1">1.1 Create a new contact</h3>
+        <i> - The guide assumes you're working on a new Elorus organization,
+            so this step can be omitted.</i><br><br>
+        First lets create a contact so there is someone to receive payment from.
+        In a business context, contacts are individuals
+        or businesses whom you transact with; typically your clients, leads, suppliers and partners. Since
+        Elorus will let you manage your sales as well as your expenses, a contact may represent either a client
+        or a supplier (or even both).
+        <br><br>
+        <div class="curl-title">
+            Request
+            <div class="curl-block">
+                <code>
+                    curl -X POST -H "Content-Type: application/json" -H "Authorization: Token
+                    ~Your-API-key~" -H "X-Elorus-Organization:
+                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/ -d '{"client_type":
+                    "1",
+                    "company":"Elorus SA", "vat_number":"0123456789",
+                    "addresses":[{"address":"Theofilopoulou 13", "city":"Athens", "zip":"11743",
+                    "country": "GR", "ad_type": "bill"}], "is_client": true, "is_supplier":false}'
+                </code>
+            </div>
+        </div>
+        <!---->
+        <br>
+        <h3 id="contract-1.2">1.2 Get contact ID</h3>
+        Filter e.g. by "company", to get the contact ID.
+        Retrieved contact ID in this case is "2480647926494267071".
+        <br><br>
+        <div class="curl-title">
+            Request
+            <div class="curl-block">
+                <code>
+                    curl -X GET -H "Content-Type: application/json" -H "Authorization: Token
+                    ~Your-API-key~" -H "X-Elorus-Organization:
+                    ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/?company="Elorus SA"
+                </code>
+            </div>
+        </div>
+        <!---->
+        <br>
+        <h2>Taxes</h2>
+        <h3 id="contract-2.1">2.1 About taxes</h3>
+        By default there are some taxes preset in Elorus. Usually 24% tax is used for
+        Greece "Contract Income" so the preset tax will be retrieved and used. In case
+        there is a need for a new tax to be created, use of Elorus' UI is mandatory. <br>Optional
+        steps to create new tax:
+        <ol>
+            <li>Login to your Elorus account</li>
+            <li>Go to: "Settings -> Taxes"</li>
+            <li>Click "+Add" on top right corner</li>
+            <li>And set it up as the picture below. AADE category and title used are
+                for example purposes.
+                <img src="/img/examples/common/tax.png"></li>
+            <li>Click "Save"</li>
+        </ol>
+        <!---->
+        <br>
+        <h3 id="contract-2.2">2.2 Get taxes ID</h3>
+        Search by "percentage", to get the tax ID. Retrieved tax ID in
+        this case is "2476911428611605999". Make sure that "aade_type":1 is in the response packet.
+        <br><br>
+        <div class="curl-title">
+            Request
+            <div class="curl-block">
+                <code>
+                    curl -X GET -H "Content-Type: application/json" -H "Authorization: Token
+                    ~Your-API-key~" -H "X-Elorus-Organization:
+                    ~Your-Organization-ID~"
+                    https://api.elorus.com/v1.1/taxes/?search="24"&search_fields=percentage
+                </code>
+            </div>
+        </div>
+        <!---->
+        <br>
+        <h2>Income creation</h2>
+        <h3 id="contract-3.1">3.1 Create Contract Income</h3>
+        The final step, is to create the Contract Income as a received payment.
+        The list below describes all the needed fields.
+        <ul>
+            <li>X-Elorus-Organization: your organization ID</li>
+            <li>income_type:
+                <ul>
+                    <li>contract: Contract income</li>
+                    <li>rental: Rental income</li>
+                    <li>other_income: Other income</li>
+                </ul>
+            </li>
+            <li>transaction_type:
+                <ul>
+                    <li>dp: Other payments</li>
+                    <li>ip: Client payment</li>
+                    <li>cnp: Supplier refund</li>
+                    <li>icm: Income</li>
+                </ul>
+            </li>
+            <li>taxes: Taxes id</li>
+            <li>amount: Amount paid</li>
+            <li>calculator_mode: sets your values as "initial" or "total", meaning the "amount" paid is
+                before or after taxes.</li>
+            <li>contact: Contact id - In this case we created "Elorus SA" contact.</li>
+            <li>myDATA specific fields:
+                mydata_document_type - mydata_classification_category - mydata_classification_type - payment_method
+                <ul>
+                    <li>mydata_document_type: aade type</li>
+                    <li>mydata_classification_category: income type aade</li>
+                    <li>mydata_classification_type: classifications of Ε3 aade</li>
+                    <li>payment_method:
+                        <ul>
+                            <li>“1”: Domestic Payments Account</li>
+                            <li>“2”: Foreign Payments Account</li>
+                            <li>“3”: Cash</li>
+                            <li>“4”: Cheque</li>
+                            <li>“6”: Web Banking</li>
+                            <li>“7”: POS / e-POS</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <div class="curl-title">
+            Request
+            <div class="curl-block">
+                <code>
+                    curl -X POST -H "Content-Type: application/json" -H "Authorization:
+                    Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~"
+                    https://api.elorus.com/v1.1/cashreceipts/ -d '{ "transaction_type": "icm", "title": "Έσοδα από
+                    πρόγραμμα συνεργατών", "date": "2022-11-10", "income_type": "contract", "contact":
+                    "2492988168228308605", "amount": "100", "payment_method": "3", "taxes": ["2476911428611605999"],
+                    "mydata_classification_category": "category1_9", "mydata_classification_type":
+                    "E3_561_001","mydata_document_type": "7.1", "calculator_mode": "total", "currency_code": "EUR",
+                    "exchange_rate": "1.000000"}'
+                </code>
+            </div>
+        </div>
+        <!--         INSERT ARTICLE ABOVE THIS LINE           -->
+    </div>
+    <div class="col-md-3">
+        <div id="steps"></div>
+    </div>
+</div>
+<br>
+<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="/img/menus/up-arrow.svg" style="box-shadow:none">
+</button>
+<script>
+    window.onload = function () {
+        addMenuHTML("contract");
+    };
+</script>
+<script type="text/javascript" src="/js/redoc.standalone.js"></script>
+<script type="text/javascript" src="/js/support.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/examples.js"></script>
+<script type="text/javascript" src="/js/examples-menu.js"></script>
+</body>
+</html>
