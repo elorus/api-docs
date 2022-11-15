@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Elorus API Documentation</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Complete reference documentation for the Elorus REST API. Includes guidelines and examples to help you interact with the API."/>
+    <link rel="canonical" href="https://developer.elorus.com/">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    {{ $css := resources.Get "css/generic.css" | resources.Minify | fingerprint }}
+    <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" />
+</head>
+<body>
+    <!-- Code that all your templates share, like a header -->
+    {{ block "main" . }}
+      <!-- The part of the page that begins to differ between templates -->
+    {{ end }}
+    {{ block "footer" . }}
+    <!-- More shared code, perhaps a footer but that can be overridden if need be in  -->
+    {{ end }}
+</body>
+</html>

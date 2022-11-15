@@ -1,0 +1,3 @@
+baseURL = 'https://developer.elorus.com/'
+defaultContentLanguage = "en-us"
+title = 'My New Hugo Site'

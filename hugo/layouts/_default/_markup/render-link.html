@@ -1,0 +1,1 @@
+<a href="{{ if strings.HasPrefix .Destination "page://" }}{{ $t := substr .Destination 7 }}{{ with .Page.GetPage $t }}{{ .Permalink }}{{ end }}{{ else }}{{ .Destination | safeURL }}{{ end }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
