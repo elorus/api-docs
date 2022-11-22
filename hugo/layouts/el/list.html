@@ -1,13 +1,4 @@
 {{ define "main" }}
-el list
-{{ partial "topmenu/gr.html" . }}
-    <div id="contents"></div>
-    {{ $redoc := resources.Get "js/redoc.standalone.js" }}
-    {{ $support := resources.Get "js/support.js" }}
-    {{ $js := slice $redoc $support | resources.Concat "js/core.js" | fingerprint }}
-    <script src="{{ $js.Permalink }}"></script>
-    {{ $jsn := resources.Get "jsons/elorus_api_US_v1.1.json" | fingerprint }}
-    <script>
-        Redoc.init( {{ $jsn.Permalink }} , { hideDownloadButton: true, nativeScrollbars: true, scrollYOffset: "60", theme: {sidebar: {backgroundColor: "#f4f5f7"}}}, document.getElementById("contents"));
-    </script>
+    {{ partial "topmenu/el/api.html" . }}
+    {{ partial "redoc/el.html" . }}
 {{ end }}

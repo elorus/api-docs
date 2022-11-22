@@ -1,19 +1,4 @@
 {{ define "main" }}
-INTERNATIONAL
-    <div id="top-menu">
-        <span class="region">Select region</span>
-        <select class="version-btn" name="forma" onchange="location = this.value;">
-            <option selected>International</option>
-            <option value="/el/">Greece</option>
-        </select>
-    </div>
-    <div id="contents"></div>
-    {{ $redoc := resources.Get "js/redoc.standalone.js" }}
-    {{ $support := resources.Get "js/support.js" }}
-    {{ $js := slice $redoc $support | resources.Concat "js/core.js" | fingerprint }}
-    <script src="{{ $js.Permalink }}"></script>
-    {{ $jsn := resources.Get "jsons/elorus_api_US_v1.1.json" | fingerprint }}
-    <script>
-        Redoc.init( {{ $jsn.Permalink }} , { hideDownloadButton: true, nativeScrollbars: true, scrollYOffset: "60", theme: {sidebar: {backgroundColor: "#f4f5f7"}}}, document.getElementById("contents"));
-    </script>
+    {{ partial "topmenu/int/api.html" . }}
+    {{ partial "redoc/int.html" . }}
 {{ end }}

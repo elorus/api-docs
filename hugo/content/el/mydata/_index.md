@@ -1,0 +1,5 @@
++++
+type = "mydata"
++++
+
+MYDATA INDEX
