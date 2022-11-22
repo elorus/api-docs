@@ -1267,6 +1267,185 @@
                 }
             ]
         },
+        "/v1.1/cashreceiptsequences/accommodation-tax/": {
+            "get": {
+                "operationId": "cashreceiptsequences_accommodation-tax_list",
+                "description": "Get the list of accommodation tax sequences.\n---",
+                "parameters": [
+                    {
+                        "name": "X-Elorus-Organization",
+                        "in": "header",
+                        "description": "The ID of the organization you want to operate on.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-Elorus-Demo",
+                        "in": "header",
+                        "description": "Just send this header if you want to ensure you operate on demo organizations only. Useful while you're developing your application, to avoid accidents on production data. Note that the header's value is not important.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PUFlatSequenceList"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Permission denied. User was not allowed to perform the requested action."
+                    }
+                },
+                "tags": [
+                    "cashreceiptsequences"
+                ],
+                "summary": "/v1.1/cashreceiptsequences/accommodation-tax/"
+            },
+            "post": {
+                "operationId": "cashreceiptsequences_accommodation-tax_create",
+                "description": "Create a accommodation tax sequence.\n---",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/FlatSequence"
+                        }
+                    },
+                    {
+                        "name": "X-Elorus-Organization",
+                        "in": "header",
+                        "description": "The ID of the organization you want to operate on.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-Elorus-Demo",
+                        "in": "header",
+                        "description": "Just send this header if you want to ensure you operate on demo organizations only. Useful while you're developing your application, to avoid accidents on production data. Note that the header's value is not important.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PUFlatSequenceSerializer"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request. The exact error message is sent in the response body."
+                    },
+                    "403": {
+                        "description": "Permission denied. User was not allowed to perform the requested action."
+                    }
+                },
+                "tags": [
+                    "cashreceiptsequences"
+                ],
+                "summary": "/v1.1/cashreceiptsequences/accommodation-tax/"
+            },
+            "parameters": []
+        },
+        "/v1.1/cashreceiptsequences/accommodation-tax/delete/": {
+            "delete": {
+                "operationId": "cashreceiptsequences_accommodation-tax_delete_sequence",
+                "description": "Delete a numbering sequence.\n---",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/FlatSequence"
+                        }
+                    },
+                    {
+                        "name": "X-Elorus-Organization",
+                        "in": "header",
+                        "description": "The ID of the organization you want to operate on.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-Elorus-Demo",
+                        "in": "header",
+                        "description": "Just send this header if you want to ensure you operate on demo organizations only. Useful while you're developing your application, to avoid accidents on production data. Note that the header's value is not important.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    },
+                    "403": {
+                        "description": "Permission denied. User was not allowed to perform the requested action."
+                    }
+                },
+                "tags": [
+                    "cashreceiptsequences"
+                ],
+                "summary": "/v1.1/cashreceiptsequences/accommodation-tax/delete/"
+            },
+            "parameters": []
+        },
+        "/v1.1/cashreceiptsequences/accommodation-tax/rename/": {
+            "put": {
+                "operationId": "cashreceiptsequences_accommodation-tax_rename_sequence",
+                "description": "Rename a numbering sequence.\n---",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/FlatSequenceRename"
+                        }
+                    },
+                    {
+                        "name": "X-Elorus-Organization",
+                        "in": "header",
+                        "description": "The ID of the organization you want to operate on.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-Elorus-Demo",
+                        "in": "header",
+                        "description": "Just send this header if you want to ensure you operate on demo organizations only. Useful while you're developing your application, to avoid accidents on production data. Note that the header's value is not important.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PUFlatSequenceRename"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request. The exact error message is sent in the response body."
+                    },
+                    "403": {
+                        "description": "Permission denied. User was not allowed to perform the requested action."
+                    }
+                },
+                "tags": [
+                    "cashreceiptsequences"
+                ],
+                "summary": "/v1.1/cashreceiptsequences/accommodation-tax/rename/"
+            },
+            "parameters": []
+        },
         "/v1.1/contacts/": {
             "get": {
                 "operationId": "contacts_list",
@@ -1678,14 +1857,14 @@
                     {
                         "name": "sequence",
                         "in": "query",
-                        "description": "Optionally filter by the numbering sequence ID.",
+                        "description": "Optionally filter by the numbering sequence.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence__name`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence_flat`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -1957,7 +2136,7 @@
             },
             "patch": {
                 "operationId": "creditnotes_partial_update",
-                "description": "Partially update a credit note.\n---\nUse this action to update the credit note tracking,\nor change it's draft status. Since this method does\nnot modify the credit note items and amounts you can always use it\nregardless the creditnote status. On the other hand, the\n[full update action](#operation/invoices_update) is only applicable\nto draft credit notes.\n\nPlease not that you cannot mark void credit notes as draft, unless\nyou [un-void](#operation/creditnotes_mark_void) them first.",
+                "description": "Partially update a credit note.\n---\nUse this action to update the credit note tracking,\nor change it's draft status. Since this method does\nnot modify the credit note items and amounts you can always use it\nregardless the creditnote status. On the other hand, the\n[full update action](#operation/invoices_update) is only applicable\nto draft credit notes.\n\nPlease note that you cannot mark void credit notes as draft, unless\nyou [un-void](#operation/creditnotes_mark_void) them first.",
                 "parameters": [
                     {
                         "name": "data",
@@ -2643,14 +2822,14 @@
                     {
                         "name": "sequence",
                         "in": "query",
-                        "description": "Optionally filter by the numbering sequence ID.",
+                        "description": "Optionally filter by the numbering sequence.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `number`, `sequence__name`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `number`, `sequence_flat`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -3667,7 +3846,7 @@
         "/v1.1/incomesequences/contract/delete/": {
             "delete": {
                 "operationId": "incomesequences_contract_delete_sequence",
-                "description": "Delete a sequence.\n---",
+                "description": "Delete a numbering sequence.\n---",
                 "parameters": [
                     {
                         "name": "data",
@@ -3710,7 +3889,7 @@
         "/v1.1/incomesequences/contract/rename/": {
             "put": {
                 "operationId": "incomesequences_contract_rename_sequence",
-                "description": "Rename a sequence.\n---",
+                "description": "Rename a numbering sequence.\n---",
                 "parameters": [
                     {
                         "name": "data",
@@ -3846,7 +4025,7 @@
         "/v1.1/incomesequences/rental/delete/": {
             "delete": {
                 "operationId": "incomesequences_rental_delete_sequence",
-                "description": "Delete a sequence.\n---",
+                "description": "Delete a numbering sequence.\n---",
                 "parameters": [
                     {
                         "name": "data",
@@ -3889,7 +4068,7 @@
         "/v1.1/incomesequences/rental/rename/": {
             "put": {
                 "operationId": "incomesequences_rental_rename_sequence",
-                "description": "Rename a sequence.\n---",
+                "description": "Rename a numbering sequence.\n---",
                 "parameters": [
                     {
                         "name": "data",
@@ -4013,14 +4192,14 @@
                     {
                         "name": "sequence",
                         "in": "query",
-                        "description": "Optionally filter by the numbering sequence ID.",
+                        "description": "Optionally filter by the numbering sequence.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence__name`, `due_date`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence_flat`, `due_date`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -4572,30 +4751,9 @@
                 "description": "Get the list of numbering sequences.\n---",
                 "parameters": [
                     {
-                        "name": "search",
-                        "in": "query",
-                        "description": "A search term.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "search_fields",
-                        "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `name`, `description`.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "documenttype",
                         "in": "query",
                         "description": "Optional filter.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "ordering",
-                        "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `name`, `documenttype__title`. Prepend a `-` to denote reverse ordering (e.g `-name`).",
                         "required": false,
                         "type": "string"
                     },
@@ -4657,7 +4815,7 @@
                                 "results": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/PUV11NumberingSequenceListRetrieveCreate"
+                                        "$ref": "#/definitions/PUV11NumberingSequence"
                                     }
                                 }
                             }
@@ -4681,7 +4839,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/V11NumberingSequenceListRetrieveCreate"
+                            "$ref": "#/definitions/V11NumberingSequence"
                         }
                     },
                     {
@@ -4703,7 +4861,7 @@
                     "201": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/PUV11NumberingSequenceListRetrieveCreate"
+                            "$ref": "#/definitions/PUV11NumberingSequence"
                         }
                     },
                     "400": {
@@ -4744,7 +4902,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/PUV11NumberingSequenceListRetrieveCreate"
+                            "$ref": "#/definitions/PUV11NumberingSequence"
                         }
                     },
                     "403": {
@@ -5480,7 +5638,7 @@
                     {
                         "name": "sequence",
                         "in": "query",
-                        "description": "Optionally filter by the numbering sequence ID.",
+                        "description": "Optionally filter by the numbering sequence.",
                         "required": false,
                         "type": "string"
                     },
@@ -5515,7 +5673,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `start_datetime`, `end_datetime`, `sequence__name`, `documenttype__title`, `client__display_name`, `total`, `payable`, `initial`, `net`, `draft`. Prepend a `-` to denote reverse ordering (e.g `-start_datetime`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `start_datetime`, `end_datetime`, `sequence_flat`, `documenttype__title`, `client__display_name`, `total`, `payable`, `initial`, `net`, `draft`. Prepend a `-` to denote reverse ordering (e.g `-start_datetime`).",
                         "required": false,
                         "type": "string"
                     },
@@ -6981,6 +7139,13 @@
                     "x-nullable": true,
                     "example": ""
                 },
+                "sequence": {
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": ""
+                },
                 "reference": {
                     "title": "Reference",
                     "description": "A reference code. Usually, the document number as specified by the supplier.",
@@ -7382,6 +7547,12 @@
                     "type": "string",
                     "example": ""
                 },
+                "sequence": {
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
+                    "example": ""
+                },
                 "reference": {
                     "title": "Reference",
                     "description": "A reference code. Usually, the document number as specified by the supplier.",
@@ -7687,6 +7858,12 @@
                 "mydata_document_type": {
                     "title": "MyDATA document type",
                     "description": "Available only when myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>3.1</code></td><td>Proof of Expenditure (non-liable Issuer)</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": ""
+                },
+                "sequence": {
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
                     "type": "string",
                     "example": ""
                 },
@@ -8109,6 +8286,12 @@
                     "type": "string",
                     "example": ""
                 },
+                "sequence": {
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
+                    "example": ""
+                },
                 "reference": {
                     "title": "Reference",
                     "description": "A reference code. Usually, the document number as specified by the supplier.",
@@ -8417,6 +8600,12 @@
                 "mydata_document_type": {
                     "title": "MyDATA document type",
                     "description": "Available only when myDATA integration is enabled. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>3.1</code></td><td>Proof of Expenditure (non-liable Issuer)</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": ""
+                },
+                "sequence": {
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
                     "type": "string",
                     "example": ""
                 },
@@ -9619,7 +9808,7 @@
                     "title": "Transaction type",
                     "type": "string",
                     "example": "ip",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Accommodation tax</td></tr></tbody></table></details>"
                 },
                 "title": {
                     "title": "Reason",
@@ -9690,7 +9879,7 @@
                     "title": "MyDATA document type",
                     "type": "string",
                     "example": "",
-                    "description": "One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>"
+                    "description": "One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr><tr><td><code>8.2</code></td><td>Special Record - Accommodation Tax Collection / Payment Receipt</td></tr></tbody></table></details>"
                 },
                 "mydata_uid": {
                     "title": "UID",
@@ -9843,7 +10032,7 @@
                     "title": "Transaction type",
                     "type": "string",
                     "example": "ip",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Accommodation tax</td></tr></tbody></table></details>"
                 },
                 "title": {
                     "title": "Reason",
@@ -9977,7 +10166,7 @@
                     "type": "string",
                     "readOnly": true,
                     "example": "",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr><tr><td><code>8.2</code></td><td>Special Record - Accommodation Tax Collection / Payment Receipt</td></tr></tbody></table></details>"
                 },
                 "mydata_uid": {
                     "title": "UID",
@@ -10095,7 +10284,7 @@
                     "title": "Transaction type",
                     "type": "string",
                     "example": "ip",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Accommodation tax</td></tr></tbody></table></details>"
                 },
                 "title": {
                     "title": "Reason",
@@ -10229,7 +10418,7 @@
                     "type": "string",
                     "readOnly": true,
                     "example": "",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr><tr><td><code>8.2</code></td><td>Special Record - Accommodation Tax Collection / Payment Receipt</td></tr></tbody></table></details>"
                 },
                 "mydata_uid": {
                     "title": "UID",
@@ -10367,7 +10556,7 @@
                     "title": "Transaction type",
                     "type": "string",
                     "example": "ip",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Accommodation tax</td></tr></tbody></table></details>"
                 },
                 "title": {
                     "title": "Reason",
@@ -10502,7 +10691,7 @@
                 },
                 "mydata_document_type": {
                     "title": "MyDATA document type",
-                    "description": "\"Rental income\" and \"Contract income\" transactions must by uploaded to the myDATA platform. This field is generated automatically, based on the record's income type. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>",
+                    "description": "\"Rental income\" and \"Contract income\" transactions must by uploaded to the myDATA platform. This field is generated automatically, based on the record's income type. One of the following or blank (empty string):\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr><tr><td><code>8.2</code></td><td>Special Record - Accommodation Tax Collection / Payment Receipt</td></tr></tbody></table></details>",
                     "type": "string",
                     "example": ""
                 },
@@ -10591,6 +10780,9 @@
             }
         },
         "V11CashReceiptUpdate": {
+            "required": [
+                "contact"
+            ],
             "type": "object",
             "properties": {
                 "id": {
@@ -10610,7 +10802,7 @@
                     "title": "Transaction type",
                     "type": "string",
                     "example": "ip",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Accommodation tax</td></tr></tbody></table></details>"
                 },
                 "title": {
                     "title": "Reason",
@@ -10744,7 +10936,7 @@
                     "type": "string",
                     "readOnly": true,
                     "example": "",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr><tr><td><code>8.2</code></td><td>Special Record - Accommodation Tax Collection / Payment Receipt</td></tr></tbody></table></details>"
                 },
                 "mydata_uid": {
                     "title": "UID",
@@ -10862,7 +11054,7 @@
                     "title": "Transaction type",
                     "type": "string",
                     "example": "ip",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Accommodation tax</td></tr></tbody></table></details>"
                 },
                 "title": {
                     "title": "Reason",
@@ -10996,7 +11188,7 @@
                     "type": "string",
                     "readOnly": true,
                     "example": "",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>7.1</code></td><td>Contract - Income</td></tr><tr><td><code>8.1</code></td><td>Rents - Income</td></tr><tr><td><code>8.2</code></td><td>Special Record - Accommodation Tax Collection / Payment Receipt</td></tr></tbody></table></details>"
                 },
                 "mydata_uid": {
                     "title": "UID",
@@ -11093,6 +11285,125 @@
                     "readOnly": true,
                     "example": "2019-01-28T13:48:56.504916Z",
                     "description": "Timezone information is included."
+                }
+            }
+        },
+        "FlatSequenceNested": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Name",
+                    "description": "The sequence name.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "SQC-123"
+                },
+                "in_use": {
+                    "title": "In use",
+                    "description": "The number of records using this sequence.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "10"
+                },
+                "use_in_mydata": {
+                    "title": "Use in mydata",
+                    "description": "Whether this sequence is used by records that have been sent to myDATA.",
+                    "type": "boolean",
+                    "readOnly": true,
+                    "example": true
+                }
+            }
+        },
+        "PUFlatSequenceList": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "title": "Count",
+                    "type": "integer",
+                    "readOnly": true,
+                    "example": 10
+                },
+                "results": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/FlatSequenceNested"
+                    },
+                    "readOnly": true
+                }
+            }
+        },
+        "FlatSequence": {
+            "required": [
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Name",
+                    "description": "The sequence name.",
+                    "type": "string",
+                    "maxLength": 10,
+                    "minLength": 1,
+                    "example": "SQC-123"
+                }
+            }
+        },
+        "PUFlatSequenceSerializer": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Name",
+                    "description": "The sequence name.",
+                    "type": "string",
+                    "maxLength": 10,
+                    "minLength": 1,
+                    "example": "SQC-123"
+                }
+            }
+        },
+        "FlatSequenceRename": {
+            "required": [
+                "old_name",
+                "new_name"
+            ],
+            "type": "object",
+            "properties": {
+                "old_name": {
+                    "title": "Name",
+                    "description": "The current sequence name.",
+                    "type": "string",
+                    "maxLength": 10,
+                    "minLength": 1,
+                    "example": "SQC-123"
+                },
+                "new_name": {
+                    "title": "Name",
+                    "description": "The new sequence name.",
+                    "type": "string",
+                    "maxLength": 10,
+                    "minLength": 1,
+                    "example": "SQC-ABC"
+                }
+            }
+        },
+        "PUFlatSequenceRename": {
+            "type": "object",
+            "properties": {
+                "old_name": {
+                    "title": "Name",
+                    "description": "The current sequence name.",
+                    "type": "string",
+                    "maxLength": 10,
+                    "minLength": 1,
+                    "example": "SQC-123"
+                },
+                "new_name": {
+                    "title": "Name",
+                    "description": "The new sequence name.",
+                    "type": "string",
+                    "maxLength": 10,
+                    "minLength": 1,
+                    "example": "SQC-ABC"
                 }
             }
         },
@@ -11793,10 +12104,10 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
+                    "readOnly": true,
                     "example": ""
                 },
                 "number": {
@@ -12163,10 +12474,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -12495,10 +12805,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -12940,10 +13249,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -13278,10 +13586,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -13610,10 +13917,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -14455,7 +14761,7 @@
                 },
                 "always_self_billed": {
                     "title": "Always self-billed",
-                    "description": "Denotes if this is self-billed.Apply only to bill documents.",
+                    "description": "Denotes if this is self-billed. Apply only to bill documents.",
                     "type": "boolean",
                     "example": false
                 }
@@ -14573,7 +14879,7 @@
                 },
                 "always_self_billed": {
                     "title": "Always self-billed",
-                    "description": "Denotes if this is self-billed.Apply only to bill documents.",
+                    "description": "Denotes if this is self-billed. Apply only to bill documents.",
                     "type": "boolean",
                     "example": false
                 }
@@ -14666,10 +14972,10 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
+                    "readOnly": true,
                     "example": ""
                 },
                 "number": {
@@ -14969,10 +15275,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -15197,10 +15502,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -15508,10 +15812,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -15745,10 +16048,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -16903,125 +17205,6 @@
                 }
             }
         },
-        "FlatSequenceNested": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "title": "Name",
-                    "description": "The sequence name.",
-                    "type": "string",
-                    "readOnly": true,
-                    "example": "SQC-123"
-                },
-                "in_use": {
-                    "title": "In use",
-                    "description": "The number of records using this sequence.",
-                    "type": "string",
-                    "readOnly": true,
-                    "example": "10"
-                },
-                "use_in_mydata": {
-                    "title": "Use in mydata",
-                    "description": "Whether this sequence is used by records that have been sent to myDATA.",
-                    "type": "boolean",
-                    "readOnly": true,
-                    "example": true
-                }
-            }
-        },
-        "PUFlatSequenceList": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "title": "Count",
-                    "type": "integer",
-                    "readOnly": true,
-                    "example": 10
-                },
-                "results": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/FlatSequenceNested"
-                    },
-                    "readOnly": true
-                }
-            }
-        },
-        "FlatSequence": {
-            "required": [
-                "name"
-            ],
-            "type": "object",
-            "properties": {
-                "name": {
-                    "title": "Name",
-                    "description": "The sequence name.",
-                    "type": "string",
-                    "maxLength": 10,
-                    "minLength": 1,
-                    "example": "SQC-123"
-                }
-            }
-        },
-        "PUFlatSequenceSerializer": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "title": "Name",
-                    "description": "The sequence name.",
-                    "type": "string",
-                    "maxLength": 10,
-                    "minLength": 1,
-                    "example": "SQC-123"
-                }
-            }
-        },
-        "FlatSequenceRename": {
-            "required": [
-                "old_name",
-                "new_name"
-            ],
-            "type": "object",
-            "properties": {
-                "old_name": {
-                    "title": "Name",
-                    "description": "The current sequence name.",
-                    "type": "string",
-                    "maxLength": 10,
-                    "minLength": 1,
-                    "example": "SQC-123"
-                },
-                "new_name": {
-                    "title": "Name",
-                    "description": "The new sequence name.",
-                    "type": "string",
-                    "maxLength": 10,
-                    "minLength": 1,
-                    "example": "SQC-ABC"
-                }
-            }
-        },
-        "PUFlatSequenceRename": {
-            "type": "object",
-            "properties": {
-                "old_name": {
-                    "title": "Name",
-                    "description": "The current sequence name.",
-                    "type": "string",
-                    "maxLength": 10,
-                    "minLength": 1,
-                    "example": "SQC-123"
-                },
-                "new_name": {
-                    "title": "Name",
-                    "description": "The new sequence name.",
-                    "type": "string",
-                    "maxLength": 10,
-                    "minLength": 1,
-                    "example": "SQC-ABC"
-                }
-            }
-        },
         "PUV11InvoiceList": {
             "type": "object",
             "properties": {
@@ -17066,10 +17249,10 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
+                    "readOnly": true,
                     "example": ""
                 },
                 "number": {
@@ -17447,10 +17630,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -17791,10 +17973,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -18248,10 +18429,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -18597,10 +18777,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -18940,10 +19119,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
                     "example": ""
                 },
                 "number": {
@@ -19554,7 +19732,7 @@
                 }
             }
         },
-        "PUV11NumberingSequenceListRetrieveCreate": {
+        "PUV11NumberingSequence": {
             "type": "object",
             "properties": {
                 "id": {
@@ -19565,35 +19743,28 @@
                     "example": "1050000300010040"
                 },
                 "name": {
-                    "title": "Short name",
+                    "title": "Name",
                     "description": "The sequence prefix (e.g. \"INV\").",
                     "type": "string",
                     "maxLength": 10,
-                    "minLength": 1,
-                    "example": "INV"
-                },
-                "description": {
-                    "title": "Description",
-                    "description": "An optional description used for your own reference.",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "A new sequence."
+                    "minLength": 1
                 },
                 "documenttype": {
                     "title": "Document type",
                     "description": "Document type ID associated with this sequence.",
-                    "type": "integer",
+                    "type": "string",
+                    "minLength": 1,
                     "example": "4400000040000123"
                 },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
-                    "type": "integer",
+                    "type": "string",
                     "readOnly": true,
                     "example": "1000000243015421"
                 },
                 "created": {
-                    "title": "Created on",
+                    "title": "Created",
                     "description": "ISO-formatted creation date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -19601,7 +19772,7 @@
                     "example": "2019-01-28T13:48:56.504916Z"
                 },
                 "modified": {
-                    "title": "Modified on",
+                    "title": "Modified",
                     "description": "ISO-formatted last modification date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -19610,7 +19781,7 @@
                 }
             }
         },
-        "V11NumberingSequenceListRetrieveCreate": {
+        "V11NumberingSequence": {
             "required": [
                 "name",
                 "documenttype"
@@ -19625,35 +19796,28 @@
                     "example": "1050000300010040"
                 },
                 "name": {
-                    "title": "Short name",
+                    "title": "Name",
                     "description": "The sequence prefix (e.g. \"INV\").",
                     "type": "string",
                     "maxLength": 10,
-                    "minLength": 1,
-                    "example": "INV"
-                },
-                "description": {
-                    "title": "Description",
-                    "description": "An optional description used for your own reference.",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "A new sequence."
+                    "minLength": 1
                 },
                 "documenttype": {
                     "title": "Document type",
                     "description": "Document type ID associated with this sequence.",
-                    "type": "integer",
+                    "type": "string",
+                    "minLength": 1,
                     "example": "4400000040000123"
                 },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
-                    "type": "integer",
+                    "type": "string",
                     "readOnly": true,
                     "example": "1000000243015421"
                 },
                 "created": {
-                    "title": "Created on",
+                    "title": "Created",
                     "description": "ISO-formatted creation date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -19661,7 +19825,7 @@
                     "example": "2019-01-28T13:48:56.504916Z"
                 },
                 "modified": {
-                    "title": "Modified on",
+                    "title": "Modified",
                     "description": "ISO-formatted last modification date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -19671,6 +19835,9 @@
             }
         },
         "V11NumberingSequenceUpdate": {
+            "required": [
+                "name"
+            ],
             "type": "object",
             "properties": {
                 "id": {
@@ -19681,35 +19848,29 @@
                     "example": "1050000300010040"
                 },
                 "name": {
-                    "title": "Short name",
+                    "title": "Name",
                     "description": "The sequence prefix (e.g. \"INV\").",
                     "type": "string",
                     "maxLength": 10,
-                    "minLength": 1,
-                    "example": "INV"
-                },
-                "description": {
-                    "title": "Description",
-                    "description": "An optional description used for your own reference.",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "A new sequence."
+                    "minLength": 1
                 },
                 "documenttype": {
                     "title": "Document type",
                     "description": "Document type ID associated with this sequence.",
-                    "type": "integer",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
                     "example": "4400000040000123"
                 },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
-                    "type": "integer",
+                    "type": "string",
                     "readOnly": true,
                     "example": "1000000243015421"
                 },
                 "created": {
-                    "title": "Created on",
+                    "title": "Created",
                     "description": "ISO-formatted creation date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -19717,7 +19878,7 @@
                     "example": "2019-01-28T13:48:56.504916Z"
                 },
                 "modified": {
-                    "title": "Modified on",
+                    "title": "Modified",
                     "description": "ISO-formatted last modification date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -19737,35 +19898,29 @@
                     "example": "1050000300010040"
                 },
                 "name": {
-                    "title": "Short name",
+                    "title": "Name",
                     "description": "The sequence prefix (e.g. \"INV\").",
                     "type": "string",
                     "maxLength": 10,
-                    "minLength": 1,
-                    "example": "INV"
-                },
-                "description": {
-                    "title": "Description",
-                    "description": "An optional description used for your own reference.",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "A new sequence."
+                    "minLength": 1
                 },
                 "documenttype": {
                     "title": "Document type",
                     "description": "Document type ID associated with this sequence.",
-                    "type": "integer",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
                     "example": "4400000040000123"
                 },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
-                    "type": "integer",
+                    "type": "string",
                     "readOnly": true,
                     "example": "1000000243015421"
                 },
                 "created": {
-                    "title": "Created on",
+                    "title": "Created",
                     "description": "ISO-formatted creation date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -19773,7 +19928,7 @@
                     "example": "2019-01-28T13:48:56.504916Z"
                 },
                 "modified": {
-                    "title": "Modified on",
+                    "title": "Modified",
                     "description": "ISO-formatted last modification date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -20843,10 +20998,10 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
+                    "readOnly": true,
                     "example": ""
                 },
                 "draft": {
@@ -21189,10 +21344,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "example": ""
                 },
                 "draft": {
@@ -21468,10 +21622,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "example": ""
                 },
                 "draft": {
@@ -21747,10 +21900,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "example": ""
                 },
                 "draft": {
@@ -22136,10 +22288,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "example": ""
                 },
                 "draft": {
@@ -22415,10 +22566,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "example": ""
                 },
                 "draft": {
@@ -23891,7 +24041,7 @@
                 "aade_type": {
                     "title": "AADE type",
                     "type": "integer",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Other / Not applicable</td></tr><tr><td><code>1</code></td><td>\u03a6\u03a0\u0391 24% (\u039a\u03b1\u03bd\u03bf\u03bd\u03b9\u03ba\u03cc\u03c2)</td></tr><tr><td><code>2</code></td><td>\u03a6\u03a0\u0391 13% (\u039c\u03b5\u03b9\u03c9\u03bc\u03ad\u03bd\u03bf\u03c2)</td></tr><tr><td><code>3</code></td><td>\u03a6\u03a0\u0391 6% (\u03a5\u03c0\u03b5\u03c1\u03bc\u03b5\u03b9\u03c9\u03bc\u03ad\u03bd\u03bf\u03c2)</td></tr><tr><td><code>4</code></td><td>\u03a6\u03a0\u0391 17%</td></tr><tr><td><code>5</code></td><td>\u03a6\u03a0\u0391 9%</td></tr><tr><td><code>6</code></td><td>\u03a6\u03a0\u0391 4%</td></tr><tr><td><code>7</code></td><td>\u03a6\u03a0\u0391 0% (\u0391\u03c0\u03b1\u03bb\u03bb\u03b1\u03b3\u03ae)</td></tr><tr><td><code>8</code></td><td>\u03a4\u03cc\u03ba\u03bf\u03b9 15% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b2\u2019)</td></tr><tr><td><code>9</code></td><td>\u0394\u03b9\u03ba\u03b1\u03b9\u03ce\u03bc\u03b1\u03c4\u03b1 - 20% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b3\u2019)</td></tr><tr><td><code>10</code></td><td>\u0391\u03bc\u03bf\u03b9\u03b2\u03ad\u03c2 \u03a3\u03c5\u03bc\u03b2\u03bf\u03c5\u03bb\u03ce\u03bd \u0394\u03b9\u03bf\u03af\u03ba\u03b7\u03c3\u03b7\u03c2  - 20% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b4\u2019)</td></tr><tr><td><code>11</code></td><td>\u03a4\u03b5\u03c7\u03bd\u03b9\u03ba\u03ac \u0388\u03c1\u03b3\u03b1 - 3% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b4\u2019)</td></tr><tr><td><code>12</code></td><td>\u03a5\u03b3\u03c1\u03ac \u03ba\u03b1\u03cd\u03c3\u03b9\u03bc\u03b1 \u03ba\u03b1\u03b9 \u03c0\u03c1\u03bf\u03ca\u03cc\u03bd\u03c4\u03b1 \u03ba\u03b1\u03c0\u03bd\u03bf\u03b2\u03b9\u03bf\u03bc\u03b7\u03c7\u03b1\u03bd\u03af\u03b1\u03c2 1%</td></tr><tr><td><code>13</code></td><td>\u039b\u03bf\u03b9\u03c0\u03ac \u0391\u03b3\u03b1\u03b8\u03ac 4%</td></tr><tr><td><code>14</code></td><td>\u03a0\u03b1\u03c1\u03bf\u03c7\u03ae \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd 8%</td></tr><tr><td><code>15</code></td><td>\u03a0\u03c1\u03bf\u03ba. \u03a6\u03cc\u03c1\u03bf\u03c5 4% \u0391\u03c1\u03c7\u03b9\u03c4/\u03bd\u03c9\u03bd & \u039c\u03b7\u03c7/\u03ba\u03ce\u03bd & \u03a3\u03c5\u03bc\u03b2\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0391\u03bc\u03bf\u03b9\u03b2\u03ce\u03bd, \u03b3\u03b9\u03b1 \u0395\u03ba\u03c0\u03cc\u03bd\u03b7\u03c3\u03b7 \u039c\u03b5\u03bb\u03b5\u03c4\u03ce\u03bd & \u03a3\u03c7\u03b5\u03b4\u03af\u03c9\u03bd</td></tr><tr><td><code>16</code></td><td>\u03a0\u03c1\u03bf\u03ba. \u03a6\u03cc\u03c1\u03bf\u03c5 10% \u0391\u03c1\u03c7\u03b9\u03c4/\u03bd\u03c9\u03bd & \u039c\u03b7\u03c7/\u03ba\u03ce\u03bd & \u03a3\u03c5\u03bc\u03b2\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0391\u03bc\u03bf\u03b9\u03b2\u03ce\u03bd, \u03b1\u03c6\u03bf\u03c1\u03bf\u03cd\u03bd \u03ac\u03bb\u03bb\u03b7\u03c2 \u03c6\u03cd\u03c3\u03b7\u03c2 \u03ad\u03c1\u03b3\u03b1</td></tr><tr><td><code>17</code></td><td>\u03a0\u03c1\u03bf\u03ba\u03b1\u03c4\u03b1\u03b2\u03bb\u03b7\u03c4\u03ad\u03bf\u03c2 \u03a6\u03cc\u03c1\u03bf\u03c2 \u03c3\u03c4\u03b9\u03c2 \u0391\u03bc\u03bf\u03b9\u03b2\u03ad\u03c2 \u0394\u03b9\u03ba\u03b7\u03b3\u03cc\u03c1\u03c9\u03bd 15%</td></tr><tr><td><code>18</code></td><td>\u03a0\u03b1\u03c1\u03b1\u03ba\u03c1\u03ac\u03c4\u03b7\u03c3\u03b7 \u03a6\u03cc\u03c1\u03bf\u03c5 \u039c\u03b9\u03c3\u03b8\u03c9\u03c4\u03ce\u03bd \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd \u03c0\u03b1\u03c1. 2 \u03b1\u03c1. 15 \u03bd. 4172/2013 - \u0391\u03be\u03b9\u03c9\u03bc\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0395\u03bc\u03c0\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd \u039d\u03b1\u03c5\u03c4\u03b9\u03ba\u03bf\u03cd</td></tr><tr><td><code>19</code></td><td>\u03a0\u03b1\u03c1\u03b1\u03ba\u03c1\u03ac\u03c4\u03b7\u03c3\u03b7 \u03a6\u03cc\u03c1\u03bf\u03c5 \u039c\u03b9\u03c3\u03b8\u03c9\u03c4\u03ce\u03bd \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd \u03c0\u03b1\u03c1. 2 \u03b1\u03c1. 15 \u03bd. 4172/2013 - \u039a\u03b1\u03c4\u03ce\u03c4\u03b5\u03c1\u03bf \u03a0\u03bb\u03ae\u03c1\u03c9\u03bc\u03b1 \u0395\u03bc\u03c0\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd \u039d\u03b1\u03c5\u03c4\u03b9\u03ba\u03bf\u03cd</td></tr><tr><td><code>20</code></td><td>\u039a\u03c1\u03b1\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2</td></tr><tr><td><code>21</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 1,2%</td></tr><tr><td><code>22</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 2,4%</td></tr><tr><td><code>23</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 3,6%</td></tr><tr><td><code>24</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 12% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 50 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>25</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 15% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 50,01 \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 100 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>26</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 18% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 100,01 \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 150 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>27</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 20% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 150,01 \u03b5\u03c5\u03c1\u03ce \u03ba\u03b1\u03b9 \u03ac\u03bd\u03c9</td></tr><tr><td><code>28</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03ba\u03b1\u03c1\u03c4\u03bf\u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 12% \u03b5\u03c0\u03af \u03c4\u03b7\u03c2 \u03b1\u03be\u03af\u03b1\u03c2 \u03c4\u03bf\u03c5 \u03c7\u03c1\u03cc\u03bd\u03bf\u03c5 \u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2</td></tr><tr><td><code>29</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03b9\u03ba\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03cc\u03c1\u03b1\u03c3\u03b7\u03c2 10%</td></tr><tr><td><code>30</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03c3\u03c4\u03b1\u03b8\u03b5\u03c1\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 5%</td></tr><tr><td><code>31</code></td><td>OSS VAT</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Other / Not applicable</td></tr><tr><td><code>1</code></td><td>\u03a6\u03a0\u0391 24% (\u039a\u03b1\u03bd\u03bf\u03bd\u03b9\u03ba\u03cc\u03c2)</td></tr><tr><td><code>2</code></td><td>\u03a6\u03a0\u0391 13% (\u039c\u03b5\u03b9\u03c9\u03bc\u03ad\u03bd\u03bf\u03c2)</td></tr><tr><td><code>3</code></td><td>\u03a6\u03a0\u0391 6% (\u03a5\u03c0\u03b5\u03c1\u03bc\u03b5\u03b9\u03c9\u03bc\u03ad\u03bd\u03bf\u03c2)</td></tr><tr><td><code>4</code></td><td>\u03a6\u03a0\u0391 17%</td></tr><tr><td><code>5</code></td><td>\u03a6\u03a0\u0391 9%</td></tr><tr><td><code>6</code></td><td>\u03a6\u03a0\u0391 4%</td></tr><tr><td><code>7</code></td><td>\u03a6\u03a0\u0391 0% (\u0391\u03c0\u03b1\u03bb\u03bb\u03b1\u03b3\u03ae)</td></tr><tr><td><code>8</code></td><td>\u03a4\u03cc\u03ba\u03bf\u03b9 15% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b2\u2019)</td></tr><tr><td><code>9</code></td><td>\u0394\u03b9\u03ba\u03b1\u03b9\u03ce\u03bc\u03b1\u03c4\u03b1 - 20% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b3\u2019)</td></tr><tr><td><code>10</code></td><td>\u0391\u03bc\u03bf\u03b9\u03b2\u03ad\u03c2 \u03a3\u03c5\u03bc\u03b2\u03bf\u03c5\u03bb\u03ce\u03bd \u0394\u03b9\u03bf\u03af\u03ba\u03b7\u03c3\u03b7\u03c2  - 20% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b4\u2019)</td></tr><tr><td><code>11</code></td><td>\u03a4\u03b5\u03c7\u03bd\u03b9\u03ba\u03ac \u0388\u03c1\u03b3\u03b1 - 3% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b4\u2019)</td></tr><tr><td><code>12</code></td><td>\u03a5\u03b3\u03c1\u03ac \u03ba\u03b1\u03cd\u03c3\u03b9\u03bc\u03b1 \u03ba\u03b1\u03b9 \u03c0\u03c1\u03bf\u03ca\u03cc\u03bd\u03c4\u03b1 \u03ba\u03b1\u03c0\u03bd\u03bf\u03b2\u03b9\u03bf\u03bc\u03b7\u03c7\u03b1\u03bd\u03af\u03b1\u03c2 1%</td></tr><tr><td><code>13</code></td><td>\u039b\u03bf\u03b9\u03c0\u03ac \u0391\u03b3\u03b1\u03b8\u03ac 4%</td></tr><tr><td><code>14</code></td><td>\u03a0\u03b1\u03c1\u03bf\u03c7\u03ae \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd 8%</td></tr><tr><td><code>15</code></td><td>\u03a0\u03c1\u03bf\u03ba. \u03a6\u03cc\u03c1\u03bf\u03c5 4% \u0391\u03c1\u03c7\u03b9\u03c4/\u03bd\u03c9\u03bd & \u039c\u03b7\u03c7/\u03ba\u03ce\u03bd & \u03a3\u03c5\u03bc\u03b2\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0391\u03bc\u03bf\u03b9\u03b2\u03ce\u03bd, \u03b3\u03b9\u03b1 \u0395\u03ba\u03c0\u03cc\u03bd\u03b7\u03c3\u03b7 \u039c\u03b5\u03bb\u03b5\u03c4\u03ce\u03bd & \u03a3\u03c7\u03b5\u03b4\u03af\u03c9\u03bd</td></tr><tr><td><code>16</code></td><td>\u03a0\u03c1\u03bf\u03ba. \u03a6\u03cc\u03c1\u03bf\u03c5 10% \u0391\u03c1\u03c7\u03b9\u03c4/\u03bd\u03c9\u03bd & \u039c\u03b7\u03c7/\u03ba\u03ce\u03bd & \u03a3\u03c5\u03bc\u03b2\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0391\u03bc\u03bf\u03b9\u03b2\u03ce\u03bd, \u03b1\u03c6\u03bf\u03c1\u03bf\u03cd\u03bd \u03ac\u03bb\u03bb\u03b7\u03c2 \u03c6\u03cd\u03c3\u03b7\u03c2 \u03ad\u03c1\u03b3\u03b1</td></tr><tr><td><code>17</code></td><td>\u03a0\u03c1\u03bf\u03ba\u03b1\u03c4\u03b1\u03b2\u03bb\u03b7\u03c4\u03ad\u03bf\u03c2 \u03a6\u03cc\u03c1\u03bf\u03c2 \u03c3\u03c4\u03b9\u03c2 \u0391\u03bc\u03bf\u03b9\u03b2\u03ad\u03c2 \u0394\u03b9\u03ba\u03b7\u03b3\u03cc\u03c1\u03c9\u03bd 15%</td></tr><tr><td><code>18</code></td><td>\u03a0\u03b1\u03c1\u03b1\u03ba\u03c1\u03ac\u03c4\u03b7\u03c3\u03b7 \u03a6\u03cc\u03c1\u03bf\u03c5 \u039c\u03b9\u03c3\u03b8\u03c9\u03c4\u03ce\u03bd \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd \u03c0\u03b1\u03c1. 2 \u03b1\u03c1. 15 \u03bd. 4172/2013 - \u0391\u03be\u03b9\u03c9\u03bc\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0395\u03bc\u03c0\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd \u039d\u03b1\u03c5\u03c4\u03b9\u03ba\u03bf\u03cd</td></tr><tr><td><code>19</code></td><td>\u03a0\u03b1\u03c1\u03b1\u03ba\u03c1\u03ac\u03c4\u03b7\u03c3\u03b7 \u03a6\u03cc\u03c1\u03bf\u03c5 \u039c\u03b9\u03c3\u03b8\u03c9\u03c4\u03ce\u03bd \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd \u03c0\u03b1\u03c1. 2 \u03b1\u03c1. 15 \u03bd. 4172/2013 - \u039a\u03b1\u03c4\u03ce\u03c4\u03b5\u03c1\u03bf \u03a0\u03bb\u03ae\u03c1\u03c9\u03bc\u03b1 \u0395\u03bc\u03c0\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd \u039d\u03b1\u03c5\u03c4\u03b9\u03ba\u03bf\u03cd</td></tr><tr><td><code>20</code></td><td>\u039a\u03c1\u03b1\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2</td></tr><tr><td><code>21</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 1,2%</td></tr><tr><td><code>22</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 2,4%</td></tr><tr><td><code>23</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 3,6%</td></tr><tr><td><code>24</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 12% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 50 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>25</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 15% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 50,01 \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 100 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>26</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 18% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 100,01 \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 150 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>27</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 20% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 150,01 \u03b5\u03c5\u03c1\u03ce \u03ba\u03b1\u03b9 \u03ac\u03bd\u03c9</td></tr><tr><td><code>28</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03ba\u03b1\u03c1\u03c4\u03bf\u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 12% \u03b5\u03c0\u03af \u03c4\u03b7\u03c2 \u03b1\u03be\u03af\u03b1\u03c2 \u03c4\u03bf\u03c5 \u03c7\u03c1\u03cc\u03bd\u03bf\u03c5 \u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2</td></tr><tr><td><code>29</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03b9\u03ba\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03cc\u03c1\u03b1\u03c3\u03b7\u03c2 10%</td></tr><tr><td><code>30</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03c3\u03c4\u03b1\u03b8\u03b5\u03c1\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 5%</td></tr><tr><td><code>31</code></td><td>OSS VAT</td></tr><tr><td><code>32</code></td><td>\u039e\u03b5\u03bd\u03bf\u03b4\u03bf\u03c7\u03b5\u03af\u03b1 1-2 \u03b1\u03c3\u03c4\u03ad\u03c1\u03c9\u03bd</td></tr><tr><td><code>33</code></td><td>\u039e\u03b5\u03bd\u03bf\u03b4\u03bf\u03c7\u03b5\u03af\u03b1 3 \u03b1\u03c3\u03c4\u03ad\u03c1\u03c9\u03bd</td></tr><tr><td><code>34</code></td><td>\u039e\u03b5\u03bd\u03bf\u03b4\u03bf\u03c7\u03b5\u03af\u03b1 4 \u03b1\u03c3\u03c4\u03ad\u03c1\u03c9\u03bd</td></tr><tr><td><code>35</code></td><td>\u039e\u03b5\u03bd\u03bf\u03b4\u03bf\u03c7\u03b5\u03af\u03b1 5 \u03b1\u03c3\u03c4\u03ad\u03c1\u03c9\u03bd</td></tr><tr><td><code>36</code></td><td>\u0395\u03bd\u03bf\u03b9\u03ba\u03b9\u03b1\u03b6\u03cc\u03bc\u03b5\u03bd\u03b1 - \u03b5\u03c0\u03b9\u03c0\u03bb\u03c9\u03bc\u03ad\u03bd\u03b1 \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03b1 - \u03b4\u03b9\u03b1\u03bc\u03b5\u03c1\u03af\u03c3\u03bc\u03b1\u03c4\u03b1</td></tr></tbody></table></details>"
                 },
                 "active": {
                     "title": "Active",
@@ -24040,7 +24190,7 @@
                 "aade_type": {
                     "title": "AADE type",
                     "type": "integer",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Other / Not applicable</td></tr><tr><td><code>1</code></td><td>\u03a6\u03a0\u0391 24% (\u039a\u03b1\u03bd\u03bf\u03bd\u03b9\u03ba\u03cc\u03c2)</td></tr><tr><td><code>2</code></td><td>\u03a6\u03a0\u0391 13% (\u039c\u03b5\u03b9\u03c9\u03bc\u03ad\u03bd\u03bf\u03c2)</td></tr><tr><td><code>3</code></td><td>\u03a6\u03a0\u0391 6% (\u03a5\u03c0\u03b5\u03c1\u03bc\u03b5\u03b9\u03c9\u03bc\u03ad\u03bd\u03bf\u03c2)</td></tr><tr><td><code>4</code></td><td>\u03a6\u03a0\u0391 17%</td></tr><tr><td><code>5</code></td><td>\u03a6\u03a0\u0391 9%</td></tr><tr><td><code>6</code></td><td>\u03a6\u03a0\u0391 4%</td></tr><tr><td><code>7</code></td><td>\u03a6\u03a0\u0391 0% (\u0391\u03c0\u03b1\u03bb\u03bb\u03b1\u03b3\u03ae)</td></tr><tr><td><code>8</code></td><td>\u03a4\u03cc\u03ba\u03bf\u03b9 15% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b2\u2019)</td></tr><tr><td><code>9</code></td><td>\u0394\u03b9\u03ba\u03b1\u03b9\u03ce\u03bc\u03b1\u03c4\u03b1 - 20% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b3\u2019)</td></tr><tr><td><code>10</code></td><td>\u0391\u03bc\u03bf\u03b9\u03b2\u03ad\u03c2 \u03a3\u03c5\u03bc\u03b2\u03bf\u03c5\u03bb\u03ce\u03bd \u0394\u03b9\u03bf\u03af\u03ba\u03b7\u03c3\u03b7\u03c2  - 20% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b4\u2019)</td></tr><tr><td><code>11</code></td><td>\u03a4\u03b5\u03c7\u03bd\u03b9\u03ba\u03ac \u0388\u03c1\u03b3\u03b1 - 3% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b4\u2019)</td></tr><tr><td><code>12</code></td><td>\u03a5\u03b3\u03c1\u03ac \u03ba\u03b1\u03cd\u03c3\u03b9\u03bc\u03b1 \u03ba\u03b1\u03b9 \u03c0\u03c1\u03bf\u03ca\u03cc\u03bd\u03c4\u03b1 \u03ba\u03b1\u03c0\u03bd\u03bf\u03b2\u03b9\u03bf\u03bc\u03b7\u03c7\u03b1\u03bd\u03af\u03b1\u03c2 1%</td></tr><tr><td><code>13</code></td><td>\u039b\u03bf\u03b9\u03c0\u03ac \u0391\u03b3\u03b1\u03b8\u03ac 4%</td></tr><tr><td><code>14</code></td><td>\u03a0\u03b1\u03c1\u03bf\u03c7\u03ae \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd 8%</td></tr><tr><td><code>15</code></td><td>\u03a0\u03c1\u03bf\u03ba. \u03a6\u03cc\u03c1\u03bf\u03c5 4% \u0391\u03c1\u03c7\u03b9\u03c4/\u03bd\u03c9\u03bd & \u039c\u03b7\u03c7/\u03ba\u03ce\u03bd & \u03a3\u03c5\u03bc\u03b2\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0391\u03bc\u03bf\u03b9\u03b2\u03ce\u03bd, \u03b3\u03b9\u03b1 \u0395\u03ba\u03c0\u03cc\u03bd\u03b7\u03c3\u03b7 \u039c\u03b5\u03bb\u03b5\u03c4\u03ce\u03bd & \u03a3\u03c7\u03b5\u03b4\u03af\u03c9\u03bd</td></tr><tr><td><code>16</code></td><td>\u03a0\u03c1\u03bf\u03ba. \u03a6\u03cc\u03c1\u03bf\u03c5 10% \u0391\u03c1\u03c7\u03b9\u03c4/\u03bd\u03c9\u03bd & \u039c\u03b7\u03c7/\u03ba\u03ce\u03bd & \u03a3\u03c5\u03bc\u03b2\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0391\u03bc\u03bf\u03b9\u03b2\u03ce\u03bd, \u03b1\u03c6\u03bf\u03c1\u03bf\u03cd\u03bd \u03ac\u03bb\u03bb\u03b7\u03c2 \u03c6\u03cd\u03c3\u03b7\u03c2 \u03ad\u03c1\u03b3\u03b1</td></tr><tr><td><code>17</code></td><td>\u03a0\u03c1\u03bf\u03ba\u03b1\u03c4\u03b1\u03b2\u03bb\u03b7\u03c4\u03ad\u03bf\u03c2 \u03a6\u03cc\u03c1\u03bf\u03c2 \u03c3\u03c4\u03b9\u03c2 \u0391\u03bc\u03bf\u03b9\u03b2\u03ad\u03c2 \u0394\u03b9\u03ba\u03b7\u03b3\u03cc\u03c1\u03c9\u03bd 15%</td></tr><tr><td><code>18</code></td><td>\u03a0\u03b1\u03c1\u03b1\u03ba\u03c1\u03ac\u03c4\u03b7\u03c3\u03b7 \u03a6\u03cc\u03c1\u03bf\u03c5 \u039c\u03b9\u03c3\u03b8\u03c9\u03c4\u03ce\u03bd \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd \u03c0\u03b1\u03c1. 2 \u03b1\u03c1. 15 \u03bd. 4172/2013 - \u0391\u03be\u03b9\u03c9\u03bc\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0395\u03bc\u03c0\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd \u039d\u03b1\u03c5\u03c4\u03b9\u03ba\u03bf\u03cd</td></tr><tr><td><code>19</code></td><td>\u03a0\u03b1\u03c1\u03b1\u03ba\u03c1\u03ac\u03c4\u03b7\u03c3\u03b7 \u03a6\u03cc\u03c1\u03bf\u03c5 \u039c\u03b9\u03c3\u03b8\u03c9\u03c4\u03ce\u03bd \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd \u03c0\u03b1\u03c1. 2 \u03b1\u03c1. 15 \u03bd. 4172/2013 - \u039a\u03b1\u03c4\u03ce\u03c4\u03b5\u03c1\u03bf \u03a0\u03bb\u03ae\u03c1\u03c9\u03bc\u03b1 \u0395\u03bc\u03c0\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd \u039d\u03b1\u03c5\u03c4\u03b9\u03ba\u03bf\u03cd</td></tr><tr><td><code>20</code></td><td>\u039a\u03c1\u03b1\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2</td></tr><tr><td><code>21</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 1,2%</td></tr><tr><td><code>22</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 2,4%</td></tr><tr><td><code>23</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 3,6%</td></tr><tr><td><code>24</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 12% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 50 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>25</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 15% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 50,01 \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 100 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>26</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 18% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 100,01 \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 150 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>27</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 20% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 150,01 \u03b5\u03c5\u03c1\u03ce \u03ba\u03b1\u03b9 \u03ac\u03bd\u03c9</td></tr><tr><td><code>28</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03ba\u03b1\u03c1\u03c4\u03bf\u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 12% \u03b5\u03c0\u03af \u03c4\u03b7\u03c2 \u03b1\u03be\u03af\u03b1\u03c2 \u03c4\u03bf\u03c5 \u03c7\u03c1\u03cc\u03bd\u03bf\u03c5 \u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2</td></tr><tr><td><code>29</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03b9\u03ba\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03cc\u03c1\u03b1\u03c3\u03b7\u03c2 10%</td></tr><tr><td><code>30</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03c3\u03c4\u03b1\u03b8\u03b5\u03c1\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 5%</td></tr><tr><td><code>31</code></td><td>OSS VAT</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Other / Not applicable</td></tr><tr><td><code>1</code></td><td>\u03a6\u03a0\u0391 24% (\u039a\u03b1\u03bd\u03bf\u03bd\u03b9\u03ba\u03cc\u03c2)</td></tr><tr><td><code>2</code></td><td>\u03a6\u03a0\u0391 13% (\u039c\u03b5\u03b9\u03c9\u03bc\u03ad\u03bd\u03bf\u03c2)</td></tr><tr><td><code>3</code></td><td>\u03a6\u03a0\u0391 6% (\u03a5\u03c0\u03b5\u03c1\u03bc\u03b5\u03b9\u03c9\u03bc\u03ad\u03bd\u03bf\u03c2)</td></tr><tr><td><code>4</code></td><td>\u03a6\u03a0\u0391 17%</td></tr><tr><td><code>5</code></td><td>\u03a6\u03a0\u0391 9%</td></tr><tr><td><code>6</code></td><td>\u03a6\u03a0\u0391 4%</td></tr><tr><td><code>7</code></td><td>\u03a6\u03a0\u0391 0% (\u0391\u03c0\u03b1\u03bb\u03bb\u03b1\u03b3\u03ae)</td></tr><tr><td><code>8</code></td><td>\u03a4\u03cc\u03ba\u03bf\u03b9 15% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b2\u2019)</td></tr><tr><td><code>9</code></td><td>\u0394\u03b9\u03ba\u03b1\u03b9\u03ce\u03bc\u03b1\u03c4\u03b1 - 20% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b3\u2019)</td></tr><tr><td><code>10</code></td><td>\u0391\u03bc\u03bf\u03b9\u03b2\u03ad\u03c2 \u03a3\u03c5\u03bc\u03b2\u03bf\u03c5\u03bb\u03ce\u03bd \u0394\u03b9\u03bf\u03af\u03ba\u03b7\u03c3\u03b7\u03c2  - 20% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b4\u2019)</td></tr><tr><td><code>11</code></td><td>\u03a4\u03b5\u03c7\u03bd\u03b9\u03ba\u03ac \u0388\u03c1\u03b3\u03b1 - 3% (\u03a0\u03b5\u03c1\u03b9\u03c0\u03c4. \u03b4\u2019)</td></tr><tr><td><code>12</code></td><td>\u03a5\u03b3\u03c1\u03ac \u03ba\u03b1\u03cd\u03c3\u03b9\u03bc\u03b1 \u03ba\u03b1\u03b9 \u03c0\u03c1\u03bf\u03ca\u03cc\u03bd\u03c4\u03b1 \u03ba\u03b1\u03c0\u03bd\u03bf\u03b2\u03b9\u03bf\u03bc\u03b7\u03c7\u03b1\u03bd\u03af\u03b1\u03c2 1%</td></tr><tr><td><code>13</code></td><td>\u039b\u03bf\u03b9\u03c0\u03ac \u0391\u03b3\u03b1\u03b8\u03ac 4%</td></tr><tr><td><code>14</code></td><td>\u03a0\u03b1\u03c1\u03bf\u03c7\u03ae \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd 8%</td></tr><tr><td><code>15</code></td><td>\u03a0\u03c1\u03bf\u03ba. \u03a6\u03cc\u03c1\u03bf\u03c5 4% \u0391\u03c1\u03c7\u03b9\u03c4/\u03bd\u03c9\u03bd & \u039c\u03b7\u03c7/\u03ba\u03ce\u03bd & \u03a3\u03c5\u03bc\u03b2\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0391\u03bc\u03bf\u03b9\u03b2\u03ce\u03bd, \u03b3\u03b9\u03b1 \u0395\u03ba\u03c0\u03cc\u03bd\u03b7\u03c3\u03b7 \u039c\u03b5\u03bb\u03b5\u03c4\u03ce\u03bd & \u03a3\u03c7\u03b5\u03b4\u03af\u03c9\u03bd</td></tr><tr><td><code>16</code></td><td>\u03a0\u03c1\u03bf\u03ba. \u03a6\u03cc\u03c1\u03bf\u03c5 10% \u0391\u03c1\u03c7\u03b9\u03c4/\u03bd\u03c9\u03bd & \u039c\u03b7\u03c7/\u03ba\u03ce\u03bd & \u03a3\u03c5\u03bc\u03b2\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0391\u03bc\u03bf\u03b9\u03b2\u03ce\u03bd, \u03b1\u03c6\u03bf\u03c1\u03bf\u03cd\u03bd \u03ac\u03bb\u03bb\u03b7\u03c2 \u03c6\u03cd\u03c3\u03b7\u03c2 \u03ad\u03c1\u03b3\u03b1</td></tr><tr><td><code>17</code></td><td>\u03a0\u03c1\u03bf\u03ba\u03b1\u03c4\u03b1\u03b2\u03bb\u03b7\u03c4\u03ad\u03bf\u03c2 \u03a6\u03cc\u03c1\u03bf\u03c2 \u03c3\u03c4\u03b9\u03c2 \u0391\u03bc\u03bf\u03b9\u03b2\u03ad\u03c2 \u0394\u03b9\u03ba\u03b7\u03b3\u03cc\u03c1\u03c9\u03bd 15%</td></tr><tr><td><code>18</code></td><td>\u03a0\u03b1\u03c1\u03b1\u03ba\u03c1\u03ac\u03c4\u03b7\u03c3\u03b7 \u03a6\u03cc\u03c1\u03bf\u03c5 \u039c\u03b9\u03c3\u03b8\u03c9\u03c4\u03ce\u03bd \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd \u03c0\u03b1\u03c1. 2 \u03b1\u03c1. 15 \u03bd. 4172/2013 - \u0391\u03be\u03b9\u03c9\u03bc\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u0395\u03bc\u03c0\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd \u039d\u03b1\u03c5\u03c4\u03b9\u03ba\u03bf\u03cd</td></tr><tr><td><code>19</code></td><td>\u03a0\u03b1\u03c1\u03b1\u03ba\u03c1\u03ac\u03c4\u03b7\u03c3\u03b7 \u03a6\u03cc\u03c1\u03bf\u03c5 \u039c\u03b9\u03c3\u03b8\u03c9\u03c4\u03ce\u03bd \u03a5\u03c0\u03b7\u03c1\u03b5\u03c3\u03b9\u03ce\u03bd \u03c0\u03b1\u03c1. 2 \u03b1\u03c1. 15 \u03bd. 4172/2013 - \u039a\u03b1\u03c4\u03ce\u03c4\u03b5\u03c1\u03bf \u03a0\u03bb\u03ae\u03c1\u03c9\u03bc\u03b1 \u0395\u03bc\u03c0\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd \u039d\u03b1\u03c5\u03c4\u03b9\u03ba\u03bf\u03cd</td></tr><tr><td><code>20</code></td><td>\u039a\u03c1\u03b1\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2</td></tr><tr><td><code>21</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 1,2%</td></tr><tr><td><code>22</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 2,4%</td></tr><tr><td><code>23</code></td><td>\u03a7\u03b1\u03c1\u03c4\u03cc\u03c3\u03b7\u03bc\u03bf 3,6%</td></tr><tr><td><code>24</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 12% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 50 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>25</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 15% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 50,01 \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 100 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>26</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 18% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 100,01 \u03bc\u03ad\u03c7\u03c1\u03b9 \u03ba\u03b1\u03b9 150 \u03b5\u03c5\u03c1\u03ce</td></tr><tr><td><code>27</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 20% \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03b9\u03b1\u03af\u03bf \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03b1\u03c0\u03cc 150,01 \u03b5\u03c5\u03c1\u03ce \u03ba\u03b1\u03b9 \u03ac\u03bd\u03c9</td></tr><tr><td><code>28</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03ba\u03b1\u03c1\u03c4\u03bf\u03ba\u03b9\u03bd\u03b7\u03c4\u03ae\u03c2 12% \u03b5\u03c0\u03af \u03c4\u03b7\u03c2 \u03b1\u03be\u03af\u03b1\u03c2 \u03c4\u03bf\u03c5 \u03c7\u03c1\u03cc\u03bd\u03bf\u03c5 \u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2</td></tr><tr><td><code>29</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03b9\u03ba\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03cc\u03c1\u03b1\u03c3\u03b7\u03c2 10%</td></tr><tr><td><code>30</code></td><td>\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03b7\u03c4\u03ce\u03bd \u03c3\u03c4\u03b1\u03b8\u03b5\u03c1\u03ae\u03c2 \u03c4\u03b7\u03bb\u03b5\u03c6\u03c9\u03bd\u03af\u03b1\u03c2 5%</td></tr><tr><td><code>31</code></td><td>OSS VAT</td></tr><tr><td><code>32</code></td><td>\u039e\u03b5\u03bd\u03bf\u03b4\u03bf\u03c7\u03b5\u03af\u03b1 1-2 \u03b1\u03c3\u03c4\u03ad\u03c1\u03c9\u03bd</td></tr><tr><td><code>33</code></td><td>\u039e\u03b5\u03bd\u03bf\u03b4\u03bf\u03c7\u03b5\u03af\u03b1 3 \u03b1\u03c3\u03c4\u03ad\u03c1\u03c9\u03bd</td></tr><tr><td><code>34</code></td><td>\u039e\u03b5\u03bd\u03bf\u03b4\u03bf\u03c7\u03b5\u03af\u03b1 4 \u03b1\u03c3\u03c4\u03ad\u03c1\u03c9\u03bd</td></tr><tr><td><code>35</code></td><td>\u039e\u03b5\u03bd\u03bf\u03b4\u03bf\u03c7\u03b5\u03af\u03b1 5 \u03b1\u03c3\u03c4\u03ad\u03c1\u03c9\u03bd</td></tr><tr><td><code>36</code></td><td>\u0395\u03bd\u03bf\u03b9\u03ba\u03b9\u03b1\u03b6\u03cc\u03bc\u03b5\u03bd\u03b1 - \u03b5\u03c0\u03b9\u03c0\u03bb\u03c9\u03bc\u03ad\u03bd\u03b1 \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03b1 - \u03b4\u03b9\u03b1\u03bc\u03b5\u03c1\u03af\u03c3\u03bc\u03b1\u03c4\u03b1</td></tr></tbody></table></details>"
                 },
                 "active": {
                     "title": "Active",
@@ -24414,7 +24564,7 @@
         },
         {
             "name": "numberingsequence",
-            "description": "\nNumbering sequences are prefixes that define a new, unique numbering for\ninvoices, credit notes or estimates. For example, given an\ninvoicing sequence \"A\" and a second sequence \"B\", your invoices may look\nlike:\n- Invoice A-1\n- Invoice A-2\n- Invoice A-3\n- Invoice B-1\n- Invoice B-2\n- ...\n\nSequences are always associated with a [document type](#tag/documenttypes),\nwhich in turn applies to either invoices, credit notes, recurring invoices\nor estimates. Using the sales numbering sequences endpoints, you may only \naccess sequences associated with invoices, credit notes and \nrecurring invoices. \n",
+            "description": "\nNumbering sequences are prefixes that define a new, unique numbering for\ninvoices, credit notes, estimates etc. For example, given an\ninvoicing sequence \"A\" and a second sequence \"B\", your invoices may look\nlike:\n- Invoice A-1\n- Invoice A-2\n- Invoice A-3\n- Invoice B-1\n- Invoice B-2\n- ...\n\nSequences are always associated with a [document type](#tag/documenttypes),\nwhich in turn applies to either invoices, credit notes, recurring invoices\nor estimates. \n",
             "x-displayName": "Numbering sequences",
             "x-traitTag": false
         },
@@ -24422,6 +24572,12 @@
             "name": "incomesequences",
             "description": "\nIncome sequences are prefixes that define a new, unique numbering for\nincome transactions - i.e. \"Payments received\" records, the transaction \ntype of which is set to \"Income\"-. \n\nThere are two kinds of income sequences:\n- \"Rental income\" sequences, that apply exclusively to rental income\n- \"Contract income\" sequences, that apply to any other income record\n",
             "x-displayName": "Income sequences",
+            "x-traitTag": false
+        },
+        {
+            "name": "cashreceiptsequences",
+            "description": "\nAccommodation tax sequences are prefixes that define a new, unique \nnumbering for accommodation tax transactions - i.e. \"Accommodation tax\" \nrecords, the transaction type of which is set to \"Accommodation tax\"-. \n",
+            "x-displayName": "Accommodation tax sequences",
             "x-traitTag": false
         }
     ]
