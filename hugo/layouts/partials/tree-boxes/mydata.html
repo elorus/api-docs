@@ -1,5 +1,3 @@
-{{ define "main" }}
-{{ partial "topmenu/el/mydata.html" . }}
 <div id="contents">
     <span id="ruler"></span>
     <div class="container-fluid">
@@ -73,9 +71,10 @@
         </div>
     </div>
 </div>
-{{ $tb_css := resources.Get "css/tree-boxes.css" | resources.Minify }}
-{{ $md_css := resources.Get "css/mydata.css" | resources.Minify }}
-{{ $css := slice $tb_css $md_css | resources.Concat "css/style.css" |  fingerprint }}
+
+{{ $tb_css := resources.Get "css/tree-boxes.css" }}
+{{ $md_css := resources.Get "css/mydata.css" }}
+{{ $css := slice $tb_css $md_css   | resources.Concat "css/style.js" | fingerprint }}
 <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}">
 
 {{ $d3 := resources.Get "js/d3.v3.min.js" }}
@@ -90,4 +89,3 @@
         treeBoxes('', json.tree);
     });
 </script>
-{{ end }}

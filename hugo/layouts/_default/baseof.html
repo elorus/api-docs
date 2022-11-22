@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ if isset .Params "metatitle" }}{{ .Params.metaTitle }}{{ else }}{{ .Title }}{{ end }} | Elorus</title>
+    <title>{{ if isset .Params "title" }}{{ .Params.Title }}{{ else }}API Documentation{{ end }} | Elorus</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -16,8 +16,7 @@
     {{ block "main" . }}
       <!-- The part of the page that begins to differ between templates -->
     {{ end }}
-    {{ block "footer" . }}
-    <!-- More shared code, perhaps a footer but that can be overridden if need be in  -->
-    {{ end }}
+    {{ $intercom := resources.Get "/js/support.js" | resources.Minify | fingerprint }}
+    <script type="text/javascript" src="{{ $intercom.Permalink }}"></script>
 </body>
 </html>

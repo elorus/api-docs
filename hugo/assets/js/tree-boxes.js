@@ -120,12 +120,11 @@ function depthOf(object) {
     return level;
 }
 
-function parentsWidth(object, level) {
+function parentsWidth(obj, level) {
     var width = 0;
-    var dummyObj = 'object';
     for (var i = 1; i <= level; i++) {
-        dummyObj += '.parent';
-        width += stringToPx(eval(dummyObj), 'name');
+        obj = obj.parent;
+        width += stringToPx(obj, 'name');
     }
     return width;
 }

@@ -1,5 +1,3 @@
 +++
-url = "/el/"
-title = "_index.md"
-
+title = "EL _index.md"
 +++
