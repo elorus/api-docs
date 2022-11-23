@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div id="list">
+    {{ $currentPage := . }}
+    <div class="menu-header">Invoices</div>
+    <ul class="main-list">
+        {{ range .Site.Pages }}
+        {{ if eq .Params.x_docType "invoice" }}
+        <li><a href="{{ .Params.x_url }}" {{ if eq $currentPage.RelPermalink .Params.x_url }}class="selected-example"
+               {{ end }}>{{ .Params.x_menu_title }}
+            <span class="mydata-type">myDATA type: {{ .Params.x_mydata_type }} </span>
+        </a></li>
+        {{ end }}
+        {{ end }}
+    </ul>
+    <div class="menu-header">Receipts</div>
+    <ul class="main-list">
+        {{ range .Site.Pages }}
+        {{ if eq .Params.x_docType "receipt" }}
+        <li><a href="{{ .Params.x_url }}" {{ if eq $currentPage.RelPermalink .Params.x_url }}class="selected-example"
+               {{ end }}>{{ .Params.x_menu_title }}
+            <span class="mydata-type">myDATA type: {{ .Params.x_mydata_type }} </span>
+        </a></li>
+        {{ end }}
+        {{ end }}
+    </ul>
+    <div class="menu-header">Credit Notes</div>
+    <ul class="main-list">
+        {{ range .Site.Pages }}
+        {{ if eq .Params.x_docType "credit_note" }}
+        <li><a href="{{ .Params.x_url }}" {{ if eq $currentPage.RelPermalink .Params.x_url }}class="selected-example"
+               {{ end }}>{{ .Params.x_menu_title }}
+            <span class="mydata-type">myDATA type: {{ .Params.x_mydata_type }} </span>
+        </a></li>
+        {{ end }}
+        {{ end }}
+    </ul>
+    <div class="menu-header">Income</div>
+    <ul class="main-list">
+        {{ range .Site.Pages }}
+        {{ if eq .Params.x_docType "income" }}
+        <li><a href="{{ .Params.x_url }}" {{ if eq $currentPage.RelPermalink .Params.x_url }}class="selected-example"
+               {{ end }}>{{ .Params.x_menu_title }}
+            <span class="mydata-type">myDATA type: {{ .Params.x_mydata_type }} </span>
+        </a></li>
+        {{ end }}
+        {{ end }}
+    </ul>
+</div>

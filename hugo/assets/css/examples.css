@@ -206,3 +206,15 @@ h3 {
 ol > li {
     padding: 0.2rem;
 }
+
+#TableOfContents {
+    margin-left: -2rem;
+}
+#TableOfContents ul {
+    list-style-type: none;
+    padding-inline-start: 2rem;
+}
+#TableOfContents ul:not(:first-child) {
+    list-style-type: numbered;
+      font-size: 95%;
+}

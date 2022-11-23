@@ -1,3 +1,8 @@
+[markup]
+    [markup.tableofContents]
+        endLevel = 4
+        startLevel = 2
+
 #baseURL = "https://developer.elorus.com/"
 #defaultContentLanguage = "en"
 #disableKinds = ["taxonomy", "term", "sitemap"]
