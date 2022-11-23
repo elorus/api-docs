@@ -1,6 +1,6 @@
 +++
 type = "examples"
-title = "INDEX"
+title = "TEST1"
 +++
 
-INDEX
+TEST1

@@ -1,5 +1,6 @@
 +++
 type = "examples"
+title = "TEST2"
 +++
 
-TEST
+TEST2
