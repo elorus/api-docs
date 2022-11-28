@@ -1,47 +1,22 @@
 <div id="list">
     {{ $currentPage := . }}
-    <div class="menu-header">Invoices</div>
+    {{ range .Site.Pages.GroupByParam "x_docType"  }}
+    <div class="menu-header">
+        {{ if eq .Key "A" }}Invoices
+            {{ else if eq .Key "B" }}Receipts
+            {{ else if eq .Key "C" }}Credit Notes
+            {{ else if eq .Key "D" }}Bills
+            {{ else if eq .Key "E" }}Income
+        {{ end }}
+    </div>
     <ul class="main-list">
-        {{ range .Site.Pages }}
-        {{ if eq .Params.x_docType "invoice" }}
+        {{ range sort .Pages ".Params.x_mydata_type"  }}
         <li><a href="{{ .Params.x_url }}" {{ if eq $currentPage.RelPermalink .Params.x_url }}class="selected-example"
-               {{ end }}>{{ .Params.x_menu_title }}
+               {{ end }}>{{ .Params.title }}
             <span class="mydata-type">myDATA type: {{ .Params.x_mydata_type }} </span>
         </a></li>
         {{ end }}
-        {{ end }}
     </ul>
-    <div class="menu-header">Receipts</div>
-    <ul class="main-list">
-        {{ range .Site.Pages }}
-        {{ if eq .Params.x_docType "receipt" }}
-        <li><a href="{{ .Params.x_url }}" {{ if eq $currentPage.RelPermalink .Params.x_url }}class="selected-example"
-               {{ end }}>{{ .Params.x_menu_title }}
-            <span class="mydata-type">myDATA type: {{ .Params.x_mydata_type }} </span>
-        </a></li>
-        {{ end }}
-        {{ end }}
-    </ul>
-    <div class="menu-header">Credit Notes</div>
-    <ul class="main-list">
-        {{ range .Site.Pages }}
-        {{ if eq .Params.x_docType "credit_note" }}
-        <li><a href="{{ .Params.x_url }}" {{ if eq $currentPage.RelPermalink .Params.x_url }}class="selected-example"
-               {{ end }}>{{ .Params.x_menu_title }}
-            <span class="mydata-type">myDATA type: {{ .Params.x_mydata_type }} </span>
-        </a></li>
-        {{ end }}
-        {{ end }}
-    </ul>
-    <div class="menu-header">Income</div>
-    <ul class="main-list">
-        {{ range .Site.Pages }}
-        {{ if eq .Params.x_docType "income" }}
-        <li><a href="{{ .Params.x_url }}" {{ if eq $currentPage.RelPermalink .Params.x_url }}class="selected-example"
-               {{ end }}>{{ .Params.x_menu_title }}
-            <span class="mydata-type">myDATA type: {{ .Params.x_mydata_type }} </span>
-        </a></li>
-        {{ end }}
-        {{ end }}
-    </ul>
+    {{ end }}
 </div>
+

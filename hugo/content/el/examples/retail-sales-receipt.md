@@ -1,8 +1,8 @@
 +++
 type = "examples"
 title = "Retail Sales Receipt"
-x_docType = "receipt"
+# A=Invoice, B=Receipt, C=Credit Note, D=Bill, E=Income
+x_docType = "B"
 x_url = "/el/examples/retail-sales-receipt/"
-x_menu_title = "Retail Sales Receipt"
 x_mydata_type = "11.1"
 +++
