@@ -1,3 +1,3 @@
 +++
-title = "INT _index.md"
+title = "API Documentation"
 +++

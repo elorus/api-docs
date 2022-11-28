@@ -3,7 +3,6 @@ type = "examples"
 title = "Sales Invoice"
 # A=Invoice, B=Receipt, C=Credit Note, D=Bill, E=Income
 x_docType = "A"
-x_url = "/el/examples/"
 x_mydata_type = "1.1"
 +++
 

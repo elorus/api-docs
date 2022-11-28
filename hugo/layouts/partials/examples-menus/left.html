@@ -11,7 +11,7 @@
     </div>
     <ul class="main-list">
         {{ range sort .Pages ".Params.x_mydata_type"  }}
-        <li><a href="{{ .Params.x_url }}" {{ if eq $currentPage.RelPermalink .Params.x_url }}class="selected-example"
+        <li><a href="{{ .Permalink }}" {{ if eq $currentPage.RelPermalink .RelPermalink }}class="selected-example"
                {{ end }}>{{ .Params.title }}
             <span class="mydata-type">myDATA type: {{ .Params.x_mydata_type }} </span>
         </a></li>
