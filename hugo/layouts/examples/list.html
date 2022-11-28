@@ -5,7 +5,8 @@
         {{ partial "examples-menus/left.html" . }}
     </div>
     <div class="col-xs-12 col-sm-8 col-md-6" id="example">
-        {{ .Content}}
+        <h1>{{ if .Params.title}}{{ .Params.title }}{{ end }}</h1>
+        {{ .Content }}
     </div>
     <div class="col-md-3">
         {{ partial "examples-menus/right.html" . }}
@@ -15,17 +16,8 @@
 <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="/img/menus/up-arrow.svg" style="box-shadow:none">
 </button>
 
-<!--<script type="text/javascript" src="/js/jquery.min.js"></script>-->
-{{ $examples := resources.Get "js/examples.js" }}
-{{ $examples_menu := resources.Get "js/examples-menu.js" }}
-<!--{{ $js := slice $examples $examples_menu | resources.Concat "js/core.js" | resources.Minify | fingerprint }}-->
-<script type="text/javascript" src="{{ $examples.Permalink }}"></script>
-<script type="text/javascript" src="{{ $examples_menu.Permalink }}"></script>
-<!--<script>-->
-<!--    window.onload = function () {-->
-<!--        addMenuHTML("sales_invoice");-->
-<!--    };-->
-<!--</script>-->
-{{ $css := resources.Get "css/examples.css" | resources.Minify }}
+{{ $js := resources.Get "js/scrollToTop.js" | resources.Minify | fingerprint }}
+<script type="text/javascript" src="{{ $js.Permalink }}"></script>
+{{ $css := resources.Get "css/examples.css" | resources.Minify | fingerprint }}
 <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}">
 {{ end }}

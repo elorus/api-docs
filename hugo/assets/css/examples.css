@@ -215,6 +215,6 @@ ol > li {
     padding-inline-start: 2rem;
 }
 #TableOfContents ul:not(:first-child) {
-    list-style-type: numbered;
+    list-style-type: none;
       font-size: 95%;
 }
