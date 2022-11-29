@@ -1,7 +1,7 @@
 +++
 type = "examples"
 title = "Invoice of Rendered Services"
-# A=Invoice, B=Receipt, C=Credit Note, D=Bill, E=Income
+# A=Invoice, B=Receipt, C=Credit Note, D=Bill, E=Income, F=Other
 x_docType = "A"
 x_mydata_type = "2.1"
 +++

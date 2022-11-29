@@ -1,7 +1,7 @@
 +++
 type = "examples"
 title = "Proof of Expenditure"
-# A=Invoice, B=Receipt, C=Credit Note, D=Bill, E=Income
+# A=Invoice, B=Receipt, C=Credit Note, D=Bill, E=Income, F=Other
 x_docType = "D"
 x_mydata_type = "3.1"
 +++

@@ -1,7 +1,7 @@
 +++
 type = "examples"
 title = "Contract Income"
-# A=Invoice, B=Receipt, C=Credit Note, D=Bill, E=Income
+# A=Invoice, B=Receipt, C=Credit Note, D=Bill, E=Income, F=Other
 x_docType = "E"
 x_mydata_type = "7.1"
 +++
