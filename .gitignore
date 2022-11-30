@@ -1,7 +1,7 @@
 .project
 .idea
 site/*
-hugo/resources/_gen/
-hugo/public/
-hugo/.hugo_build.lock
+resources/_gen/
+public/
+.hugo_build.lock
 
