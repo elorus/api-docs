@@ -17,7 +17,14 @@ if grep -Fxq "public/" .gitignore
     echo "'public/' already in .gitignore"
   else
     echo "'public/' NOT found in gh-pages .gitignore, adding it"
-    echo "public/" >> .gitignore
+    echo -e "public/" >> .gitignore
+fi
+if grep -Fxq ".hugo_build.lock" .gitignore
+  then
+    echo "'.hugo_build.lock' already in .gitignore"
+  else
+    echo "'.hugo_build.lock' NOT found in gh-pages .gitignore, adding it"
+    echo -e ".hugo_build.lock" >> .gitignore
 fi &&
 echo "commiting and adding all changes to gh-pages" &&
 git commit -a -m 'committing all changes' &&
