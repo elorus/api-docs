@@ -15,7 +15,7 @@ echo "removing 'public' folder" &&
 rm -rf public &&
 echo "adding all changes" &&
 git add -A &&
-echo "commiting all changes" &&
+echo "committing all changes" &&
 git commit -a -m 'committing all changes' &&
 echo "pushing to gh-pages using" &&
 git push &&
