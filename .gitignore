@@ -1,6 +1,3 @@
 .project
 .idea
 site/*
--e public/
--e .hugo_build.lock
--e .hugo_build.lock
