@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rental Income | Elorus</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Complete reference documentation for the Elorus REST API. Includes guidelines and examples to help you interact with the API."/>
+    <link rel="canonical" href="https://developer.elorus.com/">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="/css/generic.min.ca5d7a3567fed2c0a3421729bf15721cd129eb473f030802a1033fb17db06fc0.css" />
+</head>
+<body>
+    
+    
+<div id="top-menu">
+    <span class="region">Select region</span>
+    <select class="version-btn" name="forma" onchange="location = this.value;">
+        <option value="/">International</option>
+        <option selected>Greece</option>
+    </select>
+    <a href="/el/">API v1.1</a>
+    <a href="/el/mydata/">myDATA classifications</a>
+    <a href="/el/examples/" class="active">myDATA examples</a>
+</div>
+
+
+<div class="row main-page">
+    <div class="col-xs-12 col-sm-4 col-md-3">
+        <div id="list">
+    
+    
+    <div class="menu-header">
+        Invoices
+            
+    </div>
+    <ul class="main-list">
+        
+        <li><a href="/el/examples/" >Sales Invoice
+            <span class="mydata-type">myDATA type: 1.1 </span>
+        </a></li>
+        
+        <li><a href="/el/examples/sales-invoice-intra-community-supplies/" >Sales Invoice / Intra Community Supplies
+            <span class="mydata-type">myDATA type: 1.2 </span>
+        </a></li>
+        
+        <li><a href="/el/examples/sales-invoice-third-country-supplies/" >Sales Invoice / Third Country Supplies
+            <span class="mydata-type">myDATA type: 1.3 </span>
+        </a></li>
+        
+        <li><a href="/el/examples/invoice-of-rendered-services/" >Invoice of Rendered Services
+            <span class="mydata-type">myDATA type: 2.1 </span>
+        </a></li>
+        
+        <li><a href="/el/examples/invoice-of-rendered-services-intra-community-supplies/" >Invoice of rendered services / Intra Community Supplies
+            <span class="mydata-type">myDATA type: 2.2 </span>
+        </a></li>
+        
+        <li><a href="/el/examples/invoice-of-rendered-services-third-country-supplies/" >Invoice of rendered services / Third Country Supplies
+            <span class="mydata-type">myDATA type: 2.3 </span>
+        </a></li>
+        
+    </ul>
+    
+    <div class="menu-header">
+        Receipts
+            
+    </div>
+    <ul class="main-list">
+        
+        <li><a href="/el/examples/retail-sales-receipt/" >Retail Sales Receipt
+            <span class="mydata-type">myDATA type: 11.1 </span>
+        </a></li>
+        
+        <li><a href="/el/examples/service-rendered-receipt/" >Service Rendered Receipt
+            <span class="mydata-type">myDATA type: 11.2 </span>
+        </a></li>
+        
+    </ul>
+    
+    <div class="menu-header">
+        Credit Notes
+            
+    </div>
+    <ul class="main-list">
+        
+        <li><a href="/el/examples/credit-invoice/" >Credit Invoice
+            <span class="mydata-type">myDATA type: 5.1/5.2 </span>
+        </a></li>
+        
+        <li><a href="/el/examples/retail-sales-credit-note/" >Retail Sales Credit Note
+            <span class="mydata-type">myDATA type: 11.4 </span>
+        </a></li>
+        
+    </ul>
+    
+    <div class="menu-header">
+        Bills
+            
+    </div>
+    <ul class="main-list">
+        
+        <li><a href="/el/examples/proof-of-expenditure/" >Proof of Expenditure
+            <span class="mydata-type">myDATA type: 3.1 </span>
+        </a></li>
+        
+    </ul>
+    
+    <div class="menu-header">
+        Income
+            
+    </div>
+    <ul class="main-list">
+        
+        <li><a href="/el/examples/contract/" >Contract Income
+            <span class="mydata-type">myDATA type: 7.1 </span>
+        </a></li>
+        
+        <li><a href="/el/examples/rental/" class="selected-example"
+               >Rental Income
+            <span class="mydata-type">myDATA type: 8.1 </span>
+        </a></li>
+        
+    </ul>
+    
+    <div class="menu-header">
+        Other
+        
+    </div>
+    <ul class="main-list">
+        
+        <li><a href="/el/examples/accommodation-tax/" >Accommodation Tax
+            <span class="mydata-type">myDATA type: 8.2 </span>
+        </a></li>
+        
+    </ul>
+    
+</div>
+
+
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-6" id="example">
+        <h1>Rental Income</h1>
+        <p>When <strong>renting out to other companies</strong>, you are typically required to issue a &ldquo;Rental Income&rdquo; received payment.</p>
+<p>This guide demonstrates how to create a &ldquo;Rental Income&rdquo; received payment, for <strong>companies located in Greece</strong> (myDATA document type <strong>&ldquo;8.1 Rents - Income&rdquo;</strong>)</p>
+<div class="warningBox">
+    Make sure the integration with myDATA or SoftOne is activated in your Elorus account
+    before using the guide below. If not, feel free to contact the <a href="mailto:support@elorus.com">Elorus
+    support team</a> for more information regarding the activation of the integration.
+</div>
+<h2>Authorization variables</h2>
+<ul>
+    <li><b>Token:</b> API key.<br/>
+        To find your API key open the Elorus web application and navigate to the "User Profile".
+        The API key is personal and there's only one key per user.
+        <img src="/img/examples/common/profile.png">
+    </li>
+    <li><b>X-Elorus-Organization:</b> Organization ID.<br/>
+        The organization whose data you wish to access. To find the Organization ID
+        visit the Elorus web application and navigate to "Settings > Organization > Organization ID".
+        Each organization has an ID of its own.
+    </li>
+</ul>
+<h2 id="client">Client <a href="#client"></a></h2><h3 id="11-create-a-new-contact">1.1 Create a new contact <a href="#11-create-a-new-contact"></a></h3><p><em>- The guide assumes you&rsquo;re working on a new Elorus organization, so this step can be omitted.</em></p>
+<p>First lets create a contact so there is someone to receive payment from. In a business context, contacts are individuals or businesses whom you transact with; typically your clients, leads, suppliers and partners. Since Elorus will let you manage your sales as well as your expenses, a contact may represent either a client or a supplier (or even both).</p>
+<div class="curl-title">
+    Request
+    <div class="curl-block">
+        <code>
+            
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/ -d '{"client_type": "1", "company":"Elorus SA", "vat_number":"0123456789", "addresses":[{"address":"Theofilopoulou 13", "city":"Athens", "zip":"11743", "country": "GR", "ad_type": "bill"}], "is_client": true, "is_supplier":false}'
+
+        </code>
+    </div>
+</div>
+
+
+<h3 id="12-get-contact-id">1.2 Get contact ID <a href="#12-get-contact-id"></a></h3><p>Filter e.g. by &ldquo;company&rdquo;, to get the contact ID. Retrieved contact ID in this case is &ldquo;2480647926494267071&rdquo;.</p>
+<div class="curl-title">
+    Request
+    <div class="curl-block">
+        <code>
+            
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/?company="Elorus SA"
+
+        </code>
+    </div>
+</div>
+
+
+<h2 id="taxes">Taxes <a href="#taxes"></a></h2><p>This document is not subject to VAT.</p>
+<h2 id="income-creation">Income creation <a href="#income-creation"></a></h2><h3 id="21-create-rental-income">2.1 Create Rental Income <a href="#21-create-rental-income"></a></h3><p>The final step, is to create the Rental Income as a received payment. The list below describes all the needed fields.</p>
+<ol>
+<li>X-Elorus-Organization: your organization ID</li>
+<li>income_type:
+<ul>
+<li>contract: Contract income</li>
+<li>rental: Rental income</li>
+<li>other_income: Other income</li>
+</ul>
+</li>
+<li>transaction_type:
+<ul>
+<li>dp: Other payments</li>
+<li>ip: Client payment</li>
+<li>cnp: Supplier refund</li>
+<li>icm: Income</li>
+</ul>
+</li>
+<li>taxes: no taxes are required to be sent, just send an empty dictionary</li>
+<li>amount: Amount paid</li>
+<li>calculator_mode: sets your values as &ldquo;initial&rdquo; or &ldquo;total&rdquo;, meaning the &ldquo;amount&rdquo; paid is before or after taxes.</li>
+<li>contact: Contact id - In this case we created &ldquo;Elorus SA&rdquo; contact.</li>
+<li>draft: true or false depending on the need to issue immediately an invoice or not. If true, the bill will not reach MyData/Softone, until issued.</li>
+<li>myDATA specific fields: mydata_document_type - mydata_classification_category - mydata_classification_type - payment_method
+<ul>
+<li>mydata_document_type: aade type</li>
+<li>mydata_classification_category: income type aade</li>
+<li>mydata_classification_type: classifications of Ε3 aade</li>
+<li>payment_method:
+<ul>
+<li>“1”: Domestic Payments Account</li>
+<li>“2”: Foreign Payments Account</li>
+<li>“3”: Cash</li>
+<li>“4”: Cheque</li>
+<li>“6”: Web Banking</li>
+<li>“7”: POS / e-POS</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div class="curl-title">
+    Request
+    <div class="curl-block">
+        <code>
+            
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/cashreceipts/ -d '{ "draft": true,"transaction_type": "icm", "title": "Ενοίκιο Νοεμβρίου 2022", "date": "2022-11-10", "income_type": "rental", "contact": "2492988168228308605", "amount": "100", "payment_method": "3", "taxes": [], "mydata_classification_category": "category1_9", "mydata_classification_type": "E3_561_001","mydata_document_type": "8.1", "calculator_mode": "total", "currency_code": "EUR", "exchange_rate": "1.000000"}'
+
+        </code>
+    </div>
+</div>
+
+
+
+    </div>
+    <div class="col-md-3">
+        <div id="steps">
+    <div class="menu-header ">Steps</div>
+    <div class="main-list" style="list-style-type: none;">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#client">Client</a></li>
+    <li><a href="#taxes">Taxes</a></li>
+    <li><a href="#income-creation">Income creation</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+    </div>
+</div>
+<br>
+<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="/img/menus/up-arrow.svg" style="box-shadow:none">
+</button>
+
+
+<script type="text/javascript" src="/js/scrollToTop.min.a300645aede63ec376646813c9faee9e1e7c044b38c86c8379668add97e52b71.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/css/examples.min.4aae86310871704c7c6b7112a31a75721e47e46abe8c5a4971692b82aad9882a.css">
+
+    
+    <script type="text/javascript" src="/js/support.min.22df0b5e5ac2935436c22164c5c916c6be47898a4bd505a3902555bf9b95eec0.js"></script>
+</body>
+</html>
