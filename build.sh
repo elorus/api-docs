@@ -2,6 +2,9 @@
 echo "checking out to: api-docs branch -> master" &&
 git checkout DP-7 &&
 
+echo "pulling from: api-docs branch -> master" &&
+git pull &&
+
 echo "deleting hugo public folder" &&
 rm -rf public/ &&
 
