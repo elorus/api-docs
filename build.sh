@@ -9,6 +9,7 @@ echo "checking out to: api-docs branch -> gh-pages" &&
 git checkout gh-pages-test &&
 echo "deleting all content except 'public' folder and git files" &&
 find . -not \( -name '.' -or -name '..' -or -name '.gitignore' -or -path './public*' -or -path './.idea*' -or -path './.git*' \) -exec rm -rf "{}" \; &&
+sleep 5 &&
 echo "copying content from 'public' folder to gh-pages" &&
 cp -r public/* . &&
 echo "removing 'public' folder" &&
