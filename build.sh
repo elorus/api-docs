@@ -26,7 +26,7 @@ git add -A &&
 echo "committing all changes" &&
 git commit -a -m 'committing all changes' &&
 
-echo "pushing to gh-pages using" &&
+echo "pushing to gh-pages" &&
 git push &&
 
 echo "build success"
