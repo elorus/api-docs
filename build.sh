@@ -8,7 +8,7 @@ hugo &&
 echo "checking out to: api-docs branch -> gh-pages" &&
 git checkout gh-pages-test &&
 echo "deleting all content except 'public' folder and git files" &&
-find . -not \( -name '.' -or -name '..' -or -name '.gitignore' -or -path './public*' -or -path './.idea*' -or -path './.git*' \) -exec rm -rf "{}" \;
+find . -not \( -name '.' -or -name '..' -or -name '.gitignore' -or -path './public*' -or -path './.idea*' -or -path './.git*' \) -exec rm -rf "{}" \; &&
 echo "copying content from 'public' folder to gh-pages" &&
 cp -r public/* . &&
 echo "checking if 'public' folder is in .gitignore and adding it " &&
@@ -25,7 +25,7 @@ if grep -Fxq ".hugo_build.lock" .gitignore
   else
     echo "'.hugo_build.lock' NOT found in gh-pages .gitignore, adding it"
     echo -e ".hugo_build.lock" >> .gitignore
-fi &&
+fi && sleep 1 &&
 echo "commiting and adding all changes to gh-pages" &&
 git commit -a -m 'committing all changes' &&
 echo "pushing to gh-pages using --force" &&
