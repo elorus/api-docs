@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>API Documentation on </title>
+    <link>/</link>
+    <description>Recent content in API Documentation on </description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accommodation Tax</title>
+      <link>/el/examples/accommodation-tax/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/accommodation-tax/</guid>
+      <description>The &amp;ldquo;Accommodation Tax&amp;rdquo;, is a tax that charges the resident (client) who has used a room or an apartment and is imposed after his stay in the accommodation, and before his departure from it. The amount of the charged tax, depends on the category of the accommodation.
+This guide demonstrates how to create &amp;ldquo;Accommodation Tax&amp;rdquo; for clients located in Greece (myDATA document type &amp;ldquo;8.2 Accommodation Tax&amp;rdquo;)
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below.</description>
+    </item>
+    
+    <item>
+      <title>Contract Income</title>
+      <link>/el/examples/contract/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/contract/</guid>
+      <description>When a contract is paid by other companies, you are typically required to issue a &amp;ldquo;Contract Income&amp;rdquo; received payment.
+This guide demonstrates how to create a &amp;ldquo;Contract Income&amp;rdquo; received payment, for companies located in Greece (myDATA document type &amp;ldquo;7.1 Contract - Income&amp;rdquo;)
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below. If not, feel free to contact the Elorus support team for more information regarding the activation of the integration.</description>
+    </item>
+    
+    <item>
+      <title>Credit Invoice</title>
+      <link>/el/examples/credit-invoice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/credit-invoice/</guid>
+      <description>Credit notes are typically used to denote a client refund or a discount (credit) on future purchases. To refund a business you must create a &amp;ldquo;Credit invoice&amp;rdquo;, whereas a &amp;ldquo;Retail Sales Credit Note&amp;rdquo; must be created whenever the client is a private individual.
+According to the myDATA specifications, Credit invoices are further divided into Associated credit invoices (myDATA document type 5.1) and Non-associated credit invoices (myDATA document type 5.2), depending on whether they cancel a previously issued invoice or not.</description>
+    </item>
+    
+    <item>
+      <title>Invoice of Rendered Services</title>
+      <link>/el/examples/invoice-of-rendered-services/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/invoice-of-rendered-services/</guid>
+      <description>When selling services to a business you are typically required to create an &amp;ldquo;Invoice of Rendered Services&amp;rdquo;. According to the myDATA specifications, service invoices are further divided into three invoice types, depending on the country that the client operates in.
+This guide demonstrates how to create service invoices for clients located in Greece (myDATA document type &amp;ldquo;2.1 Invoice of Rendered Services&amp;rdquo;)
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below.</description>
+    </item>
+    
+    <item>
+      <title>Invoice of rendered services / Intra Community Supplies</title>
+      <link>/el/examples/invoice-of-rendered-services-intra-community-supplies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/invoice-of-rendered-services-intra-community-supplies/</guid>
+      <description>When selling services to a business you are typically required to create an &amp;ldquo;Invoice of Rendered Services&amp;rdquo;. According to the myDATA specifications, service invoices are further divided into three invoice types, depending on the country that the client operates in.
+This guide demonstrates how to create service invoices for clients located in the European Union, excluding Greece (myDATA document type &amp;ldquo;2.2 Invoice of rendered services / Intra Community Supplies&amp;rdquo;)
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below.</description>
+    </item>
+    
+    <item>
+      <title>Invoice of rendered services / Third Country Supplies</title>
+      <link>/el/examples/invoice-of-rendered-services-third-country-supplies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/invoice-of-rendered-services-third-country-supplies/</guid>
+      <description>When selling services to a business you are typically required to create an &amp;ldquo;Invoice of Rendered Services&amp;rdquo;. According to the myDATA specifications, service invoices are further divided into three invoice types, depending on the country that the client operates in.
+This guide demonstrates how to create service invoices for clients located in countries outside the European Union (myDATA document type &amp;ldquo;2.3 Invoice of rendered services / Third Country Supplies&amp;rdquo;)
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below.</description>
+    </item>
+    
+    <item>
+      <title>Proof of Expenditure</title>
+      <link>/el/examples/proof-of-expenditure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/proof-of-expenditure/</guid>
+      <description>When buying services or goods, if a self billed document is needed, you are required to issue a &amp;ldquo;Proof of Expenditure Bill&amp;rdquo;.
+This guide demonstrates how to create a &amp;ldquo;Proof of Expenditure&amp;rdquo; / non-liable Issuer bill, for individual suppliers in Greece (myDATA document type &amp;ldquo;3.1 Proof of Expenditure Bill&amp;rdquo;)
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below. If not, feel free to contact the Elorus support team for more information regarding the activation of the integration.</description>
+    </item>
+    
+    <item>
+      <title>Rental Income</title>
+      <link>/el/examples/rental/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/rental/</guid>
+      <description>When renting out to other companies, you are typically required to issue a &amp;ldquo;Rental Income&amp;rdquo; received payment.
+This guide demonstrates how to create a &amp;ldquo;Rental Income&amp;rdquo; received payment, for companies located in Greece (myDATA document type &amp;ldquo;8.1 Rents - Income&amp;rdquo;)
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below. If not, feel free to contact the Elorus support team for more information regarding the activation of the integration.</description>
+    </item>
+    
+    <item>
+      <title>Retail Sales Credit Note</title>
+      <link>/el/examples/retail-sales-credit-note/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/retail-sales-credit-note/</guid>
+      <description>Credit notes are typically used to denote a client refund or a discount (credit) on future purchases. To cancel a sales receipt or a service receipt you must create a &amp;ldquo;Retail Sales Credit Note&amp;rdquo; (myDATA document type 11.4), whereas a &amp;ldquo;Credit invoice&amp;rdquo; must be created to refund an invoice.
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below. If not, feel free to contact the Elorus support team for more information regarding the activation of the integration.</description>
+    </item>
+    
+    <item>
+      <title>Retail Sales Receipt</title>
+      <link>/el/examples/retail-sales-receipt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/retail-sales-receipt/</guid>
+      <description>When selling goods to private individuals, you are required to issue a &amp;ldquo;Sales receipt&amp;rdquo; (myDATA document type 11.1). Typically, sales receipts must be specially marked for taxation purposes. Elorus integrates with SoftOne EINVOICING, a certified provider of electronic invoicing services, to issue legally stamped receipts.
+Make sure the integration with SoftOne is activated in your Elorus account before using the guide below. If not, feel free to contact the Elorus support team for more information regarding the activation of the integration.</description>
+    </item>
+    
+    <item>
+      <title>Sales Invoice / Intra Community Supplies</title>
+      <link>/el/examples/sales-invoice-intra-community-supplies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/sales-invoice-intra-community-supplies/</guid>
+      <description>When selling goods to a business you are typically required to create a &amp;ldquo;Sales invoice&amp;rdquo;. According to the myDATA specifications, sales invoices are further divided into three invoice types, depending on the country that the client operates in.
+This guide demonstrates how to create invoices for clients located in the European Union, excluding Greece (myDATA document type &amp;ldquo;1.2 Sales Invoice / Intra Community Supplies&amp;rdquo;)
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below.</description>
+    </item>
+    
+    <item>
+      <title>Sales Invoice / Third Country Supplies</title>
+      <link>/el/examples/sales-invoice-third-country-supplies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/sales-invoice-third-country-supplies/</guid>
+      <description>When selling goods to a business you are typically required to create a &amp;ldquo;Sales invoice&amp;rdquo;. According to the myDATA specifications, sales invoices are further divided into three invoice types, depending on the country that the client operates in.
+This guide demonstrates how to create invoices for clients located in countries outside the European Union (myDATA document type &amp;ldquo;1.3 Sales Invoice / Third Country Supplies&amp;rdquo;)
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below.</description>
+    </item>
+    
+    <item>
+      <title>Service Rendered Receipt</title>
+      <link>/el/examples/service-rendered-receipt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/examples/service-rendered-receipt/</guid>
+      <description>When selling services to private individuals, you are required to issue a &amp;ldquo;Service rendered receipt&amp;rdquo; (myDATA document type 11.2). In some cases, service receipts must be specially marked for taxation purposes. Elorus integrates with SoftOne EINVOICING, a certified provider of electronic invoicing services, to issue legally stamped receipts.
+Make sure the integration with SoftOne is activated in your Elorus account before using the guide below. If not, feel free to contact the Elorus support team for more information regarding the activation of the integration.</description>
+    </item>
+    
+  </channel>
+</rss>
