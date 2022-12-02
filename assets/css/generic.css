@@ -60,3 +60,18 @@ body {
 .redoc-wrap {
     background-color: #fff;
 }
+
+.text-center {
+    text-align: center !important;
+}
+
+.homepage-btn {
+    color: rgb(104, 104, 207);
+    display: inline-block;
+    margin-left: 26px;
+    padding: 0 10px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(17, 23, 26);
+}

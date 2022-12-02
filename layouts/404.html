@@ -1,17 +1,12 @@
 {{ define "main" }}
-<svg xmlns="http://www.w3.org/2000/svg" width="1457" height="1467" viewBox="0 0 1457 1467" style="position: absolute; top: -365px; left: -23%; width: 100%; z-index: -1;">
-    <path d="M 796,239 C 944,229 1091,275 1190,394 c 98,119 147,311 66,455 C 1175,994 966,1092 786,1139 607,1186 457,1182 340,1123 223,1063 139,948 147,816 154,684 254,535 378,427 501,318 649,250 796,239 Z" style="fill:#f5f6f9" />
-</svg>
-<header class="page-header text-center">
-    <div class="container mb-5">
-        <div class="row mb-5">
-            <div class="col-10 offset-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-                <img class="img-fluid" alt="{{ .Title}}" title="{{ .Title}}" src="{{ "/img/headers/bg-404.svg" | absURL }}" />
-            </div>
+<div class="row main-page text-center" style="margin: auto; padding: 30px">
+    <div class="col-xs-12 col-sm-12 col-md-12" id="example">
+            <img style="max-width:100%;height:auto" alt="{{ .Title}}" title="{{ .Title}}" src="{{ "/img/headers/bg-404.svg"
+            |
+            absURL }}" />
+            <h1 class="mb-3">Page not found</h1>
+            <h2 class="mb-4">We can't find the page you're looking for...</h2>
+            <a href="{{ "/" | absURL }}" class="homepage-btn">Back to Homepage</a>
         </div>
-        <h1 class="mb-3">{{ i18n "404_title" }}</h1>
-        <h2 class="mb-4">{{ i18n "404_description" }}</h2>
-        <a href="{{ "/" | absLangURL }}" class="btn btn-primary btn-lg">{{ i18n "404_home" }}</a>
-    </div>
-</header>
+</div>
 {{ end }}
