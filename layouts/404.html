@@ -1,9 +1,7 @@
 {{ define "main" }}
 <div class="row main-page text-center" style="margin: auto; padding: 30px">
     <div class="col-xs-12 col-sm-12 col-md-12" id="example">
-            <img style="max-width:100%;height:auto" alt="{{ .Title}}" title="{{ .Title}}" src="{{ "/img/headers/bg-404.svg"
-            |
-            absURL }}" />
+            <img style="max-width:100%;height:auto" alt="{{ .Title}}" title="{{ .Title}}" src="{{ "/img/headers/bg-404.svg" | absURL }}" />
             <h1 class="mb-3">Page not found</h1>
             <h2 class="mb-4">We can't find the page you're looking for...</h2>
             <a href="{{ "/" | absURL }}" class="homepage-btn">Back to Homepage</a>
