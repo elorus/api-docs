@@ -15,8 +15,8 @@ This guide demonstrates how to create "Accommodation Tax" for **clients located 
 {{< warning-custom >}}
 <b>Warning!</b>
 <ul>
-<li>In case the interface with the SoftOne EINVOICING integration is activated in your organization, special attention is needed as there is no possibility to cancel the submission or creation of a credit note.</li>
-<li>If the "Accommodation Tax" is linked to a "Sales Invoice", the invoice must have been submitted to myDATA, otherwise it will not be possible to submit the "Accommodation Tax".</li>
+<li>In case the SoftOne EINVOICING integration is activated in your organization, special attention is needed as it's not possible to cancel the submission, and creating a credit note is not an option either.</li>
+<li>If the "Accommodation Tax" is linked to a "Sales Invoice", the invoice must have been submitted to myDATA prior to submitting the "Accommodation Tax".</li>
 </ul>
 {{< /warning-custom >}}
 
