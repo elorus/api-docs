@@ -102,9 +102,16 @@
                         "type": "string"
                     },
                     {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `due_date`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `due_date`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -132,28 +139,28 @@
                     {
                         "name": "created_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -600,9 +607,16 @@
                         "type": "string"
                     },
                     {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `amount`, `contact__display_name`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `amount`, `contact__display_name`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -630,28 +644,28 @@
                     {
                         "name": "created_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -956,7 +970,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `amount`, `contact__display_name`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `amount`, `contact__display_name`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -984,28 +998,28 @@
                     {
                         "name": "created_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -1084,7 +1098,7 @@
             },
             "post": {
                 "operationId": "cashreceipts_create",
-                "description": "Create a new payment received.\n---\nPlease notice that in invoice_payments array the \"amount\" stands for the\namount of money that you assigned to that specific invoice from the payment received \"amount\" field\nand it does not refer to the invoice total cost, since Elorus already knows that number.",
+                "description": "Create a new payment received.\n---\nPlease notice that in invoice_payments array the \"amount\" stands for\nthe amount of money that you assigned to that specific invoice from\nthe payment received \"amount\" field, and it does not refer to the\ninvoice total cost, since Elorus already knows that number.",
                 "parameters": [
                     {
                         "name": "data",
@@ -1308,9 +1322,16 @@
                         "type": "string"
                     },
                     {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `display_name`, `profession`, `vat_number`. Prepend a `-` to denote reverse ordering (e.g `-display_name`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `display_name`, `profession`, `vat_number`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-display_name`).",
                         "required": false,
                         "type": "string"
                     },
@@ -1324,28 +1345,28 @@
                     {
                         "name": "created_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -1664,14 +1685,21 @@
                     {
                         "name": "sequence",
                         "in": "query",
-                        "description": "Optionally filter by the numbering sequence ID.",
+                        "description": "Optionally filter by the numbering sequence.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence__name`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence_flat`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -1699,28 +1727,28 @@
                     {
                         "name": "created_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -1929,7 +1957,7 @@
             },
             "patch": {
                 "operationId": "creditnotes_partial_update",
-                "description": "Partially update a credit note.\n---\nUse this action to update the credit note tracking,\nor change it's draft status. Since this method does\nnot modify the credit note items and amounts you can always use it\nregardless the creditnote status. On the other hand, the\n[full update action](#operation/invoices_update) is only applicable\nto draft credit notes.\n\nPlease not that you cannot mark void credit notes as draft, unless\nyou [un-void](#operation/creditnotes_mark_void) them first.",
+                "description": "Partially update a credit note.\n---\nUse this action to update the credit note tracking,\nor change it's draft status. Since this method does\nnot modify the credit note items and amounts you can always use it\nregardless the creditnote status. On the other hand, the\n[full update action](#operation/invoices_update) is only applicable\nto draft credit notes.\n\nPlease note that you cannot mark void credit notes as draft, unless\nyou [un-void](#operation/creditnotes_mark_void) them first.",
                 "parameters": [
                     {
                         "name": "data",
@@ -2420,7 +2448,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `active`, `application`, `mcsr_role`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `active`, `application`, `mcsr_role`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
                         "required": false,
                         "type": "string"
                     },
@@ -2615,14 +2643,21 @@
                     {
                         "name": "sequence",
                         "in": "query",
-                        "description": "Optionally filter by the numbering sequence ID.",
+                        "description": "Optionally filter by the numbering sequence.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `number`, `sequence__name`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `number`, `sequence_flat`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -2643,28 +2678,28 @@
                     {
                         "name": "created_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -3280,7 +3315,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `net`, `total`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `net`, `total`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -3627,14 +3662,21 @@
                     {
                         "name": "sequence",
                         "in": "query",
-                        "description": "Optionally filter by the numbering sequence ID.",
+                        "description": "Optionally filter by the numbering sequence.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence__name`, `due_date`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence_flat`, `due_date`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -3662,28 +3704,28 @@
                     {
                         "name": "created_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -4172,30 +4214,9 @@
                 "description": "Get the list of numbering sequences.\n---",
                 "parameters": [
                     {
-                        "name": "search",
-                        "in": "query",
-                        "description": "A search term.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "search_fields",
-                        "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `name`, `description`.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "documenttype",
                         "in": "query",
                         "description": "Optional filter.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "ordering",
-                        "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `name`, `documenttype__title`. Prepend a `-` to denote reverse ordering (e.g `-name`).",
                         "required": false,
                         "type": "string"
                     },
@@ -4257,7 +4278,7 @@
                                 "results": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/PUV11NumberingSequenceListRetrieveCreate"
+                                        "$ref": "#/definitions/PUV11NumberingSequence"
                                     }
                                 }
                             }
@@ -4281,7 +4302,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/V11NumberingSequenceListRetrieveCreate"
+                            "$ref": "#/definitions/V11NumberingSequence"
                         }
                     },
                     {
@@ -4303,7 +4324,7 @@
                     "201": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/PUV11NumberingSequenceListRetrieveCreate"
+                            "$ref": "#/definitions/PUV11NumberingSequence"
                         }
                     },
                     "400": {
@@ -4344,7 +4365,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/PUV11NumberingSequenceListRetrieveCreate"
+                            "$ref": "#/definitions/PUV11NumberingSequence"
                         }
                     },
                     "403": {
@@ -4486,7 +4507,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `default`, `active`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `default`, `active`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
                         "required": false,
                         "type": "string"
                     },
@@ -4599,6 +4620,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "tc_<trackingcategory_id>",
                         "in": "query",
                         "description": "Optionally filter by any applied tracking category. The filter's name is parameterized using the tracking category's id. The filter's value can be any of the category's options. For example `?tc_12345=test` means that all records which have been tracked as `test` using `12345` category, will be returned.",
@@ -4608,35 +4636,35 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `sales`, `sale_value`, `purchases`, `purchase_value`, `manage`, `stock`, `code`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `sales`, `sale_value`, `purchases`, `purchase_value`, `manage`, `stock`, `code`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -5080,7 +5108,7 @@
                     {
                         "name": "sequence",
                         "in": "query",
-                        "description": "Optionally filter by the numbering sequence ID.",
+                        "description": "Optionally filter by the numbering sequence.",
                         "required": false,
                         "type": "string"
                     },
@@ -5106,6 +5134,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "tc_<trackingcategory_id>",
                         "in": "query",
                         "description": "Optionally filter by any applied tracking category. The filter's name is parameterized using the tracking category's id. The filter's value can be any of the category's options. For example `?tc_12345=test` means that all records which have been tracked as `test` using `12345` category, will be returned.",
@@ -5115,35 +5150,35 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `start_datetime`, `end_datetime`, `sequence__name`, `documenttype__title`, `client__display_name`, `total`, `payable`, `initial`, `net`, `draft`. Prepend a `-` to denote reverse ordering (e.g `-start_datetime`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `start_datetime`, `end_datetime`, `sequence_flat`, `documenttype__title`, `client__display_name`, `total`, `payable`, `initial`, `net`, `draft`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-start_datetime`).",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -5453,9 +5488,16 @@
                         "type": "string"
                     },
                     {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -5483,28 +5525,28 @@
                     {
                         "name": "created_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "created_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_after",
                         "in": "query",
-                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "modified_before",
                         "in": "query",
-                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd`.",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -6078,7 +6120,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `operand`, `percentage`, `active`, `tax_type`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `operand`, `percentage`, `active`, `tax_type`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
                         "required": false,
                         "type": "string"
                     },
@@ -6245,7 +6287,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `template`, `language`, `font_size`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `template`, `language`, `font_size`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
                         "required": false,
                         "type": "string"
                     },
@@ -6581,6 +6623,13 @@
                     "x-nullable": true,
                     "example": ""
                 },
+                "sequence": {
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": ""
+                },
                 "reference": {
                     "title": "Reference",
                     "description": "A reference code. Usually, the document number as specified by the supplier.",
@@ -6906,6 +6955,13 @@
                     "x-nullable": true,
                     "example": ""
                 },
+                "sequence": {
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
+                    "x-nullable": true,
+                    "example": ""
+                },
                 "reference": {
                     "title": "Reference",
                     "description": "A reference code. Usually, the document number as specified by the supplier.",
@@ -7143,6 +7199,13 @@
                     "title": "Document type",
                     "description": "Optionally, associate the bill with a document type ID, to denote a self-billing invoice. When assigning a document type, Elorus will handle the self-billing invoice's numbering automatically, unless the `reference` field is explicitly set.",
                     "type": "integer",
+                    "x-nullable": true,
+                    "example": ""
+                },
+                "sequence": {
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -7483,6 +7546,13 @@
                     "x-nullable": true,
                     "example": ""
                 },
+                "sequence": {
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
+                    "x-nullable": true,
+                    "example": ""
+                },
                 "reference": {
                     "title": "Reference",
                     "description": "A reference code. Usually, the document number as specified by the supplier.",
@@ -7721,6 +7791,13 @@
                     "title": "Document type",
                     "description": "Optionally, associate the bill with a document type ID, to denote a self-billing invoice. When assigning a document type, Elorus will handle the self-billing invoice's numbering automatically, unless the `reference` field is explicitly set.",
                     "type": "integer",
+                    "x-nullable": true,
+                    "example": ""
+                },
+                "sequence": {
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -8817,7 +8894,7 @@
                     "title": "Transaction type",
                     "type": "string",
                     "example": "ip",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Accommodation tax</td></tr></tbody></table></details>"
                 },
                 "title": {
                     "title": "Reason",
@@ -9249,7 +9326,7 @@
                     "title": "Transaction type",
                     "type": "string",
                     "example": "ip",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Accommodation tax</td></tr></tbody></table></details>"
                 },
                 "title": {
                     "title": "Reason",
@@ -9372,6 +9449,9 @@
             }
         },
         "V11CashReceiptUpdate": {
+            "required": [
+                "contact"
+            ],
             "type": "object",
             "properties": {
                 "id": {
@@ -10319,10 +10399,10 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
+                    "readOnly": true,
                     "example": ""
                 },
                 "number": {
@@ -10610,9 +10690,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -10869,9 +10949,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -11217,9 +11297,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -11480,9 +11560,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -11739,9 +11819,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -12460,7 +12540,7 @@
                 },
                 "always_self_billed": {
                     "title": "Always self-billed",
-                    "description": "Denotes if this is self-billed.Apply only to bill documents.",
+                    "description": "Denotes if this is self-billed. Apply only to bill documents.",
                     "type": "boolean",
                     "example": false
                 }
@@ -12573,7 +12653,7 @@
                 },
                 "always_self_billed": {
                     "title": "Always self-billed",
-                    "description": "Denotes if this is self-billed.Apply only to bill documents.",
+                    "description": "Denotes if this is self-billed. Apply only to bill documents.",
                     "type": "boolean",
                     "example": false
                 }
@@ -12666,10 +12746,10 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
+                    "readOnly": true,
                     "example": ""
                 },
                 "number": {
@@ -12963,9 +13043,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -13185,9 +13265,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -13490,9 +13570,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -13721,9 +13801,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -14917,10 +14997,10 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "type": "string",
+                    "readOnly": true,
                     "example": ""
                 },
                 "number": {
@@ -15219,9 +15299,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -15490,9 +15570,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -15850,9 +15930,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -16124,9 +16204,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -16394,9 +16474,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
+                    "title": "Sequence",
                     "description": "ID of the associated numbering sequence.",
-                    "type": "integer",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -16889,7 +16969,7 @@
                 }
             }
         },
-        "PUV11NumberingSequenceListRetrieveCreate": {
+        "PUV11NumberingSequence": {
             "type": "object",
             "properties": {
                 "id": {
@@ -16900,35 +16980,28 @@
                     "example": "1050000300010040"
                 },
                 "name": {
-                    "title": "Short name",
+                    "title": "Name",
                     "description": "The sequence prefix (e.g. \"INV\").",
                     "type": "string",
                     "maxLength": 10,
-                    "minLength": 1,
-                    "example": "INV"
-                },
-                "description": {
-                    "title": "Description",
-                    "description": "An optional description used for your own reference.",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "A new sequence."
+                    "minLength": 1
                 },
                 "documenttype": {
                     "title": "Document type",
                     "description": "Document type ID associated with this sequence.",
-                    "type": "integer",
+                    "type": "string",
+                    "minLength": 1,
                     "example": "4400000040000123"
                 },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
-                    "type": "integer",
+                    "type": "string",
                     "readOnly": true,
                     "example": "1000000243015421"
                 },
                 "created": {
-                    "title": "Created on",
+                    "title": "Created",
                     "description": "ISO-formatted creation date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -16936,7 +17009,7 @@
                     "example": "2019-01-28T13:48:56.504916Z"
                 },
                 "modified": {
-                    "title": "Modified on",
+                    "title": "Modified",
                     "description": "ISO-formatted last modification date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -16945,7 +17018,7 @@
                 }
             }
         },
-        "V11NumberingSequenceListRetrieveCreate": {
+        "V11NumberingSequence": {
             "required": [
                 "name",
                 "documenttype"
@@ -16960,35 +17033,28 @@
                     "example": "1050000300010040"
                 },
                 "name": {
-                    "title": "Short name",
+                    "title": "Name",
                     "description": "The sequence prefix (e.g. \"INV\").",
                     "type": "string",
                     "maxLength": 10,
-                    "minLength": 1,
-                    "example": "INV"
-                },
-                "description": {
-                    "title": "Description",
-                    "description": "An optional description used for your own reference.",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "A new sequence."
+                    "minLength": 1
                 },
                 "documenttype": {
                     "title": "Document type",
                     "description": "Document type ID associated with this sequence.",
-                    "type": "integer",
+                    "type": "string",
+                    "minLength": 1,
                     "example": "4400000040000123"
                 },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
-                    "type": "integer",
+                    "type": "string",
                     "readOnly": true,
                     "example": "1000000243015421"
                 },
                 "created": {
-                    "title": "Created on",
+                    "title": "Created",
                     "description": "ISO-formatted creation date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -16996,7 +17062,7 @@
                     "example": "2019-01-28T13:48:56.504916Z"
                 },
                 "modified": {
-                    "title": "Modified on",
+                    "title": "Modified",
                     "description": "ISO-formatted last modification date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -17006,6 +17072,9 @@
             }
         },
         "V11NumberingSequenceUpdate": {
+            "required": [
+                "name"
+            ],
             "type": "object",
             "properties": {
                 "id": {
@@ -17016,35 +17085,29 @@
                     "example": "1050000300010040"
                 },
                 "name": {
-                    "title": "Short name",
+                    "title": "Name",
                     "description": "The sequence prefix (e.g. \"INV\").",
                     "type": "string",
                     "maxLength": 10,
-                    "minLength": 1,
-                    "example": "INV"
-                },
-                "description": {
-                    "title": "Description",
-                    "description": "An optional description used for your own reference.",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "A new sequence."
+                    "minLength": 1
                 },
                 "documenttype": {
                     "title": "Document type",
                     "description": "Document type ID associated with this sequence.",
-                    "type": "integer",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
                     "example": "4400000040000123"
                 },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
-                    "type": "integer",
+                    "type": "string",
                     "readOnly": true,
                     "example": "1000000243015421"
                 },
                 "created": {
-                    "title": "Created on",
+                    "title": "Created",
                     "description": "ISO-formatted creation date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -17052,7 +17115,7 @@
                     "example": "2019-01-28T13:48:56.504916Z"
                 },
                 "modified": {
-                    "title": "Modified on",
+                    "title": "Modified",
                     "description": "ISO-formatted last modification date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -17072,35 +17135,29 @@
                     "example": "1050000300010040"
                 },
                 "name": {
-                    "title": "Short name",
+                    "title": "Name",
                     "description": "The sequence prefix (e.g. \"INV\").",
                     "type": "string",
                     "maxLength": 10,
-                    "minLength": 1,
-                    "example": "INV"
-                },
-                "description": {
-                    "title": "Description",
-                    "description": "An optional description used for your own reference.",
-                    "type": "string",
-                    "maxLength": 255,
-                    "example": "A new sequence."
+                    "minLength": 1
                 },
                 "documenttype": {
                     "title": "Document type",
                     "description": "Document type ID associated with this sequence.",
-                    "type": "integer",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
                     "example": "4400000040000123"
                 },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
-                    "type": "integer",
+                    "type": "string",
                     "readOnly": true,
                     "example": "1000000243015421"
                 },
                 "created": {
-                    "title": "Created on",
+                    "title": "Created",
                     "description": "ISO-formatted creation date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -17108,7 +17165,7 @@
                     "example": "2019-01-28T13:48:56.504916Z"
                 },
                 "modified": {
-                    "title": "Modified on",
+                    "title": "Modified",
                     "description": "ISO-formatted last modification date & time. Timezone information is included.",
                     "type": "string",
                     "format": "date-time",
@@ -18148,10 +18205,10 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
-                    "x-nullable": true,
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
+                    "readOnly": true,
                     "example": ""
                 },
                 "draft": {
@@ -18383,7 +18440,6 @@
         "V11RecurringInvoiceCreate": {
             "required": [
                 "end_datetime",
-                "template",
                 "client",
                 "items"
             ],
@@ -18466,9 +18522,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -18729,9 +18785,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -18992,9 +19048,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -19260,7 +19316,6 @@
         "V11RecurringInvoiceUpdate": {
             "required": [
                 "end_datetime",
-                "template",
                 "client",
                 "items"
             ],
@@ -19343,9 +19398,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -19606,9 +19661,9 @@
                     "example": "4400000040000123"
                 },
                 "sequence": {
-                    "title": "Numbering sequence",
-                    "description": "ID of the created invoice's sequence.",
-                    "type": "integer",
+                    "title": "Sequence",
+                    "description": "ID of the associated numbering sequence.",
+                    "type": "string",
                     "x-nullable": true,
                     "example": ""
                 },
@@ -21579,7 +21634,7 @@
         },
         {
             "name": "numberingsequence",
-            "description": "\nNumbering sequences are prefixes that define a new, unique numbering for\ninvoices, credit notes or estimates. For example, given an\ninvoicing sequence \"A\" and a second sequence \"B\", your invoices may look\nlike:\n- Invoice A-1\n- Invoice A-2\n- Invoice A-3\n- Invoice B-1\n- Invoice B-2\n- ...\n\nSequences are always associated with a [document type](#tag/documenttypes),\nwhich in turn applies to either invoices, credit notes, recurring invoices\nor estimates. Using the sales numbering sequences endpoints, you may only \naccess sequences associated with invoices, credit notes and \nrecurring invoices. \n",
+            "description": "\nNumbering sequences are prefixes that define a new, unique numbering for\ninvoices, credit notes, estimates etc. For example, given an\ninvoicing sequence \"A\" and a second sequence \"B\", your invoices may look\nlike:\n- Invoice A-1\n- Invoice A-2\n- Invoice A-3\n- Invoice B-1\n- Invoice B-2\n- ...\n\nSequences are always associated with a [document type](#tag/documenttypes),\nwhich in turn applies to either invoices, credit notes, recurring invoices\nor estimates. \n",
             "x-displayName": "Numbering sequences",
             "x-traitTag": false
         }
