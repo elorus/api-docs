@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sales Invoice | Elorus</title>
+    <title>Accommodation Tax | Elorus</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -37,8 +37,7 @@
     </div>
     <ul class="main-list">
         
-        <li><a href="/el/examples/" class="selected-example"
-               >Sales Invoice
+        <li><a href="/el/examples/" >Sales Invoice
             <span class="mydata-type">myDATA type: 1.1 </span>
         </a></li>
         
@@ -130,7 +129,8 @@
     </div>
     <ul class="main-list">
         
-        <li><a href="/el/examples/accommodation-tax/" >Accommodation Tax
+        <li><a href="/el/examples/accommodation-tax/" class="selected-example"
+               >Accommodation Tax
             <span class="mydata-type">myDATA type: 8.2 </span>
         </a></li>
         
@@ -141,13 +141,22 @@
 
     </div>
     <div class="col-xs-12 col-sm-8 col-md-6" id="example">
-        <h1>Sales Invoice</h1>
-        <p>When <strong>selling goods to a business</strong> you are typically required to create a &ldquo;Sales invoice&rdquo;. According to the <a href="https://www.aade.gr/myData/prodiagrafes" target="_blank" rel="noopener">myDATA specifications</a>, sales invoices are further divided into three invoice types, depending on the country that the client operates in.</p>
-<p>This guide demonstrates how to create invoices for <strong>clients located in Greece</strong> (myDATA document type <strong>&ldquo;1.1 Sales Invoice&rdquo;</strong>)</p>
+        <h1>Accommodation Tax</h1>
+        <p>The &ldquo;Accommodation Tax&rdquo;, <strong>is a tax that charges the resident (client)</strong> who has used a room or an apartment and is imposed after his stay in the accommodation, and before his departure from it. The amount of the charged tax, depends on the category of the accommodation.</p>
+<p>This guide demonstrates how to create &ldquo;Accommodation Tax&rdquo; for <strong>clients located in Greece</strong> (myDATA document type <strong>&ldquo;8.2 Accommodation Tax&rdquo;</strong>)</p>
 <div class="warningBox">
     Make sure the integration with myDATA or SoftOne is activated in your Elorus account
     before using the guide below. If not, feel free to contact the <a href="mailto:support@elorus.com">Elorus
     support team</a> for more information regarding the activation of the integration.
+</div>
+<div class="warningBox">
+    
+<b>Warning!</b>
+<ul>
+<li>In case the SoftOne EINVOICING integration is activated in your organization, special attention is needed as it's not possible to cancel the submission, and creating a credit note is not an option either.</li>
+<li>If the "Accommodation Tax" is linked to a "Sales Invoice", the invoice must have been submitted to myDATA prior to submitting the "Accommodation Tax".</li>
+</ul>
+
 </div>
 <h2>Authorization variables</h2>
 <ul>
@@ -169,7 +178,7 @@
     <div class="curl-block">
         <code>
             
-  curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/ -d '{"client_type": "1", "company":"Elorus FC", "vat_number":"0123456789", "addresses":[{"address":"Theofilopoulou 13", "city":"Athens", "zip":"11743", "country": "GR", "ad_type": "bill"}], "is_client": true, "is_supplier":false}'
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/ -d '{"client_type": "1", "company":"Elorus SA", "vat_number":"0123456789", "addresses":[{"address":"Theofilopoulou 13", "city":"Athens", "zip":"11743", "country": "GR", "ad_type": "bill"}], "is_client": true, "is_supplier":false}'
 
         </code>
     </div>
@@ -182,80 +191,51 @@
     <div class="curl-block">
         <code>
             
-    curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/?company="Elorus FC"
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/?company="Elorus SA"
 
         </code>
     </div>
 </div>
 
 
-<h2 id="document-type">Document type <a href="#document-type"></a></h2><h3 id="21-get-document-type-id">2.1 Get document type ID <a href="#21-get-document-type-id"></a></h3><p>In this case, a &ldquo;Sales Invoice&rdquo; document type will be needed. There is a &ldquo;Sales Invoice&rdquo; document type pre-created.<br>
-Default title is &ldquo;Τιμολόγιο&rdquo;. Search by &ldquo;title&rdquo;, to get the document type ID. Retrieved document type ID in this case is &ldquo;2480655983945188366&rdquo;.<br>
-In case the title is changed or the document type is missing, use the Elorus UI to create a new one.</p>
+<h2 id="taxes">Taxes <a href="#taxes"></a></h2><h3 id="21-create-rental-income">2.1 Create Rental Income <a href="#21-create-rental-income"></a></h3><p>First, by going to the Elorus' UI &gt; menu Settings &gt; Taxes &gt; Add, you must enter the &ldquo;Accommodation Tax&rdquo; that applies to your business.</p>
+<p>It is a one-time process to activate the ability to add &ldquo;Accommodation Tax&rdquo; to your account from now on. <img src="/img/examples/accommodation-tax.png" alt=""></p>
+<h3 id="22-get-taxes-id">2.2 Get taxes ID <a href="#22-get-taxes-id"></a></h3><p>Search by &ldquo;title&rdquo; e.g. &ldquo;Ξενοδοχεία 3 αστέρων&rdquo;, to get the tax ID. Retrieved tax ID in this case is &ldquo;2624067035251869663&rdquo;.</p>
 <div class="curl-title">
     Request
     <div class="curl-block">
         <code>
             
-    curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/documenttypes/?search="Τιμολόγιο"&search_fields=title
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/taxes/?search="Ξενοδοχεία 3 αστέρων"&search_fields=title
 
         </code>
     </div>
 </div>
 
 
-<h2 id="taxes">Taxes <a href="#taxes"></a></h2><h3 id="31-about-taxes">3.1 About taxes <a href="#31-about-taxes"></a></h3><p>By default there are some taxes preset in Elorus. Usually 24% tax is used for Greece &ldquo;Sales Invoice&rdquo; so the preset tax will be retrieved and used. In case there is a need for a new tax to be created, use of Elorus' UI is mandatory.<br>
-Optional steps to create new tax:</p>
-<ol>
-<li>Login to your Elorus account</li>
-<li>Go to: &ldquo;Settings -&gt; Taxes&rdquo;</li>
-<li>Click &ldquo;+Add&rdquo; on top right corner</li>
-<li>And set it up as the picture below. AADE category and title used are for example purposes. <img src="/img/examples/common/tax.png" alt=""></li>
-<li>Click &ldquo;Save&rdquo;</li>
-</ol>
-<h3 id="32-get-taxes-id">3.2 Get taxes ID <a href="#32-get-taxes-id"></a></h3><p>Search by &ldquo;percentage&rdquo;, to get the tax ID. Retrieved tax ID in this case is &ldquo;2476911428611605999&rdquo;. Make sure that &ldquo;aade_type&rdquo;:1 is in the response packet.</p>
-<div class="curl-title">
-    Request
-    <div class="curl-block">
-        <code>
-            
-curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/taxes/?search="24"&search_fields=percentage
-
-        </code>
-    </div>
-</div>
-
-
-<h2 id="invoice-creation">Invoice creation <a href="#invoice-creation"></a></h2><h3 id="41-create-sales-invoice">4.1 Create Sales Invoice <a href="#41-create-sales-invoice"></a></h3><p>The final step, is to create the invoice itself. The list below describes all the needed fields.</p>
+<h2 id="accommodation-tax-creation">Accommodation Tax creation <a href="#accommodation-tax-creation"></a></h2><h3 id="31-create-accommodation-tax">3.1 Create Accommodation Tax <a href="#31-create-accommodation-tax"></a></h3><p>The final step, is to create the &ldquo;Accommodation Tax&rdquo; as a received payment. The list below describes all the needed fields.</p>
 <ol>
 <li>X-Elorus-Organization: your organization ID</li>
-<li>calculator_mode: sets your values as &ldquo;initial&rdquo; or &ldquo;total&rdquo;, meaning before or after taxes.
-<ol>
-<li>When &ldquo;total&rdquo; is used, then it is mandatory to use &ldquo;unit_total&rdquo; in items.</li>
-<li>When &ldquo;initial&rdquo; is used, then it is mandatory to use &ldquo;unit_value&rdquo; in items.</li>
-<li>Depending on the situation, Elorus will calculate the taxes accordingly.</li>
-</ol>
-</li>
-<li>client: Client id - In this case we created &ldquo;Elorus FC&rdquo; contact.</li>
-<li>draft: true or false depending on the need to issue immediately an invoice or not. If true, the invoice will not reach MyData/Softone, until issued.</li>
-<li>documenttype: Document Type ID - In this case we used &ldquo;Τιμολόγιο&rdquo; document type, associated with the corresponding &ldquo;aade type&rdquo;.</li>
-<li>My data specific fields: mydata_document_type - mydata_classification_category - mydata_classification_type - paid_on_receipt - payment_method
-<ol>
-<li>mydata_document_type: aade type</li>
-<li>mydata_classification_category: income type aade</li>
-<li>mydata_classification_type: classifications of Ε3 aade</li>
-<li>paid_on_receipt: Invoice amount that was paid when invoice was issued. If &ldquo;0&rdquo; then you don&rsquo;t need to send payment_method since Elorus will automatically apply payment_method as on credit.</li>
+<li>date: Issue date</li>
+<li>transaction_type:&ldquo;at&rdquo;. Required field to denote the received payment as &ldquo;Accommodation Tax&rdquo;.</li>
+<li>taxes: The amount charged depends on the category of accommodation (e.g. a hotel with three stars is taxed differently to a hotel that has one star).</li>
+<li>quantity: Calculate the total tax rate as the product of the fixed amount (depends on the category of accommodation), multiplied by the quantity.</li>
+<li>contact: Contact id - In this case we created &ldquo;Elorus SA&rdquo; contact.</li>
+<li>at_invoice: Not required. Used when there is a need to relate an invoice with the received &ldquo;Accommodation Tax&rdquo; payment.</li>
+<li>myDATA specific fields:
+<ul>
+<li>mydata_document_type: aade type <strong>8.2 for &ldquo;Accommodation Tax&rdquo;</strong></li>
 <li>payment_method:
-<ol>
+<ul>
 <li>“1”: Domestic Payments Account</li>
 <li>“2”: Foreign Payments Account</li>
 <li>“3”: Cash</li>
 <li>“4”: Cheque</li>
 <li>“6”: Web Banking</li>
 <li>“7”: POS / e-POS</li>
-</ol>
+</ul>
 </li>
-</ol>
+</ul>
 </li>
 </ol>
 <div class="curl-title">
@@ -263,7 +243,7 @@ curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-A
     <div class="curl-block">
         <code>
             
-curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/invoices/ -d '{"calculator_mode": "total", "currency_code": "EUR", "exchange_rate": "1.000000", "client": "2480647926494267071", "date": "2022-5-18", "draft": true, "documenttype": "2480655983945188366", "mydata_document_type": "1.1", "items": [{"title": "Γάντια Εργασίας", "unit_total": "12.4", "quantity": "1", "taxes": ["2476911428611605999"], "mydata_classification_category": "category1_2", "mydata_classification_type": "E3_561_001"}], "paid_on_receipt": "12.4", "payment_method": "3"}'
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/cashreceipts/ -d '{"transaction_type":"at", "contact":"2480647926494267071", "date":"2022-11-30", "taxes":["2624067035251869663"], "quantity": "1", "mydata_document_type":"8.2", "payment_method": "3"}'
 
         </code>
     </div>
@@ -279,9 +259,8 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-
         <nav id="TableOfContents">
   <ul>
     <li><a href="#client">Client</a></li>
-    <li><a href="#document-type">Document type</a></li>
     <li><a href="#taxes">Taxes</a></li>
-    <li><a href="#invoice-creation">Invoice creation</a></li>
+    <li><a href="#accommodation-tax-creation">Accommodation Tax creation</a></li>
   </ul>
 </nav>
     </div>

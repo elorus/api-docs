@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sales Invoice | Elorus</title>
+    <title>Invoice of rendered services / Intra Community Supplies | Elorus</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -37,8 +37,7 @@
     </div>
     <ul class="main-list">
         
-        <li><a href="/el/examples/" class="selected-example"
-               >Sales Invoice
+        <li><a href="/el/examples/" >Sales Invoice
             <span class="mydata-type">myDATA type: 1.1 </span>
         </a></li>
         
@@ -54,7 +53,8 @@
             <span class="mydata-type">myDATA type: 2.1 </span>
         </a></li>
         
-        <li><a href="/el/examples/invoice-of-rendered-services-intra-community-supplies/" >Invoice of rendered services / Intra Community Supplies
+        <li><a href="/el/examples/invoice-of-rendered-services-intra-community-supplies/" class="selected-example"
+               >Invoice of rendered services / Intra Community Supplies
             <span class="mydata-type">myDATA type: 2.2 </span>
         </a></li>
         
@@ -141,9 +141,9 @@
 
     </div>
     <div class="col-xs-12 col-sm-8 col-md-6" id="example">
-        <h1>Sales Invoice</h1>
-        <p>When <strong>selling goods to a business</strong> you are typically required to create a &ldquo;Sales invoice&rdquo;. According to the <a href="https://www.aade.gr/myData/prodiagrafes" target="_blank" rel="noopener">myDATA specifications</a>, sales invoices are further divided into three invoice types, depending on the country that the client operates in.</p>
-<p>This guide demonstrates how to create invoices for <strong>clients located in Greece</strong> (myDATA document type <strong>&ldquo;1.1 Sales Invoice&rdquo;</strong>)</p>
+        <h1>Invoice of rendered services / Intra Community Supplies</h1>
+        <p>When <strong>selling services to a business</strong> you are typically required to create an &ldquo;Invoice of Rendered Services&rdquo;. According to the <a href="https://www.aade.gr/myData/prodiagrafes" target="_blank" rel="noopener">myDATA specifications</a>, service invoices are further divided into three invoice types, depending on the country that the client operates in.</p>
+<p>This guide demonstrates how to create service invoices for <strong>clients located in the European Union, excluding Greece</strong> (myDATA document type <strong>&ldquo;2.2 Invoice of rendered services / Intra Community Supplies&rdquo;</strong>)</p>
 <div class="warningBox">
     Make sure the integration with myDATA or SoftOne is activated in your Elorus account
     before using the guide below. If not, feel free to contact the <a href="mailto:support@elorus.com">Elorus
@@ -169,42 +169,42 @@
     <div class="curl-block">
         <code>
             
-  curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/ -d '{"client_type": "1", "company":"Elorus FC", "vat_number":"0123456789", "addresses":[{"address":"Theofilopoulou 13", "city":"Athens", "zip":"11743", "country": "GR", "ad_type": "bill"}], "is_client": true, "is_supplier":false}'
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/ -d '{"client_type": "1", "company":"Elorus BC", "vat_number":"9876543210", "addresses":[{"address":"Theofilopoulou 13", "city":"Athens", "zip":"11743", "country": "GR", "ad_type": "bill"}], "is_client": true, "is_supplier":false}'
 
         </code>
     </div>
 </div>
 
 
-<h3 id="12-get-contact-id">1.2 Get contact ID <a href="#12-get-contact-id"></a></h3><p>Filter e.g. by &ldquo;company&rdquo;, to get the contact ID. Retrieved contact ID in this case is &ldquo;2480647926494267071&rdquo;.</p>
+<h3 id="12-get-contact-id">1.2 Get contact ID <a href="#12-get-contact-id"></a></h3><p>Filter e.g. by &ldquo;company&rdquo;, to get the contact ID. Retrieved contact ID in this case is &ldquo;2482013152640763215&rdquo;.</p>
 <div class="curl-title">
     Request
     <div class="curl-block">
         <code>
             
-    curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/?company="Elorus FC"
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/contacts/?company="Elorus BC"
 
         </code>
     </div>
 </div>
 
 
-<h2 id="document-type">Document type <a href="#document-type"></a></h2><h3 id="21-get-document-type-id">2.1 Get document type ID <a href="#21-get-document-type-id"></a></h3><p>In this case, a &ldquo;Sales Invoice&rdquo; document type will be needed. There is a &ldquo;Sales Invoice&rdquo; document type pre-created.<br>
-Default title is &ldquo;Τιμολόγιο&rdquo;. Search by &ldquo;title&rdquo;, to get the document type ID. Retrieved document type ID in this case is &ldquo;2480655983945188366&rdquo;.<br>
+<h2 id="document-type">Document type <a href="#document-type"></a></h2><h3 id="21-get-document-type-id">2.1 Get document type ID <a href="#21-get-document-type-id"></a></h3><p>In this case, an &ldquo;Invoice of rendered services&rdquo; document type will be needed. There is an &ldquo;Invoice of rendered services&rdquo; document type pre-created.<br>
+Default title is &ldquo;Τιμολόγιο παροχής υπηρεσιών&rdquo;. Search by &ldquo;title&rdquo;, to get the document type ID. Retrieved document type ID in this case is &ldquo;2482015687594214605&rdquo;.<br>
 In case the title is changed or the document type is missing, use the Elorus UI to create a new one.</p>
 <div class="curl-title">
     Request
     <div class="curl-block">
         <code>
             
-    curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/documenttypes/?search="Τιμολόγιο"&search_fields=title
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/documenttypes/?search="Τιμολόγιο παροχής υπηρεσιών"&search_fields=title
 
         </code>
     </div>
 </div>
 
 
-<h2 id="taxes">Taxes <a href="#taxes"></a></h2><h3 id="31-about-taxes">3.1 About taxes <a href="#31-about-taxes"></a></h3><p>By default there are some taxes preset in Elorus. Usually 24% tax is used for Greece &ldquo;Sales Invoice&rdquo; so the preset tax will be retrieved and used. In case there is a need for a new tax to be created, use of Elorus' UI is mandatory.<br>
+<h2 id="taxes">Taxes <a href="#taxes"></a></h2><h3 id="31-about-taxes">3.1 About taxes <a href="#31-about-taxes"></a></h3><p>By default there are some taxes preset in Elorus. Usually 24% tax is used for Greece &ldquo;Invoice of rendered services&rdquo; so the preset tax will be retrieved and used. In case there is a need for a new tax to be created, use of Elorus' UI is mandatory.<br>
 Optional steps to create new tax:</p>
 <ol>
 <li>Login to your Elorus account</li>
@@ -226,7 +226,7 @@ curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-A
 </div>
 
 
-<h2 id="invoice-creation">Invoice creation <a href="#invoice-creation"></a></h2><h3 id="41-create-sales-invoice">4.1 Create Sales Invoice <a href="#41-create-sales-invoice"></a></h3><p>The final step, is to create the invoice itself. The list below describes all the needed fields.</p>
+<h2 id="invoice-creation">Invoice creation <a href="#invoice-creation"></a></h2><h3 id="41-create-invoice-of-rendered-services--intra-community-supplies">4.1 Create Invoice of rendered services / Intra Community Supplies <a href="#41-create-invoice-of-rendered-services--intra-community-supplies"></a></h3><p>The final step, is to create the Invoice itself. The list below describes all the needed fields.</p>
 <ol>
 <li>X-Elorus-Organization: your organization ID</li>
 <li>calculator_mode: sets your values as &ldquo;initial&rdquo; or &ldquo;total&rdquo;, meaning before or after taxes.
@@ -236,9 +236,9 @@ curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-A
 <li>Depending on the situation, Elorus will calculate the taxes accordingly.</li>
 </ol>
 </li>
-<li>client: Client id - In this case we created &ldquo;Elorus FC&rdquo; contact.</li>
+<li>client: Client id - In this case we created &ldquo;Elorus BC&rdquo; contact.</li>
 <li>draft: true or false depending on the need to issue immediately an invoice or not. If true, the invoice will not reach MyData/Softone, until issued.</li>
-<li>documenttype: Document Type ID - In this case we used &ldquo;Τιμολόγιο&rdquo; document type, associated with the corresponding &ldquo;aade type&rdquo;.</li>
+<li>documenttype: Document Type ID - In this case we used &ldquo;Τιμολόγιο παροχής υπηρεσιών&rdquo; document type, associated with the corresponding &ldquo;aade type&rdquo;.</li>
 <li>My data specific fields: mydata_document_type - mydata_classification_category - mydata_classification_type - paid_on_receipt - payment_method
 <ol>
 <li>mydata_document_type: aade type</li>
@@ -263,7 +263,7 @@ curl -X GET -H "Content-Type: application/json" -H "Authorization: Token ~Your-A
     <div class="curl-block">
         <code>
             
-curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/invoices/ -d '{"calculator_mode": "total", "currency_code": "EUR", "exchange_rate": "1.000000", "client": "2480647926494267071", "date": "2022-5-18", "draft": true, "documenttype": "2480655983945188366", "mydata_document_type": "1.1", "items": [{"title": "Γάντια Εργασίας", "unit_total": "12.4", "quantity": "1", "taxes": ["2476911428611605999"], "mydata_classification_category": "category1_2", "mydata_classification_type": "E3_561_001"}], "paid_on_receipt": "12.4", "payment_method": "3"}'
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Token ~Your-API-key~" -H "X-Elorus-Organization: ~Your-Organization-ID~" https://api.elorus.com/v1.1/invoices/ -d '{"calculator_mode": "total", "currency_code": "EUR", "exchange_rate": "1.000000", "client": "2482013152640763215", "date": "2022-5-18", "draft": true, "documenttype": "2482015687594214605", "mydata_document_type": "2.2", "items": [{"title": "Αναβάθμιση λογισμικού", "unit_total": "12.4", "quantity": "1", "taxes": ["2476911428611605999"], "mydata_classification_category": "category1_3", "mydata_classification_type": "E3_561_005"}], "paid_on_receipt": "12.4", "payment_method": "3"}'
 
         </code>
     </div>
