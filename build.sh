@@ -3,7 +3,7 @@ echo "checking out to: api-docs branch -> master" &&
 git checkout master &&
 
 echo "pulling from: api-docs branch -> master" &&
-git pull &&
+git pull origin master &&
 
 echo "deleting hugo public folder" &&
 rm -rf public/ &&
@@ -30,6 +30,6 @@ echo "committing all changes" &&
 git commit -a -m 'committing all changes' &&
 
 echo "pushing to gh-pages" &&
-git push &&
+git push origin gh-pages &&
 
 echo "build success"
