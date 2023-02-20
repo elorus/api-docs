@@ -15,7 +15,7 @@ echo "checking out to: api-docs branch -> gh-pages" &&
 git checkout gh-pages &&
 
 echo "deleting all content except 'public' folder and git files" &&
-find . -maxdepth 1 -not \( -name '.' -or -name '..' -or -name '.gitignore' -or -path './public*' -or -path './.idea*' -or -path './.git*' \) -exec rm -rf "{}" \; &&
+find . -maxdepth 1 -not \( -name '.' -or -name '..' -or -name '.gitignore' -or -name 'CNAME' -or -path './public*' -or -path './.idea*' -or -path './.git*' \) -exec rm -rf "{}" \; &&
 
 echo "copying content from 'public' folder to gh-pages" &&
 cp -r public/* . &&
