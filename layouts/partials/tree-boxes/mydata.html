@@ -83,7 +83,7 @@
 {{ $js := slice $d3 $jq $tb_js | resources.Concat "js/core.js" | fingerprint }}
 <script type="text/javascript" src="{{ $js.Permalink }}"></script>
 
-{{ $jsn := resources.Get "jsons/mydata_classifications.json" | fingerprint }}
+{{ $jsn := resources.Get "json/mydata_classifications.json" | fingerprint }}
 <script>
     d3.json( {{ $jsn.Permalink }} , function (error, json) {
         treeBoxes('', json.tree);
