@@ -8,8 +8,10 @@ x_mydata_type = "11.2"
 
 When **selling services to private individuals**, you are required to issue a "Service rendered receipt" (myDATA document type **11.2**). In **some cases**, service receipts must be specially marked for taxation purposes. Elorus integrates with SoftOne EINVOICING, a certified provider of electronic invoicing services, to issue legally stamped receipts.
 
-{{< warning-softone >}}
-
+{{< warning-mydata >}}
+{{< warning-custom >}}
+Please note that you may need to use SoftOne integration specifically to issue documents of this type. In order to comply with the Greek Accounting Standards you must reassure that your business is eligible to issue & send unsigned documents.
+{{< /warning-custom >}}
 {{< auth >}}
 
 Client
