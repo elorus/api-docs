@@ -141,7 +141,7 @@ Make sure the integration with myDATA or SoftOne is activated in your Elorus acc
       
       <guid>/el/examples/service-rendered-receipt/</guid>
       <description>When selling services to private individuals, you are required to issue a &amp;ldquo;Service rendered receipt&amp;rdquo; (myDATA document type 11.2). In some cases, service receipts must be specially marked for taxation purposes. Elorus integrates with SoftOne EINVOICING, a certified provider of electronic invoicing services, to issue legally stamped receipts.
-Make sure the integration with SoftOne is activated in your Elorus account before using the guide below. If not, feel free to contact the Elorus support team for more information regarding the activation of the integration.</description>
+Make sure the integration with myDATA or SoftOne is activated in your Elorus account before using the guide below. If not, feel free to contact the Elorus support team for more information regarding the activation of the integration.</description>
     </item>
     
   </channel>

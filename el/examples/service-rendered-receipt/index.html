@@ -143,10 +143,15 @@
     <div class="col-xs-12 col-sm-8 col-md-6" id="example">
         <h1>Service Rendered Receipt</h1>
         <p>When <strong>selling services to private individuals</strong>, you are required to issue a &ldquo;Service rendered receipt&rdquo; (myDATA document type <strong>11.2</strong>). In <strong>some cases</strong>, service receipts must be specially marked for taxation purposes. Elorus integrates with SoftOne EINVOICING, a certified provider of electronic invoicing services, to issue legally stamped receipts.</p>
-<div class="warningBox">
-    Make sure the integration with SoftOne is activated in your Elorus account
+<p><div class="warningBox">
+    Make sure the integration with myDATA or SoftOne is activated in your Elorus account
     before using the guide below. If not, feel free to contact the <a href="mailto:support@elorus.com">Elorus
     support team</a> for more information regarding the activation of the integration.
+</div>
+<div class="warningBox">
+    
+Please note that you may need to use SoftOne integration specifically to issue documents of this type. In order to comply with the Greek Accounting Standards you must reassure that your business is eligible to issue & send unsigned documents.
+
 </div>
 <h2>Authorization variables</h2>
 <ul>
@@ -160,7 +165,7 @@
         visit the Elorus web application and navigate to "Settings > Organization > Organization ID".
         Each organization has an ID of its own.
     </li>
-</ul>
+</ul></p>
 <h2 id="client">Client <a href="#client"></a></h2><h3 id="11-create-a-new-contact">1.1 Create a new contact <a href="#11-create-a-new-contact"></a></h3><p><em>- The guide assumes you&rsquo;re working on a new Elorus organization, so this step can be omitted.</em></p>
 <p>First lets create a contact so there is someone to bill. Since the case is a &ldquo;Service Rendered Receipt&rdquo; no VAT number is needed and only minimal contact information will be used. In a business context, contacts are individuals or businesses whom you transact with; typically your clients, leads, suppliers and partners. Since Elorus will let you manage your sales as well as your expenses, a contact may represent either a client or a supplier (or even both).</p>
 <div class="curl-title">
