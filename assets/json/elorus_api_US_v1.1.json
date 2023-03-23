@@ -55,35 +55,35 @@
                     {
                         "name": "status",
                         "in": "query",
-                        "description": "Optionally filter by the document's status. Available choices are `draft`, `issued` `partial`, `unpaid`, `overdue`, `paid` and `void`",
+                        "description": "Optionally filter by the document's status.  The available choices are: `draft`, `issued`, `partial`, `unpaid`, `overdue`, `paid`, `void`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "draft",
                         "in": "query",
-                        "description": "Optionally filter by draft status. Can be either `1` or `0`.",
+                        "description": "Optionally filter by draft status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "fpaid",
                         "in": "query",
-                        "description": "Optionally filter by whether the invoice is paid or not. Can be either `yes` or `no`.",
+                        "description": "Optionally filter by whether the invoice is paid or not. The available choices are: `yes`, `no`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "is_void",
                         "in": "query",
-                        "description": "Optionally filter by void status. Can be either `1` or `0`.",
+                        "description": "Optionally filter by void status.  The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "overdue",
                         "in": "query",
-                        "description": "Optionally filter by whether the invoice is overdue or not. Can be either `yes` or `no`.",
+                        "description": "Optionally filter by whether the invoice is overdue or not. The available choices are: `yes`, `no`.",
                         "required": false,
                         "type": "string"
                     },
@@ -111,7 +111,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `due_date`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `due_date`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -616,7 +616,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `amount`, `contact__display_name`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `amount`, `contact__display_name`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -968,9 +968,16 @@
                         "type": "string"
                     },
                     {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `amount`, `contact__display_name`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `amount`, `contact__display_name`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -1296,7 +1303,7 @@
                     {
                         "name": "ctype",
                         "in": "query",
-                        "description": "Optionally filter by contact type. Either `client` or `supplier`.",
+                        "description": "Optionally filter by contact type. The available choices are: `client`, `supplier`.",
                         "required": false,
                         "type": "string"
                     },
@@ -1317,7 +1324,7 @@
                     {
                         "name": "active",
                         "in": "query",
-                        "description": "Can be either `1` or `0`.",
+                        "description": "A base custom filter for boolean fields. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -1331,7 +1338,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `display_name`, `profession`, `vat_number`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-display_name`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `display_name`, `profession`, `vat_number`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-display_name`).",
                         "required": false,
                         "type": "string"
                     },
@@ -1636,28 +1643,28 @@
                     {
                         "name": "status",
                         "in": "query",
-                        "description": "Optionally filter by the document's status. Available choices are `draft`, `issued` `partial`, `unpaid`, `paid` and `void`",
+                        "description": "Optionally filter by the document's status.  The available choices are: `draft`, `issued`, `partial`, `unpaid`, `paid`, `void`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "draft",
                         "in": "query",
-                        "description": "Optionally filter by draft status. Can be either `1` or `0`.",
+                        "description": "Optionally filter by draft status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "fpaid",
                         "in": "query",
-                        "description": "Optionally filter by whether the invoice is paid or not. Can be either `1` or `0`.",
+                        "description": "Optionally filter by whether the invoice is paid or not.  The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "is_void",
                         "in": "query",
-                        "description": "Optionally filter by void status. Can be either `1` or `0`.",
+                        "description": "Optionally filter by void status.  The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -1699,7 +1706,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence_flat`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence_flat`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -2434,14 +2441,14 @@
                     {
                         "name": "application",
                         "in": "query",
-                        "description": "Optional filter.",
+                        "description": "Optional filter. The available choices are: `1`, `2`, `3`, `4`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "active",
                         "in": "query",
-                        "description": "Can be either `1` or `0`.",
+                        "description": "A base custom filter for boolean fields. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -2594,28 +2601,28 @@
                     {
                         "name": "active",
                         "in": "query",
-                        "description": "Can be either `1` or `0`.",
+                        "description": "A base custom filter for boolean fields. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "status",
                         "in": "query",
-                        "description": "Optionally filter by the document's status. Available choices are `draft`, `issued` `accepted`, `rejected`, and `invoiced`",
+                        "description": "Optionally filter by the document's status.  The available choices are: `draft`, `issued`, `accepted`, `rejected`, `invoiced`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "draft",
                         "in": "query",
-                        "description": "Optionally filter by draft status. Can be either `1` or `0`.",
+                        "description": "Optionally filter by draft status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "accept_status",
                         "in": "query",
-                        "description": "Optionally filter by accept status. Can be either `accepted` or `rejected`.",
+                        "description": "Optionally filter by accept status. The available choices are: `accepted`, `rejected`, `empty`.",
                         "required": false,
                         "type": "string"
                     },
@@ -2657,7 +2664,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `number`, `sequence_flat`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `number`, `sequence_flat`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -3134,7 +3141,7 @@
                     {
                         "name": "active",
                         "in": "query",
-                        "description": "Can be either `1` or `0`.",
+                        "description": "A base custom filter for boolean fields. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -3606,35 +3613,35 @@
                     {
                         "name": "status",
                         "in": "query",
-                        "description": "Optionally filter by the document's status. Available choices are `draft`, `issued` `partial`, `unpaid`, `overdue`, `paid` and `void`",
+                        "description": "Optionally filter by the document's status.  The available choices are: `draft`, `issued`, `partial`, `unpaid`, `overdue`, `paid`, `void`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "draft",
                         "in": "query",
-                        "description": "Optionally filter by draft status. Can be either `1` or `0`.",
+                        "description": "Optionally filter by draft status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "fpaid",
                         "in": "query",
-                        "description": "Optionally filter by whether the invoice is paid or not. Can be either `1` or `0`.",
+                        "description": "Optionally filter by whether the invoice is paid or not.  The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "is_void",
                         "in": "query",
-                        "description": "Optionally filter by void status. Can be either `1` or `0`.",
+                        "description": "Optionally filter by void status.  The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "overdue",
                         "in": "query",
-                        "description": "Optionally filter by whether the invoice is overdue or not. Can be either `1` or `0`.",
+                        "description": "Optionally filter by whether the invoice is overdue or not. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -3676,7 +3683,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence_flat`, `due_date`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `documenttype__title`, `client__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `number`, `sequence_flat`, `due_date`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -4486,21 +4493,21 @@
                     {
                         "name": "backend",
                         "in": "query",
-                        "description": "Optional filter.",
+                        "description": "Optional filter. The available choices are: `stripe`, `paypal`, `braintree`, `authorizenet`, `2checkout`, `vivaredirect`, `razorpay`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "active",
                         "in": "query",
-                        "description": "Can be either `1` or `0`.",
+                        "description": "A base custom filter for boolean fields. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "default",
                         "in": "query",
-                        "description": "Can be either `1` or `0`.",
+                        "description": "A base custom filter for boolean fields. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -4608,14 +4615,14 @@
                     {
                         "name": "sales",
                         "in": "query",
-                        "description": "Optionally filter by sales status. Use `1` to retrieve items that can be sold and `0` to retrieve items that cannot be sold.",
+                        "description": "Optionally filter by sales status.  The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "purchases",
                         "in": "query",
-                        "description": "Optionally filter by purchase status. Use `1` to retrieve items that can be purchased and `0` to retrieve items that cannot be purchased.",
+                        "description": "Optionally filter by purchase status.  The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -4636,7 +4643,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `sales`, `sale_value`, `purchases`, `purchase_value`, `manage`, `stock`, `code`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `sales`, `sale_value`, `purchases`, `purchase_value`, `manage`, `stock`, `code`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
                         "required": false,
                         "type": "string"
                     },
@@ -4934,7 +4941,7 @@
                     {
                         "name": "active",
                         "in": "query",
-                        "description": "Can be either `1` or `0`.",
+                        "description": "A base custom filter for boolean fields. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -4948,7 +4955,7 @@
                     {
                         "name": "billing_method",
                         "in": "query",
-                        "description": "Optional filter.",
+                        "description": "Optional filter. The available choices are: `fixed_cost`, `project_rate`, `task_rate`, `assignee_rate`, `non_billable`.",
                         "required": false,
                         "type": "string"
                     },
@@ -5115,7 +5122,7 @@
                     {
                         "name": "draft",
                         "in": "query",
-                        "description": "Optionally filter by draft status. Can be either `1` or `0`.",
+                        "description": "Optionally filter by draft status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -5150,7 +5157,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `start_datetime`, `end_datetime`, `sequence_flat`, `documenttype__title`, `client__display_name`, `total`, `payable`, `initial`, `net`, `draft`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-start_datetime`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `start_datetime`, `end_datetime`, `sequence_flat`, `documenttype__title`, `client__display_name`, `total`, `payable`, `initial`, `net`, `draft`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-start_datetime`).",
                         "required": false,
                         "type": "string"
                     },
@@ -5448,28 +5455,28 @@
                     {
                         "name": "status",
                         "in": "query",
-                        "description": "Optionally filter by the document's status. Available choices are `draft`, `issued` `partial`, `unpaid`, `paid` and `void`",
+                        "description": "Optionally filter by the document's status.  The available choices are: `draft`, `issued`, `partial`, `unpaid`, `paid`, `void`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "draft",
                         "in": "query",
-                        "description": "Optionally filter by draft status. Can be either `1` or `0`.",
+                        "description": "Optionally filter by draft status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "fpaid",
                         "in": "query",
-                        "description": "Optionally filter by whether the invoice is paid or not. Can be either `yes` or `no`.",
+                        "description": "Optionally filter by whether the invoice is paid or not. The available choices are: `yes`, `no`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "is_void",
                         "in": "query",
-                        "description": "Optionally filter by void status. Can be either `1` or `0`.",
+                        "description": "Optionally filter by void status.  The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -5497,7 +5504,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `total`, `initial`, `net`, `draft`, `paid`, `payable`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -6099,28 +6106,56 @@
                     {
                         "name": "active",
                         "in": "query",
-                        "description": "Can be either `1` or `0`.",
+                        "description": "A base custom filter for boolean fields. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "operand",
                         "in": "query",
-                        "description": "Optionally filter by operand. Can be either `+` (tax) or `-` (deduction).",
+                        "description": "Optionally filter by operand.  The available choices are: `plus`, `minus`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "tax_type",
                         "in": "query",
-                        "description": "Optionally filter by tax type. Can be either `vat` or `withholding`.",
+                        "description": "Optionally filter by tax type. The available choices are: `simple`, `vat`, `withholding`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `operand`, `percentage`, `active`, `tax_type`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
+                        "description": "Which field to use when ordering the results.A comma-separated list, if more than one is provided. The available fields are `title`, `operand`, `percentage`, `active`, `tax_type`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-title`).",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "created_after",
+                        "in": "query",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "created_before",
+                        "in": "query",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "modified_after",
+                        "in": "query",
+                        "description": "Optionally filter results from a date onwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "modified_before",
+                        "in": "query",
+                        "description": "Optionally filter results from a date backwards.Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -6266,21 +6301,21 @@
                     {
                         "name": "active",
                         "in": "query",
-                        "description": "Can be either `1` or `0`.",
+                        "description": "A base custom filter for boolean fields. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "template",
                         "in": "query",
-                        "description": "Optionally filter by the template layout. One of `strict`, `prof`, `modern` or `classic`",
+                        "description": "Optionally filter by the template layout. The available choices are: `strict`, `classic`, `prof`, `modern`.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "language",
                         "in": "query",
-                        "description": "Optionally filter templates based on their language.",
+                        "description": "Optionally filter templates based on their language. The available choices are: `en`, `en-gb`, `el`, `fr`, `de`, `it`, `es`, `bg`.",
                         "required": false,
                         "type": "string"
                     },
@@ -6433,7 +6468,7 @@
                     {
                         "name": "active",
                         "in": "query",
-                        "description": "Can be either `1` or `0`.",
+                        "description": "A base custom filter for boolean fields. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
