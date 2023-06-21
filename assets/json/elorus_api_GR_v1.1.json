@@ -55,7 +55,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `supplier__display_name`, `supplier__vat_number`, `documenttype__title`, `sequence__name`, `reference`, `items__product__title`, `items__product__code`, `items__description`, `custom_id`, `related_notes__notes`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `supplier__display_name`, `supplier__vat_number`, `documenttype__title`, `sequence__name`, `reference`, `items__product__title`, `items__product__code`, `items__description`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -3834,7 +3834,7 @@
                     {
                         "name": "ordering",
                         "in": "query",
-                        "description": "Which field to use when ordering the results. A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `net`, `total`, `created`, `modified`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
+                        "description": "Which field to use when ordering the results. A comma-separated list, if more than one is provided. The available fields are `date`, `supplier__display_name`, `net`, `total`, `created`, `modified`, `modified`, `created`. Prepend a `-` to denote reverse ordering (e.g `-date`).",
                         "required": false,
                         "type": "string"
                     },
@@ -3848,7 +3848,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `supplier__display_name`, `reference`, `items__description`, `supplier__vat_number`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `supplier__display_name`, `reference`, `items__description`, `supplier__vat_number`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -3881,9 +3881,44 @@
                         "type": "string"
                     },
                     {
+                        "name": "custom_id",
+                        "in": "query",
+                        "description": "Optionally filter by custom ID.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "tc_<trackingcategory_id>",
                         "in": "query",
                         "description": "Optionally filter by any applied tracking category. The filter's name is parameterized using the tracking category's id. The filter's value can be any of the category's options. For example `?tc_12345=test` means that all records which have been tracked as `test` using `12345` category, will be returned.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "created_after",
+                        "in": "query",
+                        "description": "Optionally filter results from a date onwards. Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "created_before",
+                        "in": "query",
+                        "description": "Optionally filter results from a date backwards. Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "modified_after",
+                        "in": "query",
+                        "description": "Optionally filter results from a date onwards. Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "modified_before",
+                        "in": "query",
+                        "description": "Optionally filter results from a date backwards. Date must be in the form of `YYYY-mm-dd` or ISO-formatted.",
                         "required": false,
                         "type": "string"
                     },
@@ -6374,7 +6409,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `supplier__display_name`, `supplier__vat_number`, `documenttype__title`, `sequence__name`, `reference`, `items__product__title`, `items__product__code`, `items__description`, `custom_id`, `related_notes__notes`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `supplier__display_name`, `supplier__vat_number`, `documenttype__title`, `sequence__name`, `reference`, `items__product__title`, `items__product__code`, `items__description`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -14971,6 +15006,13 @@
                     "type": "string",
                     "minLength": 1,
                     "example": "Hello,<br/>please find the PDF attached."
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
                 }
             }
         },
@@ -15047,6 +15089,13 @@
                     "title": "Attach PDF",
                     "description": "Whether to include the PDF version of the document as attachment or not.",
                     "type": "boolean"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
                 },
                 "attachments": {
                     "description": "A list of credit note attachment IDs to attach in the email",
@@ -15127,6 +15176,13 @@
                     "title": "Attach PDF",
                     "description": "Whether to include the PDF version of the document as attachment or not.",
                     "type": "boolean"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
                 },
                 "attachments": {
                     "description": "A list of credit note attachment IDs to attach in the email",
@@ -15512,6 +15568,19 @@
                     "type": "string",
                     "example": "<div style=\"white-space: pre-wrap;\"><p>Hello %CNAME%,<br><br>Please visit %PERMALINK% to access the invoice.<br>You can also download a pdf version from that link.<br><br>Thanks,<br>%SNAME%</p></div>"
                 },
+                "sender_type": {
+                    "title": "Sender type",
+                    "description": "Select a preset value to use in the display-name of the email address (e.g. \"Example Company Name\" <example@example.com>). One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>company</code></td><td>Company name</td></tr><tr><td><code>user</code></td><td>Sender name</td></tr><tr><td><code>custom</code></td><td>Custom</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": "company"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "When using a custom `sender_type`, use this as the literal value. This field is required when `sender_type` is custom.",
+                    "type": "string",
+                    "maxLength": 70,
+                    "example": ""
+                },
                 "default": {
                     "title": "Default template",
                     "description": "Use this template when sending emails for this `email_type` and no other template is specified.",
@@ -15581,6 +15650,19 @@
                     "description": "The message may contain multiple variables that will be substituted with the actual data upon sending the email. Supported variables for each type are the following:\n<details>\n<summary>List of variables</summary><table><thead><tr><th>Type</th><th>Variable</th><th>Description</th></tr></thead><tbody><tr><td style=\"background:rgb(255,255,255)\" rowspan=\"9\"><code>client_statement</code></td><td><code>%CNAME%</code></td><td>Client name</td></tr><tr><td><code>%CFIRSTNAME%</code></td><td>Client first name</td></tr><tr><td><code>%CLASTNAME%</code></td><td>Client last name</td></tr><tr><td><code>%CCOMPANYNAME%</code></td><td>Client company name</td></tr><tr><td><code>%SNAME%</code></td><td>Sender name</td></tr><tr><td><code>%DOCUMENTNAME%</code></td><td>Document name</td></tr><tr><td><code>%COMPANY%</code></td><td>Company name</td></tr><tr><td><code>%PERIODTO%</code></td><td>Period to</td></tr><tr><td><code>%PERIODFROM%</code></td><td>Period from</td></tr><tr><td style=\"background:rgb(255,255,255)\" rowspan=\"12\"><code>invoice</code></td><td><code>%CNAME%</code></td><td>Client name</td></tr><tr><td><code>%CFIRSTNAME%</code></td><td>Client first name</td></tr><tr><td><code>%CLASTNAME%</code></td><td>Client last name</td></tr><tr><td><code>%CCOMPANYNAME%</code></td><td>Client company name</td></tr><tr><td><code>%SNAME%</code></td><td>Sender name</td></tr><tr><td><code>%DOCUMENTNAME%</code></td><td>Document name</td></tr><tr><td><code>%PAID%</code></td><td>Document paid amount</td></tr><tr><td><code>%DUE%</code></td><td>Document due amount</td></tr><tr><td><code>%CDUE%</code></td><td>Client invoices due</td></tr><tr><td><code>%CTOTALDUE%</code></td><td>Client amount due</td></tr><tr><td><code>%COMPANY%</code></td><td>Company name</td></tr><tr><td><code>%PERMALINK%</code></td><td>Document permalink</td></tr><tr><td style=\"background:rgb(255,255,255)\" rowspan=\"8\"><code>estimate</code></td><td><code>%CNAME%</code></td><td>Client name</td></tr><tr><td><code>%CFIRSTNAME%</code></td><td>Client first name</td></tr><tr><td><code>%CLASTNAME%</code></td><td>Client last name</td></tr><tr><td><code>%CCOMPANYNAME%</code></td><td>Client company name</td></tr><tr><td><code>%SNAME%</code></td><td>Sender name</td></tr><tr><td><code>%DOCUMENTNAME%</code></td><td>Document name</td></tr><tr><td><code>%COMPANY%</code></td><td>Company name</td></tr><tr><td><code>%PERMALINK%</code></td><td>Document permalink</td></tr><tr><td style=\"background:rgb(255,255,255)\" rowspan=\"8\"><code>purchase</code></td><td><code>%SUPNAME%</code></td><td>Supplier name</td></tr><tr><td><code>%SUPFIRSTNAME%</code></td><td>Supplier first name</td></tr><tr><td><code>%SUPLASTNAME%</code></td><td>Supplier last name</td></tr><tr><td><code>%SUPCOMPANYNAME%</code></td><td>Supplier company name</td></tr><tr><td><code>%SNAME%</code></td><td>Sender name</td></tr><tr><td><code>%DOCUMENTNAME%</code></td><td>Document name</td></tr><tr><td><code>%COMPANY%</code></td><td>Company name</td></tr><tr><td><code>%PERMALINK%</code></td><td>Document permalink</td></tr>",
                     "type": "string",
                     "example": "<div style=\"white-space: pre-wrap;\"><p>Hello %CNAME%,<br><br>Please visit %PERMALINK% to access the invoice.<br>You can also download a pdf version from that link.<br><br>Thanks,<br>%SNAME%</p></div>"
+                },
+                "sender_type": {
+                    "title": "Sender type",
+                    "description": "Select a preset value to use in the display-name of the email address (e.g. \"Example Company Name\" <example@example.com>). One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>company</code></td><td>Company name</td></tr><tr><td><code>user</code></td><td>Sender name</td></tr><tr><td><code>custom</code></td><td>Custom</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": "company"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "When using a custom `sender_type`, use this as the literal value. This field is required when `sender_type` is custom.",
+                    "type": "string",
+                    "maxLength": 70,
+                    "example": ""
                 },
                 "default": {
                     "title": "Default template",
@@ -15652,6 +15734,19 @@
                     "type": "string",
                     "example": "<div style=\"white-space: pre-wrap;\"><p>Hello %CNAME%,<br><br>Please visit %PERMALINK% to access the invoice.<br>You can also download a pdf version from that link.<br><br>Thanks,<br>%SNAME%</p></div>"
                 },
+                "sender_type": {
+                    "title": "Sender type",
+                    "description": "Select a preset value to use in the display-name of the email address (e.g. \"Example Company Name\" <example@example.com>). One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>company</code></td><td>Company name</td></tr><tr><td><code>user</code></td><td>Sender name</td></tr><tr><td><code>custom</code></td><td>Custom</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": "company"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "When using a custom `sender_type`, use this as the literal value. This field is required when `sender_type` is custom.",
+                    "type": "string",
+                    "maxLength": 70,
+                    "example": ""
+                },
                 "default": {
                     "title": "Default template",
                     "description": "Use this template when sending emails for this `email_type` and no other template is specified.",
@@ -15717,6 +15812,19 @@
                     "description": "The message may contain multiple variables that will be substituted with the actual data upon sending the email. Supported variables for each type are the following:\n<details>\n<summary>List of variables</summary><table><thead><tr><th>Type</th><th>Variable</th><th>Description</th></tr></thead><tbody><tr><td style=\"background:rgb(255,255,255)\" rowspan=\"9\"><code>client_statement</code></td><td><code>%CNAME%</code></td><td>Client name</td></tr><tr><td><code>%CFIRSTNAME%</code></td><td>Client first name</td></tr><tr><td><code>%CLASTNAME%</code></td><td>Client last name</td></tr><tr><td><code>%CCOMPANYNAME%</code></td><td>Client company name</td></tr><tr><td><code>%SNAME%</code></td><td>Sender name</td></tr><tr><td><code>%DOCUMENTNAME%</code></td><td>Document name</td></tr><tr><td><code>%COMPANY%</code></td><td>Company name</td></tr><tr><td><code>%PERIODTO%</code></td><td>Period to</td></tr><tr><td><code>%PERIODFROM%</code></td><td>Period from</td></tr><tr><td style=\"background:rgb(255,255,255)\" rowspan=\"12\"><code>invoice</code></td><td><code>%CNAME%</code></td><td>Client name</td></tr><tr><td><code>%CFIRSTNAME%</code></td><td>Client first name</td></tr><tr><td><code>%CLASTNAME%</code></td><td>Client last name</td></tr><tr><td><code>%CCOMPANYNAME%</code></td><td>Client company name</td></tr><tr><td><code>%SNAME%</code></td><td>Sender name</td></tr><tr><td><code>%DOCUMENTNAME%</code></td><td>Document name</td></tr><tr><td><code>%PAID%</code></td><td>Document paid amount</td></tr><tr><td><code>%DUE%</code></td><td>Document due amount</td></tr><tr><td><code>%CDUE%</code></td><td>Client invoices due</td></tr><tr><td><code>%CTOTALDUE%</code></td><td>Client amount due</td></tr><tr><td><code>%COMPANY%</code></td><td>Company name</td></tr><tr><td><code>%PERMALINK%</code></td><td>Document permalink</td></tr><tr><td style=\"background:rgb(255,255,255)\" rowspan=\"8\"><code>estimate</code></td><td><code>%CNAME%</code></td><td>Client name</td></tr><tr><td><code>%CFIRSTNAME%</code></td><td>Client first name</td></tr><tr><td><code>%CLASTNAME%</code></td><td>Client last name</td></tr><tr><td><code>%CCOMPANYNAME%</code></td><td>Client company name</td></tr><tr><td><code>%SNAME%</code></td><td>Sender name</td></tr><tr><td><code>%DOCUMENTNAME%</code></td><td>Document name</td></tr><tr><td><code>%COMPANY%</code></td><td>Company name</td></tr><tr><td><code>%PERMALINK%</code></td><td>Document permalink</td></tr><tr><td style=\"background:rgb(255,255,255)\" rowspan=\"8\"><code>purchase</code></td><td><code>%SUPNAME%</code></td><td>Supplier name</td></tr><tr><td><code>%SUPFIRSTNAME%</code></td><td>Supplier first name</td></tr><tr><td><code>%SUPLASTNAME%</code></td><td>Supplier last name</td></tr><tr><td><code>%SUPCOMPANYNAME%</code></td><td>Supplier company name</td></tr><tr><td><code>%SNAME%</code></td><td>Sender name</td></tr><tr><td><code>%DOCUMENTNAME%</code></td><td>Document name</td></tr><tr><td><code>%COMPANY%</code></td><td>Company name</td></tr><tr><td><code>%PERMALINK%</code></td><td>Document permalink</td></tr>",
                     "type": "string",
                     "example": "<div style=\"white-space: pre-wrap;\"><p>Hello %CNAME%,<br><br>Please visit %PERMALINK% to access the invoice.<br>You can also download a pdf version from that link.<br><br>Thanks,<br>%SNAME%</p></div>"
+                },
+                "sender_type": {
+                    "title": "Sender type",
+                    "description": "Select a preset value to use in the display-name of the email address (e.g. \"Example Company Name\" <example@example.com>). One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>company</code></td><td>Company name</td></tr><tr><td><code>user</code></td><td>Sender name</td></tr><tr><td><code>custom</code></td><td>Custom</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "example": "company"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "When using a custom `sender_type`, use this as the literal value. This field is required when `sender_type` is custom.",
+                    "type": "string",
+                    "maxLength": 70,
+                    "example": ""
                 },
                 "default": {
                     "title": "Default template",
@@ -17258,6 +17366,13 @@
                     "description": "Whether to include the PDF version of the document as attachment or not.",
                     "type": "boolean"
                 },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
+                },
                 "attachments": {
                     "description": "A list of estimate attachment IDs to attach in the email",
                     "type": "array",
@@ -17337,6 +17452,13 @@
                     "title": "Attach PDF",
                     "description": "Whether to include the PDF version of the document as attachment or not.",
                     "type": "boolean"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
                 },
                 "attachments": {
                     "description": "A list of estimate attachment IDs to attach in the email",
@@ -17425,6 +17547,12 @@
                     "readOnly": true,
                     "minLength": 1,
                     "example": "1050000300010040"
+                },
+                "custom_id": {
+                    "title": "Custom ID",
+                    "type": "string",
+                    "maxLength": 256,
+                    "example": "ABC-123-a1"
                 },
                 "representation": {
                     "title": "Representation",
@@ -17589,6 +17717,12 @@
                     "minLength": 1,
                     "example": "1050000300010040"
                 },
+                "custom_id": {
+                    "title": "Custom ID",
+                    "type": "string",
+                    "maxLength": 256,
+                    "example": "ABC-123-a1"
+                },
                 "representation": {
                     "title": "Representation",
                     "description": "Automatically generated representation string.",
@@ -17696,6 +17830,12 @@
                     "readOnly": true,
                     "minLength": 1,
                     "example": "1050000300010040"
+                },
+                "custom_id": {
+                    "title": "Custom ID",
+                    "type": "string",
+                    "maxLength": 256,
+                    "example": "ABC-123-a1"
                 },
                 "representation": {
                     "title": "Representation",
@@ -17870,6 +18010,12 @@
                     "minLength": 1,
                     "example": "1050000300010040"
                 },
+                "custom_id": {
+                    "title": "Custom ID",
+                    "type": "string",
+                    "maxLength": 256,
+                    "example": "ABC-123-a1"
+                },
                 "representation": {
                     "title": "Representation",
                     "description": "Automatically generated representation string.",
@@ -17980,6 +18126,12 @@
                     "readOnly": true,
                     "minLength": 1,
                     "example": "1050000300010040"
+                },
+                "custom_id": {
+                    "title": "Custom ID",
+                    "type": "string",
+                    "maxLength": 256,
+                    "example": "ABC-123-a1"
                 },
                 "representation": {
                     "title": "Representation",
@@ -20496,6 +20648,13 @@
                     "description": "Whether to include the PDF version of the document as attachment or not.",
                     "type": "boolean"
                 },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
+                },
                 "attachments": {
                     "description": "A list of invoice attachment IDs to attach in the email",
                     "type": "array",
@@ -20575,6 +20734,13 @@
                     "title": "Attach PDF",
                     "description": "Whether to include the PDF version of the document as attachment or not.",
                     "type": "boolean"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
                 },
                 "attachments": {
                     "description": "A list of invoice attachment IDs to attach in the email",
@@ -25548,6 +25714,13 @@
                     "description": "Whether to include the PDF version of the document as attachment or not.",
                     "type": "boolean"
                 },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
+                },
                 "attachments": {
                     "description": "A list of self-billed supplier credit attachment IDs to attach in the email",
                     "type": "array",
@@ -25627,6 +25800,13 @@
                     "title": "Attach PDF",
                     "description": "Whether to include the PDF version of the document as attachment or not.",
                     "type": "boolean"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
                 },
                 "attachments": {
                     "description": "A list of self-billed supplier credit attachment IDs to attach in the email",
