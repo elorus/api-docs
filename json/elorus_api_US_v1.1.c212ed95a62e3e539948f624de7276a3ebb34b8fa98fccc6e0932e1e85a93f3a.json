@@ -595,7 +595,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `title`, `contact__display_name`, `date`, `contact__vat_number`, `custom_id`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `title`, `contact__display_name`, `date`, `contact__vat_number`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -956,7 +956,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `title`, `contact__display_name`, `date`, `contact__vat_number`, `custom_id`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `title`, `contact__display_name`, `date`, `contact__vat_number`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -1317,7 +1317,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `first_name`, `last_name`, `company`, `profession`, `vat_number`, `email__email`, `phones__number`, `addresses__address`, `addresses__city`, `addresses__state`, `custom_id`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `first_name`, `last_name`, `company`, `profession`, `vat_number`, `email__email`, `phones__number`, `addresses__address`, `addresses__city`, `addresses__state`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -1664,7 +1664,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `client__display_name`, `documenttype__title`, `sequence__name`, `number`, `items__title`, `items__description`, `client_vat_number`, `custom_id`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `client__display_name`, `documenttype__title`, `sequence__name`, `number`, `items__title`, `items__description`, `client_vat_number`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -2927,7 +2927,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `client__display_name`, `documenttype__title`, `sequence__name`, `number`, `items__title`, `items__description`, `client_vat_number`, `custom_id`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `client__display_name`, `documenttype__title`, `sequence__name`, `number`, `items__title`, `items__description`, `client_vat_number`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -3634,7 +3634,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `supplier__display_name`, `reference`, `items__description`, `supplier__vat_number`, `custom_id`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `supplier__display_name`, `reference`, `items__description`, `supplier__vat_number`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -3974,7 +3974,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `client__display_name`, `documenttype__title`, `sequence__name`, `number`, `items__title`, `items__description`, `client_vat_number`, `custom_id`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `client__display_name`, `documenttype__title`, `sequence__name`, `number`, `items__title`, `items__description`, `client_vat_number`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -4969,7 +4969,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `title`, `description`, `code`, `custom_id`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `title`, `description`, `code`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -5309,7 +5309,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `name`, `description`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `name`, `description`, `related_notes__notes`.",
                         "required": false,
                         "type": "string"
                     },
@@ -5476,7 +5476,7 @@
                     {
                         "name": "search_fields",
                         "in": "query",
-                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `client__display_name`, `documenttype__title`, `sequence__name`, `items__title`, `items__description`, `client_vat_number`, `custom_id`.",
+                        "description": "The fields on which search will be performed once a search term is provided. A comma-separated list. If not provided, the search operation will span across all fields. The available fields are `client__display_name`, `documenttype__title`, `sequence__name`, `items__title`, `items__description`, `client_vat_number`, `related_notes__notes`, `custom_id`.",
                         "required": false,
                         "type": "string"
                     },
@@ -7275,6 +7275,14 @@
                     "readOnly": true,
                     "example": "100.00"
                 },
+                "permalink": {
+                    "title": "Permalink",
+                    "description": "Applies only to self-billed invoices. Public URL for clients.",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "example": "//url-for-the-client/"
+                },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
@@ -7692,6 +7700,14 @@
                         "$ref": "#/definitions/RecordTrackingCategoryNested"
                     }
                 },
+                "permalink": {
+                    "title": "Permalink",
+                    "description": "Applies only to self-billed invoices. Public URL for clients.",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "example": "//url-for-the-client/"
+                },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
@@ -7938,6 +7954,14 @@
                     "items": {
                         "$ref": "#/definitions/RecordTrackingCategoryNested"
                     }
+                },
+                "permalink": {
+                    "title": "Permalink",
+                    "description": "Applies only to self-billed invoices. Public URL for clients.",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "example": "//url-for-the-client/"
                 },
                 "organization": {
                     "title": "Organization",
@@ -8280,6 +8304,14 @@
                         "$ref": "#/definitions/RecordTrackingCategoryNested"
                     }
                 },
+                "permalink": {
+                    "title": "Permalink",
+                    "description": "Applies only to self-billed invoices. Public URL for clients.",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "example": "//url-for-the-client/"
+                },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
@@ -8527,6 +8559,14 @@
                     "items": {
                         "$ref": "#/definitions/RecordTrackingCategoryNested"
                     }
+                },
+                "permalink": {
+                    "title": "Permalink",
+                    "description": "Applies only to self-billed invoices. Public URL for clients.",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "example": "//url-for-the-client/"
                 },
                 "organization": {
                     "title": "Organization",
@@ -20955,6 +20995,14 @@
                     "readOnly": true,
                     "example": "100.00"
                 },
+                "permalink": {
+                    "title": "Permalink",
+                    "description": "Applies only to self-billed invoices. Public URL for clients.",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "example": "//url-for-the-client/"
+                },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
@@ -21307,6 +21355,14 @@
                         "4400230020000542"
                     ]
                 },
+                "permalink": {
+                    "title": "Permalink",
+                    "description": "Applies only to self-billed invoices. Public URL for clients.",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "example": "//url-for-the-client/"
+                },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
@@ -21557,6 +21613,14 @@
                     "example": [
                         "4400230020000542"
                     ]
+                },
+                "permalink": {
+                    "title": "Permalink",
+                    "description": "Applies only to self-billed invoices. Public URL for clients.",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "example": "//url-for-the-client/"
                 },
                 "organization": {
                     "title": "Organization",
@@ -21902,6 +21966,14 @@
                         "4400230020000542"
                     ]
                 },
+                "permalink": {
+                    "title": "Permalink",
+                    "description": "Applies only to self-billed invoices. Public URL for clients.",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "example": "//url-for-the-client/"
+                },
                 "organization": {
                     "title": "Organization",
                     "description": "ID of the owning organization.",
@@ -22153,6 +22225,14 @@
                     "example": [
                         "4400230020000542"
                     ]
+                },
+                "permalink": {
+                    "title": "Permalink",
+                    "description": "Applies only to self-billed invoices. Public URL for clients.",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "example": "//url-for-the-client/"
                 },
                 "organization": {
                     "title": "Organization",
