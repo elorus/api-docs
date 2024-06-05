@@ -88,6 +88,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "pending_approval",
+                        "in": "query",
+                        "description": "Optionally filter by pending status. The available choices are: `1`, `0`.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "fpaid",
                         "in": "query",
                         "description": "Optionally filter by whether the invoice is paid or not. The available choices are: `yes`, `no`.",
@@ -97,7 +104,7 @@
                     {
                         "name": "is_void",
                         "in": "query",
-                        "description": "Optionally filter by void status.  The available choices are: `1`, `0`.",
+                        "description": "Optionally filter by void status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -465,6 +472,97 @@
                     "bills"
                 ],
                 "summary": "/v1.1/bills/{id}/"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/v1.1/bills/{id}/email/": {
+            "get": {
+                "operationId": "bills_email_read",
+                "description": "Email the document to a client.\n---\nYou may retrieve the default email subject, message etc. with a `GET`\nrequest. Use the `POST` request to queue the email for sending.\nIn most cases you want to send the data exactly as returned by\nthe `GET` action.",
+                "parameters": [
+                    {
+                        "name": "X-Elorus-Organization",
+                        "in": "header",
+                        "description": "The ID of the organization you want to operate on.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-Elorus-Demo",
+                        "in": "header",
+                        "description": "Just send this header if you want to ensure you operate on demo organizations only. Useful while you're developing your application, to avoid accidents on production data. Note that the header's value is not important.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PUEmailRetrieveSerializer"
+                        }
+                    },
+                    "403": {
+                        "description": "Permission denied. User was not allowed to perform the requested action."
+                    }
+                },
+                "tags": [
+                    "bills"
+                ],
+                "summary": "/v1.1/bills/{id}/email/"
+            },
+            "post": {
+                "operationId": "bills_email_create",
+                "description": "Email the document to a client.\n---\nYou may retrieve the default email subject, message etc. with a `GET`\nrequest. Use the `POST` request to queue the email for sending.\nIn most cases you want to send the data exactly as returned by\nthe `GET` action.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PrivatePurchaseEmail"
+                        }
+                    },
+                    {
+                        "name": "X-Elorus-Organization",
+                        "in": "header",
+                        "description": "The ID of the organization you want to operate on.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-Elorus-Demo",
+                        "in": "header",
+                        "description": "Just send this header if you want to ensure you operate on demo organizations only. Useful while you're developing your application, to avoid accidents on production data. Note that the header's value is not important.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PUPrivatePurchaseEmailSerializer"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request. The exact error message is sent in the response body."
+                    },
+                    "403": {
+                        "description": "Permission denied. User was not allowed to perform the requested action."
+                    }
+                },
+                "tags": [
+                    "bills"
+                ],
+                "summary": "/v1.1/bills/{id}/email/"
             },
             "parameters": [
                 {
@@ -937,7 +1035,7 @@
         "/v1.1/cashreceipts/": {
             "get": {
                 "operationId": "cashreceipts_list",
-                "description": "Get the list of payments received.\n---\nThe response does not include all the payments received details.\nTo retrieve more information about a specific payment received, use the single payments received endpoint.",
+                "description": "Get the list of payments received.\n---\nThe response does not include all the payments received details.\nTo retrieve more information about a specific payment received,\nuse the single payments received endpoint.",
                 "parameters": [
                     {
                         "name": "ordering",
@@ -985,6 +1083,20 @@
                         "name": "currency_code",
                         "in": "query",
                         "description": "Optionally filter by currency code.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pending_approval",
+                        "in": "query",
+                        "description": "Optionally filter by pending status. The available choices are: `1`, `0`.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "is_void",
+                        "in": "query",
+                        "description": "Optionally filter by void status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -1285,6 +1397,48 @@
                     "cashreceipts"
                 ],
                 "summary": "/v1.1/cashreceipts/{id}/"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/v1.1/cashreceipts/{id}/pdf/": {
+            "get": {
+                "operationId": "cashreceipts_pdf",
+                "description": "Get the document as PDF.\n---\nDownload the document in PDF file format.",
+                "parameters": [
+                    {
+                        "name": "X-Elorus-Organization",
+                        "in": "header",
+                        "description": "The ID of the organization you want to operate on.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-Elorus-Demo",
+                        "in": "header",
+                        "description": "Just send this header if you want to ensure you operate on demo organizations only. Useful while you're developing your application, to avoid accidents on production data. Note that the header's value is not important.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The pdf file"
+                    },
+                    "403": {
+                        "description": "Permission denied. User was not allowed to perform the requested action."
+                    }
+                },
+                "tags": [
+                    "cashreceipts"
+                ],
+                "summary": "/v1.1/cashreceipts/{id}/pdf/"
             },
             "parameters": [
                 {
@@ -1697,6 +1851,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "pending_approval",
+                        "in": "query",
+                        "description": "Optionally filter by pending status. The available choices are: `1`, `0`.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "fpaid",
                         "in": "query",
                         "description": "Optionally filter by whether the invoice is paid or not.  The available choices are: `1`, `0`.",
@@ -1706,7 +1867,7 @@
                     {
                         "name": "is_void",
                         "in": "query",
-                        "description": "Optionally filter by void status.  The available choices are: `1`, `0`.",
+                        "description": "Optionally filter by void status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -2322,7 +2483,7 @@
                                 "results": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/PUV11InvoiceCreditTransactionCNListCreate"
+                                        "$ref": "#/definitions/PUInvoiceCreditTransactionCNSerializer"
                                     }
                                 }
                             }
@@ -2346,7 +2507,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/V11InvoiceCreditTransactionCNListCreate"
+                            "$ref": "#/definitions/InvoiceCreditTransactionCN"
                         }
                     },
                     {
@@ -2368,7 +2529,7 @@
                     "201": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/PUV11InvoiceCreditTransactionCNListCreate"
+                            "$ref": "#/definitions/PUInvoiceCreditTransactionCNSerializer"
                         }
                     },
                     "400": {
@@ -4007,6 +4168,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "pending_approval",
+                        "in": "query",
+                        "description": "Optionally filter by pending status. The available choices are: `1`, `0`.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "fpaid",
                         "in": "query",
                         "description": "Optionally filter by whether the invoice is paid or not.  The available choices are: `1`, `0`.",
@@ -4016,7 +4184,7 @@
                     {
                         "name": "is_void",
                         "in": "query",
-                        "description": "Optionally filter by void status.  The available choices are: `1`, `0`.",
+                        "description": "Optionally filter by void status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -4576,6 +4744,187 @@
                 }
             ]
         },
+        "/v1.1/invoices/{parent_pk}/applied-credit/": {
+            "get": {
+                "operationId": "invoices_applied-credit_list",
+                "description": "Get the applied credit.\n---\nThe list of credit applied to invoices.",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Number of results to return per page. Default is 100.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "X-Elorus-Organization",
+                        "in": "header",
+                        "description": "The ID of the organization you want to operate on.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-Elorus-Demo",
+                        "in": "header",
+                        "description": "Just send this header if you want to ensure you operate on demo organizations only. Useful while you're developing your application, to avoid accidents on production data. Note that the header's value is not important.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer",
+                                    "example": 10
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "example": "",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "example": "",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PUInvoiceCreditTransactionInvSerializer"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Permission denied. User was not allowed to perform the requested action."
+                    }
+                },
+                "tags": [
+                    "invoices"
+                ],
+                "summary": "/v1.1/invoices/{parent_pk}/applied-credit/"
+            },
+            "post": {
+                "operationId": "invoices_applied-credit_create",
+                "description": "Bulk apply credit.\n---\nApply all or part of the remaining credit to a list of invoices.\nThe credit note's client and currency code must match the invoice's\ncorresponding values.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/InvoiceCreditTransactionInv"
+                        }
+                    },
+                    {
+                        "name": "X-Elorus-Organization",
+                        "in": "header",
+                        "description": "The ID of the organization you want to operate on.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-Elorus-Demo",
+                        "in": "header",
+                        "description": "Just send this header if you want to ensure you operate on demo organizations only. Useful while you're developing your application, to avoid accidents on production data. Note that the header's value is not important.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PUInvoiceCreditTransactionInvSerializer"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request. The exact error message is sent in the response body."
+                    },
+                    "403": {
+                        "description": "Permission denied. User was not allowed to perform the requested action."
+                    }
+                },
+                "tags": [
+                    "invoices"
+                ],
+                "summary": "/v1.1/invoices/{parent_pk}/applied-credit/"
+            },
+            "parameters": [
+                {
+                    "name": "parent_pk",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/v1.1/invoices/{parent_pk}/applied-credit/{id}/": {
+            "delete": {
+                "operationId": "invoices_applied-credit_delete",
+                "description": "Delete applied credit.\n---\nDeleting applied credit will just detach the credit from\nthe related invoice. The endpoint's record ID\ndoes not refer to the invoice ID, rather than the credit\nrecord's ID, returned by the list action.",
+                "parameters": [
+                    {
+                        "name": "X-Elorus-Organization",
+                        "in": "header",
+                        "description": "The ID of the organization you want to operate on.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-Elorus-Demo",
+                        "in": "header",
+                        "description": "Just send this header if you want to ensure you operate on demo organizations only. Useful while you're developing your application, to avoid accidents on production data. Note that the header's value is not important.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    },
+                    "403": {
+                        "description": "Permission denied. User was not allowed to perform the requested action."
+                    }
+                },
+                "tags": [
+                    "invoices"
+                ],
+                "summary": "/v1.1/invoices/{parent_pk}/applied-credit/{id}/"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "parent_pk",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
         "/v1.1/numberingsequence/": {
             "get": {
                 "operationId": "numberingsequence_list",
@@ -4957,7 +5306,7 @@
         "/v1.1/products/": {
             "get": {
                 "operationId": "products_list",
-                "description": "Get the list of products / services.\n---\nThe response does not include all the products / services details. To retrieve more\ninformation about a specific product / service, use the single products / services endpoint.",
+                "description": "Get the list of products / services.\n---\nThe response does not include all the products / services details.\nTo retrieve more information about a specific product / service,\nuse the single products / services endpoint.",
                 "parameters": [
                     {
                         "name": "search",
@@ -5863,6 +6212,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "pending_approval",
+                        "in": "query",
+                        "description": "Optionally filter by pending status. The available choices are: `1`, `0`.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "fpaid",
                         "in": "query",
                         "description": "Optionally filter by whether the invoice is paid or not. The available choices are: `yes`, `no`.",
@@ -5872,7 +6228,7 @@
                     {
                         "name": "is_void",
                         "in": "query",
-                        "description": "Optionally filter by void status.  The available choices are: `1`, `0`.",
+                        "description": "Optionally filter by void status. The available choices are: `1`, `0`.",
                         "required": false,
                         "type": "string"
                     },
@@ -7011,7 +7367,7 @@
                     {
                         "name": "application",
                         "in": "query",
-                        "description": "Optional filter.",
+                        "description": "Optional filter. The available choices are: `sales`, `purchases`, `contacts`, `cashreceipts`, `cashpayments`, `productorservice`.",
                         "required": false,
                         "type": "string"
                     },
@@ -7163,7 +7519,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -7385,8 +7741,8 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -7504,7 +7860,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -7759,7 +8115,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -8021,8 +8377,8 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -8111,7 +8467,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -8367,7 +8723,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -8619,7 +8975,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -8668,6 +9024,246 @@
                 }
             }
         },
+        "PUEmailRetrieveSerializer": {
+            "type": "object",
+            "properties": {
+                "to": {
+                    "title": "To",
+                    "description": "The default recipient email address.",
+                    "type": "string",
+                    "format": "email",
+                    "minLength": 1,
+                    "example": "someone@example.com"
+                },
+                "cc": {
+                    "title": "Cc",
+                    "description": "The default CC email addresses; comma-separated values",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "accounting@doe.com"
+                },
+                "bcc": {
+                    "title": "Bcc",
+                    "description": "The default BCC email addresses; comma-separated values",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "someone-else@example.com"
+                },
+                "reply_to": {
+                    "title": "Reply-To",
+                    "description": "A possible response from the recipients will be sent to this email address.",
+                    "type": "string",
+                    "format": "email",
+                    "minLength": 1,
+                    "example": "john@doe.com"
+                },
+                "subject": {
+                    "title": "Subject",
+                    "description": "The default email subject.",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1,
+                    "example": "The email subject"
+                },
+                "message": {
+                    "title": "Message",
+                    "description": "The default email message.",
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Hello,<br/>please find the PDF attached."
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
+                }
+            }
+        },
+        "PrivatePurchaseEmail": {
+            "required": [
+                "to",
+                "cc",
+                "bcc",
+                "subject",
+                "message",
+                "attach_pdf",
+                "attachments"
+            ],
+            "type": "object",
+            "properties": {
+                "to": {
+                    "title": "To",
+                    "description": "The recipient email address.",
+                    "type": "string",
+                    "format": "email",
+                    "minLength": 1,
+                    "example": "someone@example.com"
+                },
+                "store_to": {
+                    "title": "Store recipient",
+                    "description": "Store the recipient address on the client contact for future use.",
+                    "type": "boolean"
+                },
+                "cc": {
+                    "description": "A list of email addresses to carbon-copy the email to.",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "email",
+                        "minLength": 1
+                    },
+                    "example": [
+                        "accounting@doe.com"
+                    ]
+                },
+                "bcc": {
+                    "description": "A list of email addresses to blind carbon-copy the email to.",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "email",
+                        "minLength": 1
+                    },
+                    "example": "someone-else@example.com"
+                },
+                "reply_to": {
+                    "title": "Reply-To",
+                    "description": "A possible response from the recipients will be sent to this email address.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "john@doe.com"
+                },
+                "subject": {
+                    "title": "Subject",
+                    "description": "The email subject.",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1,
+                    "example": "The email subject"
+                },
+                "message": {
+                    "title": "Message",
+                    "description": "The email message. May contain html.",
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Hello,<br/>please find the PDF attached."
+                },
+                "attach_pdf": {
+                    "title": "Attach PDF",
+                    "description": "Whether to include the PDF version of the document as attachment or not.",
+                    "type": "boolean"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
+                },
+                "attachments": {
+                    "description": "A list of self-billed invoice attachment IDs to attach in the email",
+                    "type": "array",
+                    "items": {
+                        "title": "Attachments",
+                        "description": "A list of self-billed invoice attachment IDs to attach in the email",
+                        "type": "integer"
+                    },
+                    "uniqueItems": true,
+                    "example": [
+                        "1050000300010040"
+                    ]
+                }
+            }
+        },
+        "PUPrivatePurchaseEmailSerializer": {
+            "type": "object",
+            "properties": {
+                "to": {
+                    "title": "To",
+                    "description": "The recipient email address.",
+                    "type": "string",
+                    "format": "email",
+                    "minLength": 1,
+                    "example": "someone@example.com"
+                },
+                "store_to": {
+                    "title": "Store recipient",
+                    "description": "Store the recipient address on the client contact for future use.",
+                    "type": "boolean"
+                },
+                "cc": {
+                    "description": "A list of email addresses to carbon-copy the email to.",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "email",
+                        "minLength": 1
+                    },
+                    "example": [
+                        "accounting@doe.com"
+                    ]
+                },
+                "bcc": {
+                    "description": "A list of email addresses to blind carbon-copy the email to.",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "email",
+                        "minLength": 1
+                    },
+                    "example": "someone-else@example.com"
+                },
+                "reply_to": {
+                    "title": "Reply-To",
+                    "description": "A possible response from the recipients will be sent to this email address.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "john@doe.com"
+                },
+                "subject": {
+                    "title": "Subject",
+                    "description": "The email subject.",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1,
+                    "example": "The email subject"
+                },
+                "message": {
+                    "title": "Message",
+                    "description": "The email message. May contain html.",
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Hello,<br/>please find the PDF attached."
+                },
+                "attach_pdf": {
+                    "title": "Attach PDF",
+                    "description": "Whether to include the PDF version of the document as attachment or not.",
+                    "type": "boolean"
+                },
+                "sender_name": {
+                    "title": "Sender name",
+                    "description": "Sender display name",
+                    "type": "string",
+                    "maxLength": 70,
+                    "minLength": 1
+                },
+                "attachments": {
+                    "description": "A list of self-billed invoice attachment IDs to attach in the email",
+                    "type": "array",
+                    "items": {
+                        "title": "Attachments",
+                        "description": "A list of self-billed invoice attachment IDs to attach in the email",
+                        "type": "integer"
+                    },
+                    "uniqueItems": true,
+                    "example": [
+                        "1050000300010040"
+                    ]
+                }
+            }
+        },
         "VoidDocument": {
             "type": "object",
             "properties": {
@@ -8683,7 +9279,7 @@
             "properties": {
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -9500,7 +10096,7 @@
                     "title": "Transaction type",
                     "type": "string",
                     "example": "ip",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Accommodation tax</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Climate crisis resilience tax</td></tr></tbody></table></details>"
                 },
                 "income_type": {
                     "title": "Income type",
@@ -9566,6 +10162,13 @@
                         "$ref": "#/definitions/PurchaseCreditNoteCashReceiptNested"
                     },
                     "example": []
+                },
+                "status": {
+                    "title": "Status",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>active</code></td><td>Issued</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "active"
                 },
                 "payment_gateway": {
                     "title": "Payment Gateway",
@@ -9695,6 +10298,13 @@
                     "type": "string",
                     "example": "100.00",
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 2 decimal places."
+                },
+                "status": {
+                    "title": "Status",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>active</code></td><td>Issued</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "active"
                 },
                 "invoice_payments": {
                     "description": "A list of the invoices paid via this transaction. Applies to \"Client payment\" transactions.",
@@ -9841,6 +10451,13 @@
                     "example": "100.00",
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 2 decimal places."
                 },
+                "status": {
+                    "title": "Status",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>active</code></td><td>Issued</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "active"
+                },
                 "invoice_payments": {
                     "description": "A list of the invoices paid via this transaction. Applies to \"Client payment\" transactions.",
                     "type": "array",
@@ -9932,7 +10549,7 @@
                     "title": "Transaction type",
                     "type": "string",
                     "example": "ip",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Accommodation tax</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>dp</code></td><td>Other payments</td></tr><tr><td><code>ip</code></td><td>Client payment</td></tr><tr><td><code>cnp</code></td><td>Supplier refund</td></tr><tr><td><code>icm</code></td><td>Income</td></tr><tr><td><code>at</code></td><td>Climate crisis resilience tax</td></tr></tbody></table></details>"
                 },
                 "income_type": {
                     "title": "Income type",
@@ -10014,6 +10631,13 @@
                         "$ref": "#/definitions/PurchaseCreditNoteCashReceiptNested"
                     },
                     "example": []
+                },
+                "status": {
+                    "title": "Status",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>active</code></td><td>Issued</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "active"
                 },
                 "payment_gateway": {
                     "title": "Payment Gateway",
@@ -10969,7 +11593,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -11184,8 +11808,8 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -11227,6 +11851,13 @@
                     "type": "string",
                     "readOnly": true,
                     "example": "80.00"
+                },
+                "project": {
+                    "title": "Project",
+                    "description": "ID of the associated project.",
+                    "type": "integer",
+                    "x-nullable": true,
+                    "example": "0116700303010117"
                 }
             }
         },
@@ -11261,7 +11892,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -11520,7 +12151,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -11790,8 +12421,8 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -11869,7 +12500,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -12132,7 +12763,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -12391,7 +13022,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -12650,7 +13281,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -12696,63 +13327,6 @@
                     "format": "date-time",
                     "readOnly": true,
                     "example": "2019-01-28T13:48:56.504916Z"
-                }
-            }
-        },
-        "PUEmailRetrieveSerializer": {
-            "type": "object",
-            "properties": {
-                "to": {
-                    "title": "To",
-                    "description": "The default recipient email address.",
-                    "type": "string",
-                    "format": "email",
-                    "minLength": 1,
-                    "example": "someone@example.com"
-                },
-                "cc": {
-                    "title": "Cc",
-                    "description": "The default CC email addresses; comma-separated values",
-                    "type": "string",
-                    "readOnly": true,
-                    "example": "accounting@doe.com"
-                },
-                "bcc": {
-                    "title": "Bcc",
-                    "description": "The default BCC email addresses; comma-separated values",
-                    "type": "string",
-                    "readOnly": true,
-                    "example": "someone-else@example.com"
-                },
-                "reply_to": {
-                    "title": "Reply to",
-                    "description": "A possible response from the recipients will be sent to this email address.",
-                    "type": "string",
-                    "format": "email",
-                    "minLength": 1,
-                    "example": "john@doe.com"
-                },
-                "subject": {
-                    "title": "Subject",
-                    "description": "The default email subject.",
-                    "type": "string",
-                    "maxLength": 255,
-                    "minLength": 1,
-                    "example": "The email subject"
-                },
-                "message": {
-                    "title": "Message",
-                    "description": "The default email message.",
-                    "type": "string",
-                    "minLength": 1,
-                    "example": "Hello,<br/>please find the PDF attached."
-                },
-                "sender_name": {
-                    "title": "Sender name",
-                    "description": "Sender display name",
-                    "type": "string",
-                    "maxLength": 70,
-                    "minLength": 1
                 }
             }
         },
@@ -12804,7 +13378,7 @@
                     "example": "someone-else@example.com"
                 },
                 "reply_to": {
-                    "title": "Reply to",
+                    "title": "Reply-To",
                     "description": "A possible response from the recipients will be sent to this email address.",
                     "type": "string",
                     "readOnly": true,
@@ -12891,7 +13465,7 @@
                     "example": "someone-else@example.com"
                 },
                 "reply_to": {
-                    "title": "Reply to",
+                    "title": "Reply-To",
                     "description": "A possible response from the recipients will be sent to this email address.",
                     "type": "string",
                     "readOnly": true,
@@ -12944,14 +13518,14 @@
             "properties": {
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
                 }
             }
         },
-        "PUV11InvoiceCreditTransactionCNListCreate": {
+        "PUInvoiceCreditTransactionCNSerializer": {
             "type": "object",
             "properties": {
                 "id": {
@@ -12974,12 +13548,11 @@
                     "type": "integer",
                     "example": "8800000040088865"
                 },
-                "date": {
-                    "title": "Date",
-                    "description": "Date of the related credit note.",
+                "amount": {
+                    "title": "Amount",
                     "type": "string",
-                    "readOnly": true,
-                    "example": "2018-10-25"
+                    "example": "20.00",
+                    "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 2 decimal places."
                 },
                 "currency_code": {
                     "title": "Currency code",
@@ -12988,11 +13561,12 @@
                     "readOnly": true,
                     "example": "USD"
                 },
-                "amount": {
-                    "title": "Amount",
+                "date": {
+                    "title": "Date",
+                    "description": "Date of the related credit note.",
                     "type": "string",
-                    "example": "20.00",
-                    "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 2 decimal places."
+                    "readOnly": true,
+                    "example": "2018-10-25"
                 },
                 "organization": {
                     "title": "Organization",
@@ -13019,7 +13593,7 @@
                 }
             }
         },
-        "V11InvoiceCreditTransactionCNListCreate": {
+        "InvoiceCreditTransactionCN": {
             "required": [
                 "invoice",
                 "amount"
@@ -13046,12 +13620,11 @@
                     "type": "integer",
                     "example": "8800000040088865"
                 },
-                "date": {
-                    "title": "Date",
-                    "description": "Date of the related credit note.",
+                "amount": {
+                    "title": "Amount",
                     "type": "string",
-                    "readOnly": true,
-                    "example": "2018-10-25"
+                    "example": "20.00",
+                    "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 2 decimal places."
                 },
                 "currency_code": {
                     "title": "Currency code",
@@ -13060,11 +13633,12 @@
                     "readOnly": true,
                     "example": "USD"
                 },
-                "amount": {
-                    "title": "Amount",
+                "date": {
+                    "title": "Date",
+                    "description": "Date of the related credit note.",
                     "type": "string",
-                    "example": "20.00",
-                    "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 2 decimal places."
+                    "readOnly": true,
+                    "example": "2018-10-25"
                 },
                 "organization": {
                     "title": "Organization",
@@ -13878,8 +14452,7 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit measure",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -14410,8 +14983,7 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit measure",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -15042,7 +15614,7 @@
                     "example": "someone-else@example.com"
                 },
                 "reply_to": {
-                    "title": "Reply to",
+                    "title": "Reply-To",
                     "description": "A possible response from the recipients will be sent to this email address.",
                     "type": "string",
                     "readOnly": true,
@@ -15129,7 +15701,7 @@
                     "example": "someone-else@example.com"
                 },
                 "reply_to": {
-                    "title": "Reply to",
+                    "title": "Reply-To",
                     "description": "A possible response from the recipients will be sent to this email address.",
                     "type": "string",
                     "readOnly": true,
@@ -15961,7 +16533,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -16187,8 +16759,8 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -16230,6 +16802,13 @@
                     "type": "string",
                     "readOnly": true,
                     "example": "80.00"
+                },
+                "project": {
+                    "title": "Project",
+                    "description": "ID of the associated project.",
+                    "type": "integer",
+                    "x-nullable": true,
+                    "example": "0116700303010117"
                 }
             }
         },
@@ -16264,7 +16843,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -16535,7 +17114,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -16817,8 +17396,8 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -16865,7 +17444,7 @@
                     "title": "Project",
                     "description": "ID of the associated project.",
                     "type": "integer",
-                    "readOnly": true,
+                    "x-nullable": true,
                     "example": "0116700303010117"
                 }
             }
@@ -16896,7 +17475,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -17170,7 +17749,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -17440,7 +18019,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -17710,7 +18289,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -17820,7 +18399,7 @@
                     "example": "someone-else@example.com"
                 },
                 "reply_to": {
-                    "title": "Reply to",
+                    "title": "Reply-To",
                     "description": "A possible response from the recipients will be sent to this email address.",
                     "type": "string",
                     "readOnly": true,
@@ -17907,7 +18486,7 @@
                     "example": "someone-else@example.com"
                 },
                 "reply_to": {
-                    "title": "Reply to",
+                    "title": "Reply-To",
                     "description": "A possible response from the recipients will be sent to this email address.",
                     "type": "string",
                     "readOnly": true,
@@ -17960,10 +18539,148 @@
             "properties": {
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr><tr><td><code>overdue</code></td><td>Overdue</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
+                }
+            }
+        },
+        "PUInvoiceCreditTransactionInvSerializer": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "Id",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "example": "1050000300010040"
+                },
+                "representation": {
+                    "title": "Representation",
+                    "description": "Automatically generated representation string.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "Credit applied to Invoice #1"
+                },
+                "creditnote": {
+                    "title": "Credit note",
+                    "description": "ID of the associated credit note.",
+                    "type": "integer"
+                },
+                "amount": {
+                    "title": "Amount",
+                    "type": "string",
+                    "example": "20.00",
+                    "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 2 decimal places."
+                },
+                "currency_code": {
+                    "title": "Currency code",
+                    "description": "Currency code of the related invoice.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "USD"
+                },
+                "date": {
+                    "title": "Date",
+                    "description": "Date of the related invoice.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "2018-10-25"
+                },
+                "organization": {
+                    "title": "Organization",
+                    "description": "ID of the owning organization.",
+                    "type": "integer",
+                    "readOnly": true,
+                    "example": "1000000243015421"
+                },
+                "created": {
+                    "title": "Created on",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "example": "2019-01-28T13:48:56.504916Z",
+                    "description": "Timezone information is included."
+                },
+                "modified": {
+                    "title": "Modified on",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "example": "2019-01-28T13:48:56.504916Z",
+                    "description": "Timezone information is included."
+                }
+            }
+        },
+        "InvoiceCreditTransactionInv": {
+            "required": [
+                "creditnote",
+                "amount"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "Id",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1,
+                    "example": "1050000300010040"
+                },
+                "representation": {
+                    "title": "Representation",
+                    "description": "Automatically generated representation string.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "Credit applied to Invoice #1"
+                },
+                "creditnote": {
+                    "title": "Credit note",
+                    "description": "ID of the associated credit note.",
+                    "type": "integer"
+                },
+                "amount": {
+                    "title": "Amount",
+                    "type": "string",
+                    "example": "20.00",
+                    "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 2 decimal places."
+                },
+                "currency_code": {
+                    "title": "Currency code",
+                    "description": "Currency code of the related invoice.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "USD"
+                },
+                "date": {
+                    "title": "Date",
+                    "description": "Date of the related invoice.",
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "2018-10-25"
+                },
+                "organization": {
+                    "title": "Organization",
+                    "description": "ID of the owning organization.",
+                    "type": "integer",
+                    "readOnly": true,
+                    "example": "1000000243015421"
+                },
+                "created": {
+                    "title": "Created on",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "example": "2019-01-28T13:48:56.504916Z",
+                    "description": "Timezone information is included."
+                },
+                "modified": {
+                    "title": "Modified on",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "example": "2019-01-28T13:48:56.504916Z",
+                    "description": "Timezone information is included."
                 }
             }
         },
@@ -18329,8 +19046,8 @@
                     "example": "13.00"
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -18465,8 +19182,8 @@
                     "example": "13.00"
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -18605,8 +19322,8 @@
                     "example": "13.00"
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -18745,8 +19462,8 @@
                     "example": "13.00"
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -18888,8 +19605,8 @@
                     "example": "13.00"
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -19411,8 +20128,8 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -19454,6 +20171,13 @@
                     "type": "string",
                     "readOnly": true,
                     "example": "80.00"
+                },
+                "project": {
+                    "title": "Project",
+                    "description": "ID of the associated project.",
+                    "type": "integer",
+                    "x-nullable": true,
+                    "example": "0116700303010117"
                 }
             }
         },
@@ -20288,8 +21012,8 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -20331,6 +21055,13 @@
                     "type": "string",
                     "readOnly": true,
                     "example": "80.00"
+                },
+                "project": {
+                    "title": "Project",
+                    "description": "ID of the associated project.",
+                    "type": "integer",
+                    "x-nullable": true,
+                    "example": "0116700303010117"
                 }
             }
         },
@@ -20891,7 +21622,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -21062,8 +21793,8 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -21155,7 +21886,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -21414,7 +22145,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -21680,8 +22411,8 @@
                     "description": "Decimal rendered as string, with the `.` character used as a floating point. Up to 4 decimal places."
                 },
                 "unit_measure": {
-                    "title": "Measurement unit",
-                    "description": "Measurement unit. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>0</code></td><td>Item</td></tr><tr><td><code>1</code></td><td>Service</td></tr><tr><td><code>24</code></td><td>Package</td></tr><tr><td><code>25</code></td><td>Box</td></tr><tr><td><code>2</code></td><td>Square millimetre</td></tr><tr><td><code>3</code></td><td>Square centimetre</td></tr><tr><td><code>4</code></td><td>Square metre</td></tr><tr><td><code>5</code></td><td>Square kilometre</td></tr><tr><td><code>6</code></td><td>Millimetre</td></tr><tr><td><code>7</code></td><td>Centimetre</td></tr><tr><td><code>8</code></td><td>Metre</td></tr><tr><td><code>9</code></td><td>Kilometre</td></tr><tr><td><code>10</code></td><td>Millilitre</td></tr><tr><td><code>11</code></td><td>Litre</td></tr><tr><td><code>26</code></td><td>Cubic metre</td></tr><tr><td><code>12</code></td><td>Milligram</td></tr><tr><td><code>13</code></td><td>Gram</td></tr><tr><td><code>14</code></td><td>Kilogram</td></tr><tr><td><code>15</code></td><td>Ton</td></tr><tr><td><code>16</code></td><td>Minute</td></tr><tr><td><code>17</code></td><td>Hour</td></tr><tr><td><code>27</code></td><td>Day</td></tr><tr><td><code>18</code></td><td>Month</td></tr><tr><td><code>19</code></td><td>Year</td></tr><tr><td><code>20</code></td><td>Man-Hour</td></tr><tr><td><code>21</code></td><td>Man-Day</td></tr><tr><td><code>22</code></td><td>Man-Month</td></tr><tr><td><code>23</code></td><td>Kilowatt hour</td></tr></tbody></table></details>",
+                    "title": "Unit of measurement",
+                    "description": "One of the following:<table><tr><th>Value</th><th>Description</th></tr><tr><td style=\"color: red;\">0</td><td>Item</td></tr><tr><td style=\"color: red;\">1</td><td>Service</td></tr><tr><td style=\"color: red;\">2</td><td>Square millimetre</td></tr><tr><td style=\"color: red;\">3</td><td>Square centimetre</td></tr><tr><td style=\"color: red;\">4</td><td>Square metre</td></tr><tr><td style=\"color: red;\">5</td><td>Square kilometre</td></tr><tr><td style=\"color: red;\">6</td><td>Millimetre</td></tr><tr><td style=\"color: red;\">7</td><td>Centimetre</td></tr><tr><td style=\"color: red;\">8</td><td>Metre</td></tr><tr><td style=\"color: red;\">9</td><td>Kilometre</td></tr><tr><td style=\"color: red;\">10</td><td>Millilitre</td></tr><tr><td style=\"color: red;\">11</td><td>Litre</td></tr><tr><td style=\"color: red;\">12</td><td>Milligram</td></tr><tr><td style=\"color: red;\">13</td><td>Gram</td></tr><tr><td style=\"color: red;\">14</td><td>Kilogram</td></tr><tr><td style=\"color: red;\">15</td><td>Ton</td></tr><tr><td style=\"color: red;\">16</td><td>Minute</td></tr><tr><td style=\"color: red;\">17</td><td>Hour</td></tr><tr><td style=\"color: red;\">18</td><td>Month</td></tr><tr><td style=\"color: red;\">19</td><td>Year</td></tr><tr><td style=\"color: red;\">20</td><td>Man-Hour</td></tr><tr><td style=\"color: red;\">21</td><td>Man-Day</td></tr><tr><td style=\"color: red;\">22</td><td>Man-Month</td></tr><tr><td style=\"color: red;\">23</td><td>Kilowatt hour</td></tr><tr><td style=\"color: red;\">24</td><td>Package</td></tr><tr><td style=\"color: red;\">25</td><td>Box</td></tr><tr><td style=\"color: red;\">26</td><td>Cubic metre</td></tr><tr><td style=\"color: red;\">27</td><td>Day</td></tr></table>",
                     "type": "integer",
                     "x-nullable": true,
                     "example": "0"
@@ -21769,7 +22500,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -22029,7 +22760,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -22285,7 +23016,7 @@
                 },
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
@@ -22382,7 +23113,7 @@
                     "example": "someone-else@example.com"
                 },
                 "reply_to": {
-                    "title": "Reply to",
+                    "title": "Reply-To",
                     "description": "A possible response from the recipients will be sent to this email address.",
                     "type": "string",
                     "readOnly": true,
@@ -22469,7 +23200,7 @@
                     "example": "someone-else@example.com"
                 },
                 "reply_to": {
-                    "title": "Reply to",
+                    "title": "Reply-To",
                     "description": "A possible response from the recipients will be sent to this email address.",
                     "type": "string",
                     "readOnly": true,
@@ -22522,7 +23253,7 @@
             "properties": {
                 "status": {
                     "title": "Status",
-                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
+                    "description": "Automatically generated status. One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>draft</code></td><td>Draft</td></tr><tr><td><code>issued</code></td><td>Issued</td></tr><tr><td><code>partial</code></td><td>Partially paid</td></tr><tr><td><code>paid</code></td><td>Paid</td></tr><tr><td><code>pending</code></td><td>Pending approval</td></tr><tr><td><code>void</code></td><td>Void</td></tr></tbody></table></details>",
                     "type": "string",
                     "readOnly": true,
                     "example": "paid"
