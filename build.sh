@@ -32,4 +32,7 @@ git commit -a -m 'committing all changes' &&
 echo "pushing to gh-pages" &&
 git push origin gh-pages &&
 
+echo "going back to the master branch" &&
+git checkout master &&
+
 echo "build success"
