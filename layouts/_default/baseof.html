@@ -11,7 +11,7 @@
     {{ $css := resources.Get "css/generic.css" | resources.Minify | fingerprint }}
     <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" />
 </head>
-<body>
+<body{{ if isset .Params "body_class" }} class="{{ .Params.body_class }}"{{ end }}>
     <!-- Code that all your templates share, like a header -->
     {{ block "main" . }}
       <!-- The part of the page that begins to differ between templates -->

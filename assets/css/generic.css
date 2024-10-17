@@ -21,7 +21,7 @@ body {
     padding: 15px 20px;
     width: 100%;
     background: #fff;
-    border-bottom: 1px solid #ccd;
+    border-bottom: 1px solid #dde;
     font-size: 1rem;
 }
 
@@ -55,6 +55,21 @@ body {
 
 #contents {
     padding-top: 60px;
+}
+
+.deprecation #contents {
+    padding-top: 0;
+}
+
+.deprecation-warning {
+    padding: 10px 24px 10px 24px;
+    font-size: 14px;
+    background: #ffffc9;
+    color: #333312;
+    text-align: center;
+    border-bottom: 1px solid #dde;
+    margin-top: 60px;
+    top: 60px;
 }
 
 .redoc-wrap {
