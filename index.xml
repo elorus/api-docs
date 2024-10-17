@@ -17,6 +17,15 @@ Make sure the integration with myDATA or SoftOne is activated in your Elorus acc
     </item>
     
     <item>
+      <title>API Documentation</title>
+      <link>/el/v1.1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/el/v1.1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Contract Income</title>
       <link>/el/examples/contract/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
