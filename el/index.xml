@@ -4,15 +4,15 @@
     <title>API Documentation on </title>
     <link>/el/</link>
     <description>Recent content in API Documentation on </description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="/el/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="/el/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>API Documentation</title>
       <link>/el/v1.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/el/v1.1/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

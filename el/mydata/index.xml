@@ -4,6 +4,8 @@
     <title></title>
     <link>/el/mydata/</link>
     <description>Recent content on </description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="/el/mydata/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="/el/mydata/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
