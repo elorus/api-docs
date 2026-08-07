@@ -784,6 +784,12 @@
                         "type": "file"
                     },
                     {
+                        "name": "primary",
+                        "in": "formData",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "X-Elorus-Organization",
                         "in": "header",
                         "description": "The ID of the organization you want to operate on.",
@@ -7288,7 +7294,7 @@
                     {
                         "name": "email_type",
                         "in": "query",
-                        "description": "Optional filter. The available choices are: `invoice`, `estimate`, `purchase`, `cashreceipt`, `client_statement`, `goodsreceipt`.",
+                        "description": "Optional filter. The available choices are: `invoice`, `estimate`, `purchase`, `cashreceipt`, `client_statement`.",
                         "required": false,
                         "type": "string"
                     },
@@ -9567,6 +9573,12 @@
                         "type": "file"
                     },
                     {
+                        "name": "primary",
+                        "in": "formData",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "X-Elorus-Organization",
                         "in": "header",
                         "description": "The ID of the organization you want to operate on.",
@@ -10446,7 +10458,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/GoodsReceiptEmail"
+                            "$ref": "#/definitions/DocumentEmail"
                         }
                     },
                     {
@@ -10468,7 +10480,7 @@
                     "201": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/PUGoodsReceiptEmailSerializer"
+                            "$ref": "#/definitions/PUDocumentEmailSerializer"
                         }
                     },
                     "400": {
@@ -13071,7 +13083,7 @@
                     {
                         "name": "backend",
                         "in": "query",
-                        "description": "Optional filter. The available choices are: `stripe`, `paypal`, `braintree`, `authorizenet`, `vivaredirect`, `razorpay`, `revolut`, `vivapos`, `mellonpos`, `epaypos`, `nexipos`.",
+                        "description": "Optional filter. The available choices are: `stripe`, `paypal`, `braintree`, `vivaredirect`, `razorpay`, `revolut`, `vivapos`, `mellonpos`, `epaypos`, `nexipos`.",
                         "required": false,
                         "type": "string"
                     },
@@ -16860,6 +16872,12 @@
                         "description": "The actual file data.",
                         "required": true,
                         "type": "file"
+                    },
+                    {
+                        "name": "primary",
+                        "in": "formData",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "X-Elorus-Organization",
@@ -27328,7 +27346,6 @@
                 },
                 "draft": {
                     "title": "Draft",
-                    "description": "<p>If enabled, the document will not be taken into consideration in your balance and statistics and you will not be able to add payments.</p><p>Once the document is issued (not draft) and as long as payments exist, the document status cannot be reverted.</p>",
                     "type": "boolean",
                     "example": false
                 },
@@ -35077,7 +35094,7 @@
                 }
             }
         },
-        "GoodsReceiptEmail": {
+        "DocumentEmail": {
             "required": [
                 "to",
                 "cc",
@@ -35159,7 +35176,7 @@
                 }
             }
         },
-        "PUGoodsReceiptEmailSerializer": {
+        "PUDocumentEmailSerializer": {
             "type": "object",
             "properties": {
                 "to": {
@@ -38275,7 +38292,7 @@
                     "title": "Backend",
                     "type": "string",
                     "example": "paypal",
-                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>stripe</code></td><td>Stripe</td></tr><tr><td><code>paypal</code></td><td>PayPal</td></tr><tr><td><code>braintree</code></td><td>Braintree</td></tr><tr><td><code>authorizenet</code></td><td>Authorize.net</td></tr><tr><td><code>vivaredirect</code></td><td>VivaWallet</td></tr><tr><td><code>razorpay</code></td><td>Razorpay</td></tr><tr><td><code>revolut</code></td><td>Revolut</td></tr><tr><td><code>vivapos</code></td><td>VivaWallet POS</td></tr><tr><td><code>mellonpos</code></td><td>Mellon POS</td></tr><tr><td><code>epaypos</code></td><td>Epay POS</td></tr><tr><td><code>nexipos</code></td><td>Nexi POS</td></tr></tbody></table></details>"
+                    "description": "One of the following:\n<details>\n<summary>List of values</summary><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>stripe</code></td><td>Stripe</td></tr><tr><td><code>paypal</code></td><td>PayPal</td></tr><tr><td><code>braintree</code></td><td>Braintree</td></tr><tr><td><code>vivaredirect</code></td><td>VivaWallet</td></tr><tr><td><code>razorpay</code></td><td>Razorpay</td></tr><tr><td><code>revolut</code></td><td>Revolut</td></tr><tr><td><code>vivapos</code></td><td>VivaWallet POS</td></tr><tr><td><code>mellonpos</code></td><td>Mellon POS</td></tr><tr><td><code>epaypos</code></td><td>Epay POS</td></tr><tr><td><code>nexipos</code></td><td>Nexi POS</td></tr></tbody></table></details>"
                 },
                 "active": {
                     "title": "Active",
@@ -46212,7 +46229,7 @@
         {
             "name": "goodsreceipts",
             "x-traitTag": false,
-            "description": "\nA Goods receipt records the physical receipt of products at a warehouse\nfrom a supplier. It includes details about the supplier, date, and the\nreceived items with their quantities and target warehouses.\n\nTo use the goods receipts functionality, the warehouse add-on\nmust be installed in the organization.\n\n#### Supplier data\nGoods receipts store a copy of the supplier information that will be\ndisplayed on the PDF. Consequently, you can modify the underlying\nsupplier [contact](#tag/contacts) (e.g., update the address)\nwithout affecting the printed format of previous goods receipts.\n\n#### PDF rendering\nThe process of converting Goods receipts into PDF format is performed by\na component called [Template](#tag/templates). Templates define the design\naspects, such as layout, color schemes, logo, as well as the content of\nthe PDF, such as language and which columns to display or hide on each line.\n",
+            "description": "\nA Goods receipt records the physical receipt of products at a warehouse\nfrom a supplier. It includes details about the supplier, date, and the\nreceived items with their quantities and target warehouses.\n\nTo use the goods receipts functionality, the goods receipts feature must be\navailable for the organization.\n\n#### Supplier data\nGoods receipts store a copy of the supplier information that will be\ndisplayed on the PDF. Consequently, you can modify the underlying\nsupplier [contact](#tag/contacts) (e.g., update the address)\nwithout affecting the printed format of previous goods receipts.\n\n#### PDF rendering\nThe process of converting Goods receipts into PDF format is performed by\na component called [Template](#tag/templates). Templates define the design\naspects, such as layout, color schemes, logo, as well as the content of\nthe PDF, such as language and which columns to display or hide on each line.\n",
             "x-displayName": "Goods receipts"
         },
         {
